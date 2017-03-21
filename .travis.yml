@@ -2,6 +2,7 @@ language: ruby
 rvm:
 - 2.3.3
 
+
 install:
 - sudo pip install mkdocs==0.14.0
 
@@ -12,6 +13,7 @@ script:
 - cd elastest.io/docs
 - git config user.name "edujgurjc"
 - git config user.email "ejg.urjc@gmail.com"
+- git remote add origin https://edujgurjc:${GH_TOKEN}@github.com/elastest/elastest.io.git
 - git add .
 - git commit -m "Deploy from Travis CI"
 - git push
@@ -19,5 +21,9 @@ script:
 branches:
   only:
   - master
+
+env:
+  global:
+    secure: "encrypted-github-token"
 
 sudo: true
