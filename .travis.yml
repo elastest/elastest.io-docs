@@ -10,7 +10,8 @@ script:
 - git clone https://github.com/elastest/elastest.io.git elastest.io
 - rsync -av site/ elastest.io/docs/
 - cd elastest.io/docs
-- git config user.name "elastest"
+- git config user.name "edujgurjc"
+- git config user.email "ejg.urjc@gmail.com"
 - git add .
 - git commit -m "Deploy from Travis CI"
 - git push
