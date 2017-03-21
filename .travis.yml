@@ -7,7 +7,7 @@ install:
 - sudo pip install mkdocs==0.14.0
 
 script: 
-- mkdocs build --clean
+- mkdocs build --clean -f mkdocs-web.yml 
 - git clone https://github.com/elastest/elastest.io.git elastest.io
 - rsync -av site/ elastest.io/docs/
 - cd elastest.io/docs

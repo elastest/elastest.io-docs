@@ -3,4 +3,5 @@ pages:
 - ['index.md', 'Get Started', 'Get Started']
 
 
-theme: readthedocs
+theme: null
+theme_dir: 'custom_theme'
