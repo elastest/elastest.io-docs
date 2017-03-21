@@ -9,8 +9,9 @@ section-icon: mdi mdi-content-copy
 <script src="/js/float-panel.js"></script>
 
 <script type="text/javascript">
+	/* Import docs theme css */
 	$('head').append('<link rel="stylesheet" type="text/css" href="/css/theme_extra.css">');
-
+	
 
 	$( document).ready(function(){
 	    $('li.subnav_drop').find('ul.subnav').hide();
@@ -24,6 +25,8 @@ section-icon: mdi mdi-content-copy
 	      $(this).find('ul.subnav').toggle();
 	    }); 
 
+	    var minHeight = $('#float-panel').outerHeight() + 100;	
+            $('#doc-container').css('min-height', minHeight+'px');
 	});
 	   
 	$( ".wy-nav-content" ).find( "li:contains('{{ page_title }}')" ).css('color','red');
@@ -31,7 +34,7 @@ section-icon: mdi mdi-content-copy
 
 <div id="doc-container" class="container text-justify">
   <div class="holder range"> 
-        <div class="wy-grid-for-nav cell-xs-4 cell-md-3 cell-lg-2 float-panel" data-top="56">
+        <div id="float-panel" class="wy-grid-for-nav cell-xs-3 cell-md-3 cell-lg-2 float-panel" data-top="56">
 
           {# SIDE NAV, TOGGLES ON MOBILE #}
           <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
