@@ -1,0 +1,7 @@
+site_name: ElasTest Documentation
+pages:
+- ['index.md', 'Get Started', 'Get Started']
+
+
+theme: null
+theme_dir: 'custom_theme'
