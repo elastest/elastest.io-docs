@@ -17,6 +17,7 @@ script:
 - git remote add origin https://edujgurjc:${GH_TOKEN}@github.com/elastest/elastest.io-docs.git
 - git add .
 - git commit -m "Deploy from Travis CI"
+- git pull
 - git push
 
 branches:
