@@ -2,8 +2,8 @@ language: ruby
 rvm:
 - 2.3.3
 
-before_install:
-- sudo pip install -r mkdocs==0.14.0
+install:
+- pip install -r mkdocs==0.14.0
 
 script: 
 - mkdocs build --clean
