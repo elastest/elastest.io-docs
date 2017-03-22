@@ -18,5 +18,4 @@ else
   git commit -m "Deploy from Travis CI"
   git pull origin master
   git push
-  exit 0
 fi
