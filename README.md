@@ -1,4 +1,4 @@
-#Introduction
+# Introduction
 The elastest.io documentation is generated with [MkDocs](http://www.mkdocs.org). You need install MkDocs to generate and view documents locally.
 
 # How to add a new document
