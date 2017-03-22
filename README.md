@@ -1,18 +1,21 @@
 # Introduction
-The elastest.io documentation is generated with [MkDocs](http://www.mkdocs.org). You need install MkDocs to generate and view documents locally.
-> *Note: It's not necessary install MkDocs to create or modify documentation and commit it. It's only for generate and view it locally. Travis is responsible for generating the documentation and publish in elastest.io repository when you do commit.
+The elastest.io documentation is generated with [MkDocs](http://www.mkdocs.org). 
 
-# How to add a new document
-1. Clone or download repository
+You can edit any page or add a new one with a simple text using the Markdown format. When you commit the changes to the repository, the web page will be updated automatically.
+
+# How to add a new page
+
+1. Clone this repository
+```
+git clone git@github.com:elastest/elastest.io-docs.git
+```
 2. Go to repository and open docs folder.
-3. Create a new Markdown file (.md) into an existent folder or create new folder. The folder name will be category name.
-4. Edit that file and add content in markdown format.
-5. Open terminal, go to repository and run the following command to generate static documentation into site folder:
-	``mkdocs build --clean``
-6. Open generated documentation in your browser to view
+3. Create a new Markdown file (.md) into an existent folder. You can create a new document category creating a new folder. The folder name will be category name.
+4. Edit that file and add content in [Markdown format](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+5. If you want to preview the changes in local before commiting, you can execute the following command in the root folder of the repository (you need [Docker] installed) and open the browser in `http://localhost:8000`:
 
-# How to publish documentation
-1. Follow steps 1-4 of "How to add a new document" or edit an existent document file.
-2. Commit changes and Travis will deploy and commit it automatically to [elastest.io/docs](http://elastest.io/docs) repository.
+```
+docker run -it --rm -v `pwd`:/docs -p 8000:8000 coding2012/mkdocs serve -a 0.0.0.0:8000
+```
 
->*Note: Don't edit neither mkdocs.yml nor mkdocs-web.yml files. Theme is set automatically (Readthedocs theme in local. Elastest custom theme is setted through Travis on commit for elastest.io web)
+6. To update the web page, commit and push your changes. [Travis-ci](https://travis-ci.org/elastest/elastest.io-docs/builds/213810417) will generate the HTML and will commit it to [elastest.io repository](https://github.com/elastest/elastest.io). Then, GitHub will update the web [elastest.io/docs](http://elastest.io/docs) automatically.
