@@ -12,10 +12,11 @@ git remote add origin https://elastestci:${GH_TOKEN}@github.com/elastest/elastes
 
 if [[ -z $(git status -s) ]]
 then
-  echo "nothing to commit"
+  echo "Nothing to commit"
 else
   git add .
   git commit -m "Deploy from Travis CI"
   git pull origin master
   git push
+  echo "Changes has been commited to elastest.io/docs"
 fi
