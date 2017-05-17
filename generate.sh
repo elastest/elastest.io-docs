@@ -9,7 +9,6 @@ git config user.email "elastestci@gmail.com"
 git remote rm origin
 git remote add origin https://elastestci:${GH_TOKEN}@github.com/elastest/elastest.io.git
 
-
 if [[ -z $(git status -s) ]]
 then
   echo "Nothing to commit"
