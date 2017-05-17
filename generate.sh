@@ -17,6 +17,6 @@ else
   git add .
   git commit -m "Deploy from Travis CI"
   git pull origin master
-  git push
+  git push origin master
   echo "Changes has been commited to elastest.io/docs"
 fi
