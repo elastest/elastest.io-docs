@@ -12,5 +12,6 @@ pages:
 - ['api/ems/index.html','API', 'ElasTest Monitoring Service']
 - ['api/ess/index.html','API', 'ElasTest Security Service']
 - ['api/ebs/index.html','API', 'ElasTest Bigdata Service']
+- ['api/emp/index.html','API', 'ElasTest Platform Monitor']
 theme: readthedocs
 repo_url: https://github.com/elastest/elastest.io-docs
