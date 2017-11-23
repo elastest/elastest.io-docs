@@ -1,18 +1,22 @@
 site_name: ElasTest Documentation
 pages:
-- ['index.md','Home', 'Home']
-- ['api/index.md','API', 'API']
-- ['api/epm/index.html','API', 'ElasTest Platform Manager']
-- ['api/esm/index.html','API', 'ElasTest Service Manager']
-- ['api/ece/index.html','API', 'ElasTest Cost Engine']
-- ['api/etm/index.html','API', 'ElasTest Torm']
-- ['api/eus/index.html','API', 'ElasTest User Emulator Service']
-- ['api/eim/index.html','API', 'ElasTest Instrumentation Manager']
-- ['api/eds/index.html','API', 'ElasTest Device Emulator Service']
-- ['api/ems/index.html','API', 'ElasTest Monitoring Service']
-- ['api/ess/index.html','API', 'ElasTest Security Service']
-- ['api/ebs/index.html','API', 'ElasTest Bigdata Service']
-- ['api/emp/index.html','API', 'ElasTest Monitoring Platform']
+
+- ['index.md','What is ElasTest?','What is ElasTest?']
+
+- ['getting-started/installation.md','Getting started','Try ElasTest']
+- ['getting-started/hello-world.md','Getting started','Hello world']
+- ['getting-started/user-guide.md','Getting started','User guide']
+
+- ['fundamentals/core-concepts.md','Fundamentals','Core concepts']
+- ['fundamentals/architecture.md','Fundamentals','Elastest Architecture']
+
+- ['how-to/unit.md','How to ...', 'Run unit tests']
+- ['how-to/e2e-rest.md','How to ...', 'Run end2end tests (REST)']
+- ['how-to/e2e-browser.md','How to ...', 'Run end2end tests (Web Browser)']
+- ['how-to/local-testing.md','How to ...', 'Local testing with ElasTest']
+
+- ['deploying/deploying.md','Deploying ElasTest', 'Deploying ElasTest']
+
 theme: null
 theme_dir: 'custom_theme'
 repo_url: https://github.com/elastest/elastest.io-docs
