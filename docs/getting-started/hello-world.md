@@ -6,7 +6,7 @@
 </div>
 </div>
 
-ElasTest will launch with one sample project included so users can quickly run their first test. To do so:
+After [launching Elastest](/getting-started/installation), there will be one sample project available on the dashboard so users can quickly run their first test. To do so:
 
 <h2 class="h4 no-border">1. Access your ElasTest dashboard</h2>
 
@@ -30,16 +30,8 @@ ElasTest will launch with one sample project included so users can quickly run t
 
 <p>Our TJob will start running: you will see CPU metric on the chart and the Test log. Eventually the test should end succesfully.</p>
 
-<div class="docs-gallery row">
-    <div class="col-md-4">
-        <a data-fancybox="gallery-4" href="/docs/getting-started/images/execution_start.png"><img class="img-responsive img-wellcome" src="/docs/getting-started/images/execution_start.png"/></a>
-    </div>
-    <div class="col-md-4">
-        <a data-fancybox="gallery-4" href="/docs/getting-started/images/execution_running.png"><img class="img-responsive img-wellcome" src="/docs/getting-started/images/execution_running.png"/></a>
-    </div>
-    <div class="col-md-4">
-        <a data-fancybox="gallery-4" href="/docs/getting-started/images/execution_finished.png"><img class="img-responsive img-wellcome" src="/docs/getting-started/images/execution_finished.png"/></a>
-    </div>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/getting-started/images/execution_finished.png"><img class="img-responsive img-wellcome" src="/docs/getting-started/images/execution_finished.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>

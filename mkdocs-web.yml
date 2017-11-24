@@ -14,6 +14,7 @@ pages:
 - ['how-to/e2e-rest.md','How to ...', 'Run end2end tests (REST)']
 - ['how-to/e2e-browser.md','How to ...', 'Run end2end tests (Web Browser)']
 - ['how-to/local-testing.md','How to ...', 'Local testing with ElasTest']
+- ['how-to/monitoring.md','How to ...', 'Monitoring']
 
 - ['deploying/deploying.md','Deploying ElasTest', 'Deploying ElasTest']
 

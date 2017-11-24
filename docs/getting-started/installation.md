@@ -12,19 +12,19 @@
 
 For **Ubuntu**, **Mac** and **Windows** (*Docker for Windows*):
 
-```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --lite
+```text
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 ```
 
 For **Windows** (*Docker Toolbox*):
 
-```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --lite --server-address=$(docker-machine ip)
+```text
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
 ```
 
 You will see this output when ElasTest is ready:
 
-```
+```text
 Starting ElasTest Platform (Lite Mode)...
 
 Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
@@ -34,7 +34,7 @@ ElasTest Platform is available at http://YOUR_MACHINE_IP:37000
 
 You can then open in your web browser the shown URL to access to ElasTest dashboard.
 
-To stop ElasTest, press `Ctrl+C` in the shell used to start it.  
+To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](/getting-started/hello-world) project available by default when launching ElasTest.
 
 
 <h2 class="h3 no-border">Recommended system specifications</h2>
