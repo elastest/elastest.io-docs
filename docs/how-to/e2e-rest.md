@@ -69,7 +69,7 @@ public class RestAppTest {
 }
 </code>
 </pre>
-<blockquote><code>ET_SUT_HOST</code> variable will be the IP of our SuT. ElasTest will automatically inject the right value</blockquote>
+<blockquote><code>ET_SUT_HOST</code> variable will be the IP of our SuT. ElasTest will automatically inject the right value (<code>localhost</code> if not defined)</blockquote>
 </div>
 </div>
 
@@ -105,7 +105,7 @@ Right now all SuT's must be available as a Docker image or a docker-compose so E
 Complete the form fields:
 
 - **TJob Name**: name of the TJob (`Rest test`)
-- **Select a SuT**: already created SuT to be tested thanks to the TJob (`Rest App`)
+- **Select a SuT**: already created SuT to be tested through to the TJob (`Rest App`)
 - **Environment docker image**: the docker image that will host your test. This docker images should contain a client to download your code from your repository hosting service. For example, if your tests are hosted in GitHub and implemented in a Maven project with Java, you need to include a git client, Maven and the Java Development Kit (JDK) in the image. Indeed, this image contains Git, Maven and Java (`elastest/test-etm-alpinegitjava`)
 <!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... -->
 - **Commands**: these are the bash commands to be executed to download the code from a repository and to execute the tests. The specific commands depends on the source code repository type and the technology. For example, the following commands will clone a Maven/Java repository from GitHub and execute the tests:
