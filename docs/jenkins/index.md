@@ -6,7 +6,9 @@
 </div>
 </div>
 
-Coming really soon...
+<img style="border: none" class="img-responsive img-wellcome" src="/docs/images/jenkins.png"/>
+
+_Coming really soon..._
 
 
 
