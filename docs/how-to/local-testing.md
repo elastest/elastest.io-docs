@@ -8,15 +8,108 @@
 
 You can make use of ElastTest Web Browser services to run your local end-to-end tests on any browser and version you want.
 
-This is a deal breaker for developers: whatever platform you are coding in and whatever framework you are using, you can easily launch any browser in ElasTest dashboard and use it remotely to run your tests straight from your machine, as you would do in your favourite IDE. Do you want to test your web on Microsoft's Edge but you don't even have a Windows machine? No problem, just launch an Edge instance on ElasTest and run your test agains it. Any other browser provided in ElasTest Web Browser services could serve as an example of this use case.
+This is a deal breaker for developers: whatever platform you are coding in and whatever framework you are using, you can easily launch any browser in ElasTest dashboard and use it remotely to run your tests straight from your machine, as you would do in your favourite IDE. Do you want to test your web on Microsoft's Edge but you don't even have a Windows machine? No problem, just launch an Edge instance on ElasTest and run your test against it. Any other browser provided in ElasTest Web Browser services could serve as an example of this use case.
 
-To do so:
+Inside "Web Browsers" page, Elastest allows you to:
 
-<h2 class="h4 no-border">1. Get into "Web Browsers" page</h2>
+<ul>
+    <li><strong>A) Manually launch any browser and version from Elastest dashboard to use it directly as an end user</strong></li>
+    <li><strong>B) Connect Elastest Web Browser service from your code to automatically launch any browser and run your test against it</strong></li>
+</ul>
+
+<h2 class="h4 no-border">A) Launching any browser on ElasTest</h2>
+
+<p>
+Select the desired browser and version and launch it:
+</p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/how-to/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/e2eRest1.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
 </div>
+
+<p>
+Now the selected browser will be downloaded (only for the first time you run certain version). Once it is up and running, you can click on "View" button inside "Web Browsers" card in order to see the browser as any end user would on their own computer. You can also interact directly with it.
+</p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
+</div>
+
+<h2 class="h4 no-border">B) Running remote tests on ElasTest browsers</h2>
+
+In order to run your test on ElasTest browsers, you just need to use the URL shown on "Web Browsers" page. There is no restriction on the environment your test is being executed: you can run it on your development machine from the command line or even directly from your favourite editor. Or you can run your test on ElasTest browsers as part of your CI platform, so that in the event of any failure you can check the window recording and browser's console. The advantages are considerable compared to other alternatives.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
+</div>
+
+To illustrate this scenarios, let's see how to start a Selenium Web Driver using different languages to remotely use ElasTest browsers. If the URL provided in "Web Browsers" page is `https://MY_REMOTE_WEB_BROWSER_URL.com`:
+
+<div class="badges-menu">
+    <span id="java-test-btn" class="badge badge-default my-badge">Java</span>
+    <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
+    <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
+</div>
+
+<div id="java-test">
+<pre><code class="java">// Chrome
+
+DesiredCapabilities caps = new DesiredCapabilities().chrome();
+WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);
+
+// Firefox
+
+DesiredCapabilities caps = new DesiredCapabilities().firefox();
+WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);</code></pre>
+</div>
+
+<div id="js-test">
+<pre><code class="javascript">// Chrome
+
+var browserBuilder = new webdriver.Builder().forBrowser("chrome");
+browserBuilder.usingServer("https://MY_REMOTE_WEB_BROWSER_URL.com");
+driver = browserBuilder.build();
+
+// Firefox
+
+var browserBuilder = new webdriver.Builder().forBrowser("firefox");
+browserBuilder.usingServer("https://MY_REMOTE_WEB_BROWSER_URL.com");
+driver = browserBuilder.build();</code></pre>
+</div>
+
+<p>
+That's all the extra configuration needed. The rest of the code is exactly the same as in a regular Selenium test.
+Whenever you run it, ElasTest will launch the requested browser on-demand and the test will be remotely executed against it.
+</p>
+
+<script>
+function navigateTo(subpage) {
+    switch(subpage) {
+        case 'java':
+            $('#js-test').hide();
+            $('#java-test').show();
+            break;
+        case 'js':
+            $('#java-test').hide();
+            $('#js-test').show();
+            break;
+        default:
+            navigateTo('java');
+            break;
+    }
+}
+
+$('#java-test-btn').click(function() {
+  navigateTo('java');
+});
+$('#js-test-btn').click(function() {
+  navigateTo('js');
+});
+
+window.onload = function() {
+  navigateTo(('java'));
+};
+</script>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
