@@ -1,9 +1,9 @@
 site_name: ElasTest Documentation
 pages:
 
-- ['getting-started/index.md','Getting started','What is ElasTest?']
-- ['getting-started/try-elastest.md','Getting started','Try ElasTest']
-- ['getting-started/your-first-test.md','Getting started','Your first test with ElasTest']
+- ['index.md','Getting started','What is ElasTest?']
+- ['try-elastest.md','Getting started','Try ElasTest']
+- ['your-first-test.md','Getting started','Your first test with ElasTest']
 
 - ['testing/unit.md','Testing with ElasTest', 'Run unit tests']
 - ['testing/e2e-rest.md','Testing with ElasTest', 'Run end2end tests (REST)']
