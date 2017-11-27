@@ -12,13 +12,13 @@ pages:
 - ['web-browsers/manual-browsers.md','Web Browsers', 'Launching Web Browsers on ElasTest']
 - ['web-browsers/outside-testing.md','Web Browsers', 'Testing with Web Browsers from outside ElasTest']
 
-- ['log-analyzer/index.md','Log Analyzer', 'Log Analyzer']
+- ['log-analyzer/index.md', 'Log Analyzer']
 
-- ['monitoring/index.md','Monitoring', 'Monitoring']
+- ['monitoring/index.md', 'Monitoring']
 
-- ['jenkins/index.md','Jenkins integration', 'Jenkins integration']
+- ['jenkins/index.md', 'Jenkins integration']
 
-- ['deploying/index.md','Deploying ElasTest', 'Deploying ElasTest']
+- ['deploying/index.md', 'Deploying ElasTest']
 
 theme: readthedocs
 repo_url: https://github.com/elastest/elastest.io-docs
