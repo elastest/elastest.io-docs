@@ -1,0 +1,46 @@
+<div class="range range-xs-left">
+<div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
+<h2 id="content" class="h1">Launching Web Browsers on ElasTest</h2>
+<div class="offset-top-30 offset-md-top-50">
+</div>
+</div>
+</div>
+
+<p>
+Select the desired browser and version and launch it:
+</p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
+</div>
+
+<p>
+Now the selected browser will be downloaded (only for the first time you run certain version). Once it is up and running, you can click on "View" button inside "Web Browsers" card in order to see the browser as any end user would on their own computer. You can also interact directly with it.
+</p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
+</div>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

@@ -1,22 +1,24 @@
 site_name: ElasTest Documentation
 pages:
 
-- ['index.md','What is ElasTest?','What is ElasTest?']
+- ['getting-started/index.md','Getting started','What is ElasTest?']
+- ['getting-started/try-elastest.md','Getting started','Try ElasTest']
+- ['getting-started/your-first-test.md','Getting started','Your first test with ElasTest']
 
-- ['getting-started/installation.md','Getting started','Try ElasTest']
-- ['getting-started/hello-world.md','Getting started','Hello world']
-- ['getting-started/user-guide.md','Getting started','User guide']
+- ['testing/unit.md','Testing with ElasTest', 'Run unit tests']
+- ['testing/e2e-rest.md','Testing with ElasTest', 'Run end2end tests (REST)']
+- ['testing/e2e-browser.md','Testing with ElasTest', 'Run end2end tests (Web Browser)']
 
-- ['fundamentals/core-concepts.md','Fundamentals','Core concepts']
-- ['fundamentals/architecture.md','Fundamentals','Elastest Architecture']
+- ['web-browsers/manual-browsers.md','Web Browsers', 'Launching Web Browsers on ElasTest']
+- ['web-browsers/outside-testing.md','Web Browsers', 'Testing with Web Browsers from outside ElasTest']
 
-- ['how-to/unit.md','How to ...', 'Run unit tests']
-- ['how-to/e2e-rest.md','How to ...', 'Run end2end tests (REST)']
-- ['how-to/e2e-browser.md','How to ...', 'Run end2end tests (Web Browser)']
-- ['how-to/local-testing.md','How to ...', 'Local testing with ElasTest']
-- ['how-to/monitoring.md','How to ...', 'Monitoring']
+- ['log-analyzer/index.md','Log Analyzer', 'Log Analyzer']
 
-- ['deploying/deploying.md','Deploying ElasTest', 'Deploying ElasTest']
+- ['monitoring/index.md','Monitoring', 'Monitoring']
+
+- ['jenkins/index.md','Jenkins integration', 'Jenkins integration']
+
+- ['deploying/index.md','Deploying ElasTest', 'Deploying ElasTest']
 
 theme: null
 theme_dir: 'custom_theme'

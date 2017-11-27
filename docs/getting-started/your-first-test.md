@@ -1,12 +1,12 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Hello world</h2>
+<h2 id="content" class="h1">Your first test with ElasTest</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
 
-After [launching Elastest](/getting-started/installation), there will be one sample project available on the dashboard so users can quickly run their first test. To do so:
+After [launching Elastest](/getting-started/installation), there will be a "Hello world" sample project available on the dashboard so users can quickly run their first test. To do so:
 
 <h2 class="h4 no-border">1. Access your ElasTest dashboard</h2>
 

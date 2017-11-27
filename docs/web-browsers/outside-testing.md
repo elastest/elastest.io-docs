@@ -1,43 +1,16 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Local testing with ElasTest</h2>
+<h2 id="content" class="h1">Testing with Web Browsers from outside ElasTest</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
 </div>
 
-You can make use of ElastTest Web Browser services to run your local end-to-end tests on any browser and version you want.
+You can make use of ElastTest Web Browser services to run your local or CI end-to-end tests on any browser and version you want.
 
 This is a deal breaker for developers: whatever platform you are coding in and whatever framework you are using, you can easily launch any browser in ElasTest dashboard and use it remotely to run your tests straight from your machine, as you would do in your favourite IDE. Do you want to test your web on Microsoft's Edge but you don't even have a Windows machine? No problem, just launch an Edge instance on ElasTest and run your test against it. Any other browser provided in ElasTest Web Browser services could serve as an example of this use case.
 
-Inside "Web Browsers" page, Elastest allows you to:
-
-<ul>
-    <li><strong>A) Manually launch any browser and version from Elastest dashboard to use it directly as an end user</strong></li>
-    <li><strong>B) Connect Elastest Web Browser service from your code to automatically launch any browser and run your test against it</strong></li>
-</ul>
-
-<h2 class="h4 no-border">A) Launching any browser on ElasTest</h2>
-
-<p>
-Select the desired browser and version and launch it:
-</p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
-</div>
-
-<p>
-Now the selected browser will be downloaded (only for the first time you run certain version). Once it is up and running, you can click on "View" button inside "Web Browsers" card in order to see the browser as any end user would on their own computer. You can also interact directly with it.
-</p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
-</div>
-
-<h2 class="h4 no-border">B) Running remote tests on ElasTest browsers</h2>
-
-In order to run your test on ElasTest browsers, you just need to use the URL shown on "Web Browsers" page. There is no restriction on the environment your test is being executed: you can run it on your development machine from the command line or even directly from your favourite editor. Or you can run your test on ElasTest browsers as part of your CI platform, so that in the event of any failure you can check the window recording and browser's console. The advantages are considerable compared to other alternatives.
+In order to run your test on ElasTest browsers, you just need to use the **URL shown on "Web Browsers" page**. There is no restriction on the environment your test is being executed: you can run it on your development machine from the command line or even directly from your favourite editor. Or you can run your test on ElasTest browsers as part of your CI platform, so that in the event of any failure you can check the window recording and browser's console. The advantages are considerable compared to other alternatives.
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
@@ -81,6 +54,14 @@ driver = browserBuilder.build();</code></pre>
 That's all the extra configuration needed. The rest of the code is exactly the same as in a regular Selenium test.
 Whenever you run it, ElasTest will launch the requested browser on-demand and the test will be remotely executed against it.
 </p>
+
+<p>
+You will have available the browser's window in real time to see your test in action. When it finishes, a <i>.mp4</i> file will be available for download.
+</p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/how-to/images/test.png"><img class="img-responsive img-wellcome" src="/docs/how-to/images/test.png"/></a>
+</div>
 
 <script>
 function navigateTo(subpage) {
