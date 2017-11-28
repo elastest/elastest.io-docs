@@ -4,7 +4,7 @@
 <div class="offset-top-30 offset-md-top-50">
 <p>ElasTest is a platform aimed to ease end to end (e2e) testing of distributed systems. One of the key features of the platform is the ability to show and analyze logs and metrics of all elements involved in an end to end test.</p><p>For example, suppose a typical three tier web application with a database. A basic e2e test has the following components: the test itself, web browser, web application and database. All those elements can generate logs and metrics of several types (CPU, memory, network packets…). When a test is executed using ElasTest, the tester can see all that monitoring information in the same graphical user interface and with advanced analysis features. 
 </p>
-<blockquote>WARNING: ElasTest is currently in active development. This means that new features are constantly being added and unexpected bugs may appear.</blockquote>
+<blockquote><strong>WARNING</strong>: ElasTest is currently in active development. This means that new features are constantly being added and unexpected bugs may appear.</blockquote>
 </div>
 </div>
 <div class="cell-xs-10 cell-lg-6 cell-lg-push-2"><img src="./images/portfolio-80-420x280.jpg" width="960" height="540" alt="No documentation yet" class="img-responsive reveal-inline-block offset-top-10"></div>
@@ -12,10 +12,10 @@
 
 <h2 class="h3 no-border">ElasTest main features</h2>
 
-<h2 class="h3 no-border">ElasTest core concepts</h2>
+<h2 class="h3 no-border" id="elastest-core-concepts" style="border-top: 90px solid transparent !important; margin-top: -70px;">ElasTest core concepts</h2>
 
 <p>
-ElasTest is built around three main elements:
+ElasTest is built around 3 main elements:
 
 <div style="margin-top: 30px">
     <h4>SuT</h4>
@@ -42,14 +42,14 @@ ElasTest is built around three main elements:
     <ul>
         <li><i>Environment needed to execute the tests</i>: This is defined with a docker image that contains all tools used by the tests.</li>
         <li><i>How to retrieve and execute the tests</i>: Specified as a set of commands written in bash that will be executed inside the environment defined before (docker container).</li>
-        <li><i>The SuT against which tests are executed</i>: That is, the SuT description. If the Sut is already deployed, it is necessary to specify how to reach it (usually with its IP). If the SuT lifecycle is managed by ElasTest, ElasTest needs to know how to deploy and undeploy the SuT. At the moment, a SuT’s docker image can be specified in this case.</li></br>
-    A TJob can be executed several times. That can be useful, for example, because SuT has changes and we want to verify that old features are still working. Or if we add more tests to the same TJob test repo, we can execute them against the SuT.
+        <li><i>The SuT against which tests are executed</i>: That is, the SuT description. If the Sut is already deployed, it is necessary to specify how to reach it (usually with its IP). If the SuT lifecycle is managed by ElasTest, ElasTest needs to know how to deploy and undeploy the SuT.</li></br>
+    A TJob can be executed several times. That can be useful, for example, because SuT has changes and we want to verify that old features are still working. Or if we add more tests to the same TJob test repo, we can execute them against the SuT. For unit and integration tests, TJobs can manage themselves the deployment of the tested software (SuT not necessary). To learn more about this, you can check our <a href="/docs/testing/unit/">unit test tutorial</a>.
     </ul>
 </div>
 
 <div style="margin-top: 30px">
    <h4>TSS</h4>
-   Test Support Services: services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, only <strong>web browsers</strong> are provided, but in the near future ElasTest will offer mobile devices emulators, IoT devices, security services, Big Data services, WebRTC testing capablities...
+   Test Support Services: services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, only <strong>web browsers</strong> are provided, but in the near future ElasTest will offer other services as <strong>mobile devices emulators</strong>, <strong>IoT devices</strong>, <strong>security services</strong> and <strong>Big Data services</strong>.
 </div>
 
 <blockquote>

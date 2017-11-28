@@ -14,7 +14,10 @@ pages:
 
 - ['log-analyzer/index.md', 'Log Analyzer']
 
-- ['monitoring/index.md', 'Monitoring']
+- ['monitoring/index.md', 'Monitoring', 'Intro']
+- ['monitoring/dockerized.md', 'Monitoring', 'Dockerized monitoring']
+- ['monitoring/deployed.md', 'Monitoring', 'Deployed monitoring']
+- ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
 
 - ['jenkins/index.md', 'Jenkins integration']
 
