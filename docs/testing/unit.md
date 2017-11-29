@@ -7,7 +7,7 @@
 </div>
 
 <div class="badges-menu">
-    <span class="badge badge-default my-badge">Java</span>
+    <span class="badge badge-default my-badge selected">Java</span>
     <span class="badge badge-default my-badge my-badge-disabled">Node</span>
     <span class="badge badge-default my-badge my-badge-disabled">Python</span>
     <span class="badge badge-default my-badge my-badge-disabled">. . .</span>

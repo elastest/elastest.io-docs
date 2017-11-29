@@ -44,60 +44,88 @@ We will be using them in the following section.
 
 As ElasTest already includes the required packages for using Beats ([Logstash](https://www.elastic.co/products/logstash) and [ElasticSearch](https://www.elastic.co/products/elasticsearch)), you will only have to follow the [official documentation](https://www.elastic.co/guide/en/beats/libbeat/current/installing-beats.html) for installing and configuring beat agents inside your deployed SuT.
 
-To illustrate this process, let's see a pretty common use case: you have an app deployed somewhere in the cloud, and you want to run a TJob in ElasTest to test some feature of it.
+To illustrate this process, let's see a pretty common use case: you have an app deployed somewhere in the cloud, and you want to run a TJob in ElasTest to test some feature of it. And you also want ElasTest to **monitore certain log** that your app produces on some custom path and the **CPU usage on your server**.
 
-<h6 style="color: #666666">1. Create a new SuT</h6>
 
-First of all, create a new SuT inside any Project in your ElasTest dashboard. Do it with **Deployed SuT** and **Instrumented by SuT Admin** options, just as shown in the images above.
 
-<h6 style="color: #666666">2. Install Filebeat on your SuT machine</h6>
 
-Let's suppose we have an Ubuntu machine hosting our app. We connect to it through _ssh_ and run the command that [Step 1 of Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/6.0/filebeat-installation.html) tells us. In this case, by using Debian packages:
+<div class="badges-menu badges-menu-beats noselectionable">
+    <span id="monitore-custom-log-btn" class="badge badge-default my-badge my-big-badge selected">Monitore my<br>custom log</span>
+    <span id="monitore-custom-metric-btn" class="badge badge-default my-badge my-big-badge">Monitore my<br>CPU usage</span>
+</div>
 
-```bash
-curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.0.0-amd64.deb
-sudo dpkg -i filebeat-6.0.0-amd64.deb
-```
 
-<h6 style="color: #666666">3. Configure Filebeat agent to suit your needs</h6>
 
-Take a look to [Step 2 of Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html). The predefined default value for Filebeat is to gather all logs inside "/var/log/" folder:
 
-```yml
-filebeat.prospectors:
+
+<div id="monitore-custom-log" class="beats-tutorial">
+
+  <p>Monitore custom log in my server thanks to <a href="https://www.elastic.co/products/beats/filebeat">Filebeat</a></p>
+
+  <h6 style="color: #666666">1. Create a new SuT</h6>
+
+  <p>First of all, create a new SuT inside any Project in your ElasTest dashboard. Do it with <strong>Deployed SuT</strong> and <strong>Instrumented by SuT Admin</strong> options, just as shown in the images above.</p>
+
+  <h6 style="color: #666666">2. Install Filebeat on your SuT machine</h6>
+
+  <p>Let's suppose we have an Ubuntu machine hosting our app. We connect to it through _ssh_ and run the command that <a href="https://www.elastic.co/guide/en/beats/filebeat/6.0/filebeat-installation.html">Step 1 of Filebeat documentation</a> tells us. In this case, by using Debian packages:</p>
+
+  <pre><code class="bash hljs">curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.0.0-amd64.deb
+sudo dpkg -i filebeat-6.0.0-amd64.deb</code></pre>
+
+  <h6 style="color: #666666">3. Configure Filebeat agent to suit your needs</h6>
+
+  <p>Take a look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html">Step 2 of Filebeat documentation</a>. The predefined default value for Filebeat is to gather all logs inside "/var/log/" folder:</p>
+
+  <pre><code class="yml hljs">filebeat.prospectors:
 - type: log
   enabled: true
   paths:
-    - /var/log/*.log
-```
+    - /var/log/*.log</code></pre>
 
-<h6 style="color: #666666">4. Configure Filebeat agent to connect to ElasTest</h6>
+  <h6 style="color: #666666">4. Configure Filebeat agent to connect to ElasTest</h6>
 
-Again, just need to take a quick look to [Step 3 of Filebeat documentation](https://www.elastic.co/guide/en/beats/filebeat/current/config-filebeat-logstash.html).
+  <p>Again, just need to take a quick look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/config-filebeat-logstash.html">Step 3 of Filebeat documentation</a>.</p>
 
-Our brand new agent has to be configured to send information to the Logstash instance of ElasTest. Logstash Host and beats port have to be used in Filebeat configuration file (in our machine that is `/etc/filebeat/filebeat.yml`):
+  <p>Our brand new agent has to be configured to send information to the Logstash instance of ElasTest. Logstash Host and beats port have to be used in Filebeat configuration file (in our machine that is <code>/etc/filebeat/filebeat.yml</code>):</p>
 
-```yml
-#----------------------------- Logstash output --------------------------------
+  <pre><code class="yml hljs">#----------------------------- Logstash output --------------------------------
 output.logstash:
-  hosts: ["127.0.0.1:5044"]
-```
+  hosts: ["127.0.0.1:5044"]</code></pre>
 
-Where **127.0.0.1** has to be changed to the value of **Logstash IP** and **5044** to the value of **Logstash Beats Port**. To include the **Exec ID** value, it is necessary to add custom fields in config file. Those fields are:
+  <p>Where <strong>127.0.0.1</strong> has to be changed to the value of <strong>Logstash IP</strong> and <strong>5044</strong> to the value of <strong>Logstash Beats Port</strong>. To include the <strong>Exec ID</strong> value, it is necessary to add custom fields in config file. Those fields are:</p>
 
-```yml
-fields_under_root: true
+  <pre><code class="yml hljs">fields_under_root: true
 fields:
   exec: XX
   component: YY
-  stream: ZZ
-```
+  stream: ZZ</code></pre>
 
-The value of the fields are:
+  <p>The value of the fields are:</p>
 
-- **exec**: The value of **Exec ID** shown in ElasTest dashboard when SuT is created.
-- **component**: The name of the component in which this log is generated. For example: `sut`, `sut-webapp`, `sut-bbdd`. It is recommended that this name starts with "sut-" to allow to group SuT components in ElasTest.
-- **stream**: The name of the event stream. If the stream is a log and this is the only log for the component, it is recommended to call it `default_log`. 
+  <ul>
+    <li><strong>exec</strong>: The value of **Exec ID** shown in ElasTest dashboard when SuT is created.</li>
+    <li><strong>component</strong>: The name of the component in which this log is generated. For example: <code>sut</code>, <code>sut-webapp</code>, <code>sut-bbdd</code>. It is recommended that this name starts with <code>sut-</code> to allow to group SuT components in ElasTest.</li>
+    <li><strong>stream</strong>: The name of the event stream. If the stream is a log and this is the only log for the component, it is recommended to call it <code>default_log</code>.</li>
+  </ul>
+</div>
+
+
+
+<div id="monitore-custom-metric" class="beats-tutorial" hidden>
+
+  <p>Monitore a custom metric in my server thanks to <a href="https://www.elastic.co/products/beats/metricbeat">Metricbeat</a></p>
+
+  <h6 style="color: #666666">1. Create a new SuT</h6>
+
+  <p>First of all, create a new SuT inside any Project in your ElasTest dashboard. Do it with <strong>Deployed SuT</strong> and <strong>Instrumented by SuT Admin</strong> options, just as shown in the images above.</p>
+
+  <h6 style="color: #666666">2. Install Metricbeat on your SuT machine</h6>
+
+</div>
+
+
+
 
 <h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with HTTP</h4>
 
@@ -182,6 +210,24 @@ The request has to use the POST method. There are different formats to send diff
    }
 }
 ```
+
+<script>
+$('#monitore-custom-log-btn').click(function(event) {
+  $('#monitore-custom-metric').hide();
+  $('#monitore-custom-log').show();
+  newSelectedBadge(event);
+});
+$('#monitore-custom-metric-btn').click(function(event) {
+  $('#monitore-custom-log').hide();
+  $('#monitore-custom-metric').show();
+  newSelectedBadge(event);
+});
+
+function newSelectedBadge(event) {
+  $(".selected").removeClass("selected");
+  $(event.target).addClass("selected");
+}
+</script>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />

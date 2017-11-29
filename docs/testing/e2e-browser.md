@@ -6,7 +6,7 @@
 </div>
 </div>
 
-<div class="badges-menu">
+<div class="badges-menu noselectionable">
     <span id="java-test-btn" class="badge badge-default my-badge selected">Java</span>
     <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
     <span class="badge badge-default my-badge my-badge-disabled">PHP</span>
@@ -218,14 +218,6 @@ public void test() throws InterruptedException {
 
 
 
-
-
-
-
-
-
-
-
 <div id="js-test">
 
 Let's see how to launch a TJob that makes use of a web browser inside Elastest. We will use our <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-js-test" target="_blank">Simple Web JS Test</a>:
@@ -415,12 +407,20 @@ function navigateTo(subpage) {
     }
 }
 
-$('#java-test-btn').click(function() {
+$('#java-test-btn').click(function(event) {
   navigateTo('java');
+  newSelectedBadge(event);
 });
 $('#js-test-btn').click(function() {
   navigateTo('js');
+  $(".selected").removeClass("selected");
+  newSelectedBadge(event);
 });
+
+function newSelectedBadge(event) {
+  $(".selected").removeClass("selected");
+  $(event.target).addClass("selected");
+}
 
 window.onload = function() {
   navigateTo(window.location.hash.replace('#', ''));
