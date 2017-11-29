@@ -13,7 +13,7 @@ When ElasTest is executing tests against an already deployed [SuT](../../docs#el
 
 
 
-<h4>Manual instrumentation</h4>
+<h4 class="holder-subtitle">Manual instrumentation</h4>
 
 Manual instrumentation can be done by:
 
@@ -40,7 +40,7 @@ We will be using them in the following section.
     <a data-fancybox="gallery-2" href="/docs/monitoring/images/new_SuT_manual_instrumentation_2.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/new_SuT_manual_instrumentation_2.png"/></a>
 </div>
 
-<h4>Beats configuration</h4>
+<h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with Beats</h4>
 
 As ElasTest already includes the required packages for using Beats ([Logstash](https://www.elastic.co/products/logstash) and [ElasticSearch](https://www.elastic.co/products/elasticsearch)), you will only have to follow the [official documentation](https://www.elastic.co/guide/en/beats/libbeat/current/installing-beats.html) for installing and configuring beat agents inside your deployed SuT.
 
@@ -99,7 +99,7 @@ The value of the fields are:
 - **component**: The name of the component in which this log is generated. For example: `sut`, `sut-webapp`, `sut-bbdd`. It is recommended that this name starts with "sut-" to allow to group SuT components in ElasTest.
 - **stream**: The name of the event stream. If the stream is a log and this is the only log for the component, it is recommended to call it `default_log`. 
 
-<h4 id="send-metrics-with-http" style="border-top: 90px solid transparent !important; margin-top: -70px;">Send metrics with HTTP</h4>
+<h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with HTTP</h4>
 
 If it is not possible to use beats agents, you can always send SuT metric information with http requests. The URL is created with **Logstash IP** and **HTTP port** params:
 
@@ -109,7 +109,7 @@ http://<logstash_host>:<http_port>/
 
 The request has to use the POST method. There are different formats to send different types of information:
 
-<h6 style="color: #666666">Send one log entry in one request</h6>
+<h6 class="small-subtitle">Send one log entry in one request</h6>
 
 ```json
 {
@@ -128,7 +128,7 @@ The request has to use the POST method. There are different formats to send diff
 - **stream**: Used to distinguish several logs from the same component. In this case only one log exists for the component, its value is usually "default_log".
 - **message**: Complete log message entry.
 
-<h6 style="color: #666666">Send several log entries in one request</h6>
+<h6 class="small-subtitle">Send several log entries in one request</h6>
 
 ```json
 {
@@ -145,7 +145,7 @@ The request has to use the POST method. There are different formats to send diff
 }
 ```
 
-<h6 style="color: #666666">Send one atomic metric in one request</h6>
+<h6 class="small-subtitle">Send one atomic metric in one request</h6>
 
 ```json
 {
@@ -163,7 +163,7 @@ The request has to use the POST method. There are different formats to send diff
 
 - **stream** field can be whatever you want (it has to be used below when setting the numeric value)
 
-<h6 style="color: #666666">Send one composed metric in one request</h6>
+<h6 class="small-subtitle">Send one composed metric in one request</h6>
 
 ```json
 {

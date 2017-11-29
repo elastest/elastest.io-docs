@@ -21,7 +21,8 @@ pages:
 
 - ['jenkins/index.md', 'Jenkins integration']
 
-- ['deploying/index.md', 'Deploying ElasTest']
+- ['deploying/cloudformation.md', 'Deploying ElasTest', 'CloudFormation']
+- ['deploying/native.md', 'Deploying ElasTest', 'Native deployment']
 
 theme: null
 theme_dir: 'custom_theme'

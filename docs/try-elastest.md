@@ -11,13 +11,13 @@ ElasTest can be quickly installed in your own development machine. If you want t
 <p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a> or <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows</a>.
 </p>
 
-<h4>For Ubuntu and Mac</h4>
+<h4 class="holder-subtitle link-top">For Ubuntu and Mac</h4>
 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 ```
 
-<h4>For Windows</h4>
+<h4 class="holder-subtitle link-top">For Windows</h4>
 
 ***Docker for Windows***
 
@@ -45,8 +45,7 @@ You can then open in your web browser the shown URL to access to ElasTest dashbo
 
 To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest.
 
-
-<h2 class="h3 no-border">Recommended system specifications</h2>
+<h4 class="holder-subtitle link-top">Recommended system specifications</h4>
 
 ElasTest needs some minimun system specifications in order to run smoothly:
 

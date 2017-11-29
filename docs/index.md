@@ -7,12 +7,12 @@
 <blockquote><strong>WARNING</strong>: ElasTest is currently in active development. This means that new features are constantly being added and unexpected bugs may appear.</blockquote>
 </div>
 </div>
-<div class="cell-xs-10 cell-lg-6 cell-lg-push-2"><img src="./images/portfolio-80-420x280.jpg" width="960" height="540" alt="No documentation yet" class="img-responsive reveal-inline-block offset-top-10"></div>
+<div class="cell-xs-10 cell-lg-6 cell-lg-push-2"><img src="./images/logo-title-dark.png" width="960" height="540" class="img-responsive reveal-inline-block offset-top-10" style="border: none"></div>
 </div>
 
-<h2 class="h3 no-border">ElasTest main features</h2>
+<h4 class="holder-subtitle link-top">ElasTest main features</h4>
 
-<h2 class="h3 no-border" id="elastest-core-concepts" style="border-top: 90px solid transparent !important; margin-top: -70px;">ElasTest core concepts</h2>
+<h4 class="holder-subtitle link-top" id="elastest-core-concepts">ElasTest core concepts</h4>
 
 <p>
 ElasTest is built around 3 main elements:
@@ -60,7 +60,9 @@ In other words: <strong>SuT's, TJob's and TSS's are the modules that ElasTest ca
 
 </p>
 
-<h2 class="h3 no-border">ElasTest technologies</h2>
+<h4 class="holder-subtitle link-top">ElasTest technologies</h4>
+
+<img src="./images/elastest-tech.png" alt="ElasTest technologies" class="img-responsive reveal-inline-block offset-top-10" style="border: none">
 
 <!---
  Script for open external links in a new tab

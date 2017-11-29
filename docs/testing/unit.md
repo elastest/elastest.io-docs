@@ -55,13 +55,13 @@ public class CalcTest {
 </div>
 </div>
 
-<h2 class="h4 no-border">1. Get into the desired project</h2>
+<h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/images/1.png"><img class="img-responsive img-wellcome" src="/docs/images/1.png"/></a>
 </div>
 
-<h2 class="h4 no-border">2. Create a new TJob</h2>
+<h4 class="holder-subtitle link-top">2. Create a new TJob</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2" href="/docs/images/2.png"><img class="img-responsive img-wellcome" src="/docs/images/2.png"/></a>
@@ -85,7 +85,7 @@ When a TJob is created, the minimum information that you have to provide is the 
     <a data-fancybox="gallery-2" href="/docs/images/4.png"><img class="img-responsive img-wellcome" src="/docs/images/4.png"/></a>
 </div>
 
-<h2 class="h4 no-border">3. Run the TJob from the Project's page</h2>
+<h4 class="holder-subtitle link-top">3. Run the TJob from the Project's page</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-3" href="/docs/images/5.png"><img class="img-responsive img-wellcome" src="/docs/images/5.png"/></a>
@@ -103,7 +103,7 @@ You will see the logs and metrics in real time.
     <a data-fancybox="gallery-3" href="/docs/images/7.png"><img class="img-responsive img-wellcome" src="/docs/images/7.png"/></a>
 </div>
 
-<h2 class="h4 no-border">4. Check the final result of your TJob</h2>
+<h4 class="holder-subtitle link-top">4. Check the final result of your TJob</h4>
 
 Your test will finish at some point: you can see the final entries in the "Test Logs" card and the TJob status changing to ***SUCCESS***, ***FAIL***, ***ABORTED*** or ***ERROR*** depending on the final result.
 
