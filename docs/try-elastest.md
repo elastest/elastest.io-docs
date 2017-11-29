@@ -6,7 +6,7 @@
 </div>
 </div>
 
-ElasTest can be quickly installed in your own development machine. If you want to deploy ElasTest on your server, please check [Deploying ElasTest](deploying).
+ElasTest can be quickly installed in your own development machine. If you want to deploy ElasTest on your server, please check [Deploying ElasTest](deploying/cloudformation).
 
 <p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a> or <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows</a>.
 </p>

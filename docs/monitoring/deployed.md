@@ -40,7 +40,7 @@ We will be using them in the following section.
     <a data-fancybox="gallery-2" href="/docs/monitoring/images/new_SuT_manual_instrumentation_2.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/new_SuT_manual_instrumentation_2.png"/></a>
 </div>
 
-<h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with Beats</h4>
+<h4 id="send-metrics-with-beats" class="holder-subtitle link-top">Send metrics with Beats</h4>
 
 As ElasTest already includes the required packages for using Beats ([Logstash](https://www.elastic.co/products/logstash) and [ElasticSearch](https://www.elastic.co/products/elasticsearch)), you will only have to follow the [official documentation](https://www.elastic.co/guide/en/beats/libbeat/current/installing-beats.html) for installing and configuring beat agents inside your deployed SuT.
 

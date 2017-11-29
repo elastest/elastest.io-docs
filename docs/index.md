@@ -18,7 +18,7 @@
 ElasTest is built around 3 main elements:
 
 <div style="margin-top: 30px">
-    <h4>SuT</h4>
+    <h4 id="sut" class="link-top">SuT</h4>
     Software under Test: the tested software itself. ElasTest supports two kinds of SuTs:
     <ul>
         <li><strong>Dockerized SuT</strong>: your software is hosted inside Docker container/s
@@ -37,7 +37,7 @@ ElasTest is built around 3 main elements:
 </div>
 
 <div style="margin-top: 30px">
-    <h4>TJob</h4>
+    <h4 id="tjob" class="link-top">TJob</h4>
     Test Job: test to be executed against a piece of software (SuT). In a TJob several things have to be specified:
     <ul>
         <li><i>Environment needed to execute the tests</i>: This is defined with a docker image that contains all tools used by the tests.</li>
@@ -48,7 +48,7 @@ ElasTest is built around 3 main elements:
 </div>
 
 <div style="margin-top: 30px">
-   <h4>TSS</h4>
+   <h4 id="tss" class="link-top">TSS</h4>
    Test Support Services: services offered by ElasTest to ease the execution and analysis of TJobs. At the moment, only <strong>web browsers</strong> are provided, but in the near future ElasTest will offer other services as <strong>mobile devices emulators</strong>, <strong>IoT devices</strong>, <strong>security services</strong> and <strong>Big Data services</strong>.
 </div>
 

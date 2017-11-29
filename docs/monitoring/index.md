@@ -12,4 +12,4 @@ As stated on [ElasTest core concepts](../../docs#elastest-core-concepts), SuT's,
 
 ElasTest monitoring service is based on **event streams**. Every log and metric entry is called an **event**. The collection of events containing information about the same metric or log is called **event stream**. Any SuT, TJob or TSS can generate multiple event streams. All of them can be gathered and visualized by ElasTest on useful graphs in real time and stored for future reviewing.
 
-ElasTest monitoring service is offered as [Dockerized monitoring](dockerized), [Deployed monitoring](deployed) and [Custom monitoring](custom):
+ElasTest monitoring service is offered as [Dockerized monitoring](dockerized), [Deployed monitoring](deployed) and [Custom monitoring](custom).
