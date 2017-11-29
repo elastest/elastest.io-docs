@@ -6,7 +6,7 @@
 </div>
 </div>
 
-After [launching Elastest](/getting-started/installation), there will be a "Hello world" sample project available on the dashboard so users can quickly run their first test. To do so:
+After [launching Elastest](/try-elastest), there will be a "Hello world" sample project available on the dashboard so users can quickly run their first test. To do so:
 
 <h4 class="holder-subtitle link-top">1. Access your ElasTest dashboard</h4>
 
