@@ -366,8 +366,6 @@ window.onload = function() {
   var hash = window.location.hash.replace('#', '');
   if (langSections.indexOf(hash) > -1) {
     activateBadge(hash + '-test');
-  } else {
-    activateBadge('java-test');
   }
 }
 </script>
