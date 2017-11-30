@@ -22,20 +22,16 @@ The easiest way to deploy ElasTest is by using our Amazon CloudFormation templat
 
 <h6 class="small-subtitle">3) Complete the form shown on the next step with the following information</h6>
 
-| Parameter | Value | Details | Currently available? |
-| --- | --- | --- | --- |
-| Stack name | The name of the stack | Elastest is OK | yes |
-| ElastestCertificateType | _selfsigned_, _letsencrypt_ or _owncert_ | You can choose which type of certificate use with elastest | no (only _selfsigned_) |
-| ElastestExecutionMode | _normal_, _experimental-lite_ or _experimental_ | Choose Elastest execution mode | yes |
-| ElastestPassword | Your password | Password to access the platform | yes |
-| ElastestUsername | Your username | Username to access the platform | yes |
-| ElastestVersion | _latest_ | which version of elastest do you want to launch | yes |
-| InstanceType | The type of machine you want (recommended at least _m4.large_) | Elastest needs resources to run, please be genereous | yes |
-| KeyName | One of your AWS keys | RSA key to access the instance through SSH | yes |
-| LetsEncryptEmail | Your email | Email to recive Let's Encrypt notifications | no |
-| OwnCertCRT | Your _.crt_ file content (if _owncert_ on _ElastestCertificateType_) | The certificate chain | no |
-| OwnCertKEY | Your _.key_ file content (if _owncert_ on _ElastestCertificateType_) | The private key | no |
-| SwapSize | 4 | The amount of swap memory in GB | yes |
+| Parameter | Value | Details |
+| --- | --- | --- |
+| Stack name | The name of the stack | Elastest is OK |
+| ElastestExecutionMode | _normal_, _experimental-lite_ or _experimental_ | Choose Elastest execution mode |
+| ElastestPassword | Your password | Password to access the platform |
+| ElastestUsername | Your username | Username to access the platform |
+| ElastestVersion | _latest_ | which version of elastest do you want to launch |
+| InstanceType | The type of machine you want (recommended at least _m4.large_) | Elastest needs resources to run, please be genereous |
+| KeyName | One of your AWS keys | RSA key to access the instance through SSH |
+| SwapSize | 4 | The amount of swap memory in GB |
 
 <h6 class="small-subtitle">4) Deploy your stack</h6>
 
