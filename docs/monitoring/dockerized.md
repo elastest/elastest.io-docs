@@ -6,6 +6,6 @@
 </div>
 </div>
 
-When launching tests against Dockerized SuTs, ElasTest manages the SuT lifecycle itself and can use Docker features of [logs](https://docs.docker.com/engine/reference/commandline/logs/) and [metrics](https://docs.docker.com/engine/reference/commandline/stats/) to automatically get monitoring information from it. This is the quickest and easiest way of monitoring with ElasTest.
+When launching tests against Dockerized SuTs, ElasTest manages the SuT lifecycle itself and can use Docker features of [logs](https://docs.docker.com/engine/reference/commandline/logs/) and [stats](https://docs.docker.com/engine/reference/commandline/stats/) to automatically get monitoring information from it. This is the quickest and easiest way of monitoring with ElasTest.
 
 To see how to send custom metrics to ElasTest from the Dockerized SuT itself, check [Custom monitoring from SuT](../monitoring/custom#custom-monitoring-from-sut).

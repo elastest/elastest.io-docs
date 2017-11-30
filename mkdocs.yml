@@ -18,6 +18,7 @@ pages:
 - ['monitoring/dockerized.md', 'Monitoring', 'Dockerized monitoring']
 - ['monitoring/deployed.md', 'Monitoring', 'Deployed monitoring']
 - ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
+- ['monitoring/gui.md', 'Monitoring', 'Monitoring user interface']
 
 - ['jenkins/index.md', 'Jenkins integration']
 
