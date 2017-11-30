@@ -49,7 +49,7 @@ To illustrate this process, let's see a pretty common use case: you have an app 
 
 
 
-<div class="badges-menu badges-menu-beats noselectionable">
+<div id="badges-beats" class="badges-menu badges-menu-beats noselectionable link-top">
     <span id="monitore-custom-log-btn" class="badge badge-default my-badge my-big-badge selected">Monitore my<br>custom log</span>
     <span id="monitore-custom-metric-btn" class="badge badge-default my-badge my-big-badge">Monitore my<br>CPU usage</span>
 </div>
@@ -213,19 +213,35 @@ The request has to use the POST method. There are different formats to send diff
 
 <script>
 $('#monitore-custom-log-btn').click(function(event) {
-  $('#monitore-custom-metric').hide();
-  $('#monitore-custom-log').show();
-  newSelectedBadge(event);
+  activateBadge('monitore-custom-log');
 });
 $('#monitore-custom-metric-btn').click(function(event) {
-  $('#monitore-custom-log').hide();
-  $('#monitore-custom-metric').show();
-  newSelectedBadge(event);
+  activateBadge('monitore-custom-metric');
 });
 
-function newSelectedBadge(event) {
-  $(".selected").removeClass("selected");
-  $(event.target).addClass("selected");
+function activateBadge(sectionName) {
+  $('.beats-tutorial').hide();
+  $('#' + sectionName).show();
+  $('.selected').removeClass('selected');
+  $('#' + sectionName + '-btn').addClass('selected');
+  window.location.hash = sectionName + '-beats';
+}
+
+var badgesSections = [
+  "monitore-custom-log-beats",
+  "monitore-custom-metric-beats"
+];
+
+window.onload = function() {
+  var hash = window.location.hash.replace('#', '');
+  if (badgesSections.indexOf(hash) > -1) {
+    activateBadge(hash.substring(0, hash.indexOf('-beats')));
+
+    // Go to section of beats tutorials if location has proper hash
+    $('html, body').animate({
+      scrollTop: $("#badges-beats").offset().top
+    }, 1);
+  }
 }
 </script>
 
