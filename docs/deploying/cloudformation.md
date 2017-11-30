@@ -31,7 +31,13 @@ The easiest way to deploy ElasTest is by using our Amazon CloudFormation templat
 | ElastestVersion | _latest_ | which version of elastest do you want to launch |
 | InstanceType | The type of machine you want (recommended at least _m4.large_) | Elastest needs resources to run, please be genereous |
 | KeyName | One of your AWS keys | RSA key to access the instance through SSH |
-| SwapSize | 4 | The amount of swap memory in GB |
+| SwapSize | Recommended at least _4_ | The amount of swap memory in GB |
+
+<br>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/deploying/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/conf.png"/></a>
+</div>
 
 <h6 class="small-subtitle">4) Deploy your stack</h6>
 
