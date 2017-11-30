@@ -14,11 +14,16 @@ pages:
 
 - ['log-analyzer/index.md', 'Log Analyzer']
 
-- ['monitoring/index.md', 'Monitoring']
+- ['monitoring/index.md', 'Monitoring', 'Intro']
+- ['monitoring/dockerized.md', 'Monitoring', 'Dockerized monitoring']
+- ['monitoring/deployed.md', 'Monitoring', 'Deployed monitoring']
+- ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
+- ['monitoring/gui.md', 'Monitoring', 'Monitoring user interface']
 
 - ['jenkins/index.md', 'Jenkins integration']
 
-- ['deploying/index.md', 'Deploying ElasTest']
+- ['deploying/cloudformation.md', 'Deploying ElasTest', 'CloudFormation']
+- ['deploying/native.md', 'Deploying ElasTest', 'Native deployment']
 
 theme: null
 theme_dir: 'custom_theme'

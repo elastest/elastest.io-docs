@@ -6,7 +6,7 @@
 </div>
 </div>
 
-<div class="badges-menu">
+<div class="badges-menu noselectionable">
     <span id="java-test-btn" class="badge badge-default my-badge selected">Java</span>
     <span id="js-test-btn" class="badge badge-default my-badge">JS</span>
     <span class="badge badge-default my-badge my-badge-disabled">PHP</span>
@@ -21,13 +21,13 @@ One of the main features provided by ElasTest is allowing tests to use web brows
 
 Let's see how to launch a TJob that makes use of a web browser inside Elastest. We will use our <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-java-test" target="_blank">Simple Web Java Test</a>:
 
-<h2 class="h4 no-border">1. Get into the desired project</h2>
+<h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1-1" href="/docs/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest1.png"/></a>
 </div>
 
-<h2 class="h4 no-border">2. Create a SuT</h2>
+<h4 class="holder-subtitle link-top">2. Create a SuT</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1-2" href="/docs/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest2.png"/></a>
@@ -52,7 +52,7 @@ Right now all SuT's must be available as a Docker image or a docker-compose so E
     <a data-fancybox="gallery-1-2" href="/docs/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest4.png"/></a>
 </div>
 
-<h2 class="h4 no-border">3. Create a new TJob</h2>
+<h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
 
 Complete the form fields:
 
@@ -73,7 +73,7 @@ mvn test</code></pre>
     <a data-fancybox="gallery-1-3" href="/docs/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest5.png"/></a>
 </div>
 
-<h2 class="h4 no-border">4. Run the TJob from the Project's page</h2>
+<h4 class="holder-subtitle link-top">4. Run the TJob from the Project's page</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1-4" href="/docs/images/5.png"><img class="img-responsive img-wellcome" src="/docs/images/5.png"/></a>
@@ -218,25 +218,17 @@ public void test() throws InterruptedException {
 
 
 
-
-
-
-
-
-
-
-
 <div id="js-test">
 
 Let's see how to launch a TJob that makes use of a web browser inside Elastest. We will use our <a href="https://github.com/elastest/demo-projects/tree/master/simpleweb-js-test" target="_blank">Simple Web JS Test</a>:
 
-<h2 class="h4 no-border">1. Get into the desired project</h2>
+<h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2-1" href="/docs/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest1.png"/></a>
 </div>
 
-<h2 class="h4 no-border">2. Create a SuT</h2>
+<h4 class="holder-subtitle link-top">2. Create a SuT</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2-2" href="/docs/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest2.png"/></a>
@@ -261,7 +253,7 @@ Right now all SuT's must be available as a Docker image or a docker-compose so E
     <a data-fancybox="gallery-2-2" href="/docs/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest4.png"/></a>
 </div>
 
-<h2 class="h4 no-border">3. Create a new TJob</h2>
+<h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
 
 Complete the form fields:
 
@@ -283,7 +275,7 @@ npm test</code></pre>
     <a data-fancybox="gallery-2-3" href="/docs/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest5.png"/></a>
 </div>
 
-<h2 class="h4 no-border">4. Run the TJob from the Project's page</h2>
+<h4 class="holder-subtitle link-top">4. Run the TJob from the Project's page</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2-4" href="/docs/images/5.png"><img class="img-responsive img-wellcome" src="/docs/images/5.png"/></a>
@@ -415,12 +407,20 @@ function navigateTo(subpage) {
     }
 }
 
-$('#java-test-btn').click(function() {
+$('#java-test-btn').click(function(event) {
   navigateTo('java');
+  newSelectedBadge(event);
 });
 $('#js-test-btn').click(function() {
   navigateTo('js');
+  $(".selected").removeClass("selected");
+  newSelectedBadge(event);
 });
+
+function newSelectedBadge(event) {
+  $(".selected").removeClass("selected");
+  $(event.target).addClass("selected");
+}
 
 window.onload = function() {
   navigateTo(window.location.hash.replace('#', ''));

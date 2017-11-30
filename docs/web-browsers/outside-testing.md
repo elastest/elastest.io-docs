@@ -6,7 +6,7 @@
 </div>
 </div>
 
-You can make use of ElastTest Web Browser services to run your local or CI end-to-end tests on any browser and version you want.
+You can make use of ElastTest Web Browser services to <strong>run your local or CI end-to-end tests on any browser and version</strong> you want.
 
 This is a deal breaker for developers: whatever platform you are coding in and whatever framework you are using, you can easily launch any browser in ElasTest dashboard and use it remotely to run your tests straight from your machine, as you would do in your favourite IDE. Do you want to test your web on Microsoft's Edge but you don't even have a Windows machine? No problem, just launch an Edge instance on ElasTest and run your test against it. Any other browser provided in ElasTest Web Browser services could serve as an example of this use case.
 

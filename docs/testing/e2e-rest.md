@@ -7,7 +7,7 @@
 </div>
 
 <div class="badges-menu">
-    <span class="badge badge-default my-badge">Java</span>
+    <span class="badge badge-default my-badge selected">Java</span>
     <span class="badge badge-default my-badge my-badge-disabled">Node</span>
     <span class="badge badge-default my-badge my-badge-disabled">PHP</span>
     <span class="badge badge-default my-badge my-badge-disabled">. . .</span>
@@ -73,13 +73,13 @@ public class RestAppTest {
 </div>
 </div>
 
-<h2 class="h4 no-border">1. Get into the desired project</h2>
+<h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest1.png"/></a>
 </div>
 
-<h2 class="h4 no-border">2. Create a SuT</h2>
+<h4 class="holder-subtitle link-top">2. Create a SuT</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2" href="/docs/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest2.png"/></a>
@@ -100,7 +100,7 @@ Right now all SuT's must be available as a Docker image or a docker-compose so E
     <a data-fancybox="gallery-2" href="/docs/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest4.png"/></a>
 </div>
 
-<h2 class="h4 no-border">3. Create a new TJob</h2>
+<h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
 
 Complete the form fields:
 
@@ -119,7 +119,7 @@ Complete the form fields:
     <a data-fancybox="gallery-3" href="/docs/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest5.png"/></a>
 </div>
 
-<h2 class="h4 no-border">4. Run the TJob from the Project's page</h2>
+<h4 class="holder-subtitle link-top">4. Run the TJob from the Project's page</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/images/5.png"><img class="img-responsive img-wellcome" src="/docs/images/5.png"/></a>

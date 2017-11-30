@@ -5,3 +5,71 @@
 </div>
 </div>
 </div>
+
+ElasTest's Log Analyzer service provides an advanced tool for analyzing any log gathered during any finished or running TJob execution. Let's see its capabilities for a TJob that was configured during its execution for registering the following metrics (see [Monitoring user interface](../monitoring/gui/) to learn more):
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer1.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer1.png"/></a>
+</div>
+
+Whenever you click on "Log Analyzer" menu button, a dialog will pop up to let you select the specific TJob execution(s) you want to analyze. To do so:
+
+1. Select the **Project** to which the TJob belongs
+2. Select the **TJob**
+3. Select all the **TJob Executions** you want to load
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/log-analyzer/images/log-analizer5.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer5.png"/></a>
+</div>
+
+After clicking "OK" button, your logs will load into the Log Analyzer. Every entry is divided into many fields, which include:
+
+- **timestamp**: timestamp of the entry
+- **component**: component that generated the entry (SuT, TJob, TSS)
+- **stream**: specific stream that generated the entry (remember that one single component can generate different logs and metrics)
+- **exec**: TJob Execution to which the entry belongs
+- **message**: the log entry message
+- **level**: the logging level of the entry (DEBUG, INFO, WARNING, ERROR...)
+
+You can order your columns as you want just by drag-and-dropping.
+
+On the right menu you have the two main tools currently provided by ElasTest Log Analyzer: the **Filter** tool and the **Mark** tool.
+
+<h4 class="holder-subtitle link-top">Filter tool</h4>
+
+Filter tool allows you to do a filtered load of entries. You can filter by **date** (applied to the timestamp of the entries), by **component/stream** and by **level**. Bottom options let you set the number of entries you want ElasTest to load.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/log-analyzer/images/log-analizer2.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer2.png"/></a>
+</div>
+
+<h4 class="holder-subtitle link-top">Mark tool</h4>
+
+Mark tool allows you to perform a coloured search in your loaded entries.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/log-analizer4.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer4.png"/></a>
+</div>
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: false,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>

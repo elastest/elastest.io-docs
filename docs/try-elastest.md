@@ -6,23 +6,32 @@
 </div>
 </div>
 
-<p>ElasTest can be quickly installed in your own development machine.</p>
+ElasTest can be quickly installed in your own development machine. If you want to deploy ElasTest on your server, please check [Deploying ElasTest](deploying/cloudformation).
+
 <p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a> or <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows</a>.
 </p>
 
-For **Ubuntu**, **Mac** and **Windows** (*Docker for Windows*):
+<h4 class="holder-subtitle link-top">For Ubuntu and Mac</h4>
 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 ```
 
-For **Windows** (*Docker Toolbox*):
+<h4 class="holder-subtitle link-top">For Windows</h4>
+
+***Docker for Windows***
+
+```text
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=localhost
+```
+
+***Docker Toolbox*** (_run it from your Docker Toolbox terminal_)
 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
 ```
 
-You will see this output when ElasTest is ready:
+Whatever platform you are using, you will see this output when ElasTest is ready:
 
 ```text
 Starting ElasTest Platform (Lite Mode)...
@@ -34,10 +43,9 @@ ElasTest Platform is available at http://YOUR_MACHINE_IP:37000
 
 You can then open in your web browser the shown URL to access to ElasTest dashboard.
 
-To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](/getting-started/hello-world) project available by default when launching ElasTest.
+To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest.
 
-
-<h2 class="h3 no-border">Recommended system specifications</h2>
+<h4 class="holder-subtitle link-top">Recommended system specifications</h4>
 
 ElasTest needs some minimun system specifications in order to run smoothly:
 
