@@ -13,7 +13,7 @@ This is a deal breaker for developers: whatever platform you are coding in and w
 In order to run your test on ElasTest browsers, you just need to use the **URL shown on "Web Browsers" page**. There are no restrictions on the environment your test is being executed: you can run it on your development machine from the command line or even directly from your favourite editor. Or you can run your test on ElasTest browsers as part of your CI platform, so that in the event of any failure you can check the window recording and browser's console. The advantages are considerable compared to other alternatives.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/remote_url.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/remote_url.png"/></a>
 </div>
 
 To illustrate this scenarios, let's see how to start a Selenium Web Driver using different languages to remotely use ElasTest browsers. If the URL provided in "Web Browsers" page is `https://MY_REMOTE_WEB_BROWSER_URL.com`:
@@ -60,7 +60,9 @@ You will have available the browser's window in real time to see your test in ac
 </p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/test.png"><img class="img-responsive img-wellcome" src="/docs/images/test.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/web-browsers/images/auto_chrome.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/auto_chrome.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/web-browsers/images/auto_chrome_window.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/auto_chrome_window.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/web-browsers/images/auto_recording.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/auto_recording.png"/></a>
 </div>
 
 <script>

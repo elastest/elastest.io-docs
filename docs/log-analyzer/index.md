@@ -12,14 +12,20 @@ ElasTest's Log Analyzer service provides an advanced tool for analyzing any log 
     <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer1.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer1.png"/></a>
 </div>
 
-Whenever you click on "Log Analyzer" menu button, a dialog will pop up to let you select the specific TJob execution(s) you want to analyze. To do so:
+You can load the logs directly from the page of any TJob execution:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/log-analyzer/images/tjob_exec_link.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/tjob_exec_link.png"/></a>
+</div>
+
+Or load so many TJob executions logs as you want by clicking on "Log Analyzer" menu button. A dialog will pop up to let you select the specific TJob execution(s) you want to analyze. To do so:
 
 1. Select the **Project** to which the TJob belongs
 2. Select the **TJob**
 3. Select all the **TJob Executions** you want to load
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/log-analyzer/images/log-analizer5.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer5.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/log-analyzer/images/tjob_exec_selection.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/tjob_exec_selection.png"/></a>
 </div>
 
 After clicking "OK" button, your logs will load into the Log Analyzer. Every entry is divided into many fields, which include:
@@ -31,24 +37,39 @@ After clicking "OK" button, your logs will load into the Log Analyzer. Every ent
 - **message**: the log entry message
 - **level**: the logging level of the entry (DEBUG, INFO, WARNING, ERROR...)
 
+<br>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/logs.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/logs.png"/></a>
+</div>
+
 You can order your columns as you want just by drag-and-dropping.
 
 On the right menu you have the two main tools currently provided by ElasTest Log Analyzer: the **Filter** tool and the **Mark** tool.
 
 <h4 class="holder-subtitle link-top">Filter tool</h4>
 
-Filter tool allows you to do a filtered load of entries. You can filter by **date** (applied to the timestamp of the entries), by **component/stream** and by **level**. Bottom options let you set the number of entries you want ElasTest to load.
+Filter tool allows you to do a filtered load of entries. You can filter by:
 
+- **Date**: load logs within a certain time frame, applied to the timestamp of the entries
+- **Component/Stream**: load logs produced by certain component(s) for certain stream(s)
+- **Level**: load logs of certain level of logging
+- **Message**: load logs whose _message_ filed contains certain word
+
+<br>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/log-analyzer/images/log-analizer2.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer2.png"/></a>
+    <a data-fancybox="gallery-5" href="/docs/log-analyzer/images/logs.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/logs.png"/></a>
 </div>
+
+Bottom options let you establish the number of entries you want ElasTest to load (the first ones that match your filters).
+
+_Add from last_ and _Add from selected_ will append only the new entries starting from that specific entry.
 
 <h4 class="holder-subtitle link-top">Mark tool</h4>
 
-Mark tool allows you to perform a coloured search in your loaded entries.
+Mark tool allows you to perform a coloured search in your loaded entries. You can then easily navigate between the entries for each search just by clicking on the arrow buttons for the desired serach.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/log-analizer4.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer4.png"/></a>
+    <a data-fancybox="gallery-6" href="/docs/log-analyzer/images/mark.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/mark.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>

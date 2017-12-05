@@ -76,14 +76,14 @@ public class RestAppTest {
 <h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest1.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest1.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">2. Create a SuT</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest2.png"/></a>
-    <a data-fancybox="gallery-2" href="/docs/images/e2eRest3.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest3.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest2.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest3.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest3.png"/></a>
 </div>
 
 Right now all SuT's must be available as a Docker image or a docker-compose so ElasTest can deploy and monitor it automatically. Complete the form fields:
@@ -97,7 +97,7 @@ Right now all SuT's must be available as a Docker image or a docker-compose so E
 <br>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest4.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest4.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
@@ -116,15 +116,15 @@ Complete the form fields:
 
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest5.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/testing/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest5.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">4. Run the TJob from the Project's page</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/images/5.png"><img class="img-responsive img-wellcome" src="/docs/images/5.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/images/e2eRest6.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest6.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/images/e2eRest7.png"><img class="img-responsive img-wellcome" src="/docs/images/e2eRest7.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testing/images/5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/5.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testing/images/e2eRest6.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest6.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testing/images/e2eRest7.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest7.png"/></a>
 </div>
 
 In this example, when the TJob is executed, the following steps are performed:
@@ -137,7 +137,7 @@ In this example, when the TJob is executed, the following steps are performed:
 </ol>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-5" href="/docs/images/e2e-flow.png"><img class="img-responsive img-wellcome" style="padding: 10px" src="/docs/images/e2e-flow.png"/></a>
+    <a data-fancybox="gallery-5" href="/docs/testing/images/e2e-rest-flow.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e-rest-flow.png"/></a>
 </div>
 
 
