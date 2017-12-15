@@ -6,11 +6,7 @@
 </div>
 </div>
 
-ElasTest's Log Analyzer service provides an advanced tool for analyzing any log gathered during any finished or running TJob execution. Let's see its capabilities for a TJob that was configured during its execution for registering the following metrics (see [Monitoring user interface](../monitoring/gui/) to learn more):
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/log-analyzer/images/log-analizer1.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/log-analizer1.png"/></a>
-</div>
+ElasTest's Log Analyzer service provides an advanced tool for analyzing any log gathered during any finished or running TJob execution.
 
 You can load the logs directly from the page of any TJob execution:
 
