@@ -53,6 +53,13 @@ To update ElasTest to the latest version available, just need to change `start` 
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
 ```
 
+When all containers have been pulled you will see an output similiar to:
+
+```text
+Pulling the images of ElasTest components ....
+The pulling has finished.
+```
+
 <h4 class="holder-subtitle link-top">Recommended system specifications</h4>
 
 ElasTest needs some minimun system specifications in order to run smoothly:
