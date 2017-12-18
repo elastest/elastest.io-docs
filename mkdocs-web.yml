@@ -6,10 +6,10 @@ pages:
 - ['your-first-test.md','Getting started','Your first test with ElasTest']
 
 - ['testing/unit.md','Testing with ElasTest', 'Run unit tests']
-- ['testing/e2e-rest.md','Testing with ElasTest', 'Run end2end tests (REST)']
-- ['testing/e2e-browser.md','Testing with ElasTest', 'Run end2end tests (Web Browser)']
+- ['testing/e2e-rest.md','Testing with ElasTest', 'Run end2end tests']
 
 - ['web-browsers/manual-browsers.md','Web Browsers', 'Launching Web Browsers on ElasTest']
+- ['web-browsers/e2e-browser.md','Web Browsers', 'Run en2end tests with Web Browsers']
 - ['web-browsers/outside-testing.md','Web Browsers', 'Testing with Web Browsers from outside ElasTest']
 
 - ['log-analyzer/index.md', 'Log Analyzer']

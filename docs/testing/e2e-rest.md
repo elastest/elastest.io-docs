@@ -1,6 +1,6 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Running end to end tests: REST APIs</h2>
+<h2 id="content" class="h1">Running end to end tests (REST APIs)</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
@@ -76,17 +76,17 @@ public class RestAppTest {
 <h4 class="holder-subtitle link-top">1. Get into the desired project</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/e2eRest1.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest1.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/unit_test_1.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/unit_test_1.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">2. Create a SuT</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest2.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest2.png"/></a>
-    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest3.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest3.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_2.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_2.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_3.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_3.png"/></a>
 </div>
 
-Right now all SuT's must be available as a Docker image or a docker-compose so ElasTest can deploy and monitor it automatically. Complete the form fields:
+Complete the form fields:
 
 - **SuT Name**: name of the Sut (`Rest App`)
 - **SuT Description**: description of the SuT (`Rest App description`)
@@ -97,14 +97,18 @@ Right now all SuT's must be available as a Docker image or a docker-compose so E
 <br>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/testing/images/e2eRest4.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest4.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_4.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_4.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">3. Create a new TJob</h4>
 
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_5.png"/></a>
+</div>
+
 Complete the form fields:
 
-- **TJob Name**: name of the TJob (`Rest test`)
+- **TJob Name**: name of the TJob
 - **Select a SuT**: already created SuT to be tested through to the TJob (`Rest App`)
 - **Environment docker image**: the docker image that will host your test. This docker images should contain a client to download your code from your repository hosting service. For example, if your tests are hosted in GitHub and implemented in a Maven project with Java, you need to include a git client, Maven and the Java Development Kit (JDK) in the image. Indeed, this image contains Git, Maven and Java (`elastest/test-etm-alpinegitjava`)
 <!-- Modify when all images are available for testing with different hostsing services and technologies: Java, Maven, Pyhton, Ruby, Node... -->
@@ -116,15 +120,15 @@ Complete the form fields:
 
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/testing/images/e2eRest5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest5.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_6.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_6.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">4. Run the TJob from the Project's page</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/testing/images/5.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/5.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/testing/images/e2eRest6.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest6.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/testing/images/e2eRest7.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2eRest7.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_7.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_7.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_8.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_8.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/e2e_test_9.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/e2e_test_9.png"/></a>
 </div>
 
 In this example, when the TJob is executed, the following steps are performed:
