@@ -45,6 +45,14 @@ You can then open in your web browser the shown URL to access to ElasTest dashbo
 
 To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest.
 
+<h4 class="holder-subtitle link-top">Updating ElasTest</h4>
+
+To update ElasTest to the latest version available, just need to change `start` to `update` in the launching command. For example:
+
+```text
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
+```
+
 <h4 class="holder-subtitle link-top">Recommended system specifications</h4>
 
 ElasTest needs some minimun system specifications in order to run smoothly:
