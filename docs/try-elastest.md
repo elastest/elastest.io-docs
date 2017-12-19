@@ -10,17 +10,46 @@
 </p>
 
 <div class="range range-xs-center">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p><i>ElasTest is intended to be deployed on a dedicated server due to the considerable amount of modules and technologies that are part of it. If you really want ElasTest to show its true potential, it is strongly recommended to launch it in a powerful environment (see <a href="#system-specs">Recommended system specifications</a>). To deploy ElasTest in the cloud as a service, please check section <a href="/docs/deploying/cloudformation">Deploying ElasTest</a>.</i></p></div>
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span><!--<img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/>--></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p><i>ElasTest is intended to be deployed on a dedicated server due to the considerable amount of modules and technologies that are part of it. If you really want ElasTest to show its true potential, it is strongly recommended to launch it in a powerful environment (see <a href="#system-specs">Recommended system specifications</a>). To deploy ElasTest in a dedicated server or in Amazon Web Services, please check section <a href="/docs/deploying/cloudformation">Deploying ElasTest</a>.</i></p></div>
 </div>
 
-<h4 class="holder-subtitle link-top">For Ubuntu and Mac</h4>
+<h4 class="holder-subtitle link-top">For Linux</h4>
 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 ```
+Whatever platform you are using, you will see this output when ElasTest is ready:
 
+```text
+Starting ElasTest Platform (normal mode)...
+
+Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
+
+ElasTest Platform is available at http://localhost:37000
+```
+
+You can then open in your web browser the shown URL to access to ElasTest dashboard.
+
+To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest.
+
+<h4 class="holder-subtitle link-top">For Mac</h4>
+
+<div class="range range-xs-center">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span><!--<img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/>--></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p><i>ElasTest has not been fully tested on Mac OS. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
+</div>
+
+
+```text
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
+```
 <h4 class="holder-subtitle link-top">For Windows</h4>
+
+<div class="range range-xs-center">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span><!--<img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/>--></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p><i>ElasTest has not been fully tested on Windows. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
+</div>
 
 ***Docker for Windows***
 
@@ -34,20 +63,6 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform s
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
 ```
 
-Whatever platform you are using, you will see this output when ElasTest is ready:
-
-```text
-Starting ElasTest Platform (Lite Mode)...
-
-Please wait a few seconds while we start the ElasTest services, the ElasTest URL will be shown when ready.
-
-ElasTest Platform is available at http://YOUR_MACHINE_IP:37000
-```
-
-You can then open in your web browser the shown URL to access to ElasTest dashboard.
-
-To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest.
-
 <h4 class="holder-subtitle link-top">Updating ElasTest</h4>
 
 To update ElasTest to the latest version available, just need to change `start` to `update` in the launching command. For example:
@@ -59,8 +74,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform u
 When all containers have been pulled you will see an output similiar to:
 
 ```text
-Pulling the images of ElasTest components ....
-The pulling has finished.
+Update finished successfully.
 ```
 
 <h4 class="holder-subtitle link-top" id="system-specs">Recommended system specifications</h4>
@@ -87,9 +101,6 @@ ElasTest needs some minimun system specifications in order to run smoothly:
 </table>
 
 <br>
-
-<!--Note: In Linux OS you can use the command `free -m` to know if your machine has SWAP memory enabled.-->
-
 
 <!---
  Script for open external links in a new tab

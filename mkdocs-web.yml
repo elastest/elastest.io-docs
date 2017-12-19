@@ -4,6 +4,7 @@ pages:
 - ['index.md','Getting started','What is ElasTest?']
 - ['try-elastest.md','Getting started','Try ElasTest']
 - ['your-first-test.md','Getting started','Your first test with ElasTest']
+- ['support.md','Getting started','Get support from ElasTest team']
 
 - ['testing/unit.md','Testing with ElasTest', 'Run unit tests']
 - ['testing/e2e-rest.md','Testing with ElasTest', 'Run end2end tests']

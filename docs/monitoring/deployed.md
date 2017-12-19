@@ -19,7 +19,7 @@ Manual instrumentation can be done by:
 
 - **Using Beats technology: [Beats](https://www.elastic.co/products/beats)** is a platform for single-purpose data shippers created to work with Logstash and ElasticSearch. There are a lot of beats agents to collect monitoring information from all kinds of sources. For example: [Filebeat](https://www.elastic.co/products/beats/filebeat), [Metricbeat](https://www.elastic.co/products/beats/metricbeat) or [Packetbeat](https://www.elastic.co/products/beats/packetbeat). If you can't find a certain beat agent among the official ones, you can always search [beats bult by the community](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html) or [create your own beat](https://www.elastic.co/guide/en/beats/devguide/current/new-beat.html).
 
-- **Sending metrics with http POST requests**: If beats agents doesn’t suit your needs, you can always send monitoring information with http requests. ***(Feature coming soon)***
+- **Sending metrics with http POST requests**: If beats agents doesn’t suit your needs, you can always send monitoring information with http requests.
 
 To create a SuT ready to be manually instrumented, fill the form as shown in the image below on "New SuT" page:
 
