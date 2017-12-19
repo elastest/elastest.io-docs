@@ -208,7 +208,7 @@ fields:
   </ul>
 
   <p>So the final look of <code>metricbeat.yml</code> in its simplest form is:
-    <pre><code class="yml hljs">#====== "metricbeat.yml" to send to ElasTest the cpu and memory usage of our server ======
+    <pre><code class="yml hljs">#====== "metricbeat.yml" to send to ElasTest the cpu usage of our server ======
 
 metricbeat.modules:
 - module: system
@@ -249,8 +249,6 @@ fields:
   </div>
 
 </div>
-
-
 
 
 <h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with HTTP</h4>
