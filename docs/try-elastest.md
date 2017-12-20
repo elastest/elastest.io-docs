@@ -9,9 +9,9 @@
 <p>ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>, <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a> or <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Windows</a>.
 </p>
 
-<div class="range range-xs-center">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span><!--<img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/>--></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p class="warning-text"><i>ElasTest is intended to be deployed on a dedicated server due to the considerable amount of modules and technologies that are part of it. If you really want ElasTest to show its true potential, it is strongly recommended to launch it in a powerful environment (see <a href="#system-specs">Recommended system specifications</a>). To deploy ElasTest in a dedicated server or in Amazon Web Services, please check section <a href="/docs/deploying/cloudformation">Deploying ElasTest</a>.</i></p></div>
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1"><span class="icon mdi mdi-information-outline warning-span" style=""></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p class="warning-text"><i>ElasTest is intended to be deployed on a dedicated server due to the considerable amount of modules and technologies that are part of it. If you really want ElasTest to show its true potential, it is strongly recommended to launch it in a powerful environment (see <a href="#system-specs">Recommended system specifications</a>). To deploy ElasTest in a dedicated server or in Amazon Web Services, please check section <a href="/docs/deploying/aws">Deploying ElasTest</a>.</i></p></div>
 </div>
 
 <h4 class="holder-subtitle link-top">For Linux</h4>
@@ -35,19 +35,19 @@ To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try 
 
 <h4 class="holder-subtitle link-top">For Mac</h4>
 
-<div class="range range-xs-center warning-row">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span><!--<img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/>--></div>
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span></div>
   <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p class="warning-text"><i>ElasTest has not been fully tested on Mac OS. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
 </div>
-
+<br>
 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 ```
 <h4 class="holder-subtitle link-top">For Windows</h4>
 
-<div class="range range-xs-center warning-row">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span><!--<img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/>--></div>
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span></div>
   <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p class="warning-text"><i>ElasTest has not been fully tested on Windows. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
 </div>
 
@@ -62,6 +62,10 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform s
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
 ```
+
+<h4 class="holder-subtitle link-top">ElasTest on Amazon Web Services</h4>
+
+ElasTest has been designed from the outset to offer an extremely simple deployment in Amazon Web Services. Check [Amazon Web Services](deploying/aws/) section to learn how to do it in a couple of minutes.
 
 <h4 class="holder-subtitle link-top">Updating ElasTest</h4>
 

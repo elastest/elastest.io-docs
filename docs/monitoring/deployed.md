@@ -13,7 +13,7 @@ When ElasTest is executing tests against an already deployed [SuT](../../docs#el
 
 
 
-<h4 class="holder-subtitle">Manual instrumentation</h4>
+<h4 class="holder-subtitle link-top">Manual instrumentation</h4>
 
 Manual instrumentation can be done by:
 

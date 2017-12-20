@@ -23,8 +23,8 @@ pages:
 
 - ['jenkins/index.md', 'Jenkins integration']
 
-- ['deploying/cloudformation.md', 'Deploying ElasTest', 'CloudFormation']
-- ['deploying/native.md', 'Deploying ElasTest', 'Native deployment']
+- ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
+- ['deploying/ubuntu.md', 'Deploying ElasTest', 'Ubuntu']
 
 theme: readthedocs
 repo_url: https://github.com/elastest/elastest.io-docs

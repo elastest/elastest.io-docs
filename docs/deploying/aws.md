@@ -1,6 +1,6 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Deploying ElasTest with CloudFormation</h2>
+<h2 id="content" class="h1">Deploying ElasTest on Amazon Web Services</h2>
 <div class="offset-top-30 offset-md-top-50">
 </div>
 </div>
@@ -20,7 +20,7 @@ The easiest way to deploy ElasTest is by using our Amazon CloudFormation templat
     <a data-fancybox="gallery-1" href="/docs/deploying/images/template.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/template.png"/></a>
 </div>
 
-<h6 class="small-subtitle">3) Complete the form shown on the next step with the following information</h6>
+<h6 id="step-3" class="small-subtitle">3) Complete the form shown on the next step with the following information</h6>
 
 | Parameter | Value | Details |
 | --- | --- | --- |
@@ -28,7 +28,7 @@ The easiest way to deploy ElasTest is by using our Amazon CloudFormation templat
 | ElastestExecutionMode | _normal_, _experimental-lite_ or _experimental_ | Choose Elastest execution mode |
 | ElastestPassword | Your password | Password to access the platform |
 | ElastestUsername | Your username | Username to access the platform |
-| ElastestVersion | _latest_ | which version of elastest do you want to launch |
+| ElastestVersion | _latest_ | Which version of elastest do you want to launch. **_latest_** version points to the last stable release of ElasTest, so it is always safe to use |
 | InstanceType | The type of machine you want (recommended at least _m4.large_) | Elastest needs resources to run, please be genereous |
 | KeyName | One of your AWS keys | RSA key to access the instance through SSH |
 | SwapSize | Recommended at least _4_ | The amount of swap memory in GB |
@@ -49,7 +49,7 @@ Your stack status will show _CREATE_IN_PROGRESS_. Wait a few minutes until it sh
     <a data-fancybox="gallery-1" href="/docs/deploying/images/output_tab.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/output_tab.png"/></a>
 </div>
 
-That's all. _Happy testing!_
+That's all. When you connect to your ElasTest URL, enter the username and password you declared in the [third step](#step-3). _Happy testing!_
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
