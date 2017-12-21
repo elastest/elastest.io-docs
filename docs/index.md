@@ -55,11 +55,11 @@ ElasTest is built around 3 main elements:
 
 <div style="margin-top: 30px">
     <h4 id="tjob" class="link-top">Test Job (TJob)</h4>
-    Test to be executed against a your SuT. In a TJob several things have to be specified:
+    Test to be executed against your SuT. In a TJob several things have to be specified:
     <ul>
         <li><i>Environment to execute the tests</i>: This is defined with a docker image that contains all tools used by the tests.</li>
         <li><i>How to retrieve and execute the tests</i>: Specified as a set of commands written in bash that will be executed inside the docker container defined as environment.</li>
-        <li><i>The SuT against which tests are executed</i>: That is, the SuT description. If the SuT is deployed by ElasTest, it only needs the Docker image or docker-compose. If the Sut is outside ElasTest, it is necessary to specify how to reach it (usually with its IP).</li></br>
+        <li><i>The SuT against which the tests are executed</i>: That is, the SuT description. If the SuT is deployed by ElasTest, it only needs the Docker image or docker-compose. If the Sut is outside ElasTest, it is necessary to specify how to reach it (usually with its IP).</li></br>
     </ul>
     A TJob can be executed several times. That can be useful, for example, because SuT has changes and we want to verify that old features are still working. Or if we add more tests to the same TJob test repo, we can execute them against the SuT.
 </div>
