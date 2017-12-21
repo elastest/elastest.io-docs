@@ -26,7 +26,7 @@ Just before running a TJob, a dialog will show the parameters and their current 
     <a data-fancybox="gallery-1" href="/docs/testing/images/configure_params.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/configure_params.png"/></a>
 </div>
 
-Parameterizing SuTs and TJobs can give you great advantages. If you are testing a web application that makes use of any environment variable, you can easily change its value before running a TJob. And if you actively configure your test code to use environment variables as control mechanisms, it will only take you a couple of clicks in ElasTest to run the same test with different configurations. Let's see how this is reflected in real code in our tests:
+Parameterizing SuTs and TJobs can give you great advantages. If you are testing an application that makes use of any environment variable, you can easily change its value before running a TJob. And if you actively configure your test code to use environment variables as control mechanisms, it will only take you a couple of clicks in ElasTest to run the same test with different configurations. Let's see how this is reflected in real code in our tests:
 
 
 <div class="badges-menu noselectionable">
