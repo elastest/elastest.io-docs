@@ -10,5 +10,5 @@
 | --- | --- | --- | --- | --- |
 | ET_SUT_HOST | IP of th SuT. Can be used inside the TJobs to connect to the SuT | "172.18.0.16" | There's a SuT configured for the TJob | TJob |
 | ET_EUS_API | HTTP endpoint to launch remote web drivers from the TJobs | "http://172.18.0.14:8040/eus/v1/" | Web Browser Service is enabled for the TJob | TJob |
-| ET_MON_LSHTTP_API | Logstash API URL to send http requests with custom monitoring information to ElasTest | "http://100.10.10.10:5003" | Always available | TJob, SuT |
+| ET_MON_LSHTTP_API | Logstash API URL to send http requests with custom monitoring information to ElasTest | "http://100.10.10.10:5003/" | Always available | TJob, SuT |
 | ET_MON_EXEC | The execution identifier to set the value of _exec_ field when sending http requests with custom monitoring information to ElasTest| "s1_e1" | Always available | TJob, SuT |

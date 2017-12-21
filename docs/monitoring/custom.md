@@ -6,45 +6,136 @@
 </div>
 </div>
 
-<h4 id="custom-monitoring-from-sut" class="holder-subtitle link-top">Custom monitoring from SuT</h4>
+ElasTest automatically gathers metrics and logs from all TJobs and from all SuTs deployed by the platform itself (dockerized SuTs), as explained [here](/monitoring/). And ElasTest allows configuring already deployed SuTs for sending metrics and logs thanks to Beats technology, as explained [here](/monitoring/deployed). But what if you want to send some custom information to ElasTest to be shown or graphed during a TJob execution? For example:
 
-You maybe want your Dockerized SuT to send custom metrics to ElasTest appart from those automatically retrieved by our standard monitoring agents. In that case, all techniques used to instrument manually an already deployed SuT can be used in a SuT deployed by ElasTest. Check [Deployed monitoring](../../docs/monitoring/deployed) section.
+- If your SuT is a web application, the code in your TJob can send the number of users connecting to it as it executes so you can compare it with the CPU consumption or memory usage of the SuT.
+- If you are interested in a specific metric of your SuT for which there's no Beat agent available ([official agents](https://www.elastic.co/products/beats) or [community agents](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html)), you can always send it through http.
 
-<h4 class="holder-subtitle link-top">Custom monitoring from tests</h4>
+For this reason, ElasTest allows users to send any log or metric through http requests.
 
-It can be useful to graph some custom information generated in the tests alongside with other metrics. You maybe want to graph some variables of your test, whatever they are. 
+<h4 id="send-metrics-with-http" class="holder-subtitle link-top">Send metrics with HTTP</h4>
 
-For example: if your SuT is a web application, your test can send the number of users connecting to it as it executes and you can compare it with the CPU consumption or memory usage of the SuT. For this reason, testers can send to ElasTest any monitoring information they want.
+You can send to ElasTest metric information with http requests from any TJob or any SuT.
 
-When a TJob is executed, the following environment variables are injected so you can use them in your test code:
+<h6 class="small-subtitle">IP of http request in a TJob or a SuT deployed by ElasTest</h6>
 
-- *`ET_MON_LSHTTP_API`*: Logstash API URL to send http requests with monitoring information.  
-- *`ET_MON_EXEC`*: The execution identifier to set the value of `exec` field. 
+Value of environment variable *`ET_MON_LSHTTP_API`*.
 
-The allowed formats are the same as described for Deployed SuT in [Send metrics with HTTP](../../docs/monitoring/deployed#send-metrics-with-http), but with the following considerations: 
+<h6 class="small-subtitle">IP of http request in a SuT deployed outside ElasTest</h6>
 
-- Field **exec** must have the value of environment variable `ET_MON_EXEC`.
-- Field **component** must contain the value `test`, because the event is generated in the test.
-- The URL of the POST request must be the value of environment variable `ET_MON_LSHTTP_API`
+The URL can be built with **Logstash IP** and **HTTP port** params, available from the SuT information page:
 
-With these changes, the body of a POST request sending a custom metric with the number of concurrent users would be
+<div class="docs-gallery more-margin-top inline-block">
+    <a data-fancybox="gallery-2" href="/docs/monitoring/images/logstash_ip.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/logstash_ip.png"/></a>
+</div>
+
+```text
+http://<logstash_ip>:<http_port>/
+```
+
+For to the image above, the URL where to send the post requests would be:
+
+```text
+http://www.elastestip.com:5003/
+```
+
+<br>
+
+The request has to use the POST method. There are different formats to send different types of information:
+
+<h6 class="small-subtitle">Send one log entry in one request</h6>
 
 ```json
 {
    "@timestamp": 9999999999,
    "exec": "XX",
-   "component": "test",
-   "type": "users",
-   "stream_type": "atomic_metric",
-   "users": 80,
-   "unit": "users"
+   "component": "YY",
+   "stream": "ZZ",
+   "message": "Complete log message entry"
+}
+```
+<div style="margin-top: 20px"></div>
+
+- **@timestamp**: is optional and contains the timestamp when event was generated.
+- **exec**: The value of **Exec ID** shown in ElasTest dashboard for SuTs deployed outside ElasTest or the value of `ET_MON_EXEC` environment variable for TJobs or SuTs deployed by ElasTest.
+- **component**: `sut` for http requests sent from the SuT and `test` for http requests sent from the TJob.
+- **stream**: Used to distinguish several logs from the same component. In this case only one log exists for the component, its value is usually "default_log".
+- **message**: Complete log message entry.
+
+<h6 class="small-subtitle">Send several log entries in one request</h6>
+
+```json
+{
+   "@timestamp": 9999999999,
+   "exec": "XX",
+   "component": "YY",
+   "stream": "ZZ",
+   "messages": [
+      "Complete log message entry 1",
+      "Complete log message entry 2",
+      "Complete log message entry 3",
+      "Complete log message entry 4"
+   ]
 }
 ```
 
-"users" can be customized as you want.
+<h6 class="small-subtitle">Send one atomic metric in one request</h6>
 
-<!--<h4 class="holder-subtitle link-top">Custom monitoring from TSS</h4>
+```json
+{
+   "@timestamp": 9999999999,
+   "exec": "XX",
+   "component": "YY",
+   "stream": "cpu_usage",
+   "stream_type": "atomic_metric",
+   "cpu_usage": 80,
+   "unit": "%"
+}
+```
 
-Some of the key drivers of ElasTest development is to make life easier to testers. For this reason, [Test Support Services](/#tss) can send custom metrics to ElasTest. For example, when a test is making use of Web Browsers service, the browser console is sent to ElasTest and can be visualized alongside SuT and Test logs.
+<div style="margin-top: 20px"></div>
 
-For every TSS used on a TJob execution, the tester will be able to select all the desired metrics to be shown from a predefined set (different for each TSS).-->
+- **stream** field can be whatever you want (it has to be used below when setting the numeric value)
+
+<h6 class="small-subtitle">Send one composed metric in one request</h6>
+
+```json
+{
+   "@timestamp": 9999999999,
+   "exec": "XX",
+   "component": "YY",
+   "type": "cpu",
+   "stream_type": "composed_metric",
+   "cpu": {
+     "total_usage": 80,
+     "max_usage": 100
+   }
+   "units": {
+     "total_usage": "%",
+     "max_usage": "%"
+   }
+}
+```
+
+<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
+
+<script>
+var galleries = $('div.docs-gallery');
+for (var i = 1; i <= galleries.length; i++) {
+    $().fancybox({
+    selector : '[data-fancybox="gallery-' + i + '"]',
+    infobar : true,
+    arrows : false,
+    loop: true,
+    protect: true,
+    transitionEffect: 'slide',
+    buttons : [
+        'close'
+    ],
+    clickOutside : 'close',
+    clickSlide   : 'close',
+  });
+}
+</script>
