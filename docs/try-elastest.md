@@ -10,8 +10,8 @@
 </p>
 
 <div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1"><span class="icon mdi mdi-information-outline warning-span" style=""></span></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p class="warning-text"><i>ElasTest is intended to be deployed on a dedicated server due to the considerable amount of modules and technologies that are part of it. If you really want ElasTest to show its true potential, it is strongly recommended to launch it in a powerful environment (see <a href="#system-specs">Recommended system specifications</a>). To deploy ElasTest in a dedicated server or in Amazon Web Services, please check section <a href="/docs/deploying/aws">Deploying ElasTest</a>.</i></p></div>
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest is intended to be deployed on a dedicated server due to the considerable amount of modules and technologies that are part of it. If you really want ElasTest to show its true potential, it is strongly recommended to launch it in a powerful environment (see <a href="#system-specs">Recommended system specifications</a>). To deploy ElasTest in a dedicated server or in Amazon Web Services, please check section <a href="/docs/deploying/aws">Deploying ElasTest</a>.</i></p></div>
 </div>
 
 <h4 class="holder-subtitle link-top">For Linux</h4>
@@ -36,8 +36,8 @@ To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try 
 <h4 class="holder-subtitle link-top">For Mac</h4>
 
 <div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p class="warning-text"><i>ElasTest has not been fully tested on Mac OS. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest has not been fully tested on Mac OS. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
 </div>
 <br>
 
@@ -47,8 +47,8 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform s
 <h4 class="holder-subtitle link-top">For Windows</h4>
 
 <div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p class="warning-text"><i>ElasTest has not been fully tested on Windows. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest has not been fully tested on Windows. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
 </div>
 
 ***Docker for Windows***

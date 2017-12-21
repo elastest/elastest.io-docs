@@ -7,8 +7,8 @@
 </div>
 
 <div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline" style="display: inline-block; height: 100%; vertical-align: middle; color: #666666"></span><!--<img src="/docs/images/info.svg" style="border: none; display: inline-block; height: 100%; vertical-align: middle"/>--></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11"><p class="warning-text"><i>The first stable version of ElasTest Jenkins plugin will be available very soon. Here is a brief preview of what it will look like. Stay tunned!</i></p></div>
+  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>The first stable version of ElasTest Jenkins plugin will be available very soon. Here is a brief preview of what it will look like. Stay tunned!</i></p></div>
 </div>
 
 <img style="border: none" class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_jenkins.png"/>
