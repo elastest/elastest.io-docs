@@ -17,10 +17,6 @@ When creating a new SuT you are able to defined what mode of deployment ElasTest
 
 <h6 class="small-subtitle">With Docker image</h6>
 
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_image.png"/></a>
-</div>
-
 Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and run it as the `Dockerfile` states.
 
 Fields to declare:
@@ -28,11 +24,12 @@ Fields to declare:
 - **Docker image**: name of the image (tagged or untagged)
 - **Wait for http port**: port that ElasTest should wait for to be available before running your TJobs
 
-<h6 class="small-subtitle">With docker-compose</h6>
-
+<p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_compose.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_image.png"/></a>
 </div>
+
+<h6 class="small-subtitle">With docker-compose</h6>
 
 Your SuT is declared as a docker-compose. ElasTest will pull all the necessary images from DockerHub and run them as the field _Docker Compose_ states
 
@@ -42,23 +39,38 @@ Fields to declare:
 - **Main Service Name**: the name of the service that ElasTest should wait for to be up before running your TJobs (the specific port is declared in the next field _Wait for http port_)
 - **Wait for http port**: port that ElasTest should wait for to be available before running your TJobs (applied to the service declared in the previous field _Main Service Name_)
 
+<p></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_compose.png"/></a>
+</div>
+
 <h4 class="holder-subtitle link-top">SuT outside ElasTest</h4>
 
 <h6 class="small-subtitle">No instrumentation</h6>
 
+Your SuT is already deployed on an external server and you don't want to send any logs or metrics to ElasTest.
+
+Fields to declare:
+
+- **SuT IP**: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable `ET_SUT_HOST`. Check [Environment variables](/testing/environment-variables) to learn more.
+
+<p></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/testing/images/no_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/no_instrumentation.png"/></a>
 </div>
 
-Your SuT is already deployed on an external server and you don't want to send any logs or metrics to ElasTest.
-
 <h6 class="small-subtitle">Manual instrumentation</h6>
 
+Your SuT is already deployed on an external server and you want to manually send its logs and metrics to ElasTest.
+
+Fields to declare:
+
+- **SuT IP**: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable `ET_SUT_HOST`. Check [Environment variables](/testing/environment-variables) to learn more.
+
+<p></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/testing/images/manual_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/manual_instrumentation.png"/></a>
 </div>
-
-Your SuT is already deployed on an external server and you want to manually send its logs and metrics to ElasTest.
 
 After filling SuT name and description fields, click on _Save and get monitoring details_ button to get all the necessary fields to manually instrument your server following [these instructions]().
 

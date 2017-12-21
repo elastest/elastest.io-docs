@@ -6,7 +6,7 @@
 </div>
 </div>
 
-<div class="range range-xs-center warning-range">
+<div class="range range-xs-center warning-range" style="margin-top: 10px;">
   <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
   <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>The first stable version of ElasTest Jenkins plugin will be available very soon. Here is a brief preview of what it will look like. Stay tunned!</i></p></div>
 </div>
