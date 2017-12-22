@@ -6,7 +6,7 @@
 </div>
 </div>
 
-ElasTest automatically gathers metrics and logs from all TJobs and from all SuTs deployed by the platform itself (dockerized SuTs), as explained [here](/monitoring/). And ElasTest allows configuring already deployed SuTs for sending metrics and logs thanks to Beats technology, as explained [here](/monitoring/deployed). But what if you want to send some custom information to ElasTest to be shown or graphed during a TJob execution? For example:
+ElasTest automatically gathers metrics and logs from all TJobs and from all SuTs deployed by the platform itself (dockerized SuTs), as explained [here](/monitoring/). And ElasTest allows configuring already deployed SuTs for sending metrics and logs thanks to Beats technology, as explained [here](/monitoring/outside-elastest/). But what if you want to send some custom information to ElasTest to be shown or graphed during a TJob execution? For example:
 
 - If your SuT is a web application, the code in your TJob can send the number of users connecting to it as it executes so you can compare it with the CPU consumption or memory usage of the SuT.
 - If you are interested in a specific metric of your SuT for which there's no Beat agent available ([official agents](https://www.elastic.co/products/beats) or [community agents](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html)), you can always send it through http.

@@ -18,11 +18,9 @@ pages:
 
 - ['log-analyzer/index.md', 'Log Analyzer']
 
-- ['monitoring/index.md', 'Monitoring', 'Intro']
-- ['monitoring/dockerized.md', 'Monitoring', 'Dockerized monitoring']
-- ['monitoring/deployed.md', 'Monitoring', 'Deployed monitoring']
+- ['monitoring/index.md', 'Monitoring', 'Monitoring']
+- ['monitoring/outside-elastest.md', 'Monitoring', 'Monitoring outside Elastest']
 - ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
-- ['monitoring/gui.md', 'Monitoring', 'Monitoring user interface']
 
 - ['jenkins/index.md', 'Jenkins integration']
 
