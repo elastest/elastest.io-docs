@@ -10,9 +10,9 @@ One of the key features of ElasTest is the ability to **show and analyze logs an
 
 ElasTest monitoring service is based on **event streams**. Every log and metric entry is called an **event**. The collection of events containing information about the same metric or log is called **event stream**. Any SuT, TJob or Service can generate multiple event streams. All of them can be gathered and visualized by ElasTest on useful graphs in real time and stored for future reviewing.
 
-<!--</br><div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_sample.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_sample.png"/></a>
-</div>-->
+<div class="docs-gallery inline-block" style="width: 100%; text-align: center">
+    <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring-diagram.png"><img style="max-height: 660px; border: none" src="/docs/monitoring/images/monitoring-diagram.png"/></a>
+</div>
 
 For all TJobs and for all SuTs deployed by ElasTest, you will have available by default some useful logs and metrics. This is possible thanks to Docker features of [logs](https://docs.docker.com/engine/reference/commandline/logs/) and [stats](https://docs.docker.com/engine/reference/commandline/stats/), that allow ElasTest to automatically gather monitoring information from the containers. Therefore, this is the easiest and quickest way to monitor your tests.
 
