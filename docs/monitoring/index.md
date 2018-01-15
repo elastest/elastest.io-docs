@@ -44,7 +44,7 @@ And 3 different metrics for the container of our test:
     <a data-fancybox="gallery-1" href="/docs/monitoring/images/monitoring_sample.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/monitoring_sample.png"/></a>
 </div>
 
-When clicking on "Apply" button, you will see one monitoring card for each selected option (a log card for each log and a chart card for each metric).
+When clicking on _Apply_ button, you will see one monitoring card for each selected option (a log card for each log and a chart card for each metric).
 
 The available options depend exclusively on the configuration of your TJob:
 
