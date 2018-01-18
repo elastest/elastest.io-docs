@@ -80,6 +80,23 @@ When all containers have been pulled you will see an output similiar to:
 ```text
 Update finished successfully.
 ```
+<h4 id="next-update" class="link-top">In following versions</h4>
+
+The `update` command will being improved and in the next vervion `0.6.0-beta4`, it will provide the following new functionality:
+
+* The `update` command will detect if you are running an ElasTest with the same version that you want to update and, if so, warn you that if you continue that instance it will stop.
+  ```[text]
+  docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
+  Updating ElasTest Platform version ...
+  You are going to update the ElasTest version unspecified. Continue? [Y/n]
+  The version of ElasTest that you want to update is already running and it is necessary to stop it. Continue? [Y/n]
+  ```
+  If your answer is 'Y', then the following message will appear while ElasTest stops.
+  ```[text]
+  Preparing the environment...
+  Stopping ElasTest..............
+  ```
+* The old images associated with the current version of ElasTest installed on your PC, will be removed from the system to free up space.
 
 <h4 class="holder-subtitle link-top" id="system-specs">Recommended system specifications</h4>
 
