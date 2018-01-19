@@ -127,7 +127,7 @@ ElasTest needs some minimun system specifications in order to run smoothly:
   </tr>
 </table>
 
-<br>
+<br> 
 
 <!---
  Script for open external links in a new tab
