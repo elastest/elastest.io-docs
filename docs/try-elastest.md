@@ -84,9 +84,9 @@ Update finished successfully.
 <h4 id="next-update" class="link-top">In following versions</h4>
 </div>
 
-The `update` command will being improved and in the next vervion `0.6.0-beta4`, it will provide the following new functionality.
+The `update` command is being improved and in the next version `0.6.0-beta4` it will provide the following new functionality.
 
-The `update` command will detect if you are running an ElasTest with the same version that you want to update and, if so, warn you that if you continue that instance it will stop.
+The `update` command will detect if you are currently running ElasTest with the same version you want to update to and, if so, warn you that if you continue that instance will be stoppped.
 
 ```text
 docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
@@ -102,7 +102,7 @@ Preparing the environment...
 Stopping ElasTest..............
 ```
 
-To clean the ElasTest installation, when the updating have finished, the old images associated with the current version of ElasTest installed on your PC will be removed from the system.
+In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.
 
 <h4 class="holder-subtitle link-top" id="system-specs">Recommended system specifications</h4>
 
@@ -127,7 +127,7 @@ ElasTest needs some minimun system specifications in order to run smoothly:
   </tr>
 </table>
 
-<br> 
+<br>
 
 <!---
  Script for open external links in a new tab
