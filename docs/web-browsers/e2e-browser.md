@@ -34,7 +34,7 @@ Complete the form fields:
 <ul>
     <li><strong>SuT Name</strong>: name of the Sut (<code>Webapp</code>)</li>
     <li><strong>SuT Description</strong>: description of the SuT (<code>Webapp description</code>)</li>
-    <li><strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: whether to deploy the SuT on ElasTest as a Docker <i>image</i> or a <i>docker-compose</i> (<code>With Docker Image</code>)</li>
+    <li><strong>With Commands Container</strong> / <strong>With Docker Image</strong> / <strong>With Docker Compose</strong>: whether to deploy the SuT on ElasTest as some <i>commands</i> Container,  as a Docker <i>image</i> or a <i>docker-compose</i> (<code>With Docker Image</code>)</li>
     <li><strong>Docker Image</strong>: image of the SuT (<code>elastest/demo-web-java-test-sut</code>)</li>
     <li><strong>Wait for http port</strong>: which port of the SuT should ElasTest wait to be available before starting the TJob (<code>8080</code>)</li>
 </ul>
@@ -88,7 +88,7 @@ When this TJob is executed, a web application is started (the Sut). When the web
     <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_9.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_9.png"/></a>
 </div>
 
-<p>When the test have been executed, the browser recording can be downloaded as a mp4 video file:</p>
+<p>When the test have been executed, the browser recording can be opened in a new tab or  opened as dialog:</p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_10.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_10.png"/></a>
     <a data-fancybox="gallery-1" href="/docs/testing/images/browser_test_11.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/browser_test_11.png"/></a>

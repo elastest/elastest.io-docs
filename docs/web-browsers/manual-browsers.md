@@ -16,10 +16,14 @@ Currently the following browsers and versions are supported:
 
 |Browser|Versions|
 |-------|-------|
-|Chrome|57, 58, 59, 60, 61, 62|
-|Firefox|52, 53, 54, 55, 56, 57|
+|Chrome|beta, unstable, latest, from 60.0 onwards|
+|Firefox|beta, nightly, latest, from 56.0 onwards|
 |Edge|_Coming soon_|
 
+**beta** : _The last beta version_. <br>
+**unstable** : _The development version_.<br>
+**latest** : _The last stable version_.<br>
+**nightly** : _The development version_.
 
 <p>
 To launch a browser from ElasTest dashboard (<i>Web Browsers</i> page), select the desired browser and version and launch it:
@@ -39,7 +43,7 @@ Now the selected browser will be launched (it will take some time only for the f
 You can see the browser as any end user would on their own computer, and also interact directly with it: resize it, navigate to any URL ...
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/web-browsers/images/wikipedia.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/wikipedia.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/web-browsers/images/wikipedia.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/elastest.png"/></a>
 </div>
 
 Finally, whenever you close the browser (bottom-left "Close" button), after a few seconds (depending on how long the live session lasts) you will have available on "Recordings" card an _.mp4_ file ready to be downloaded with your recorded browser session.
