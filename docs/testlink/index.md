@@ -57,14 +57,14 @@ This page will allow you to have an overview of all the components of the projec
 On this page, not only can you see all the information about the Test Plan, but you can also edit it by clicking on the edit button located at the top.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/testplan_edit.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/testplan_edit.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_edit.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_edit.png"/></a>
 </div>
 <br>
 
 You can associate a SuT previously created in the editing page.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/edit_testplan.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/edit_testplan.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/edit_testplan.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/edit_testplan.png"/></a>
 </div>
 <br>
 
@@ -75,7 +75,7 @@ On the other hand, you can run the test plan clicking the "Execute Test Plan" bu
 You must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/testplan_execute.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute.png"/></a>
 </div>
 <br>
 
@@ -86,13 +86,13 @@ When your test is finished, you must fill the fields for each Test Case and clic
 Once you have completed all the test cases you will can see an overview of your test executed.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/execution_view.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/execution_view.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_view.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_view.png"/></a>
 </div>
 
 
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/execution_files.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/execution_files.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_files.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_files.png"/></a>
 </div>
 The video recordings of these are shown at the bottom of this page.
 
@@ -101,7 +101,7 @@ The video recordings of these are shown at the bottom of this page.
 If you click on a Test Case Execution, you will see specific information about it, such as the start and end dates, its status, notes, records and video recordings.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/log-analyzer/images/execution_details.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/execution_details.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_details.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_details.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
