@@ -41,7 +41,7 @@ After clicking "OK" button, your logs will load into the Log Analyzer. Every ent
 
 You can order your columns as you want just by drag-and-dropping.
 
-On the right menu you have the two main tools currently provided by ElasTest Log Analyzer: the **Filter** tool,  the **Mark** tool and the **Config** tool.
+On the right menu you have the three main tools currently provided by ElasTest Log Analyzer: the **Filter** tool,  the **Mark** tool and the **Config** tool.
 
 <h4 class="holder-subtitle link-top">Filter tool</h4>
 

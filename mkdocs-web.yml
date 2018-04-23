@@ -18,6 +18,8 @@ pages:
 
 - ['log-analyzer/index.md', 'Log Analyzer']
 
+- ['testlink/index.md', 'TestLink with ElasTest']
+
 - ['monitoring/index.md', 'Monitoring', 'Monitoring']
 - ['monitoring/outside-elastest.md', 'Monitoring', 'Monitoring outside Elastest']
 - ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
