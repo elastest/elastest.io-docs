@@ -22,6 +22,7 @@ From a standard Jenkins Job, this plugin allows you:
 * Send the Job’s logs to ElasTest
 * Request an EUS TSS that provides browsers on demand, which can be used during the build.
 
+<br>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/job.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/job.png"/></a>
 </div>
@@ -41,14 +42,12 @@ From a Pipeline this plugin allows:
     - ET_SUT_MON_LSTCP_PORT
     - ET_SUT_MON_LSHTTP_API
     - ET_SUT_LOG_TAG
-
-
 * Run a SUT using docker or docker-compose
+<br>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline.png"/></a>
 </div> 
-<br>
 
 <h4 class="holder-subtitle link-top">Pipeline Job Examples</h4>
 
@@ -278,7 +277,7 @@ Before you execute your first Job integrated with ElasTest, if you wish, you can
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-3" href="/docs/jenkins/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/conf.png"/></a>
 </div> 
-<br>
+
 
 <h4 class="holder-subtitle link-top">Plugin features</h4>
 

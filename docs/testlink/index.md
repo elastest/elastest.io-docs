@@ -32,7 +32,7 @@ The GUI provided by ElasTest to execute the manual test cases has the following 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink.png"/></a>
 </div>
-<br>
+
 
 Clicking TestLink button in left side menu of ElasTest will display the TestLink page.
 
@@ -41,7 +41,6 @@ Here, you can see all your projects created. Moreover, if you want to synchroniz
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink_home.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink_home.png"/></a>
 </div>
-<br>
 
 <h5>TestLink Project</h5>
 
@@ -50,7 +49,6 @@ This page will allow you to have an overview of all the components of the projec
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink_project.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink_project.png"/></a>
 </div>
-<br>
 
 <h5>TestLink Test Plan</h5>
 
@@ -59,14 +57,12 @@ On this page, not only can you see all the information about the Test Plan, but 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_edit.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_edit.png"/></a>
 </div>
-<br>
 
 You can associate a SuT previously created in the editing page.
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/edit_testplan.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/edit_testplan.png"/></a>
 </div>
-<br>
 
 <h5>TestLink Test Plan Execution</h5>
 
@@ -77,7 +73,6 @@ You must wait a few seconds until the browser loads. After that, you can see the
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute.png"/></a>
 </div>
-<br>
 
 When your test is finished, you must fill the fields for each Test Case and click "Save & Next" button.
 
@@ -95,8 +90,6 @@ Once you have completed all the test cases you will can see an overview of your 
     <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_files.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_files.png"/></a>
 </div>
 The video recordings of these are shown at the bottom of this page.
-
-<br>
 
 If you click on a Test Case Execution, you will see specific information about it, such as the start and end dates, its status, notes, records and video recordings.
 
