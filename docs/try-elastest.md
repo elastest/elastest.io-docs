@@ -83,22 +83,11 @@ ElasTest has been designed from the outset to offer an extremely simple deployme
 
 <h4 class="holder-subtitle link-top">Updating ElasTest</h4>
 
-To update ElasTest to the latest version available, just need to change `start` to `update` in the launching command. For example:
+To update ElasTest to the latest version available, just need to change `start` to `update` and add `-it` in the launching command:
 
 ```text
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
+docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update
 ```
-
-When all containers have been pulled you will see an output similiar to:
-
-```text
-Update finished successfully.
-```
-<div style="margin-top: 30px">
-<h4 id="next-update" class="link-top">In following versions</h4>
-</div>
-
-The `update` command is being improved and in the next version `0.6.0-beta4` it will provide the following new functionality.
 
 The `update` command will detect if you are currently running ElasTest with the same version you want to update to and, if so, warn you that if you continue that instance will be stoppped.
 
@@ -109,11 +98,16 @@ You are going to update the ElasTest version unspecified. Continue? [Y/n]
 The version of ElasTest that you want to update is already running and it is  necessary to stop it. Continue? [Y/n]
 ```
 
-If your answer is 'Y', then the following message will appear while ElasTest stops.
+If your answer is 'Y', then the following message will appear while ElasTest is being Updating.
 
 ```text
 Preparing the environment...
-Stopping ElasTest..............
+```
+
+When all containers have been pulled you will see an output similiar to:
+
+```text
+Update finished successfully.
 ```
 
 In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.

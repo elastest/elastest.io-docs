@@ -78,10 +78,6 @@ Config tool allows you to save and load your columns position configuration. Mor
     <a data-fancybox="gallery-6" href="/docs/log-analyzer/images/mark.png"><img class="img-responsive img-wellcome" src="/docs/log-analyzer/images/config.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">Known issues</h4>
-
-There's a known issue when log entries have the same timestamp in the order of milliseconds (it can result in data appearing in random order).
-
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
