@@ -29,10 +29,11 @@ To create a SuT ready to be manually instrumented, fill the form as shown in the
 
 Once you click on _Save and get monitoring details_  button, the following configuration parameters will be shown:
 
-- **Logstash IP**: The public host (IP or FQDN) in which Logstash is located.
+- **Logstash Container IP**: The Logstash Container IP.
+- **Logstash Beats Host**: The public host (IP or FQDN) in which Logstash is located for send Beats traces (along with the Beats Port).
 - **Logstash Beats Port**: The port in which Logstash can receive beats monitoring information.
-- **HTTP port**: The port in which Logstash listens for http requests with monitoring information.
-- **Exec ID**: The execution identification value that has to be included in events sent to Logstash. This value is used to identify what events belongs to this SuT.
+- **HTTP Api Url**: The complete URL for send http requests to Logstash with monitoring information.
+- **Execution ID**: The execution identification value that has to be included in events sent to Logstash. This value is used to identify what events belongs to this SuT.
 
 We will be using them in the following section.
 
