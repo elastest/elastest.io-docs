@@ -15,6 +15,21 @@ When creating a new SuT you are able to defined what mode of deployment ElasTest
 
 <h4 class="holder-subtitle link-top">SuT deployed by ElasTest</h4>
 
+<h6 class="small-subtitle">With Commands Container</h6>
+
+Your SuT is packaged as a Docker image. You must write the *Commands Container Image* and the commands below. These commands will run like the docker image CMD.
+
+Fields to declare:
+
+- **Commands container images**: name of the container image
+- **Commands**: commands to execute
+- **Wait for http port**: port that ElasTest should wait for to be available before running your TJobs
+
+<p></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/commands_container.png"/></a>
+</div>
+
 <h6 class="small-subtitle">With Docker image</h6>
 
 Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and run it as the `Dockerfile` states.

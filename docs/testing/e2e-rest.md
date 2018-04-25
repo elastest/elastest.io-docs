@@ -90,7 +90,7 @@ Complete the form fields:
 
 - **SuT Name**: name of the Sut (`Rest App`)
 - **SuT Description**: description of the SuT (`Rest App description`)
-- **With Docker Image** / **With Docker Compose**: whether to deploy the SuT on ElasTest as a Docker *image* or a *docker-compose* (`With Docker Image`)
+- **With Commands Container** / **With Docker Image** / **With Docker Compose**: whether to deploy the SuT on ElasTest as *commands container*, as a Docker *image* or a *docker-compose* (`With Docker Image`)
 - **Docker Image**: image of the SuT (`elastest/demo-rest-java-test-sut`)
 - **Wait for http port**: which port of the SuT should ElasTest wait to be available before starting the TJob (`8080`)
 
