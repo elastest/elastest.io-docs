@@ -15,6 +15,24 @@
 
 ElasTest provides a Jenkins plugin so you can use the platform in your CI environment. You can use it in a Freestyle Job or in a Pipeline.
 
+
+<h4 class="holder-subtitle link-top">Plugin configuration</h4>
+
+To use this plugin is necessary to carry out a small configuration to integrate Jenkins with ElasTest. In this configuration you need to fill the following fields:
+
+
+- **ElasTest URL**: complete URL of ElasTest (including protocol and port)
+- **Username**: username set on ElasTest launch
+- **Password**: password set on ElasTest launch
+
+<br>
+Before you execute your first Job integrated with ElasTest, if you wish, you can check if the connection between Jenkins and ElasTest  is successfully established.
+
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/conf.png"/></a>
+</div> 
+
 <h4 class="holder-subtitle link-top">Freestyle Job</h4>
 
 From a standard Jenkins Job, this plugin allows you:
@@ -43,6 +61,7 @@ From a Pipeline this plugin allows:
     - ET_SUT_MON_LSHTTP_API
     - ET_SUT_LOG_TAG
 * Run a SUT using docker or docker-compose
+
 <br>
 
 <div class="docs-gallery inline-block">
@@ -261,25 +280,9 @@ withEnv(['ET_SUT_HOST=' + sutIp]) {
 }
 ```
 
-<h4 class="holder-subtitle link-top">Plugin configuration</h4>
-
-To use this plugin is necessary to carry out a small configuration to integrate Jenkins with ElasTest. In this configuration you need to fill the following fields:
 
 
-- **ElasTest URL**: complete URL of ElasTest (including protocol and port)
-- **Username**: username set on ElasTest launch
-- **Password**: password set on ElasTest launch
-
-<br>
-Before you execute your first Job integrated with ElasTest, if you wish, you can check if the connection between Jenkins and ElasTest  is successfully established.
-
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/conf.png"/></a>
-</div> 
-
-
-<h4 class="holder-subtitle link-top">Plugin features</h4>
+<h4 class="holder-subtitle link-top">Plugin results</h4>
 
 With ElasTest Jenkins plugin you can integrate all the tools ElasTest offers into your Jenkins CI environment. Here you can see how the same logs are shown in Jenkins console and ElasTest:
 
