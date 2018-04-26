@@ -30,7 +30,7 @@ Fields to declare:
     <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/commands_container.png"/></a>
 </div>
 
-Furthermore you can choose between three options into "With Commands Container":
+Furthermore you can choose between three options into `With Commands Container`:
 
 <h6 class="small-subtitle">SuT In Commands Container</h6>
 You can start a SuT from commands. For example, you can clone and build maven project from GitHub and after start generated java jar file.
@@ -42,9 +42,9 @@ You can start a SuT from commands. For example, you can clone and build maven pr
 
 
 <h6 class="small-subtitle">SuT In New Container</h6>
-You can start a SuT from docker image. The difference with "With Docker Image" option is that you can generate a docker image in execution time. For example, you can clone a project from GitHub and after generate docker image and start it.
+You can start a SuT from docker image. The difference with `With Docker Image` option is that you can generate a docker image in execution time. For example, you can clone a project from GitHub and after generate docker image and start it.
 
-It's necessary sets on "docker run" command the "--name" parameter with the "$ET_SUT_CONTAINER_NAME" environment variable.
+It's necessary sets on `docker run` command the `--name` parameter with the `$ET_SUT_CONTAINER_NAME` environment variable.
 
 <p></p>
 <div class="docs-gallery inline-block">
@@ -53,9 +53,9 @@ It's necessary sets on "docker run" command the "--name" parameter with the "$ET
 
 
 <h6 class="small-subtitle">SuT In Docker Compose</h6>
-You can start a SuT from docker compose. The difference with "With Docker Compose" option is that you can use a docker-compose file stored, for example, into GitHub instead of copy and paste it into ElasTest.
+You can start a SuT from docker compose. The difference with `With Docker Compose` option is that you can use a docker-compose file stored, for example, into GitHub instead of copy and paste it into ElasTest.
 
-It's necessary sets on "docker-compose up" command the "-p" parameter with the "$ET_SUT_CONTAINER_NAME" environment variable.
+It's necessary sets on `docker-compose up` command the `-p` parameter with the `$ET_SUT_CONTAINER_NAME` environment variable.
 
 <p></p>
 <div class="docs-gallery inline-block">
