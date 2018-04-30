@@ -29,7 +29,7 @@ For install the ElasTest Plugin you should follow this steps:
 </div>
 <p></p>
 
-*   To continue, you have to open the **Available** tab and seatch elastest. The ElasTest plugin will display and you will can check the box and click the Install plugin button.
+*   To continue, you have to open the **Available** tab and search elastest. The ElasTest plugin will display and you will can check the box and click the Install plugin button.
 
 <p></p>
 
