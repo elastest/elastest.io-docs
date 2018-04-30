@@ -20,16 +20,7 @@ ElasTest provides a Jenkins plugin for you to use the platform in your CI enviro
 For install the ElasTest Plugin you should follow this steps:
 
 *   Go to your Jenkins site and click in **Manage Jenkins / Manage Plugins**.
-*   Select the **Advanced** tab and scroll to top. Fill the gap **Update Site** `https://updates.jenkins.io/experimental/update-center.json`
-
-<p></p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/plugin_install.png"/></a>
-</div>
-<p></p>
-
-*   To continue, you have to open the **Available** tab and search elastest. The ElasTest plugin will display and you will can check the box and click the Install plugin button.
+*   The next step is to open the **Available** tab and search elastest. The ElasTest plugin will display and you will can check the box and click the Install plugin button.
 
 <p></p>
 
