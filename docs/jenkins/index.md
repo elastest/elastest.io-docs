@@ -13,12 +13,13 @@
 
 <img style="border: none" class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_jenkins.png"/>
 
-ElasTest provides a Jenkins plugin so you can use the platform in your CI environment. You can use it in a Freestyle Job or in a Pipeline.
+ElasTest provides a Jenkins plugin for you to use the platform in your CI environment. Thanks to this you can make use of some features provided by ElasTest, such as log analysis or the use of on-demand browsers. Before you can use ElasTest as Jenkins plugin you need to install the plugin and complete its onfiguration. After this you will be ready to use ElasTest in a Free Style Job or in a Pipeline Job.
+
 
 
 <h4 class="holder-subtitle link-top">Plugin configuration</h4>
 
-To use this plugin is necessary to carry out a small configuration to integrate Jenkins with ElasTest. In this configuration you need to fill the following fields:
+The plugin configuration is very simple and you only have to fill in the following fields:
 
 
 - **ElasTest URL**: complete URL of ElasTest (including protocol and port)
@@ -37,7 +38,7 @@ Before you execute your first Job integrated with ElasTest, if you wish, you can
 
 From a standard Jenkins Job, this plugin allows you:
 
-* Send the Job’s logs to ElasTest
+* Send the logs generated during the build of a Job to ElasTest
 * Request an EUS TSS that provides browsers on demand, which can be used during the build.
 
 <br>
