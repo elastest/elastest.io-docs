@@ -64,13 +64,19 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform s
 ```
 <h4 class="holder-subtitle link-top">Options</h4>
 
-You can add **-tl** if you want to start the TestLink integrated in ElasTest and enable access to it.
+You can include the option **`--server-address=(docker-machine ip)`** to set up the machine ip address.
+
+```text
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address="localhost"
+```
+
+You can add **`-tl`** if you want to start the TestLink integrated in ElasTest and enable access to it.
 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -tl
 ```
 
-If you add **-dev** you will enable developer options. For now, it only implements the binding of service ports to allow access to them from external tools.
+If you add **`-dev`** you will enable developer options. For now, it only implements the binding of service ports to allow access to them from external tools.
 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -dev
