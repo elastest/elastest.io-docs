@@ -47,6 +47,13 @@ From a standard Jenkins Job, this plugin allows you:
 </div>
 <br>
 
+<h5>Job result</h5>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
+</div> 
+
 <h4 class="holder-subtitle link-top">Pipeline</h4>
 
 From a Pipeline this plugin allows:
@@ -282,7 +289,7 @@ withEnv(['ET_SUT_HOST=' + sutIp]) {
 ```
 
 
-
+<!--
 <h4 class="holder-subtitle link-top">Plugin results</h4>
 
 With ElasTest Jenkins plugin you can integrate all the tools ElasTest offers into your Jenkins CI environment. Here you can see how the same logs are shown in Jenkins console and ElasTest:
@@ -291,7 +298,7 @@ With ElasTest Jenkins plugin you can integrate all the tools ElasTest offers int
     <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
     <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
 </div> 
-
+-->
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
