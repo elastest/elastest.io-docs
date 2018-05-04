@@ -24,7 +24,10 @@ pages:
 - ['monitoring/outside-elastest.md', 'Monitoring', 'Monitoring outside Elastest']
 - ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
 
-- ['jenkins/index.md', 'Jenkins integration']
+- ['jenkins/index.md', 'Jenkins', 'Jenkins integration']
+- ['jenkins/environment-variables.md',  'Jenkins', 'Environment Variables']
+- ['jenkins/try-jenkins.md',  'Jenkins', 'Try jenkins']
+- ['jenkins/advanced-example.md',  'Jenkins', 'Advanced example']
 
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Ubuntu']
