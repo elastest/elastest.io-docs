@@ -24,6 +24,7 @@ To create a Freestyle Job, you will must select the *Integrate Jenkins with Elas
 
 <h5>Job result</h5>
 
+After we run the Freestyle Job, with the images shown below, we can check the result in both sites (Jenkins and ElasTest). 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
     <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
@@ -39,10 +40,42 @@ From a Pipeline this plugin allows:
 
 *   Run a SUT using docker or docker-compose
 
-<p></p>
 
+
+<h5>Basic example</h5>
+
+This code will be us useful, due to, adding it in the Pipeline script and executing the Pipeline, it will download the [ demo-projects ](https://github.com/elastest/demo-projects) repository and it will run the test.
+
+```
+node{ 
+    elastest() {
+        stage ('Executing Test') {
+            echo 'Print env variables'
+            sh 'env'
+            mvnHome = tool 'M3.3.9'
+            echo 'Cloning repository'
+            git 'https://github.com/elastest/demo-projects'
+            echo 'Run test'
+            sh "cd ./unit-java-test/;'${mvnHome}/bin/mvn' test"
+        }    
+    }
+}
+```
+<p></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline.png"/></a>
+</div>
+
+
+In the same way as in Freestyle Job, we can check the result in Jenkins and ElasTest.
+
+<p></p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline_result.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline_result.png"/></a>
+</div>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline_result_2.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline_result_2.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
