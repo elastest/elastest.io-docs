@@ -25,7 +25,6 @@ pages:
 - ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
 
 - ['jenkins/index.md', 'Jenkins', 'Jenkins integration']
-- ['jenkins/environment-variables.md',  'Jenkins', 'Environment Variables']
 - ['jenkins/try-jenkins.md',  'Jenkins', 'Try jenkins']
 - ['jenkins/advanced-example.md',  'Jenkins', 'Advanced example']
 
