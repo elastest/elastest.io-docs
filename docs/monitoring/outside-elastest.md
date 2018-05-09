@@ -120,7 +120,7 @@ filebeat.prospectors:
     - /path/to/MY_CUSTOM_LOG.log
 
 output.logstash:
-  hosts: ["YOUR_SUT_IP:5044"]
+  hosts: ["LOGSTASH_IP:LOGSTASH_BEATS_PORT"]
 
 fields_under_root: true
 fields:
