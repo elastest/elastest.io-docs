@@ -14,7 +14,10 @@ From a standard Jenkins Job, this plugin allows you:
 
 <h4 class="holder-subtitle link-top">Freestyle Job</h4>
 
-To create a Freestyle Job, you will must select the *Integrate Jenkins with ElasTest* and *EUS* fields. Moreover, you have to introduce `cd unit-java-test;mvn test` in the **Build command**.
+To configure a Freestyle Job with ElasTest integrated, you will must select the *Integrate Jenkins with ElasTest* field. In this case, the  *EUS* field is not required that is why this example do not need a web browser. 
+
+To complete this freestyle job, you must download the project inside of this [repository](https://github.com/elastest/demo-projects) and introduce `cd unit-java-test;mvn test` in the **Build command**.
+
 
 <br>
 <div class="docs-gallery inline-block">
@@ -24,7 +27,7 @@ To create a Freestyle Job, you will must select the *Integrate Jenkins with Elas
 
 <h5>Job result</h5>
 
-After we run the Freestyle Job, with the images shown below, we can check the result in both sites (Jenkins and ElasTest). 
+After we run the Freestyle Job, we can check the results in both platforms, **Jenkins** and **ElasTest**. 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
     <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
@@ -83,7 +86,7 @@ In the same way as in Freestyle Job, result can be checked in Jenkins and ElasTe
 
 <h6>Example 2</h6>
 
-We can execute this code in another Pipeline. The difference with the previous example is that in this case, we are using the EUS service adding `tss: ['EUS']`.
+We can execute this code in another Pipeline. The difference with the previous example is that in this case, we are using the EUS service adding `tss: ['EUS']`. This example will use a web browser to do a little test on it.
 
 ```
 node{
