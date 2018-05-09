@@ -4,7 +4,7 @@ rvm:
 
 
 install:
-- sudo apt-get install python2.7
+- sudo apt-get install python3.4
 - sudo pip install --upgrade pip
 - sudo pip install mkdocs==0.16.3
 
