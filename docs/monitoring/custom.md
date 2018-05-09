@@ -23,20 +23,16 @@ Value of environment variable *`ET_MON_LSHTTP_API`*.
 
 <h6 class="small-subtitle">IP of http request in a SuT deployed outside ElasTest</h6>
 
-The URL can be built with **Logstash IP** and **HTTP port** params, available from the SuT information page:
+The URL can be built with **HTTP Api Url** param, available from the SuT information page:
 
 <div class="docs-gallery more-margin-top inline-block">
     <a data-fancybox="gallery-2" href="/docs/monitoring/images/logstash_ip.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/logstash_ip.png"/></a>
 </div>
 
-```text
-http://<logstash_ip>:<http_port>/
-```
-
 For to the image above, the URL where to send the post requests would be:
 
 ```text
-http://www.elastestip.com:5003/
+http://172.18.0.11:80/logstash/
 ```
 
 <br>

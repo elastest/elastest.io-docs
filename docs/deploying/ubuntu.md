@@ -111,12 +111,12 @@ There isn't an easy way to run Elastest with the system, but there's a few tips 
 
 <h6 class="small-subtitle">Removing all volumes</h6>
 
-We recommend to remove all the volumes except the MySQL one, because is the one who maintain the test data.
+We recommend to remove all the volumes except MySQL, TestLink and Elasticsearch, because they are the ones that maintain the test data.
 
-To do so:
+To do this, you can use the following bash code (CAUTION: All volumes will be removed except `elastest_edm-mysql`, `elastest_elasticsearch-data` and `elastest_etm-testlink`):
 
 ```bash
-for volume in $(docker volume ls | grep -v mysql | tail -n +2 | awk '{print $2}'); do docker volume rm $volume; done
+for volume in $(sudo docker volume ls | grep -v mysql | grep -v elastest_elasticsearch-data | grep -v elastest_etm-testlink | tail -n +2 | awk '{print $2}'); do sudo docker volume rm $volume; done
 ```
 
 <h6 class="small-subtitle">Removing all containers</h6>
@@ -139,9 +139,9 @@ We provide a set of scripts to achive this:
 # Delete all containers
 docker rm -f $(docker ps -a -q)
 
-for volume in $(docker volume ls | grep -v mysql | tail -n +2 | awk '{print $2}')
+for volume in $(sudo docker volume ls | grep -v elastest_edm-mysql | grep -v elastest_elasticsearch-data | grep -v elastest_etm-testlink | tail -n +2 | awk '{print $2}')
 do
-  docker volume rm $volume
+ sudo docker volume rm $volume 
 done
 ```
 

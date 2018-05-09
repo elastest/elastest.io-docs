@@ -99,7 +99,7 @@ Immediately after, the execution view will open automatically. You will see your
 
 <h4 class="holder-subtitle link-top">4. Check the final result of your TJob</h4>
 
-Your test will finish at some point: you can see the final entries in the "Test Logs" card and the TJob status changing to ***SUCCESS***, ***FAIL***, ***ABORTED*** or ***ERROR*** depending on the final result.
+Your test will finish at some point: you can see the final entries in the "Test Logs" card and the TJob status changing to ***SUCCESS***, ***FAIL***, ***STOPPED*** or ***ERROR*** depending on the final result.
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/testing/images/unit_test_7.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/unit_test_7.png"/></a>

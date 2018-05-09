@@ -6,52 +6,40 @@
 </div>
 </div>
 
-<div class="range range-xs-center warning-range" style="margin-top: 10px;">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>The first stable version of ElasTest Jenkins plugin will be available very soon. Here is a brief preview of what it will look like. Stay tunned!</i></p></div>
-</div>
+<img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_jenkins.png"/>
 
-<img style="border: none" class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_jenkins.png"/>
+ElasTest provides a Jenkins plugin for you to use the platform in your CI environment. Thanks to this you can make use of some features provided by ElasTest, such as log analysis or the use of on-demand browsers. Before you can use ElasTest as Jenkins plugin you need to install the plugin and complete its onfiguration. After this you will be ready to use ElasTest in a Free Style Job or in a Pipeline Job.
 
-ElasTest provides a Jenkins plugin so you can use the platform in your CI environment. You can use it in a regular Job or in a Pipeline.
+<h4 class="holder-subtitle link-top">Plugin installation</h4>
 
-<h4 class="holder-subtitle link-top">Regular Job</h4>
+For install the ElasTest Plugin you should follow this steps:
 
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/jenkins/images/job.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/job.png"/></a>
-</div>
+*   Go to your Jenkins site and click in **Manage Jenkins / Manage Plugins**.
+*   The next step is to open the **Available** tab and search elastest. The ElasTest plugin will display and you will can check the box and click the Install plugin button.
 
-<h4 class="holder-subtitle link-top">Pipeline</h4>
+<p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline.png"/></a>
-</div> 
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/plugin_install.png"/></a>
+</div>
 
 <h4 class="holder-subtitle link-top">Plugin configuration</h4>
 
-The plugin form only contains 3 fairly self-explanatory fields:
+The plugin configuration is very simple and you only have to fill in the following fields:
 
-- **ElasTest URL**: complete URL of ElasTest (including protocol and port)
-- **Username**: username set on ElasTest launch
-- **Password**: password set on ElasTest launch
+*   **ElasTest URL**: complete URL of ElasTest (including protocol and port)
+*   **Username**: username set on ElasTest launch
+*   **Password**: password set on ElasTest launch
 
 <br>
+Before you execute your first Job integrated with ElasTest, you can check if the connection between Jenkins and ElasTest is successfully established.
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-3" href="/docs/jenkins/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/conf.png"/></a>
-</div> 
-
-<h4 class="holder-subtitle link-top">Plugin features</h4>
-
-With ElasTest Jenkins plugin you can integrate all the tools ElasTest offers into your Jenkins CI environment. Here you can see how the same logs are shown in Jenkins console and ElasTest:
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
-    <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
-</div> 
-
+</div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
 

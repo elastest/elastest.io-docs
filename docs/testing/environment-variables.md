@@ -8,7 +8,14 @@
 
 | Variable name | Description | Sample value | Available when | Accesible from |
 | --- | --- | --- | --- | --- |
-| ET_SUT_HOST | IP of th SuT. Can be used inside the TJobs to connect to the SuT | "172.18.0.16" | There's a SuT configured for the TJob | TJob |
-| ET_EUS_API | HTTP endpoint to launch remote web drivers from the TJobs | "http://172.18.0.14:8040/eus/v1/" | Web Browser Service is enabled for the TJob | TJob |
-| ET_MON_LSHTTP_API | Logstash API URL to send http requests with custom monitoring information to ElasTest | "http://100.10.10.10:5003/" | Always available | TJob, SuT |
-| ET_MON_EXEC | The execution identifier to set the value of _exec_ field when sending http requests with custom monitoring information to ElasTest| "s1_e1" | Always available | TJob, SuT |
+| **ET_SUT_HOST** | IP of th SuT. Can be used inside the TJobs to connect to the SuT | "172.18.0.16" | There's a SuT configured for the TJob | TJob |
+| **ET_EUS_API** | HTTP endpoint to launch remote web drivers from the TJobs | "http://172.18.0.14:8040/eus/v1/" | Web Browser Service is enabled for the TJob | TJob |
+| **ET_MON_LSHTTP_API** | Logstash API URL to send http requests with custom monitoring information to ElasTest | "http://172.18.0.12:80/logstash/" | Always available | TJob, SuT, TSS |
+| **ET_MON_LSHTTPS_API** | Logstash Secure API URL to send http requests with custom monitoring information to ElasTest | "http://172.18.0.12:443/logstash/" | Always available | TJob, SuT, TSS |
+| **ET_MON_EXEC** | The execution identifier to set the value of _exec_ field when sending http requests with custom monitoring information to ElasTest| "s1_e1" | Always available | TJob, SuT, TSS |
+| **ET_SUT_CONTAINER_NAME** | SuT container name | "sut_37" | Always available | TJob, SuT, TSS |
+| **ET_MON_INTERNAL_LSBEATS_PORT**  |  Port through which traces are sent to logstash | "5037" | Always available | TJob, SuT, TSS |
+| **ET_SUT_LOG_TAG** | It allows us to assign a label in the log driver output of the SuT container. This tag contains information that ElasTest uses internally to identify logs | "sut_37_exec" | Is an external TJob | TJob |
+
+<br>
+* **TSS**: Test Support Services
