@@ -69,6 +69,11 @@ You can include the option **`--server-address=(docker-machine ip)`** to set up 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address="localhost"
 ```
+The **`-l`** option allows you to show all the containers logs.
+
+```
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -l
+```
 
 You can add **`-tl`** if you want to start the TestLink integrated in ElasTest and enable access to it.
 
@@ -76,10 +81,16 @@ You can add **`-tl`** if you want to start the TestLink integrated in ElasTest a
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -tl
 ```
 
-If you add **`-dev`** you will enable developer options. For now, it only implements the binding of service ports to allow access to them from external tools.
+If you add **`--dev`** you will enable developer options. For now, it only implements the binding of service ports to allow access to them from external tools.
 
 ```text
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -dev
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --dev
+```
+
+You can execute **`-h`** if you need more information about the options.
+
+```
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -h
 ```
 
 
