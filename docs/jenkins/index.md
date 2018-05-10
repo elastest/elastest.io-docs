@@ -12,10 +12,10 @@ ElasTest provides a Jenkins plugin for you to use the platform in your CI enviro
 
 <h4 class="holder-subtitle link-top">Plugin installation</h4>
 
-For install the ElasTest Plugin you should follow this steps:
+To install the ElasTest Plugin you should follow this steps:
 
-*   Go to your Jenkins site and click in **Manage Jenkins / Manage Plugins**.
-*   The next step is to open the **Available** tab and search elastest. The ElasTest plugin will display and you will can check the box and click the Install plugin button.
+*   Go to your Jenkins installation and click in **Manage Jenkins / Manage Plugins**.
+*   The next step is to open the **Available** tab and search "elastest". The ElasTest plugin will appear and you will check the box and click the "Install plugin" button.
 
 <p></p>
 
@@ -28,8 +28,8 @@ For install the ElasTest Plugin you should follow this steps:
 The plugin configuration is very simple and you only have to fill in the following fields:
 
 *   **ElasTest URL**: complete URL of ElasTest (including protocol and port)
-*   **Username**: username set on ElasTest launch
-*   **Password**: password set on ElasTest launch
+*   **Username**: ElasTest username (configured on ElasTest launch)
+*   **Password**: ElasTest password (configured on ElasTest launch)
 
 <br>
 Before you execute your first Job integrated with ElasTest, you can check if the connection between Jenkins and ElasTest is successfully established.
