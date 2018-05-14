@@ -30,6 +30,7 @@ pages:
 
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Ubuntu']
+- ['releases/index.md', 'Releases']
 
 theme: readthedocs
 repo_url: https://github.com/elastest/elastest.io-docs
