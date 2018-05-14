@@ -4,7 +4,7 @@ rvm:
 
 
 install:
-- sudo pip install mkdocs==0.16.3
+- pip install --user mkdocs==0.16.3
 
 before_script: chmod ugo+x ./generate.sh
 
