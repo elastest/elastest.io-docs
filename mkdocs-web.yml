@@ -32,6 +32,8 @@ pages:
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Ubuntu']
 - ['releases/index.md', 'Releases']
 
+- ['experimental/index.md', 'Experimental']
+
 theme: null
 theme_dir: 'custom_theme'
 repo_url: https://github.com/elastest/elastest.io-docs

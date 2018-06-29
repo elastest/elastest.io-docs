@@ -32,5 +32,7 @@ pages:
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Ubuntu']
 - ['releases/index.md', 'Releases']
 
+- ['experimental/index.md', 'Experimental']
+
 theme: readthedocs
 repo_url: https://github.com/elastest/elastest.io-docs
