@@ -69,6 +69,13 @@ You can include the option **`--server-address=(docker-machine ip)`** to set up 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address="myip"
 ```
+
+You can set an access username and password using the options **`--user`** and **`--pass`** (or **`-u`** and **`-p`**)
+
+```
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -l
+```
+
 The **`-l`** option allows you to show all the containers logs.
 
 ```
@@ -99,6 +106,9 @@ You can execute **`-h`** if you need more information about the options.
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -h
 ```
 
+<h4 class="holder-subtitle link-top">ElasTest on a server</h4>
+
+To use ElasTest from a remote machine, it is necessary to use the option **`--server-address`** and also open all ports from **`32768 to 61000`** both included. It is highly recommended to also set user and password using the **`--user`** and **`--pass`** options.
 
 <h4 class="holder-subtitle link-top">ElasTest on Amazon Web Services</h4>
 
@@ -106,7 +116,7 @@ ElasTest has been designed from the outset to offer an extremely simple deployme
 
 <h4 class="holder-subtitle link-top">Updating ElasTest</h4>
 
-To update ElasTest to the latest version available, just need to change `start` to `update` and add `-it` in the launching command:
+To update ElasTest to the latest version available, just need to change **`start`** to **`update`** and **add `-it`** in the launching command:
 
 ```text
 docker run -it --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform update

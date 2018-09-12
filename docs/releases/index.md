@@ -11,7 +11,7 @@
 <ul>
 <li><a target="_blank" href="/docs/try-elastest/#system-specs">Improvement in requirements.</a> We've been working on the high memory consumption requirements of previous versions, and this new version can be deployed on machines with 8Gb of RAM starting ElasTest in default mode</li>
 
-<li><a href="">GUI improvements.</a> Now more information is shown to the user, such as the percentage of downloading a docker image, either from a tjob, a sut or a browser.</li>
+<li><a href="">GUI improvements.</a> Among other small improvements, it should be noted that more information is now shown to the user, such as the percentage of downloading a docker image, either from a tjob, a sut or a browser.</li>
 
 <li><a target="_blank" href="/docs/jenkins/">Improvements in Jenkins plugin.</a> It is no longer necessary for the user to start dockbeat and filebeat to send logs and metrics to ElasTest, the plugin is responsible for it now.</li>
 
