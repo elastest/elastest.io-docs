@@ -74,6 +74,8 @@ You must wait a few seconds until the browser loads. After that, you can see the
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute.png"/></a>
 </div>
 
+If you have associated a Sut to the Test Plan, you must wait until the Sut is ready to be used, then the browser will start as indicated in the previous paragraph and the url of the Sut will be loaded in that browser to test.
+
 When your test is finished, you must fill the fields for each Test Case and click "Save & Next" button.
 
 <h5>TestLink Test Plan Execution Result</h5>
