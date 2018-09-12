@@ -23,7 +23,8 @@ Fields to declare:
 
 - **Commands container images**: name of the container image
 - **Commands**: commands to execute
-- **Wait for http port**: port that ElasTest should wait for to be available before running your TJobs
+- **Port**: port that ElasTest should wait for to be available before running your TJobs
+- **Protocol**: protocol of the SuT url. Only Http and Https are available.
 
 <p></p>
 <div class="docs-gallery inline-block">
@@ -71,7 +72,8 @@ Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and
 Fields to declare:
 
 - **Docker image**: name of the image (tagged or untagged)
-- **Wait for http port**: port that ElasTest should wait for to be available before running your TJobs
+- **Port**: port that ElasTest should wait for to be available before running your TJobs
+- **Protocol**: protocol of the SuT url. Only Http and Https are available.
 
 <p></p>
 <div class="docs-gallery inline-block">
@@ -85,8 +87,9 @@ Your SuT is declared as a docker-compose. ElasTest will pull all the necessary i
 Fields to declare:
 
 - **Docker Compose**: your `docker-compose.yml` file. Simply copy-paste its content here
-- **Main Service Name**: the name of the service that ElasTest should wait for to be up before running your TJobs (the specific port is declared in the next field _Wait for http port_)
-- **Wait for http port**: port that ElasTest should wait for to be available before running your TJobs (applied to the service declared in the previous field _Main Service Name_)
+- **Main Service Name**: the name of the service that ElasTest should wait for to be up before running your TJobs (the specific port is declared in the next field _Port_)
+- **Port**: port that ElasTest should wait for to be available before running your TJobs (applied to the service declared in the previous field _Main Service Name_)
+- **Protocol**: protocol of the SuT url. Only Http and Https are available.
 
 <p></p>
 <div class="docs-gallery inline-block">

@@ -31,7 +31,7 @@ ElasTest Platform is available at http://localhost:37000
 
 You can then open in your web browser the shown URL to access to ElasTest dashboard.
 
-To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest.
+To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.
 
 <h4 class="holder-subtitle link-top">For Mac</h4>
 
@@ -64,10 +64,10 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform s
 ```
 <h4 class="holder-subtitle link-top">Options</h4>
 
-You can include the option **`--server-address=(docker-machine ip)`** to set up the machine ip address.
+You can include the option **`--server-address=(docker-machine ip)`** to set up the machine ip address. This option is mandatory when you start elastest on another machine, such as a server.
 
 ```text
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address="localhost"
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address="myip"
 ```
 The **`-l`** option allows you to show all the containers logs.
 
@@ -75,10 +75,16 @@ The **`-l`** option allows you to show all the containers logs.
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -l
 ```
 
-You can add **`-tl`** if you want to start the TestLink integrated in ElasTest and enable access to it.
+You can add **`-tl`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
 
 ```text
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -tl
+```
+
+The **`-jk`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+
+```text
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start -jk
 ```
 
 If you add **`--dev`** you will enable developer options. For now, it only implements the binding of service ports to allow access to them from external tools.
