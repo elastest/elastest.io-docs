@@ -29,7 +29,7 @@ pages:
 - ['jenkins/advanced-example.md',  'Jenkins', 'Advanced example']
 
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
-- ['deploying/ubuntu.md', 'Deploying ElasTest', 'Ubuntu']
+- ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
 - ['releases/index.md', 'Releases']
 
 - ['experimental/index.md', 'Experimental']
