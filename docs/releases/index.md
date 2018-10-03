@@ -9,7 +9,7 @@
 <div>12/09/2018</div>
 
 <ul>
-<li><a target="_blank" href="/docs/try-elastest/#system-specs">Improvement in requirements.</a> We've been working on the high memory consumption requirements of previous versions, and this new version can be deployed on machines with 8Gb of RAM starting ElasTest in default mode</li>
+<li><a target="_blank" href="/docs/try-elastest/">Improvement in requirements.</a> We've been working on the high memory consumption requirements of previous versions, and this new version can be deployed on machines with 8Gb of RAM starting ElasTest in default mode</li>
 
 <li><a href="">GUI improvements.</a> Among other small improvements, it should be noted that more information is now shown to the user, such as the percentage of downloading a docker image, either from a tjob, a sut or a browser.</li>
 

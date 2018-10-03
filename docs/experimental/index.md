@@ -39,7 +39,7 @@ The Experimental lite mode adds components to ElasTest that give it new function
 
 To start ElasTest in Experimental-lite mode execute this command from the shell:
 ```text
-docker run -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental-lite
+docker run --rm -v ~/.elastest:/data v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental-lite
 ```
 
 
@@ -64,5 +64,5 @@ And finally the Experimental mode, the heaviest of all, which like the previous 
 
 To start ElasTest in Experimental mode execute this command from the shell:
 ```text
-docker run -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental
 ```
