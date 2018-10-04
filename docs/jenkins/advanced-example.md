@@ -11,7 +11,7 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 
 - **`tss: ['EUS']`**: is used to indicate to ElasTest that the job needs to use the EUS service to use a web browser.
 - **`sut`**: allows to select an external Sut against which to execute the job.
-- **`project`**: allows you to select or create a project with the name provided.
+- **`project`**: allows you to select the ElasTest Project where to create the new TJob from Jenkins.
 - **`surefireReportsPattern`**: used to tell ElasTest the path where the test results will be located.
 - **`monitoring`**: used to send or not the Sut monitoring traces to Elastest.
 
