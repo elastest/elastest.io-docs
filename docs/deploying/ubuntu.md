@@ -8,9 +8,11 @@
 
 Through the following lines you will find a guide to deploy Elastest on a single machine (physical or virtual). So the same steps can be applied to a server on your data center or an instance on AWS, OpenStack, Azure or Google Cloud.
 
-We've tried to deploy Elastest on **Ubuntu 16.04** and **CentOS 7** and the steps are basically the same.
+We've tried to deploy Elastest on **Ubuntu 16.04**, **Ubuntu 18.04** and **CentOS 7** and the steps are basically the same.
 
 You only need remote or physical access to a **Linux** interactive shell to run commands as a privilegiated user.
+
+You can also deploy ElasTest on <a href="/docs/deploying/aws/">Amazon Web Services</a>
 
 <h4 class="holder-subtitle link-top">Accesing the instance</h4>
 
@@ -43,30 +45,19 @@ docker run -ti \
   --server-address=X.Y.Z.W \
   --testlink \
   --jenkins \
-  --user=elastest \
-  --password=elastest
+  --user=xxxxxx \
+  --password=yyyyyy
 ```
 
 Elastest needs to use Docker to launch other containers, so we bind the socket as a volume inside the platform.
-
-We can choose the execution mode _normal_, _experimental_, _experimental_lite_
 
 The **server-address** is web address you will reach the platform. If you're deploying on a cloud provider (like AWS, GCE o Azure) this address should be your public IP, if you're deploying on your private LAN this is the address you're using to connect the server.It's necessary to use the **`--server-address`** option and also open all ports from **`32768 to 61000`** both included. It is highly recommended to also set user and password using the **`--user`** and **`--pass`** options.
 
 Alternatively, you can use a domain name like **elastest.my_company.com** for the _server_address_ parameter.
 
-_--testlink_ stands for TestLink.
-_--jenkins_ stands for Jenkins.
+**`--testlink`** stands for TestLink and **`--jenkins`** stands for Jenkins. These fields are not obligatory but its use is **recommended**.
 
 Finally, set user and password to grant access to the platform. You can omit this parameters if you're working on a safe evironment.
-
-Type 
-
-```bash
-docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --help
-```
-
-to get more information.
 
 You'll see the following lines on the terminal when the platform is up and ready
 
@@ -82,11 +73,15 @@ ElasTest services are starting. This will likely take some time. The ElasTest UR
 ElasTest Platform is available at http://X.Y.Z.W:37000
 
 Press Ctrl+C to stop.
-
 ```
 
 It'll show the domain name instead the IP address in the case you're using a DNS service.
 
+Type the following command to get more information about start command:
+
+```bash
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --help
+```
 
 <!-- OPTIONS -->
 
@@ -128,36 +123,11 @@ You can execute **`--help`** if you need more information about the options.
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 ```
 
-
 <h4 class="holder-subtitle link-top">Running Elastest on system boot</h4>
 
-Elastest needs two script and a Systemd unit to work on system boot. 
+To start ElasTest automatically on a system with Systemd, two scripts are needed:
 
-<h6 class="smaller-subtitle">1) Clean all containers and volumes (<code>/usr/local/bin/docker-evacuate</code>)</h6>
-
-The first script is `docker-evacuate` and will clean the platform from the system. Basically, it'll remove unnecessary Docker' volumes and containers.
-
-```bash
-#!/bin/bash
-
-# Delete all containers
-docker rm -f $(docker ps -a -q)
-
-for volume in $(sudo docker volume ls | grep -v elastest_edm-mysql | grep -v elastest_elasticsearch-data | grep -v elastest_etm-testlink | tail -n +2 | awk '{print $2}')
-do
-  sudo docker volume rm $volume 
-done
-```
-
-The volumes listed are kept because they contain user data like the metrics, tests, etc.
-
-Set execution permissions:
-
-```bash
-sudo chmod 0755 /usr/local/bin/docker-evacuate
-```
-
-<h6 class="smaller-subtitle">2) Start Elastest (<code>/usr/local/bin/docker-elastest-up</code>)</h6>
+<h6 class="smaller-subtitle">1) Start Elastest (<code>/usr/local/bin/elastest-start</code>)</h6>
 
 This script will launch elastest and contains the following lines:
 
@@ -177,7 +147,22 @@ We use an external service like [ifconfig.co](http://ifconfig.co) to get the ext
 Set execution permissions:
 
 ```bash
-sudo chmod 0755 /usr/local/bin/docker-elastest-up
+sudo chmod 0755 /usr/local/bin/elastest-start
+```
+
+<h6 class="smaller-subtitle">2) Clean all containers and volumes (<code>/usr/local/bin/elastest-stop</code>)</h6>
+
+The second script is `elastest-stop` to stop ElasTest.
+
+```bash
+#!/bin/bash
+docker run -d -v /var/run/docker.sock:/var/run/docker.sock elastest/platform stop
+```
+
+Set execution permissions:
+
+```bash
+sudo chmod 0755 /usr/local/bin/elastest-stop
 ```
 
 <h6 class="smaller-subtitle">3) Systemd start script (<code>/etc/systemd/system/docker-elastest.service</code>)</h6>
@@ -191,8 +176,8 @@ Requires=docker.service
 [Service]
 TimeoutStartSec=60
 Restart=always
-ExecStop=/usr/local/bin/docker-evacuate
-ExecStart=/usr/local/bin/docker-elastest-up
+ExecStop=/usr/local/bin/elastest-stop
+ExecStart=/usr/local/bin/elastest-start
 RemainAfterExit=yes
 
 [Install]
@@ -225,7 +210,6 @@ or stop
 sudo systemctl stop docker-elastest
 ```
 
-
 <h4 class="holder-subtitle link-top">Swap space</h4>
 
 It is possible that elastest needs some swap space. If your server is physical, it probably has some space already. You can check by running:
@@ -242,8 +226,7 @@ Mem:          15921        5059        5278        1130        5582        9337
 Swap:           975           0         975
 ```
 
-The line labeled as *swap* shows the swap space. When you have no swap space, it shows this:
-
+The line labeled as _swap_ shows the swap space. When you have no swap space, it shows this:
 
 ```text
               total        used        free      shared  buff/cache   available
@@ -293,7 +276,7 @@ sudo swapon /swapfile
 
 <h6 class="small-subtitle">4) Checking</h6>
 
-If you run the *free* command again you'll see the swap space available.
+If you run the _free_ command again you'll see the swap space available.
 
 ```bash
 free -m
@@ -301,7 +284,7 @@ free -m
 
 <h6 class="small-subtitle">5) Making changes permanent</h6>
 
-To make those changes permanent, add the following line to your */etc/fstab* file:
+To make those changes permanent, add the following line to your _/etc/fstab_ file:
 
 ```bash
 sudo echo "/swapfile none swap sw 0 0" >> /etc/fstab

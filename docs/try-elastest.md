@@ -300,6 +300,15 @@ Update finished successfully.
 
 In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.
 
+
+<h4 class="holder-subtitle link-top">Using a specific ElasTest version</h4>
+
+To use a specific ElasTest version available, only need to set it as elastest/platform tag, that is, adding **`:version`**. For example, to use the **`1.0.0-beta2`** version you would have to execute the following command
+
+```text
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:1.0.0-beta2 start
+```
+
 <br>
 
 <!---
