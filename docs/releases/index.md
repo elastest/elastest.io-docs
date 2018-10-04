@@ -17,6 +17,7 @@
 <li><a target="_blank" href="javascript:void(0);">Now the volumes created by the execution of a TJob are removed at the end of this.</a></li>
 <li><a target="_blank" href="javascript:void(0);">Error message on start ElasTest if main container (ETM) is exited.</a> An error file is also generated in case the user wants to send it to the ElasTest team.</li>
 <li><a target="_blank" href="javascript:void(0);">The time conversion of the monitoring traces is now more efficient.</a> It is calculated once per host name and only transforms if necessary.</li>
+<li><a target="_blank" href="javascript:void(0);">Now the connections to the WebSockets are reconnected automatically if the connection is lost.</a></li>
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 <li><a target="_blank" href="javascript:void(0);">Automatic navigation to the results page when the execution of the test finishes.</a></li>
@@ -27,7 +28,6 @@
 <li><a target="_blank" href="javascript:void(0);">Startup problems in Windows and MacOS has been solved.</a> Now the volumes `/etc/localtime` and `/etc/timezone` are no longer binded to the `elastest/etm` container; instead ElasTest Platform is that requests it via HTTP and sends it as a parameter to the ETM.</li>
 <li><a target="_blank" href="javascript:void(0);">Both Jenkins and the ElasTest plugin are now correctly configured when Jenkins starts from the Platform.</a></li>
 <li><a target="_blank" href="javascript:void(0);">Problem with splitted log traces and without date has been fixed.</a></li>
-
 
 </ul>
 </div>
