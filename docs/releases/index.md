@@ -4,7 +4,7 @@
 </div>
 </div>
 
-<div id="1.0.0-beta1">
+<div id="1.0.0-beta2">
 <h3 class="small-subtitle">1.0.0-beta2</h3>
 <h4 class="smaller-subtitle">04/10/2018</h4>
 
