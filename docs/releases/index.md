@@ -5,8 +5,33 @@
 </div>
 
 <div id="1.0.0-beta1">
-<h3>1.0.0-beta1</h3>
-<div>12/09/2018</div>
+<h3 class="small-subtitle">1.0.0-beta2</h3>
+<h4 class="smaller-subtitle">04/10/2018</h4>
+
+<ul>
+<h5 class="smaller-subtitle">Improvements</h5>
+<li><a target="_blank" href="/docs/deploying/ubuntu/#elastestData">Now you can configure the ElasTest data folder at startup.</a> If the folder is changed in future startups, the contents of the config folder must be copied if TL was reached at any time.</li>
+<li><a target="_blank" href="javascript:void(0);">TestLink and Jenkins credentials.</a> The credentials will be the same credentials as those introduced for ElasTest. If it has not been entered, they will be created.</li>
+<li><a target="_blank" href="javascript:void(0);">Manually started browsers can now be opened in a new tab.</a></li>
+<li><a target="_blank" href="javascript:void(0);">Now it shows where the logs and metrics of a TJobExec are stored (MYSQL if it is mini or ELASTICSEARCH if it is experimental)</a></li>
+<li><a target="_blank" href="javascript:void(0);">Now the volumes created by the execution of a TJob are removed at the end of this.</a></li>
+<li><a target="_blank" href="javascript:void(0);">Error message on start ElasTest if main container (ETM) is exited.</a> An error file is also generated in case the user wants to send it to the ElasTest team.</li>
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+<li><a target="_blank" href="javascript:void(0);">Automatic navigation to the results page when the execution of the test finishes.</a></li>
+<li><a target="_blank" href="javascript:void(0);">Problem with duplicate logs fixed.</a></li>
+<li><a target="_blank" href="javascript:void(0);">Automatic subscription to the Sut logs of a Jenkins execution.</a></li>
+<li><a target="_blank" href="javascript:void(0);">The problem with the generation of the Jenkins url when starting from the platform in experimental mode and as a server has been solved.</a> </li>
+<li><a target="_blank" href="javascript:void(0);">Bug with the Nginx proxy image fixed. </a> It did not receive the SIGTERM signal and ElasTest Platform took a long time to stop (until it gave a waiting time of 90 and stopped the proxy to force)</li>
+<li><a target="_blank" href="javascript:void(0);">Startup problems in Windows and MacOS has been solved.</a> Now the volumes `/etc/localtime` and `/etc/timezone` are no longer binded to the `elastest/etm` container; instead ElasTest Platform is that requests it via HTTP and sends it as a parameter to the ETM.</li>
+<li><a target="_blank" href="javascript:void(0);">Both Jenkins and the ElasTest plugin are now correctly configured when Jenkins starts from the Platform.</a></li>
+
+</ul>
+</div>
+
+<div id="1.0.0-beta1">
+<h3 class="small-subtitle">1.0.0-beta1</h3>
+<h4 class="smaller-subtitle">12/09/2018</h4>
 
 <ul>
 <li><a target="_blank" href="/docs/try-elastest/">Improvement in requirements.</a> We've been working on the high memory consumption requirements of previous versions, and this new version can be deployed on machines with 8Gb of RAM starting ElasTest in default mode</li>
@@ -21,13 +46,13 @@
 
 <li><a target="_blank" href="/docs/log-analyzer/">Improvements in log analysis.</a></li>
 
-<li><a href="#">Bug fixes.</a></li>
+<li><a href="javascript:void(0);">Bug fixes.</a></li>
 </ul>
 </div>
 
 <div id="0.9.1">
-<h3>0.9.1</h3>
-<div>09/05/2018</div>
+<h3 class="small-subtitle">0.9.1</h3>
+<h4 class="smaller-subtitle">09/05/2018</h4>
 
 <ul>
 <li><a target="_blank" href="/docs/jenkins/">Jenkins integration.</a> You don’t need to abandon your CI tools. Use ElasTest straight from your Jenkins jobs (Freestyle or Pipeline). For instance, if you’re using Pipeline jobs, just wrap up your Pipeline in an elastest step, and you’ll be ready to use all the fancy features we bring to testers and developers, like managed browsers! See our advanced example for a more complex scenario.</li>
