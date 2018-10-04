@@ -1,19 +1,25 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
 <h2 id="content" class="h1">Advanced example</h2>
-<div class="offset-top-30 offset-md-top-50">
-</div>
 </div>
 </div>
 
-<h4 class="holder-subtitle link-top">Pipeline Job Examples</h4>
+<h3 class="holder-subtitle link-top">Pipeline Job Examples</h3>
 
-The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations.
+The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations and offers the following options:
+
+
+- **`tss: ['EUS']`**: is used to indicate to ElasTest that the job needs to use the EUS service to use a web browser.
+- **`sut`**: allows to select an external Sut against which to execute the job.
+- **`project`**: allows you to select or create a project with the name provided.
+- **`surefireReportsPattern`**: used to tell ElasTest the path where the test results will be located.
+- **`monitoring`**: used to send or not the Sut monitoring traces to Elastest.
+
 
 Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a SUT is started and a test battery is executed on it.
 To configure this option, ElasTest provides the connection info using [environment variables](/testing/environment-variables). This example is included in the Jenkins instance provided by ElasTest. If you use your own Jenkins, you will have to configure it manually in the following way:
 
-<h5 class="small-subtitle">WebApp</h5>
+<h4 class="small-subtitle">WebApp</h4>
 
 This pipeline configures the ElasTes plugin, starts the SUT and clones the repository with the test to execute it.
 
@@ -29,7 +35,7 @@ node{
                 echo "${c.id}"
                 def sutContainerName = env.ET_SUT_CONTAINER_NAME;
                 def sutNetwork = getFirstNetwork(sutContainerName)
-                def sutIp = containerIp(sutContainerName,network)
+                def sutIp = containerIp(sutContainerName, sutNetwork)
                 sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
                 withEnv(['ET_SUT_HOST=' + sutIp]) {
                     echo 'Set up test environment'
