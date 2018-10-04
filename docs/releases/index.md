@@ -12,19 +12,22 @@
 <h5 class="smaller-subtitle">Improvements</h5>
 <li><a target="_blank" href="/docs/deploying/ubuntu/#elastestData">Now you can configure the ElasTest data folder at startup.</a> If the folder is changed in future startups, the contents of the config folder must be copied if TL was reached at any time.</li>
 <li><a target="_blank" href="javascript:void(0);">TestLink and Jenkins credentials.</a> The credentials will be the same credentials as those introduced for ElasTest. If it has not been entered, they will be created.</li>
-<li><a target="_blank" href="javascript:void(0);">Manually started browsers can now be opened in a new tab.</a></li>
-<li><a target="_blank" href="javascript:void(0);">Now it shows where the logs and metrics of a TJobExec are stored (MYSQL if it is mini or ELASTICSEARCH if it is experimental)</a></li>
+<li><a target="_blank" href="/docs/web-browsers/manual-browsers/">Manually started browsers can now be opened in a new tab.</a></li>
+<li><a target="_blank" href="javascript:void(0);">Now it shows where the logs and metrics of a TJobExec are stored</a> (MYSQL if it is mini or ELASTICSEARCH if it is experimental)</li>
 <li><a target="_blank" href="javascript:void(0);">Now the volumes created by the execution of a TJob are removed at the end of this.</a></li>
 <li><a target="_blank" href="javascript:void(0);">Error message on start ElasTest if main container (ETM) is exited.</a> An error file is also generated in case the user wants to send it to the ElasTest team.</li>
+<li><a target="_blank" href="javascript:void(0);">The time conversion of the monitoring traces is now more efficient.</a> It is calculated once per host name and only transforms if necessary.</li>
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 <li><a target="_blank" href="javascript:void(0);">Automatic navigation to the results page when the execution of the test finishes.</a></li>
 <li><a target="_blank" href="javascript:void(0);">Problem with duplicate logs fixed.</a></li>
-<li><a target="_blank" href="javascript:void(0);">Automatic subscription to the Sut logs of a Jenkins execution.</a></li>
+<li><a target="_blank" href="/docs/jenkins/advanced-example/">Automatic subscription to the Sut logs of a Jenkins execution.</a></li>
 <li><a target="_blank" href="javascript:void(0);">The problem with the generation of the Jenkins url when starting from the platform in experimental mode and as a server has been solved.</a> </li>
 <li><a target="_blank" href="javascript:void(0);">Bug with the Nginx proxy image fixed. </a> It did not receive the SIGTERM signal and ElasTest Platform took a long time to stop (until it gave a waiting time of 90 and stopped the proxy to force)</li>
 <li><a target="_blank" href="javascript:void(0);">Startup problems in Windows and MacOS has been solved.</a> Now the volumes `/etc/localtime` and `/etc/timezone` are no longer binded to the `elastest/etm` container; instead ElasTest Platform is that requests it via HTTP and sends it as a parameter to the ETM.</li>
 <li><a target="_blank" href="javascript:void(0);">Both Jenkins and the ElasTest plugin are now correctly configured when Jenkins starts from the Platform.</a></li>
+<li><a target="_blank" href="javascript:void(0);">Problem with splitted log traces and without date has been fixed.</a></li>
+
 
 </ul>
 </div>
