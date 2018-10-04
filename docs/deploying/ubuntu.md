@@ -55,7 +55,9 @@ The **server-address** is web address you will reach the platform. If you're dep
 
 Alternatively, you can use a domain name like **elastest.my_company.com** for the _server_address_ parameter.
 
-**`--testlink`** stands for TestLink and **`--jenkins`** stands for Jenkins. These fields are not obligatory but its use is **recommended**.
+**`--testlink`** stands for TestLink and **`--jenkins`** stands for Jenkins. These fields are not obligatory but its use is **recommended**. 
+
+You can also use your own Jenkins and install the <a href="/docs/jenkins/">ElasTest plugin for Jenkins</a>
 
 Finally, set user and password to grant access to the platform. You can omit this parameters if you're working on a safe evironment.
 
@@ -142,7 +144,7 @@ exit 0
 
 As you can see, we set less parameters here as the initial configuration was made on the first launch.
 
-We use an external service like [ifconfig.co](http://ifconfig.co) to get the external IP on every lunch. This works fine on a cloud provider who give the instance a diferent IP on every boot, nevertheless, if you're using a static IP or a DNS name feel free to change the parameter.
+For --server-address, we use an external service like [ifconfig.co](http://ifconfig.co) to get the external IP on every launch using `curl`. This works fine on a cloud provider who give the instance a diferent IP on every boot, nevertheless, if you're using a static IP or a DNS name feel free to change the parameter.
 
 Set execution permissions:
 

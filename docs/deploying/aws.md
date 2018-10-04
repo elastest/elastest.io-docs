@@ -39,8 +39,8 @@ The easiest way to deploy ElasTest is by using our Amazon CloudFormation templat
 </div>
 
 <div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-2" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
-  <div class="cell-xs-8 cell-lg-10 warning-text"><p><i>If you need to use a specific DNS, you will have to start ElasTest manually</i></p></div>
+  <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>If you need to use a specific DNS, you will have to start ElasTest manually</i></p></div>
 </div>
 
 <h5 class="small-subtitle">4) Deploy your stack</h5>

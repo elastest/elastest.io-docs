@@ -176,6 +176,11 @@ ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you
 
 Once you have docker installed, execute the following command to start ElasTest:
 
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>IMPORTANT: for the following command, you need to create the "~/.elastest" folder manually before.</i></p></div>
+</div>
+
 **_Docker for Windows_**
 
 ```text
