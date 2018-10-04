@@ -17,11 +17,11 @@ For this reason, ElasTest allows users to send any log or metric through http re
 
 You can send to ElasTest metric information with http requests from any TJob or any SuT.
 
-<h6 class="small-subtitle">IP of http request in a TJob or a SuT deployed by ElasTest</h6>
+<h5 class="small-subtitle">IP of http request in a TJob or a SuT deployed by ElasTest</h5>
 
 Value of environment variable *`ET_MON_LSHTTP_API`*.
 
-<h6 class="small-subtitle">IP of http request in a SuT deployed outside ElasTest</h6>
+<h5 class="small-subtitle">IP of http request in a SuT deployed outside ElasTest</h5>
 
 The URL can be built with **HTTP Api Url** param, available from the SuT information page:
 
@@ -39,7 +39,7 @@ http://172.18.0.11:80/logstash/
 
 The request has to use the POST method. There are different formats to send different types of information:
 
-<h6 class="small-subtitle">Send one log entry in one request</h6>
+<h5 class="small-subtitle">Send one log entry in one request</h5>
 
 ```json
 {
@@ -58,7 +58,7 @@ The request has to use the POST method. There are different formats to send diff
 - **stream**: Used to distinguish several logs from the same component. In this case only one log exists for the component, its value is usually "default_log".
 - **message**: Complete log message entry.
 
-<h6 class="small-subtitle">Send several log entries in one request</h6>
+<h5 class="small-subtitle">Send several log entries in one request</h5>
 
 ```json
 {
@@ -75,7 +75,7 @@ The request has to use the POST method. There are different formats to send diff
 }
 ```
 
-<h6 class="small-subtitle">Send one atomic metric in one request</h6>
+<h5 class="small-subtitle">Send one atomic metric in one request</h5>
 
 ```json
 {
@@ -93,7 +93,7 @@ The request has to use the POST method. There are different formats to send diff
 
 - **stream** field can be whatever you want (it has to be used below when setting the numeric value)
 
-<h6 class="small-subtitle">Send one composed metric in one request</h6>
+<h5 class="small-subtitle">Send one composed metric in one request</h5>
 
 ```json
 {

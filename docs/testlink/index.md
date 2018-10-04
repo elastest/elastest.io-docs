@@ -27,7 +27,7 @@ The GUI provided by ElasTest to execute the manual test cases has the following 
 * TestLink Test Plan Execution
 * TestLink Test Plan Execution Results
 
-<h5>TestLink Home</h5>
+<h5 class="small-subtitle">TestLink Home</h5>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink.png"/></a>
@@ -42,7 +42,7 @@ Here, you can see all your projects created. Moreover, if you want to synchroniz
     <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink_home.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink_home.png"/></a>
 </div>
 
-<h5>TestLink Project</h5>
+<h5 class="small-subtitle">TestLink Project</h5>
 
 This page will allow you to have an overview of all the components of the project, such as Test Suites, Test Plans and SuTs. In addition, you can run a test plan or create a new SuT.
 
@@ -50,7 +50,7 @@ This page will allow you to have an overview of all the components of the projec
     <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink_project.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink_project.png"/></a>
 </div>
 
-<h5>TestLink Test Plan</h5>
+<h5 class="small-subtitle">TestLink Test Plan</h5>
 
 On this page, not only can you see all the information about the Test Plan, but you can also edit it by clicking on the edit button located at the top.
 
@@ -64,7 +64,7 @@ You can associate a SuT previously created in the editing page.
     <a data-fancybox="gallery-4" href="/docs/testlink/images/edit_testplan.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/edit_testplan.png"/></a>
 </div>
 
-<h5>TestLink Test Plan Execution</h5>
+<h5 class="small-subtitle">TestLink Test Plan Execution</h5>
 
 On the other hand, you can run the test plan clicking the "Execute Test Plan" button located on the top right. Immediately after clicking on the button, a modal will be displayed and you must select a build to run the test.
 
@@ -78,7 +78,7 @@ If you have associated a Sut to the Test Plan, you must wait until the Sut is re
 
 When your test is finished, you must fill the fields for each Test Case and click "Save & Next" button.
 
-<h5>TestLink Test Plan Execution Result</h5>
+<h5 class="small-subtitle">TestLink Test Plan Execution Result</h5>
 
 Once you have completed all the test cases you will can see an overview of your test executed.
 

@@ -6,9 +6,9 @@
 
 <h4 class="holder-subtitle link-top">Introduction</h4>
 
-Through the following lines you will find a guide to deploy Elastest on a single machine (physical or virtual). So the same steps can be applied to a server on your data center or an instance on AWS, OpenStack, Azure or Google Cloud.
+Through the following lines you will find a guide to deploy ElasTest on a single machine (physical or virtual). So the same steps can be applied to a server on your data center or an instance on AWS, OpenStack, Azure or Google Cloud.
 
-We've tried to deploy Elastest on **Ubuntu 16.04**, **Ubuntu 18.04** and **CentOS 7** and the steps are basically the same.
+We've tried to deploy ElasTest on **Ubuntu 16.04**, **Ubuntu 18.04** and **CentOS 7** and the steps are basically the same.
 
 You only need remote or physical access to a **Linux** interactive shell to run commands as a privilegiated user.
 
@@ -32,9 +32,9 @@ If you want to use docker with a regular user add the user to _docker_ group:
 sudo usermod -aG docker YOUR_USER
 ```
 
-<h4 class="holder-subtitle link-top">Launching Elastest</h4>
+<h4 class="holder-subtitle link-top">Launching ElasTest</h4>
 
-In order to launch Elastest platform just type
+In order to launch ElasTest platform just type
 
 ```bash
 docker run -ti \
@@ -49,7 +49,7 @@ docker run -ti \
   --password=yyyyyy
 ```
 
-Elastest needs to use Docker to launch other containers, so we bind the socket as a volume inside the platform.
+ElasTest needs to use Docker to launch other containers, so we bind the socket as a volume inside the platform.
 
 The **server-address** is web address you will reach the platform. If you're deploying on a cloud provider (like AWS, GCE o Azure) this address should be your public IP, if you're deploying on your private LAN this is the address you're using to connect the server.It's necessary to use the **`--server-address`** option and also open all ports from **`32768 to 61000`** both included. It is highly recommended to also set user and password using the **`--user`** and **`--pass`** options.
 
@@ -85,7 +85,7 @@ docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.soc
 
 <!-- OPTIONS -->
 
-<h5>Options</h5>
+<h5 class="small-subtitle">Options</h5>
 
 You can include the option **`--server-address=(docker-machine ip)`** to set up the machine ip address.
 
@@ -105,13 +105,13 @@ The **`--logs`** option allows you to show all the containers logs.
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
 ```
 
-You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
 ```
 
-The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
@@ -123,11 +123,11 @@ You can execute **`--help`** if you need more information about the options.
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 ```
 
-<h4 class="holder-subtitle link-top">Running Elastest on system boot</h4>
+<h4 class="holder-subtitle link-top">Running ElasTest on system boot</h4>
 
 To start ElasTest automatically on a system with Systemd, two scripts are needed:
 
-<h6 class="smaller-subtitle">1) Start Elastest (<code>/usr/local/bin/elastest-start</code>)</h6>
+<h5 class="small-subtitle">1) Start ElasTest (<code>/usr/local/bin/elastest-start</code>)</h5>
 
 This script will launch elastest and contains the following lines:
 
@@ -150,7 +150,7 @@ Set execution permissions:
 sudo chmod 0755 /usr/local/bin/elastest-start
 ```
 
-<h6 class="smaller-subtitle">2) Clean all containers and volumes (<code>/usr/local/bin/elastest-stop</code>)</h6>
+<h5 class="small-subtitle">2) Stop ElasTest (<code>/usr/local/bin/elastest-stop</code>)</h5>
 
 The second script is `elastest-stop` to stop ElasTest.
 
@@ -165,11 +165,11 @@ Set execution permissions:
 sudo chmod 0755 /usr/local/bin/elastest-stop
 ```
 
-<h6 class="smaller-subtitle">3) Systemd start script (<code>/etc/systemd/system/docker-elastest.service</code>)</h6>
+<h5 class="small-subtitle">3) Systemd start script (<code>/etc/systemd/system/elastest.service</code>)</h5>
 
 ```text
 [Unit]
-Description=Elastest Platform
+Description=ElasTest Platform
 After=docker.service
 Requires=docker.service
 
@@ -193,21 +193,21 @@ sudo systemctl daemon-reload
 Enable the service to start with the system
 
 ```bash
-sudo systemctl enable docker-elastest
+sudo systemctl enable elastest
 ```
 
-<h6 class="smaller-subtitle">Start and Stop Elastest</h6>
+<h5 class="small-subtitle">Start and Stop ElasTest</h5>
 
-From now on, everytime you want to launch Elastest:
+From now on, everytime you want to launch ElasTest:
 
 ```bash
-sudo systemctl start docker-elastest
+sudo systemctl start elastest
 ```
 
 or stop
 
 ```bash
-sudo systemctl stop docker-elastest
+sudo systemctl stop elastest
 ```
 
 <h4 class="holder-subtitle link-top">Swap space</h4>
@@ -236,7 +236,7 @@ Swap:             0           0           0
 
 If you're working on the cloud, you'll probably need to add some swap space. To do that follow this steps:
 
-<h6 class="small-subtitle">1) Creating a swap file</h6>
+<h5 class="small-subtitle">1) Creating a swap file</h5>
 
 With Ubuntu:
 
@@ -262,19 +262,19 @@ Now, set up the proper file permissions:
 sudo chmod 0600 /swapfile
 ```
 
-<h6 class="small-subtitle">2) Mark the file as swap space</h6>
+<h5 class="small-subtitle">2) Mark the file as swap space</h5>
 
 ```bash
 sudo mkswap /swapfile
 ```
 
-<h6 class="small-subtitle">3) Activate the swap</h6>
+<h5 class="small-subtitle">3) Activate the swap</h5>
 
 ```bash
 sudo swapon /swapfile
 ```
 
-<h6 class="small-subtitle">4) Checking</h6>
+<h5 class="small-subtitle">4) Checking</h5>
 
 If you run the _free_ command again you'll see the swap space available.
 
@@ -282,10 +282,41 @@ If you run the _free_ command again you'll see the swap space available.
 free -m
 ```
 
-<h6 class="small-subtitle">5) Making changes permanent</h6>
+<h5 class="small-subtitle">5) Making changes permanent</h5>
 
 To make those changes permanent, add the following line to your _/etc/fstab_ file:
 
 ```bash
 sudo echo "/swapfile none swap sw 0 0" >> /etc/fstab
 ```
+
+<h4 id="elastestData" class="holder-subtitle link-top">ElasTest data</h4>
+
+ElasTest makes use of a folder and two volumes to store the data:
+
+<h5 class="small-subtitle">/data folder</h5>
+
+As you may have seen above in the ElasTest start command, two volumes are binded. The first one is the **`/data`** folder that, in the example commands, we have bind to the host's **`~/.elastest`** folder, but you can choose the host folder you want.
+
+In this folder some data like the videos of the tests or configurations of Elastest are saved.
+
+<h5 class="small-subtitle">elastest_edm-mysql volume</h5>
+The **`elastest_edm-mysql`** volume contains the ElasTest database, which contains all the data information of the tests, such as projects, suts, monitoring traces, test results, etc.
+
+<h5 class="small-subtitle">elastest_etm-testlink volume</h5>
+The **`elastest_etm-testlink`** volume contains TestLink configuration information, such as the name of the MySql schema created in the database of **`elastest_edm-mysql`** volume.
+
+<!---
+ Script for open external links in a new tab
+-->
+<script type="text/javascript" charset="utf-8">
+      // Creating custom :external selector
+      $.expr[':'].external = function(obj){
+          return !obj.href.match(/^mailto\:/)
+                  && (obj.hostname != location.hostname);
+      };
+      $(function(){
+        $('a:external').addClass('external');
+        $(".external").attr('target','_blank');
+      })
+</script>

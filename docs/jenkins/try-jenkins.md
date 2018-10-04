@@ -25,7 +25,7 @@ To complete this freestyle job, you must download the project inside of this [re
 </div>
 <br>
 
-<h5>Job result</h5>
+<h5 class="small-subtitle">Job result</h5>
 
 After we run the Freestyle Job, we can check the results in both platforms, **Jenkins** and **ElasTest**. 
 <div class="docs-gallery inline-block">
@@ -45,10 +45,9 @@ From a Pipeline this plugin allows:
 
 
 
-<h5>Basics examples</h5>
+<h5 class="small-subtitle">Basics examples</h5>
 
-
-<h6>Example 1</h6>
+<h6 class="small-subtitle">Example 1</h6>
 This code will be us useful, due to, adding it in the Pipeline script and executing the Pipeline, it will download the [ demo-projects ](https://github.com/elastest/demo-projects) repository and it will run the test.
 
 ```
@@ -71,7 +70,7 @@ node{
     <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline.png"/></a>
 </div>
 
-<h6>Example 1 result</h6>
+<h6 class="small-subtitle">Example 1 result</h6>
 
 In the same way as in Freestyle Job, result can be checked in Jenkins and ElasTest.
 
@@ -84,7 +83,7 @@ In the same way as in Freestyle Job, result can be checked in Jenkins and ElasTe
     <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline_result_2.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline_result_2.png"/></a>
 </div>
 
-<h6>Example 2</h6>
+<h6 class="small-subtitle">Example 2</h6>
 
 We can execute this code in another Pipeline. The difference with the previous example is that in this case, we are using the EUS service adding `tss: ['EUS']`. This example will use a web browser to do a little test on it.
 

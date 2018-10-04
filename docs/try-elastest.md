@@ -1,6 +1,6 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Try Elastest</h2>
+<h2 id="content" class="h1">Try ElasTest</h2>
 </div>
 </div>
 
@@ -35,7 +35,7 @@ You can then open in your web browser the shown URL to access to ElasTest dashbo
 
 To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.
 
-<h5>Options</h5>
+<h5 class="small-subtitle">Options</h5>
 
 The **`--logs`** option allows you to show all the containers logs.
 
@@ -43,13 +43,13 @@ The **`--logs`** option allows you to show all the containers logs.
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
 ```
 
-You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
 ```
 
-The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
@@ -62,7 +62,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -
 ```
 
 
-<h5>Recommended system specifications</h5>
+<h5 class="small-subtitle">Recommended system specifications</h5>
 
 ElasTest needs some minimun system specifications in order to run smoothly:
 
@@ -115,7 +115,7 @@ You can then open in your web browser the shown URL to access to ElasTest dashbo
 
 To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.
 
-<h5>Options</h5>
+<h5 class="small-subtitle">Options</h5>
 
 The **`--logs`** option allows you to show all the containers logs.
 
@@ -123,13 +123,13 @@ The **`--logs`** option allows you to show all the containers logs.
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
 ```
 
-You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
 ```
 
-The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
@@ -146,7 +146,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -
   <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest can be used in Mac OS, but it's recommended to use Linux. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
 </div>
 
-<h5>Recommended system specifications</h5>
+<h5 class="small-subtitle">Recommended system specifications</h5>
 
 ElasTest needs some minimun system specifications in order to run smoothly:
 
@@ -207,7 +207,7 @@ You can then open in your web browser the shown URL to access to ElasTest dashbo
 
 To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.
 
-<h5>Options</h5>
+<h5 class="small-subtitle">Options</h5>
 
 The **`--logs`** option allows you to show all the containers logs.
 
@@ -215,13 +215,13 @@ The **`--logs`** option allows you to show all the containers logs.
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
 ```
 
-You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
 ```
 
-The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the Elastest GUI.
+The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
@@ -238,7 +238,7 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -
   <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>ElasTest can be used in Windows, but it's recommended to use Linux. There could be unexpected bugs. If you find any issue, please report it <a href="/docs/support/">here</a>.</i></p></div>
 </div>
 
-<h5>Recommended system specifications</h5>
+<h5 class="small-subtitle">Recommended system specifications</h5>
 
 ElasTest needs some minimun system specifications in order to run smoothly:
 
@@ -309,7 +309,8 @@ To use a specific ElasTest version available, only need to set it as elastest/pl
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:1.0.0-beta2 start
 ```
 
-<br>
+<h4 class="holder-subtitle link-top">ElasTest data</h4>
+You can see the Elastest data information <a href="/docs/deploying/ubuntu/#elastestData">here</a>
 
 <!---
  Script for open external links in a new tab

@@ -13,7 +13,7 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a SUT is started and a test battery is executed on it.
 To configure this option, ElasTest provides the connection info using [environment variables](/testing/environment-variables). This example is included in the Jenkins instance provided by ElasTest. If you use your own Jenkins, you will have to configure it manually in the following way:
 
-<h5>WebApp</h5>
+<h5 class="small-subtitle">WebApp</h5>
 
 This pipeline configures the ElasTes plugin, starts the SUT and clones the repository with the test to execute it.
 
