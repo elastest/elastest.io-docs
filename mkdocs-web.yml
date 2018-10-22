@@ -33,6 +33,7 @@ pages:
 - ['releases/index.md', 'Releases']
 
 - ['experimental/index.md', 'Experimental']
+- ['roadmap/index.md', 'Roadmap']
 
 theme: null
 theme_dir: 'custom_theme'
