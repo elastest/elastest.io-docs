@@ -17,7 +17,7 @@ Currently the following browsers and versions are supported:
 |Browser|Versions|
 |-------|-------|
 |Chrome|beta, unstable, latest, from 60.0 onwards|
-|Firefox|beta, nightly, latest, from 56.0 onwards|
+|Firefox|beta, nightly, latest, from 57.0 onwards|
 |Edge|_Coming soon_|
 
 **beta** : _The last beta version_. <br>
