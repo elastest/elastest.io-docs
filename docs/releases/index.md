@@ -4,6 +4,25 @@
 </div>
 </div>
 
+<div id="1.0.0-beta3">
+<h3 class="small-subtitle">1.0.0-beta3</h3>
+<h4 class="smaller-subtitle">end of 10/2018</h4>
+
+<ul>
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+<li><a target="_blank" href="/docs/testing/multi-configuration-tjobs">Multi-configuration TJobs.</a> Execute same TJob with different configurations, compare several executions and improve visualization with matrices and graphs (Basic Orchestration).</li>
+<li><a target="_blank" href="javascript:void(0);">New type of Sut:</a> By External Elasticsearch.</li>
+<li><a target="_blank" href="/docs/web-browsers/manual-browsers">Now the init/pull progress of the browsers is shown in the modal window.</a></li>
+<li><a target="_blank" href="javascript:void(0);">ElasTest Internal Error messages are now displayed</a> on the results page of a TJob Execution.</li>
+<li><a target="_blank" href="javascript:void(0);">Ability to duplicate TJobs and Suts</a> on the specific project page.</li>
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+<li><a target="_blank" href="javascript:void(0);">Now the list of executions is reloaded when deleting a project in the Dashboard section.</a></li>
+<li><a target="_blank" href="/docs/testlink">Automatic sync when TestLink is started manually and be ready</a> to show projects directly instead of needing to re-navigate</li>
+
+</ul>
+</div>
+
 <div id="1.0.0-beta2">
 <h3 class="small-subtitle">1.0.0-beta2</h3>
 <h4 class="smaller-subtitle">04/10/2018</h4>
