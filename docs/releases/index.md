@@ -11,7 +11,7 @@
 <ul>
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 <li><a target="_blank" href="/docs/testing/multi-configuration-tjobs">Multi-configuration TJobs.</a> Execute same TJob with different configurations, compare several executions and improve visualization with matrices and graphs (Basic Orchestration).</li>
-<li><a target="_blank" href="javascript:void(0);">New type of Sut:</a> By External Elasticsearch.</li>
+<li><a target="_blank" href="/docs/testing/sut/#outsideExternalES">New type of Sut:</a> Use External Elasticsearch.</li>
 <li><a target="_blank" href="/docs/web-browsers/manual-browsers">Now the init/pull progress of the browsers is shown in the modal window.</a></li>
 <li><a target="_blank" href="javascript:void(0);">ElasTest Internal Error messages are now displayed</a> on the results page of a TJob Execution.</li>
 <li><a target="_blank" href="javascript:void(0);">Ability to duplicate TJobs and Suts</a> on the specific project page.</li>
