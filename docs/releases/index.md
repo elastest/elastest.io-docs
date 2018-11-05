@@ -6,7 +6,7 @@
 
 <div id="1.0.0-beta3">
 <h3 class="small-subtitle">1.0.0-beta3</h3>
-<h4 class="smaller-subtitle">end of 10/2018</h4>
+<h4 class="smaller-subtitle">31/10/2018</h4>
 
 <ul>
 <h5 class="smaller-subtitle">Features & Improvements</h5>
