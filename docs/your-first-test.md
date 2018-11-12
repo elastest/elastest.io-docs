@@ -6,32 +6,38 @@
 </div>
 </div>
 
-After [launching Elastest](/try-elastest), there will be a "Hello world" sample project available on the dashboard so users can quickly run their first test. To do so:
+After [launching Elastest](/try-elastest), there will be a "Unit Tests" sample project available on the dashboard (among others) so users can quickly run their first test. To do so:
 
 <h4 class="holder-subtitle link-top">1. Access your ElasTest dashboard</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/images/dashboard.png"><img class="img-responsive img-wellcome" src="/docs/images/dashboard.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/dashboard.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/dashboard.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">2. Get into "Hello world" project</h4>
+<h4 class="holder-subtitle link-top">2. Get into "Unit Tests" project</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/images/project_selection.png"><img class="img-responsive img-wellcome" src="/docs/images/project_selection.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/project_selection.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/project_selection.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">3. Run the only TJob available for the project</h4>
+<h4 class="holder-subtitle link-top">3. Run the 'JUnit5 Unit Test' TJob</h4>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/images/run_tjob.png"><img class="img-responsive img-wellcome" src="/docs/images/run_tjob.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/run_tjob.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/run_tjob.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">4. Execution screen is open automatically</h4>
 
-<p>Our TJob will start running: you will see CPU metric on the chart and the Test log. Eventually the test should end succesfully.</p>
+<p>Our TJob will start running: you will see the test information and log.</p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/images/execution_finished.png"><img class="img-responsive img-wellcome" src="/docs/images/execution_finished.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/execution_running.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/execution_running.png"/></a>
+</div>
+
+<p>Once the test is finished you will see the test results and log. Eventually the test should end succesfully.</p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/images/your-first-test/execution_finished.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/execution_finished.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>

@@ -33,7 +33,7 @@ Press Ctrl+C to stop.
 
 You can then open in your web browser the shown URL to access to ElasTest dashboard.
 
-To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.
+To stop ElasTest, press **`Ctrl+C`** in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with [Unit Tests](your-first-test) project.
 
 <h5 class="small-subtitle">Options</h5>
 
@@ -113,7 +113,7 @@ Press Ctrl+C to stop.
 
 You can then open in your web browser the shown URL to access to ElasTest dashboard.
 
-To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.
+To stop ElasTest, press **`Ctrl+C`** in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with [Unit Tests](your-first-test) project.
 
 <h5 class="small-subtitle">Options</h5>
 
@@ -210,7 +210,9 @@ Press Ctrl+C to stop.
 
 You can then open in your web browser the shown URL to access to ElasTest dashboard.
 
-To stop ElasTest, press `Ctrl+C` in the shell used to start it. You can now try the [Hello world](your-first-test) project available by default when launching ElasTest. ElasTest also includes other more advanced learning projects.
+To stop ElasTest, press **`Ctrl+C`** in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with [Unit Tests](your-first-test) project.
+
+
 
 <h5 class="small-subtitle">Options</h5>
 
