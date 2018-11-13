@@ -5,7 +5,7 @@
 </div>
 
 <!-- FOR LINUX -->
-<h4 class="holder-subtitle link-top">For Linux</h4>
+<h4 class="holder-subtitle link-top" id="forLinux">For Linux</h4>
 
 ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank">Ubuntu</a>.
 
@@ -86,13 +86,13 @@ ElasTest needs some minimun system specifications in order to run smoothly:
 </table>
 
 <!-- FOR MAC -->
-<h4 class="holder-subtitle link-top">For Mac</h4>
+<h4 class="holder-subtitle link-top" id="forMac">For Mac</h4>
 
 ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/docker-for-mac/install/" target="_blank">Mac</a>.
 Once you have docker installed, execute the following command to start ElasTest:
 
 ```text
-docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=localhost
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 ```
 
 Whatever platform you are using, you will see this output when ElasTest is ready:
@@ -170,7 +170,7 @@ ElasTest needs some minimun system specifications in order to run smoothly:
 </table>
 
 <!-- FOR WINDOWS -->
-<h4 class="holder-subtitle link-top">For Windows</h4>
+<h4 class="holder-subtitle link-top" id="forWindows">For Windows</h4>
 
 ElasTest is based on <strong>Docker</strong> technology. To execute ElasTest you need Docker CE installed on your machine following the official instructions for <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Docker for Windows</a> or for <a href="https://docs.docker.com/toolbox/toolbox_install_windows/" target="_blank">Docker Toolbox for Windows</a>.
 
@@ -184,7 +184,7 @@ Once you have docker installed, execute the following command to start ElasTest:
 **_Docker for Windows_**
 
 ```text
-docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=localhost
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start
 ```
 
 **_Docker Toolbox_** (_run it from your Docker Toolbox terminal_)

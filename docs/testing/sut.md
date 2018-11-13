@@ -28,7 +28,7 @@ Your SuT is packaged as a Docker image. You must write the _Commands Container I
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/commands_container.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/commands_container.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/commands_container.png"/></a>
 </div>
 
 Furthermore you can choose between three options into `With Commands Container`:
@@ -38,7 +38,7 @@ You can start a SuT from commands. For example, you can clone and build maven pr
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_in_commands_container.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_in_commands_container.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_in_commands_container.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_in_commands_container.png"/></a>
 </div>
 
 <h6 class="small-subtitle">SuT In New Container</h6>
@@ -48,7 +48,7 @@ It's necessary sets on `docker run` command the `--name` parameter with the `$ET
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_in_new_container.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_in_new_container.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_in_new_container.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_in_new_container.png"/></a>
 </div>
 
 <h6 class="small-subtitle">SuT In Docker Compose</h6>
@@ -58,7 +58,7 @@ It's necessary sets on `docker-compose up` command the `-p` parameter with the `
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_in_docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_in_docker_compose.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_in_docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_in_docker_compose.png"/></a>
 </div>
 
 <h5 class="small-subtitle">With Docker image</h5>
@@ -73,7 +73,7 @@ Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_image.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/docker_image.png"/></a>
 </div>
 
 <h5 class="small-subtitle">With docker-compose</h5>
@@ -89,7 +89,7 @@ Your SuT is declared as a docker-compose. ElasTest will pull all the necessary i
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/docker_compose.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/docker_compose.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">SuT outside ElasTest</h4>
@@ -109,7 +109,7 @@ Your SuT is already deployed on an external server and you don't want to send an
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_outside_no_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_outside_no_instrumentation.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_outside_no_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_outside_no_instrumentation.png"/></a>
 </div>
 
 <h5 class="small-subtitle">Manual instrumentation</h5>
@@ -127,7 +127,7 @@ Your SuT is already deployed on an external server and you want to manually send
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_outside_manual_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_outside_manual_instrumentation.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_outside_manual_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_outside_manual_instrumentation.png"/></a>
 </div>
 
 After filling SuT name and description fields, click on _Save and get monitoring details_ button to get all the necessary fields to manually instrument your server following [these instructions]().
@@ -152,7 +152,7 @@ Your SuT is already deployed on an external server and you want to automatically
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_outside_eim.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_outside_eim.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_outside_eim.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_outside_eim.png"/></a>
 </div>
 
 <h5 id="outsideExternalES" class="small-subtitle">Use external Elasticsearch</h5>
@@ -176,7 +176,7 @@ Your SuT is already deployed on an external server and you store your monitoring
 
 <p></p>
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/testing/images/sut_outside_external_elasticsearch.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut_outside_external_elasticsearch.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_outside_external_elasticsearch.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_outside_external_elasticsearch.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>

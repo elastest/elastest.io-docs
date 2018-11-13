@@ -8,10 +8,9 @@ pages:
 
 - ['testing/unit.md','Testing with ElasTest', 'Run unit tests']
 - ['testing/e2e-rest.md','Testing with ElasTest', 'Run end2end tests']
+- ['testing/sut.md','Testing with ElasTest', 'Software under Test']
 - ['testing/parameterized-tests.md','Testing with ElasTest', 'Parameterized tests']
 - ['testing/multi-configuration-tjobs.md','Testing with ElasTest', 'Multi-Configuration TJobs']
-- ['testing/environment-variables.md','Testing with ElasTest', 'Environment variables']
-- ['testing/sut.md','Testing with ElasTest', 'Software under Test']
 
 - ['web-browsers/manual-browsers.md','Web Browsers', 'Launching Web Browsers on ElasTest']
 - ['web-browsers/e2e-browser.md','Web Browsers', 'Run en2end tests with Web Browsers']
@@ -31,6 +30,8 @@ pages:
 
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
+
+- ['testing/environment-variables.md', 'Environment variables']
 - ['releases/index.md', 'Releases']
 
 - ['experimental/index.md', 'Experimental']

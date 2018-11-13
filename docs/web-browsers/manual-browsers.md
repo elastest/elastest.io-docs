@@ -30,26 +30,26 @@ To launch a browser from ElasTest dashboard (<i>Web Browsers</i> page), select t
 </p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/launch_chrome.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/launch_chrome.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/launch_chrome.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/launch_chrome.png"/></a>
 </div>
 
 Now the selected browser will be launched (it will take some time only for the first time you run a non-latest version, as it needs to be downloaded).
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-2" href="/docs/web-browsers/images/loading.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/loading.png"/></a>
-    <a data-fancybox="gallery-2" href="/docs/web-browsers/images/loaded.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/loaded.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/loading.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/loading.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/loaded.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/loaded.png"/></a>
 </div>
 
 You can see the browser as any end user would on their own computer, and also interact directly with it: resize it, navigate to any URL ...
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/web-browsers/images/wikipedia.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/elastest.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/elastest.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/elastest.png"/></a>
 </div>
 
 Finally, whenever you close the browser (bottom-left "Close" button), after a few seconds (depending on how long the live session lasts) you will have available on "Recordings" card an _.mp4_ file ready to be downloaded with your recorded browser session.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/web-browsers/images/recordings.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/recordings.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/web-browsers/images/manual/recordings.png"><img class="img-responsive img-wellcome" src="/docs/web-browsers/images/manual/recordings.png"/></a>
 </div>
 
 <script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
