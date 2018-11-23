@@ -11,40 +11,24 @@ If you want to use a web browser in your test, you can “install” a web brows
 One of the main features provided by ElasTest is allowing tests to use web browsers. That browsers will be fully monitored, showing its windows in real time in ElasTest web interface and also recording it to later inspection. Also, the browser console will be shown alongside test and SuT logs.
 
 Let's see how to launch a TJob that makes use of a web browser inside Elastest.
-Here we will run our [JUnit5 Multi Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-multiple-browsers-test) provided by default in ElasTest, which makes use of a Spring Boot Application as a SuT hat has two input fields (title and body) and a button to add them as a table row. Also has three test that are responsible for add rows to that Sut and verify that the added row has the expected content.
+Here we will run our [JUnit5 Multi Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-multiple-browsers-test) provided by default in ElasTest, which makes use of a Spring Boot Application as a SuT that has two input fields (title and body) and a button to add them as a table row. Also has three test that are responsible for add rows to that Sut and verify that the added row has the expected content.
 This test has been developed in Java using [JUnit5](https://junit.org/junit5/):
 
 <div class="row">
 <h5 class="small-subtitle">WebAppTest class</h5>
 <pre>
 <code class="java">
-// Uses a browser for each test
 public class WebAppTest extends ElastestBaseTest {
-
-    public void addRow(String testName, String newTitle, String newBody)
-            throws InterruptedException {
-        driver.findElement(By.id("title-input")).sendKeys(newTitle);
-        driver.findElement(By.id("body-input")).sendKeys(newBody);
-
-        Thread.sleep(2000);
-
-        logger.info("Adding Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Submit ("
-                + testName + ")");
-        driver.findElement(By.id("submit")).click();
-    }
 
     @Test
     public void addMsgAndClear(TestInfo info)
             throws InterruptedException, MalformedURLException {
-        String testName = info.getTestMethod().get().getName();
-
         Thread.sleep(2000);
 
         String newTitle = "MessageTitle";
         String newBody = "MessageBody";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -61,26 +45,25 @@ public class WebAppTest extends ElastestBaseTest {
         int titleExist = driver.findElements(By.id("title")).size();
         int bodyExist = driver.findElements(By.id("body")).size();
 
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
-
-        assertNotEquals(0, titleExist);
-        assertNotEquals(0, bodyExist);
-
-        Thread.sleep(2000);
+        try {
+            assertNotEquals(0, titleExist);
+            assertNotEquals(0, bodyExist);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     @Test
     public void findTitleAndBody(TestInfo info)
             throws InterruptedException, MalformedURLException {
-        String testName = info.getTestMethod().get().getName();
 
         Thread.sleep(2000);
 
         String newTitle = "MessageTitle";
         String newBody = "MessageBody";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -88,26 +71,26 @@ public class WebAppTest extends ElastestBaseTest {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
 
-        assertEquals(newTitle, title);
-        assertEquals(newBody, body);
-
-        Thread.sleep(2000);
+        try {
+            assertEquals(newTitle, title);
+            assertEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     @Test
     public void checkTitleAndBodyNoEmpty(TestInfo info)
             throws InterruptedException, MalformedURLException {
-        String testName = info.getTestMethod().get().getName();
 
         Thread.sleep(2000);
 
         String newTitle = "";
         String newBody = "";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -115,123 +98,47 @@ public class WebAppTest extends ElastestBaseTest {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
 
-        assertNotEquals(newTitle, title);
-        assertNotEquals(newBody, body);
+        try {
+            assertNotEquals(newTitle, title);
+            assertNotEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+
+    }
+
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
 
         Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
     }
 
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
+    }
 }
 </code>
 </pre>
 </div>
+
+>-  In the code **`Thread.sleep()`** is used for a better visualization of the video that ElasTest records from the test, but it is not necessary to use it.
+>-  The **`checkTitleAndBodyNoEmpty`** test simulates a test that fails.   
 
 <p>In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs and start/stop browsers at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.</p>
-<div class="row">
-<h5 class="small-subtitle">ElastestBaseTest class</h5>
-<pre>
-<code class="java">
-public class ElastestBaseTest {
-    protected static final Logger logger = LoggerFactory.getLogger(ElastestBaseTest.class);
-    
-    protected static final String CHROME = "chrome";
-    protected static final String FIREFOX = "firefox";
-    
-    protected static final String etMonitorMarkPrefix = "##elastest-monitor-mark:";
-    
-    protected static String browserType;
-    protected static String browserVersion;
-    
-    protected static String eusURL;
-    protected static String sutUrl;
-    protected static WebDriver driver;
-    
-    @BeforeAll
-    public static void setupClass() {
-        browserType = System.getProperty("browser");
-        logger.info("Browser Type: {}", browserType);
-
-        eusURL = System.getenv("ET_EUS_API");
-        if (eusURL == null) {
-            if (browserType == null || browserType.equals(CHROME)) {
-                WebDriverManager.chromedriver().setup();
-            } else {
-                WebDriverManager.firefoxdriver().setup();
-            }
-        }
-
-        String sutHost = System.getenv("ET_SUT_HOST");
-        if (sutHost == null) {
-            sutUrl = "http://localhost:8080/";
-        } else {
-            sutUrl = "http://" + sutHost + ":8080/";
-        }
-        System.out.println("Webapp URL: " + sutUrl);
-    }
-
-    @BeforeEach
-    public void setupTest(TestInfo info) throws MalformedURLException {
-        String testName = info.getTestMethod().get().getName();
-        logger.info("##### Start test: {}", testName);
-
-        browserVersion = System.getProperty("browserVersion");
-
-        if (eusURL == null) {
-            if (browserType == null || browserType.equals(CHROME)) {
-                driver = new ChromeDriver();
-            } else {
-                driver = new FirefoxDriver();
-            }
-        } else {
-            DesiredCapabilities caps;
-            if (browserType == null || browserType.equals(CHROME)) {
-                caps = DesiredCapabilities.chrome();
-            } else {
-                caps = DesiredCapabilities.firefox();
-            }
-
-            if (browserVersion != null) {
-                logger.info("Browser Version: {}", browserVersion);
-                caps.setVersion(browserVersion);
-            }
-
-            caps.setCapability("testName", testName);
-
-            logger.info(etMonitorMarkPrefix
-                    + " id=action, value=Start Browser Session for "
-                    + testName);
-            driver = new RemoteWebDriver(new URL(eusURL), caps);
-        }
-
-        driver.get(sutUrl);
-    }
-
-    @AfterEach
-    public void teardown(TestInfo info) {
-        String testName = info.getTestMethod().get().getName();
-
-        if (driver != null) {
-            logger.info("Clearing Messages...");
-            driver.findElement(By.id("clearSubmit")).click();
-
-            logger.info("##### Finish test: {}", testName);
-
-            driver.quit();
-        }
-    }
-
-}
-</code>
-</pre>
-<blockquote><strong><code>ET_SUT_HOST</code></strong> variable will be the IP of our SuT. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)<br><strong><code>ET_EUS_API</code></strong> variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <strong>WebDriver Manager</strong> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)</blockquote>
-</div>
-
-If you prefer, ElasTest also provides the same example but making use of a single browser for all tests, whose name in this case is [JUnit5 Single Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-single-browser-test).
-The WebAppTest class is exactly the same, the change is in the ElastestBaseTest class:
-
 <div class="row">
 <h5 class="small-subtitle">ElastestBaseTest class</h5>
 <pre>
@@ -243,40 +150,46 @@ public class ElastestBaseTest {
     protected static final String CHROME = "chrome";
     protected static final String FIREFOX = "firefox";
 
-    protected static final String etMonitorMarkPrefix = "##elastest-monitor-mark:";
-
     protected static String browserType;
     protected static String browserVersion;
     protected static String eusURL;
     protected static String sutUrl;
 
-    protected static WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeAll
-    public static void setupClass() throws MalformedURLException {
+    public static void setupClass() {
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: " + sutUrl);
 
         browserType = System.getProperty("browser");
         logger.info("Browser Type: {}", browserType);
-
         eusURL = System.getenv("ET_EUS_API");
+        
         if (eusURL == null) {
-
             if (browserType == null || browserType.equals(CHROME)) {
                 WebDriverManager.chromedriver().setup();
             } else {
                 WebDriverManager.firefoxdriver().setup();
             }
         }
+    }
 
-        String sutHost = System.getenv("ET_SUT_HOST");
-        if (sutHost == null) {
-            sutUrl = "http://localhost:8080/";
-        } else {
-            sutUrl = "http://" + sutHost + ":8080/";
-        }
-        System.out.println("Webapp URL: " + sutUrl);
-
-        browserVersion = System.getProperty("browserVersion");
+    @BeforeEach
+    public void setupTest(TestInfo info) throws MalformedURLException {
+        String testName = info.getTestMethod().get().getName();
+        logger.info("##### Start test: {}", testName);
 
         if (eusURL == null) {
             if (browserType == null || browserType.equals(CHROME)) {
@@ -292,26 +205,126 @@ public class ElastestBaseTest {
                 caps = DesiredCapabilities.firefox();
             }
 
+            browserVersion = System.getProperty("browserVersion");
             if (browserVersion != null) {
                 logger.info("Browser Version: {}", browserVersion);
                 caps.setVersion(browserVersion);
             }
+
+            caps.setCapability("testName", testName);
             driver = new RemoteWebDriver(new URL(eusURL), caps);
+        }
+
+        driver.get(sutUrl);
+    }
+
+    @AfterEach
+    public void teardown(TestInfo info) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        String testName = info.getTestMethod().get().getName();
+        logger.info("##### Finish test: {}", testName);
+    }
+
+}
+</code>
+</pre>
+</div>
+
+>-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`**  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+
+>-  **`ET_EUS_API`** variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
+
+>-  The values of the variables **browserType** and **browserVersion** are taken from the **properties** browser and browserVersion respectively, which you can pass in the test run command with **`-Dbrowser=chrome`**.
+
+
+If you prefer, ElasTest also provides the same example but making use of a single browser for all tests, whose name in this case is [JUnit5 Single Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-single-browser-test).
+The WebAppTest class is exactly the same, the change is in the ElastestBaseTest class:
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected static WebDriver driver;
+
+    @BeforeAll
+    public static void setupClass() throws MalformedURLException {
+        // If first time, init
+        if (driver == null) {
+            String sutHost = System.getenv("ET_SUT_HOST");
+            String sutPort = System.getenv("ET_SUT_PORT");
+            String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+            if (sutHost == null) {
+                sutUrl = "http://localhost:8080/";
+            } else {
+                sutPort = sutPort != null ? sutPort : "8080";
+                sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+                sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+            }
+            logger.info("Webapp URL: " + sutUrl);
+
+            browserType = System.getProperty("browser");
+            logger.info("Browser Type: {}", browserType);
+            eusURL = System.getenv("ET_EUS_API");
+
+            if (eusURL == null) {
+                if (browserType == null || browserType.equals(CHROME)) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                } else {
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                }
+            } else {
+                DesiredCapabilities caps;
+                if (browserType == null || browserType.equals(CHROME)) {
+                    caps = DesiredCapabilities.chrome();
+                } else {
+                    caps = DesiredCapabilities.firefox();
+                }
+
+                browserVersion = System.getProperty("browserVersion");
+                if (browserVersion != null) {
+                    logger.info("Browser Version: {}", browserVersion);
+                    caps.setVersion(browserVersion);
+                }
+                driver = new RemoteWebDriver(new URL(eusURL), caps);
+            }
+
+            // driver quit when all tests end
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    logger.info("Shutting down browser...");
+                    driver.quit();
+                }
+            });
         }
     }
 
     @BeforeEach
     public void setupTest(TestInfo info) throws MalformedURLException {
         String testName = info.getTestMethod().get().getName();
-        if (driver instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) driver).executeScript(
-                    "<<##et => {\"command\": \"startTest\", \"args\": {\"testName\": \""
-                            + testName + "\"} }>>");
-        }
+        ((JavascriptExecutor) driver).executeScript(
+            "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \"" + testName + "\"} }'");
 
         logger.info("##### Start test: {}", testName);
-        logger.info(etMonitorMarkPrefix
-                + " id=action, value=Start Browser Session for " + testName);
 
         driver.get(sutUrl);
     }
@@ -319,39 +332,24 @@ public class ElastestBaseTest {
     @AfterEach
     public void teardown(TestInfo info) {
         String testName = info.getTestMethod().get().getName();
-        testName = testName.replaceAll("\\(", "").replaceAll("\\)", "");
-
-        if (driver != null) {
-            logger.info("Clearing Messages...");
-            driver.findElement(By.id("clearSubmit")).click();
-
-            logger.info("##### Finish test: {}", testName);
-        }
-    }
-
-    @AfterAll
-    public static void afterAll() {
-        if (driver != null) {
-            driver.quit();
-        }
+        logger.info("##### Finish test: {}", testName);
     }
 }
 </code>
 </pre>
 </div>
 
-The start/end log traces are still printed in the **@BeforeEach** but the browser starts now inside the **@BeforeAll**. In addition, in order for the browser to know when each test starts, it is necessary to send a script in **@BeforeEach** that will be intercepted by ElasTest:
+The start/end log traces are still printed in the **@BeforeEach** but the browser starts now inside the **@BeforeAll**. Also, for Elastest to know when each test starts, it is possible to send a **`command by invoking a script`** in **@BeforeEach**.
 
-        if (driver instanceof JavascriptExecutor) {
             ((JavascriptExecutor) driver).executeScript(
-                    "<<##et => {\"command\": \"startTest\", \"args\": {\"testName\": \""
-                            + testName + "\"} }>>");
-        }
+                "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \"" + testName + "\"} }'");
 
-The format of the script consists of the prefix **`<<##et => `** so that ElasTest knows that it must intercept it and a JSON object with two keys:
+The content of the script consists of a JSON object inside single quotes *(**'**)* which must contain the following keys:
 
--   **`command`**: the command that ElasTest must execute, in this case the value would be **`startTest`**.
+-   **`elastestCommand`**: the command that ElasTest must execute, in this case the value would be **`startTest`**.
 -   **`args`**: a JSON object with the arguments needed to execute the command. In this case the object will only contain one key-value pair: **`testName`**
+
+The keys must be sorted as stated above, as ElasTest will intercept the script when reading *elastestCommand*.
 
 <!-- ******************* -->
 <!-- ******* RUN ******* -->
@@ -562,31 +560,15 @@ This test has been developed in Java using <a target="_blank" href="https://juni
 // Uses a browser for each test
 public class WebAppTest extends ElastestBaseTest {
 
-    public void addRow(String testName, String newTitle, String newBody)
-            throws InterruptedException {
-        driver.findElement(By.id("title-input")).sendKeys(newTitle);
-        driver.findElement(By.id("body-input")).sendKeys(newBody);
-
-        Thread.sleep(2000);
-
-        logger.info("Adding Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Submit ("
-                + testName + ")");
-        driver.findElement(By.id("submit")).click();
-    }
-
-
     @Test
     public void addMsgAndClear()
             throws InterruptedException, MalformedURLException {
-        String testName = name.getMethodName();
-
         Thread.sleep(2000);
 
         String newTitle = "MessageTitle";
         String newBody = "MessageBody";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -603,26 +585,24 @@ public class WebAppTest extends ElastestBaseTest {
         int titleExist = driver.findElements(By.id("title")).size();
         int bodyExist = driver.findElements(By.id("body")).size();
 
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
-        assertNotEquals(0, titleExist);
-        assertNotEquals(0, bodyExist);
-
-        Thread.sleep(2000);
-
+        try {
+            assertNotEquals(0, titleExist);
+            assertNotEquals(0, bodyExist);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     @Test
     public void findTitleAndBody()
             throws InterruptedException, MalformedURLException {
-        String testName = name.getMethodName();
-
         Thread.sleep(2000);
 
         String newTitle = "MessageTitle";
         String newBody = "MessageBody";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -630,26 +610,25 @@ public class WebAppTest extends ElastestBaseTest {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
-        assertEquals(newTitle, title);
-        assertEquals(newBody, body);
 
-        Thread.sleep(2000);
-
+        try {
+            assertEquals(newTitle, title);
+            assertEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     @Test
     public void checkTitleAndBodyNoEmpty()
             throws InterruptedException, MalformedURLException {
-        String testName = name.getMethodName();
-
         Thread.sleep(2000);
 
         String newTitle = "";
         String newBody = "";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -657,13 +636,36 @@ public class WebAppTest extends ElastestBaseTest {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
-        assertNotEquals(newTitle, title);
-        assertNotEquals(newBody, body);
+
+        try {
+            assertNotEquals(newTitle, title);
+            assertNotEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
 
         Thread.sleep(2000);
 
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
     }
 
 }
@@ -680,43 +682,46 @@ public class ElastestBaseTest {
     @Rule
     public TestName name = new TestName();
 
-    protected static final Logger logger = LoggerFactory.getLogger(ElastestBaseTest.class);
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
 
     protected static final String CHROME = "chrome";
     protected static final String FIREFOX = "firefox";
-
-    protected static final String etMonitorMarkPrefix = "##elastest-monitor-mark:";
 
     protected static String browserType;
     protected static String browserVersion;
     protected static String eusURL;
     protected static String sutUrl;
 
-    protected static WebDriver driver;
+    protected WebDriver driver;
 
     @BeforeClass
     public static void setupClass() {
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: " + sutUrl);
 
         browserType = System.getProperty("browser");
         logger.info("Browser Type: {}", browserType);
-
         eusURL = System.getenv("ET_EUS_API");
-        if (eusURL == null) {
 
+        if (eusURL == null) {
             if (browserType == null || browserType.equals(CHROME)) {
                 WebDriverManager.chromedriver().setup();
             } else {
                 WebDriverManager.firefoxdriver().setup();
             }
         }
-
-        String sutHost = System.getenv("ET_SUT_HOST");
-        if (sutHost == null) {
-            sutUrl = "http://localhost:8080/";
-        } else {
-            sutUrl = "http://" + sutHost + ":8080/";
-        }
-        System.out.println("Webapp URL: " + sutUrl);
     }
 
     @Before
@@ -747,9 +752,6 @@ public class ElastestBaseTest {
 
             caps.setCapability("testName", testName);
 
-            logger.info(etMonitorMarkPrefix
-                    + " id=action, value=Start Browser Session for "
-                    + testName);
             driver = new RemoteWebDriver(new URL(eusURL), caps);
         }
 
@@ -758,15 +760,12 @@ public class ElastestBaseTest {
 
     @After
     public void afterEach() {
-        String testName = name.getMethodName();
-
         if (driver != null) {
-            logger.info("Clearing Messages...");
-            driver.findElement(By.id("clearSubmit")).click();
-
-            logger.info("##### Finish test: {}", testName);
             driver.quit();
         }
+
+        String testName = name.getMethodName();
+        logger.info("##### Finish test: {}", testName);
     }
 
 }
@@ -808,30 +807,15 @@ This test has been developed in Java using <a target="_blank" href="https://juni
 // Uses a browser for all test
 public class WebAppTest extends ElastestBaseTest {
 
-    public void addRow(String testName, String newTitle, String newBody)
-            throws InterruptedException {
-        driver.findElement(By.id("title-input")).sendKeys(newTitle);
-        driver.findElement(By.id("body-input")).sendKeys(newBody);
-
-        Thread.sleep(2000);
-
-        logger.info("Adding Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Submit ("
-                + testName + ")");
-        driver.findElement(By.id("submit")).click();
-    }
-
     @Test
     public void addMsgAndClear()
             throws InterruptedException, MalformedURLException {
-        String testName = name.getMethodName();
-
         Thread.sleep(2000);
 
         String newTitle = "MessageTitle";
         String newBody = "MessageBody";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -848,26 +832,24 @@ public class WebAppTest extends ElastestBaseTest {
         int titleExist = driver.findElements(By.id("title")).size();
         int bodyExist = driver.findElements(By.id("body")).size();
 
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
-        assertNotEquals(0, titleExist);
-        assertNotEquals(0, bodyExist);
-
-        Thread.sleep(2000);
-
+        try {
+            assertNotEquals(0, titleExist);
+            assertNotEquals(0, bodyExist);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     @Test
     public void findTitleAndBody()
             throws InterruptedException, MalformedURLException {
-        String testName = name.getMethodName();
-
         Thread.sleep(2000);
 
         String newTitle = "MessageTitle";
         String newBody = "MessageBody";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -875,26 +857,26 @@ public class WebAppTest extends ElastestBaseTest {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
-        assertEquals(newTitle, title);
-        assertEquals(newBody, body);
 
-        Thread.sleep(2000);
+        try {
+            assertEquals(newTitle, title);
+            assertEquals(newBody, body);
 
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     @Test
     public void checkTitleAndBodyNoEmpty()
             throws InterruptedException, MalformedURLException {
-        String testName = name.getMethodName();
-
         Thread.sleep(2000);
 
         String newTitle = "";
         String newBody = "";
 
-        this.addRow(testName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
 
@@ -902,12 +884,36 @@ public class WebAppTest extends ElastestBaseTest {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + testName + ")");
-        assertNotEquals(newTitle, title);
-        assertNotEquals(newBody, body);
+
+        try {
+            assertNotEquals(newTitle, title);
+            assertNotEquals(newBody, body);
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
+
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
 
         Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
+        Thread.sleep(1000);
     }
 }
 </code>
@@ -929,8 +935,6 @@ public class ElastestBaseTest {
     protected static final String CHROME = "chrome";
     protected static final String FIREFOX = "firefox";
 
-    protected static final String etMonitorMarkPrefix = "##elastest-monitor-mark:";
-
     protected static String browserType;
     protected static String browserVersion;
     protected static String eusURL;
@@ -940,65 +944,69 @@ public class ElastestBaseTest {
 
     @BeforeClass
     public static void setupClass() throws MalformedURLException {
+        // If first time, init
+        if (driver == null) {
+            String sutHost = System.getenv("ET_SUT_HOST");
+            String sutPort = System.getenv("ET_SUT_PORT");
+            String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
 
-        browserType = System.getProperty("browser");
-        logger.info("Browser Type: {}", browserType);
-
-        eusURL = System.getenv("ET_EUS_API");
-        if (eusURL == null) {
-
-            if (browserType == null || browserType.equals(CHROME)) {
-                WebDriverManager.chromedriver().setup();
+            if (sutHost == null) {
+                sutUrl = "http://localhost:8080/";
             } else {
-                WebDriverManager.firefoxdriver().setup();
+                sutPort = sutPort != null ? sutPort : "8080";
+                sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+                sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+            }
+            logger.info("Webapp URL: " + sutUrl);
+
+            browserType = System.getProperty("browser");
+            logger.info("Browser Type: {}", browserType);
+            eusURL = System.getenv("ET_EUS_API");
+
+            if (eusURL == null) {
+                if (browserType == null || browserType.equals(CHROME)) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                } else {
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                }
+            } else {
+                DesiredCapabilities caps;
+                if (browserType == null || browserType.equals(CHROME)) {
+                    caps = DesiredCapabilities.chrome();
+                } else {
+                    caps = DesiredCapabilities.firefox();
+                }
+
+                browserVersion = System.getProperty("browserVersion");
+                if (browserVersion != null) {
+                    logger.info("Browser Version: {}", browserVersion);
+                    caps.setVersion(browserVersion);
+                }
+                driver = new RemoteWebDriver(new URL(eusURL), caps);
             }
         }
 
-        String sutHost = System.getenv("ET_SUT_HOST");
-        if (sutHost == null) {
-            sutUrl = "http://localhost:8080/";
-        } else {
-            sutUrl = "http://" + sutHost + ":8080/";
-        }
-        System.out.println("Webapp URL: " + sutUrl);
-
-        browserVersion = System.getProperty("browserVersion");
-
-        if (eusURL == null) {
-            if (browserType == null || browserType.equals(CHROME)) {
-                driver = new ChromeDriver();
-            } else {
-                driver = new FirefoxDriver();
+        // driver quit when all tests end
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            public void run() {
+                logger.info("Shutting down browser...");
+                driver.quit();
             }
-        } else {
-            DesiredCapabilities caps;
-            if (browserType == null || browserType.equals(CHROME)) {
-                caps = DesiredCapabilities.chrome();
-            } else {
-                caps = DesiredCapabilities.firefox();
-            }
-
-            if (browserVersion != null) {
-                logger.info("Browser Version: {}", browserVersion);
-                caps.setVersion(browserVersion);
-            }
-            driver = new RemoteWebDriver(new URL(eusURL), caps);
-        }
+        });
     }
 
     @Before
     public void beforeEach() throws MalformedURLException {
         String testName = name.getMethodName();
 
-        if (driver instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) driver).executeScript(
-                    "<<##et => {\"command\": \"startTest\", \"args\": {\"testName\": \""
-                            + testName + "\"} }>>");
-        }
+        ((JavascriptExecutor) driver).executeScript(
+                "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \""
+                        + testName + "\"} }'");
 
         logger.info("##### Start test: {}", testName);
-        logger.info(etMonitorMarkPrefix
-                + " id=action, value=Start Browser Session for " + testName);
 
         driver.get(sutUrl);
     }
@@ -1006,20 +1014,7 @@ public class ElastestBaseTest {
     @After
     public void afterEach() {
         String testName = name.getMethodName();
-
-        if (driver != null) {
-            logger.info("Clearing Messages...");
-            driver.findElement(By.id("clearSubmit")).click();
-
-            logger.info("##### Finish test: {}", testName);
-        }
-    }
-
-    @AfterClass
-    public static void afterAll() {
-        if (driver != null) {
-            driver.quit();
-        }
+        logger.info("##### Finish test: {}", testName);
     }
 }
 </code>
@@ -1076,23 +1071,6 @@ import xmlrunner
 import ElasTestBase
 
 
-def getElementById(driver, id, timeout=10):
-    wait = WebDriverWait(driver, timeout)
-    return wait.until(EC.presence_of_element_located((By.ID, id)))
-
-
-def addRow(driver, title, body):
-    getElementById(driver, 'title-input').send_keys(title)
-    getElementById(driver, 'body-input').send_keys(body)
-    print 'Adding Message...'
-    getElementById(driver, 'submit').click()
-
-
-def clearData(driver):
-    print 'Clearing Messages...'
-    getElementById(driver, 'clearSubmit').click()
-
-
 class TestWebApp(ElasTestBase.ElasTestBase):
     def test_check_title_and_body_not_empty(self):
         driver = ElasTestBase.driver
@@ -1112,7 +1090,6 @@ class TestWebApp(ElasTestBase.ElasTestBase):
             sys.exit(1)
         clearData(driver)
 
-
     def test_find_title_and_body(self):
         driver = ElasTestBase.driver
         try:
@@ -1130,6 +1107,24 @@ class TestWebApp(ElasTestBase.ElasTestBase):
             clearData(driver)
             sys.exit(1)
         clearData(driver)
+
+
+def getElementById(driver, id, timeout=10):
+    wait = WebDriverWait(driver, timeout)
+    return wait.until(EC.presence_of_element_located((By.ID, id)))
+
+
+def addRow(driver, title, body):
+    getElementById(driver, 'title-input').send_keys(title)
+    getElementById(driver, 'body-input').send_keys(body)
+    print 'Adding Message...'
+    getElementById(driver, 'submit').click()
+
+
+def clearData(driver):
+    print 'Clearing Messages...'
+    getElementById(driver, 'clearSubmit').click()
+
 
 if __name__ == '__main__':
     file_path = './testresults'
@@ -1237,23 +1232,6 @@ import xmlrunner
 import ElasTestBase
 
 
-def getElementById(driver, id, timeout=10):
-    wait = WebDriverWait(driver, timeout)
-    return wait.until(EC.presence_of_element_located((By.ID, id)))
-
-
-def addRow(driver, title, body):
-    getElementById(driver, 'title-input').send_keys(title)
-    getElementById(driver, 'body-input').send_keys(body)
-    print 'Adding Message...'
-    getElementById(driver, 'submit').click()
-
-
-def clearData(driver):
-    print 'Clearing Messages...'
-    getElementById(driver, 'clearSubmit').click()
-
-
 class TestWebApp(ElasTestBase.ElasTestBase):
     def test_check_title_and_body_not_empty(self):
         driver = ElasTestBase.driver
@@ -1273,7 +1251,6 @@ class TestWebApp(ElasTestBase.ElasTestBase):
             sys.exit(1)
         clearData(driver)
 
-
     def test_find_title_and_body(self):
         driver = ElasTestBase.driver
         try:
@@ -1291,6 +1268,24 @@ class TestWebApp(ElasTestBase.ElasTestBase):
             clearData(driver)
             sys.exit(1)
         clearData(driver)
+
+
+def getElementById(driver, id, timeout=10):
+    wait = WebDriverWait(driver, timeout)
+    return wait.until(EC.presence_of_element_located((By.ID, id)))
+
+
+def addRow(driver, title, body):
+    getElementById(driver, 'title-input').send_keys(title)
+    getElementById(driver, 'body-input').send_keys(body)
+    print 'Adding Message...'
+    getElementById(driver, 'submit').click()
+
+
+def clearData(driver):
+    print 'Clearing Messages...'
+    getElementById(driver, 'clearSubmit').click()
+
 
 if __name__ == '__main__':
     file_path = './testresults'
@@ -1314,8 +1309,10 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
+
 driver = None
 sutUrl = None
+
 
 class ElasTestBase(unittest.TestCase):
 
@@ -1350,7 +1347,7 @@ class ElasTestBase(unittest.TestCase):
         global driver
         global sutUrl
         testName = self._testMethodName
-        etScript = '\'<<##et => {"command": "startTest", "args": {"testName": "' + testName + '"}}>>\''
+        etScript = '\'{"elastestCommand": "startTest", "args": {"testName": "' + testName + '"}}\''
         driver.execute_script(etScript)
         print '##### Start test: ' + testName
 
@@ -1423,84 +1420,20 @@ Scenario: Find title and body
 <pre>
 <code class="java">
 // With a browser for each test
-public class WebAppTestDefinition {
-    private static final Logger logger = LoggerFactory
-            .getLogger(WebAppTestDefinition.class);
-
-    public static final String CHROME = "chrome";
-    public static final String FIREFOX = "firefox";
-
-    private static final String etMonitorMarkPrefix = "##elastest-monitor-mark:";
-
-    private static String browserType;
-    private static String browserVersion;
-    private static String eusURL;
-    private static String sutUrl;
-
-    private WebDriver driver;
-
-    // Test variables
+public class WebAppTestDefinition extends ElastestBaseTest {
     String newTitle;
     String newBody;
-    String currentTestScenarioName;
-
-    public void addRow(String testName, String newTitle, String newBody)
-            throws InterruptedException {
-        driver.findElement(By.id("title-input")).sendKeys(newTitle);
-        driver.findElement(By.id("body-input")).sendKeys(newBody);
-
-        Thread.sleep(2000);
-
-        logger.info("Adding Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Submit ("
-                + testName + ")");
-        driver.findElement(By.id("submit")).click();
-    }
 
     @Before
     public void beforeScenario(Scenario scenario) {
-        currentTestScenarioName = scenario.getName();
-
-        browserType = System.getProperty("browser");
-        logger.info("Browser Type: {}", browserType);
-
-        eusURL = System.getenv("ET_EUS_API");
-        if (eusURL == null) {
-
-            if (browserType == null || browserType.equals(CHROME)) {
-                WebDriverManager.chromedriver().setup();
-            } else {
-                WebDriverManager.firefoxdriver().setup();
-            }
-        }
-
-        String sutHost = System.getenv("ET_SUT_HOST");
-        if (sutHost == null) {
-            sutUrl = "http://localhost:8080/";
-        } else {
-            sutUrl = "http://" + sutHost + ":8080/";
-        }
-        logger.info("Webapp URL: {}", sutUrl);
-        logger.info("##### Start test: {}", currentTestScenarioName);
+        super.beforeScenario(scenario);
     }
 
     @After
     public void afterScenario(Scenario scenario) {
-        currentTestScenarioName = scenario.getName();
-        // testName = testName.replaceAll("\\(", "").replaceAll("\\)", "");
-
-        if (driver != null) {
-            logger.info("Clearing Messages...");
-            driver.findElement(By.id("clearSubmit")).click();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-            logger.info("##### Finish test: {}", currentTestScenarioName);
-            driver.quit();
-        }
+        super.afterScenario(scenario);
     }
-
+    
     /* ************************ */
     /* ******** Common ******** */
     /* ************************ */
@@ -1530,9 +1463,6 @@ public class WebAppTestDefinition {
 
             caps.setCapability("testName", currentTestScenarioName);
 
-            logger.info(etMonitorMarkPrefix
-                    + " id=action, value=Start Browser Session for "
-                    + currentTestScenarioName);
             driver = new RemoteWebDriver(new URL(eusURL), caps);
         }
 
@@ -1550,24 +1480,25 @@ public class WebAppTestDefinition {
         newTitle = "";
         newBody = "";
 
-        this.addRow(currentTestScenarioName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
     }
 
     @Then("^row with empty title and body added$")
     public void row_with_empty_title_and_body_added() throws Throwable {
-
         String title = driver.findElement(By.id("title")).getText();
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + currentTestScenarioName + ")");
-        assertThat(title, not(equalTo(newTitle)));
-        assertThat(body, not(equalTo(newBody)));
 
-        Thread.sleep(2000);
+        try {
+            assertThat(title, not(equalTo(newTitle)));
+            assertThat(body, not(equalTo(newBody)));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     /* *************************************** */
@@ -1581,29 +1512,117 @@ public class WebAppTestDefinition {
         newTitle = "MessageTitle";
         newBody = "MessageBody";
 
-        this.addRow(currentTestScenarioName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
         Thread.sleep(2000);
     }
 
     @Then("^row with the same title and body added$")
     public void row_with_the_same_title_and_body_added() throws Throwable {
-
         String title = driver.findElement(By.id("title")).getText();
         String body = driver.findElement(By.id("body")).getText();
 
         // Added
         logger.info("Checking Message...");
 
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + currentTestScenarioName + ")");
-        assertThat(title, equalTo(newTitle));
-        assertThat(body, equalTo(newBody));
+        try {
+            assertThat(title, equalTo(newTitle));
+            assertThat(body, equalTo(newBody));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
 
+    /* ********************** */
+    /* *** Common methods *** */
+    /* ********************** */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
         Thread.sleep(1000);
     }
 }
 </code>
 
+</pre>
+</div>
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(WebAppTestDefinition.class);
+
+    protected String currentTestScenarioName;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected WebDriver driver;
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+
+
+    public void beforeScenario(Scenario scenario) {
+        currentTestScenarioName = scenario.getName();
+
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: {}", sutUrl);
+
+        browserType = System.getProperty("browser");
+        logger.info("Browser Type: {}", browserType);
+        eusURL = System.getenv("ET_EUS_API");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+        logger.info("##### Start test: {}", currentTestScenarioName);
+    }
+
+    public void afterScenario(Scenario scenario) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        currentTestScenarioName = scenario.getName();
+        logger.info("##### Finish test: {}", currentTestScenarioName);
+    }
+
+}
+</code>
 </pre>
 </div>
 
@@ -1652,13 +1671,11 @@ This test has been developed in Java using <a target="_blank" href="https://docs
 <pre>
 <code class="java">
 Feature: Test WebApp Application 
-@firstScenario
 Scenario: Check that the title and body are not empty 
     Given app url
     When i add an empty title and body
     Then row with empty title and body added
     
-@lastScenario
 Scenario: Find title and body 
     Given app url
     When i add a row with title and body
@@ -1673,127 +1690,25 @@ Scenario: Find title and body
 <pre>
 <code class="java">
 // With a browser for all test
-public class WebAppTestDefinition {
-    private static final Logger logger = LoggerFactory
-            .getLogger(WebAppTestDefinition.class);
-
-    public static final String CHROME = "chrome";
-    public static final String FIREFOX = "firefox";
-
-    private static final String etMonitorMarkPrefix = "##elastest-monitor-mark:";
-
-    private static String browserType;
-    private static String browserVersion;
-    private static String eusURL;
-    private static String sutUrl;
-
-    private static WebDriver driver;
-
-    // Test variables
+public class WebAppTestDefinition extends ElastestBaseTest {
     String newTitle;
     String newBody;
-    String currentTestScenarioName;
 
-    // Hack because @BeforeClass cannot be used
-    @Before("@firstScenario")
+    @Before()
     public void beforeFeature() throws MalformedURLException {
-        browserType = System.getProperty("browser");
-        logger.info("Browser Type: {}", browserType);
-
-        eusURL = System.getenv("ET_EUS_API");
-        if (eusURL == null) {
-
-            if (browserType == null || browserType.equals(CHROME)) {
-                WebDriverManager.chromedriver().setup();
-            } else {
-                WebDriverManager.firefoxdriver().setup();
-            }
-        }
-
-        String sutHost = System.getenv("ET_SUT_HOST");
-        if (sutHost == null) {
-            sutUrl = "http://localhost:8080/";
-        } else {
-            sutUrl = "http://" + sutHost + ":8080/";
-        }
-        logger.info("Webapp URL: {}", sutUrl);
-
-        browserVersion = System.getProperty("browserVersion");
-
-        if (eusURL == null) {
-            if (browserType == null || browserType.equals(CHROME)) {
-                driver = new ChromeDriver();
-            } else {
-                driver = new FirefoxDriver();
-            }
-        } else {
-            DesiredCapabilities caps;
-            if (browserType == null || browserType.equals(CHROME)) {
-                caps = DesiredCapabilities.chrome();
-            } else {
-                caps = DesiredCapabilities.firefox();
-            }
-
-            if (browserVersion != null) {
-                logger.info("Browser Version: {}", browserVersion);
-                caps.setVersion(browserVersion);
-            }
-
-            caps.setCapability("testName", currentTestScenarioName);
-
-            driver = new RemoteWebDriver(new URL(eusURL), caps);
-        }
-
+        super.beforeFeature();
     }
 
     @Before
     public void beforeScenario(Scenario scenario) {
-        currentTestScenarioName = scenario.getName();
-        if (driver instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) driver).executeScript(
-                    "'<<##et => {\"command\": \"startTest\", \"args\": {\"testName\": \""
-                            + currentTestScenarioName + "\"} }>>'");
-        }
-        logger.info("##### Start test: {}", currentTestScenarioName);
+        super.beforeScenario(scenario);
     }
 
     @After
     public void afterScenario(Scenario scenario) {
-        currentTestScenarioName = scenario.getName();
-        // testName = testName.replaceAll("\\(", "").replaceAll("\\)", "");
-
-        if (driver != null) {
-            logger.info("Clearing Messages...");
-            driver.findElement(By.id("clearSubmit")).click();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-            logger.info("##### Finish test: {}", currentTestScenarioName);
-        }
+        super.afterScenario(scenario);
     }
 
-    // Hack because @AfterClass cannot be used
-    @After("@lastScenario")
-    public void afterFeature() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-    public void addRow(String testName, String newTitle, String newBody)
-            throws InterruptedException {
-        driver.findElement(By.id("title-input")).sendKeys(newTitle);
-        driver.findElement(By.id("body-input")).sendKeys(newBody);
-
-        Thread.sleep(2000);
-
-        logger.info("Adding Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Submit ("
-                + testName + ")");
-        driver.findElement(By.id("submit")).click();
-    }
-    
     /* ************************ */
     /* ******** Common ******** */
     /* ************************ */
@@ -1826,12 +1741,14 @@ public class WebAppTestDefinition {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + currentTestScenarioName + ")");
-        assertThat(title, not(equalTo(newTitle)));
-        assertThat(body, not(equalTo(newBody)));
 
-        Thread.sleep(2000);
+        try {
+            assertThat(title, not(equalTo(newTitle)));
+            assertThat(body, not(equalTo(newBody)));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     /* *************************************** */
@@ -1858,16 +1775,136 @@ public class WebAppTestDefinition {
         // Added
         logger.info("Checking Message...");
 
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + currentTestScenarioName + ")");
-        assertThat(title, equalTo(newTitle));
-        assertThat(body, equalTo(newBody));
+        try {
+            assertThat(title, equalTo(newTitle));
+            assertThat(body, equalTo(newBody));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
 
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String testName, String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
         Thread.sleep(1000);
     }
+
 }
 </code>
 
+</pre>
+</div>
+
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(WebAppTestDefinition.class);
+    protected String currentTestScenarioName;
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected static WebDriver driver;
+
+    public void beforeFeature() throws MalformedURLException {
+        // If first time, init
+        if (driver == null) {
+            String sutHost = System.getenv("ET_SUT_HOST");
+            String sutPort = System.getenv("ET_SUT_PORT");
+            String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+            if (sutHost == null) {
+                sutUrl = "http://localhost:8080/";
+            } else {
+                sutPort = sutPort != null ? sutPort : "8080";
+                sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+                sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+            }
+            logger.info("Webapp URL: {}", sutUrl);
+
+            browserType = System.getProperty("browser");
+            logger.info("Browser Type: {}", browserType);
+            eusURL = System.getenv("ET_EUS_API");
+
+            if (eusURL == null) {
+                if (browserType == null || browserType.equals(CHROME)) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                } else {
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                }
+            } else {
+                DesiredCapabilities caps;
+                if (browserType == null || browserType.equals(CHROME)) {
+                    caps = DesiredCapabilities.chrome();
+                } else {
+                    caps = DesiredCapabilities.firefox();
+                }
+
+                browserVersion = System.getProperty("browserVersion");
+                if (browserVersion != null) {
+                    logger.info("Browser Version: {}", browserVersion);
+                    caps.setVersion(browserVersion);
+                }
+
+                caps.setCapability("testName", currentTestScenarioName);
+
+                driver = new RemoteWebDriver(new URL(eusURL), caps);
+            }
+            
+            // driver quit when all tests end
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    logger.info("Shutting down browser...");
+                    driver.quit();
+                }
+            });
+        }
+    }
+
+    public void beforeScenario(Scenario scenario) {
+        currentTestScenarioName = scenario.getName();
+        ((JavascriptExecutor) driver).executeScript(
+                "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \""
+                        + currentTestScenarioName + "\"} }'");
+
+        logger.info("##### Start test: {}", currentTestScenarioName);
+    }
+
+    public void afterScenario(Scenario scenario) {
+        currentTestScenarioName = scenario.getName();
+        logger.info("##### Finish test: {}", currentTestScenarioName);
+    }
+}
+</code>
 </pre>
 </div>
 
@@ -1925,7 +1962,6 @@ This test has been developed in Java using <a target="_blank" href="https://www.
 <h5 class="small-subtitle">webapp-test.spec</h5>
 <pre>
 <code class="java">
-Tags: multiple
 Test WebApp Application
 ======================= 
 Test an application
@@ -1951,87 +1987,23 @@ Find title and body
 <h5 class="small-subtitle">MultipleWebAppTests class</h5>
 <pre>
 <code class="java">
-public class WebAppTest {
-    private static final Logger logger = LoggerFactory
-            .getLogger(WebAppTest.class);
-
-    public static final String CHROME = "chrome";
-    public static final String FIREFOX = "firefox";
-
-    private static final String etMonitorMarkPrefix = "##elastest-monitor-mark:";
-
-    private static String browserType;
-    private static String browserVersion;
-    private static String eusURL;
-    private static String sutUrl;
-
-    private WebDriver driver;
-
-    // Test variables
+public class WebAppTest extends ElastestBaseTest {
     String newTitle;
     String newBody;
-    String currentTestScenarioName;
 
-    public void addRow(String testName, String newTitle, String newBody)
-            throws InterruptedException {
-        driver.findElement(By.id("title-input")).sendKeys(newTitle);
-        driver.findElement(By.id("body-input")).sendKeys(newBody);
-
-        Thread.sleep(2000);
-
-        logger.info("Adding Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Submit ("
-                + testName + ")");
-        driver.findElement(By.id("submit")).click();
-    }
-
-    @BeforeScenario(tags = {"multiple"})
+    @BeforeScenario()
     public void beforeScenario(ExecutionContext context) {
-        currentTestScenarioName = context.getCurrentScenario().getName();
-
-        browserType = System.getProperty("browser");
-        logger.info("Browser Type: {}", browserType);
-
-        eusURL = System.getenv("ET_EUS_API");
-        if (eusURL == null) {
-
-            if (browserType == null || browserType.equals(CHROME)) {
-                WebDriverManager.chromedriver().setup();
-            } else {
-                WebDriverManager.firefoxdriver().setup();
-            }
-        }
-
-        String sutHost = System.getenv("ET_SUT_HOST");
-        if (sutHost == null) {
-            sutUrl = "http://localhost:8080/";
-        } else {
-            sutUrl = "http://" + sutHost + ":8080/";
-        }
-        logger.info("Webapp URL: {}", sutUrl);
-        logger.info("##### Start test: {}", currentTestScenarioName);
+        super.beforeScenario(context);
     }
 
-    @AfterScenario(tags = {"multiple"})
+    @AfterScenario()
     public void afterScenario(ExecutionContext context) {
-        currentTestScenarioName = context.getCurrentScenario().getName();
-
-        if (driver != null) {
-            logger.info("Clearing Messages...");
-            driver.findElement(By.id("clearSubmit")).click();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-            logger.info("##### Finish test: {}", currentTestScenarioName);
-            driver.quit();
-        }
+        super.afterScenario(context);
     }
 
     /* ************************ */
     /* ******** Common ******** */
     /* ************************ */
-
     @Step("Navigate to app url")
     public void navigateToAppUrl() throws MalformedURLException {
         browserVersion = System.getProperty("browserVersion");
@@ -2057,9 +2029,6 @@ public class WebAppTest {
 
             caps.setCapability("testName", currentTestScenarioName);
 
-            logger.info(etMonitorMarkPrefix
-                    + " id=action, value=Start Browser Session for "
-                    + currentTestScenarioName);
             driver = new RemoteWebDriver(new URL(eusURL), caps);
         }
 
@@ -2077,7 +2046,7 @@ public class WebAppTest {
         newTitle = "";
         newBody = "";
 
-        this.addRow(currentTestScenarioName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
     }
@@ -2090,12 +2059,14 @@ public class WebAppTest {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + currentTestScenarioName + ")");
-        assertThat(title, not(equalTo(newTitle)));
-        assertThat(body, not(equalTo(newBody)));
 
-        Thread.sleep(2000);
+        try {
+            assertThat(title, not(equalTo(newTitle)));
+            assertThat(body, not(equalTo(newBody)));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     /* *************************************** */
@@ -2109,7 +2080,7 @@ public class WebAppTest {
         newTitle = "MessageTitle";
         newBody = "MessageBody";
 
-        this.addRow(currentTestScenarioName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
         Thread.sleep(2000);
     }
 
@@ -2123,17 +2094,107 @@ public class WebAppTest {
         // Added
         logger.info("Checking Message...");
 
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + currentTestScenarioName + ")");
-        assertThat(title, equalTo(newTitle));
-        assertThat(body, equalTo(newBody));
+        try {
+            assertThat(title, equalTo(newTitle));
+            assertThat(body, equalTo(newBody));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
 
+    /* ********************** */
+    /* *** Common methods *** */
+    /* ********************** */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
         Thread.sleep(1000);
     }
 }
 </code>
 </pre>
 </div>
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(WebAppTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected WebDriver driver;
+    protected String currentTestScenarioName;
+    
+    
+    public void beforeScenario(ExecutionContext context) {
+        currentTestScenarioName = context.getCurrentScenario().getName();
+
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: {}", sutUrl);
+
+        browserType = System.getProperty("browser");
+        logger.info("Browser Type: {}", browserType);
+        eusURL = System.getenv("ET_EUS_API");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+
+        logger.info("##### Start test: {}", currentTestScenarioName);
+    }
+
+    public void afterScenario(ExecutionContext context) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        currentTestScenarioName = context.getCurrentScenario().getName();
+        logger.info("##### Finish test: {}", currentTestScenarioName);
+    }
+}
+</code>
+
+</pre>
+</div>
+
 <h5 class="small-subtitle">TJob Configuration</h5>
 
 <ul>
@@ -2158,11 +2219,11 @@ public class WebAppTest {
 <p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/gauge-web-single-browser-test">Source Code in GitHub</a>.
 This test has been developed in Java using <a target="_blank" href="https://www.gauge.org/">Gauge</a>.
 </p>
+
 <div class="row">
 <h5 class="small-subtitle">webapp-test.spec</h5>
 <pre>
 <code class="java">
-Tags: unique
 Test WebApp Application
 ======================= 
 Test an application
@@ -2180,7 +2241,6 @@ Find title and body
     * Add a row with title and body
     * Check that row with the same title and body has been added
 </code>
-
 </pre>
 </div>
 
@@ -2188,124 +2248,23 @@ Find title and body
 <h5 class="small-subtitle">WebAppTest class</h5>
 <pre>
 <code class="java">
-public class WebAppTest {
-    private static final Logger logger = LoggerFactory
-            .getLogger(WebAppTest.class);
-
-    public static final String CHROME = "chrome";
-    public static final String FIREFOX = "firefox";
-
-    private static final String etMonitorMarkPrefix = "##elastest-monitor-mark:";
-
-    private static String browserType;
-    private static String browserVersion;
-    private static String eusURL;
-    private static String sutUrl;
-
-    private static WebDriver driver;
-
-    // Test variables
+public class WebAppTest extends ElastestBaseTest {
     String newTitle;
     String newBody;
-    String currentTestScenarioName;
 
-    // Hack because @BeforeClass cannot be used
-    @BeforeSpec(tags = {"unique"})
+    @BeforeSpec()
     public void beforeFeature() throws MalformedURLException {
-        browserType = System.getProperty("browser");
-        logger.info("Browser Type: {}", browserType);
-
-        eusURL = System.getenv("ET_EUS_API");
-        if (eusURL == null) {
-
-            if (browserType == null || browserType.equals(CHROME)) {
-                WebDriverManager.chromedriver().setup();
-            } else {
-                WebDriverManager.firefoxdriver().setup();
-            }
-        }
-
-        String sutHost = System.getenv("ET_SUT_HOST");
-        if (sutHost == null) {
-            sutUrl = "http://localhost:8080/";
-        } else {
-            sutUrl = "http://" + sutHost + ":8080/";
-        }
-        logger.info("Webapp URL: {}", sutUrl);
-
-        browserVersion = System.getProperty("browserVersion");
-
-        if (eusURL == null) {
-            if (browserType == null || browserType.equals(CHROME)) {
-                driver = new ChromeDriver();
-            } else {
-                driver = new FirefoxDriver();
-            }
-        } else {
-            DesiredCapabilities caps;
-            if (browserType == null || browserType.equals(CHROME)) {
-                caps = DesiredCapabilities.chrome();
-            } else {
-                caps = DesiredCapabilities.firefox();
-            }
-
-            if (browserVersion != null) {
-                logger.info("Browser Version: {}", browserVersion);
-                caps.setVersion(browserVersion);
-            }
-
-            caps.setCapability("testName", currentTestScenarioName);
-
-            driver = new RemoteWebDriver(new URL(eusURL), caps);
-        }
-
+        super.beforeFeature();
     }
 
-    @BeforeScenario(tags = {"unique"})
+    @BeforeScenario()
     public void beforeScenario(ExecutionContext context) {
-        currentTestScenarioName = context.getCurrentScenario().getName();
-        if (driver instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) driver).executeScript(
-                    "'<<##et => {\"command\": \"startTest\", \"args\": {\"testName\": \""
-                            + currentTestScenarioName + "\"} }>>'");
-        }
-        logger.info("##### Start test: {}", currentTestScenarioName);
+        super.beforeScenario(context);
     }
 
-    @AfterScenario(tags = {"unique"})
+    @AfterScenario()
     public void afterScenario(ExecutionContext context) {
-        currentTestScenarioName = context.getCurrentScenario().getName();
-
-        if (driver != null) {
-            logger.info("Clearing Messages...");
-            driver.findElement(By.id("clearSubmit")).click();
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-            }
-            logger.info("##### Finish test: {}", currentTestScenarioName);
-        }
-    }
-
-    // Hack because @AfterClass cannot be used
-    @AfterSpec(tags = {"unique"})
-    public void afterFeature() {
-        if (driver != null) {
-            driver.quit();
-        }
-    }
-
-    public void addRow(String testName, String newTitle, String newBody)
-            throws InterruptedException {
-        driver.findElement(By.id("title-input")).sendKeys(newTitle);
-        driver.findElement(By.id("body-input")).sendKeys(newBody);
-
-        Thread.sleep(2000);
-
-        logger.info("Adding Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Submit ("
-                + testName + ")");
-        driver.findElement(By.id("submit")).click();
+        super.afterScenario(context);
     }
 
     /* ************************ */
@@ -2328,7 +2287,7 @@ public class WebAppTest {
         newTitle = "";
         newBody = "";
 
-        this.addRow(currentTestScenarioName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
 
         Thread.sleep(2000);
     }
@@ -2341,12 +2300,14 @@ public class WebAppTest {
         String body = driver.findElement(By.id("body")).getText();
 
         logger.info("Checking Message...");
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + currentTestScenarioName + ")");
-        assertThat(title, not(equalTo(newTitle)));
-        assertThat(body, not(equalTo(newBody)));
 
-        Thread.sleep(2000);
+        try {
+            assertThat(title, not(equalTo(newTitle)));
+            assertThat(body, not(equalTo(newBody)));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
     }
 
     /* *************************************** */
@@ -2360,7 +2321,7 @@ public class WebAppTest {
         newTitle = "MessageTitle";
         newBody = "MessageBody";
 
-        this.addRow(currentTestScenarioName, newTitle, newBody);
+        this.addRow(newTitle, newBody);
         Thread.sleep(2000);
     }
 
@@ -2374,17 +2335,137 @@ public class WebAppTest {
         // Added
         logger.info("Checking Message...");
 
-        logger.info(etMonitorMarkPrefix + " id=action, value=Assert ("
-                + currentTestScenarioName + ")");
-        assertThat(title, equalTo(newTitle));
-        assertThat(body, equalTo(newBody));
+        try {
+            assertThat(title, equalTo(newTitle));
+            assertThat(body, equalTo(newBody));
+        } finally {
+            Thread.sleep(2000);
+            clearRows();
+        }
+    }
 
+    /* ********************* */
+    /* *** Other methods *** */
+    /* ********************* */
+
+    public void addRow(String newTitle, String newBody)
+            throws InterruptedException {
+        driver.findElement(By.id("title-input")).sendKeys(newTitle);
+        driver.findElement(By.id("body-input")).sendKeys(newBody);
+
+        Thread.sleep(2000);
+
+        logger.info("Adding Message...");
+
+        driver.findElement(By.id("submit")).click();
+    }
+
+    public void clearRows() throws InterruptedException {
+        logger.info("Clearing Messages...");
+        driver.findElement(By.id("clearSubmit")).click();
         Thread.sleep(1000);
     }
 }
 </code>
 </pre>
 </div>
+
+
+<div class="row">
+<h5 class="small-subtitle">ElastestBaseTest class</h5>
+<pre>
+<code class="java">
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(WebAppTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected static WebDriver driver;
+    String currentTestScenarioName;
+
+    public void beforeFeature() throws MalformedURLException {
+        // If first time, init
+        if (driver == null) {
+            String sutHost = System.getenv("ET_SUT_HOST");
+            String sutPort = System.getenv("ET_SUT_PORT");
+            String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+            if (sutHost == null) {
+                sutUrl = "http://localhost:8080/";
+            } else {
+                sutPort = sutPort != null ? sutPort : "8080";
+                sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+                sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+            }
+            logger.info("Webapp URL: {}", sutUrl);
+
+            browserType = System.getProperty("browser");
+            logger.info("Browser Type: {}", browserType);
+            eusURL = System.getenv("ET_EUS_API");
+
+            if (eusURL == null) {
+                if (browserType == null || browserType.equals(CHROME)) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver();
+                } else {
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
+                }
+            } else {
+                DesiredCapabilities caps;
+                if (browserType == null || browserType.equals(CHROME)) {
+                    caps = DesiredCapabilities.chrome();
+                } else {
+                    caps = DesiredCapabilities.firefox();
+                }
+
+                browserVersion = System.getProperty("browserVersion");
+                if (browserVersion != null) {
+                    logger.info("Browser Version: {}", browserVersion);
+                    caps.setVersion(browserVersion);
+                }
+
+                caps.setCapability("testName", currentTestScenarioName);
+
+                driver = new RemoteWebDriver(new URL(eusURL), caps);
+            }
+
+            // driver quit when all tests end
+            Runtime.getRuntime().addShutdownHook(new Thread() {
+                public void run() {
+                    logger.info("Shutting down browser...");
+                    driver.quit();
+                }
+            });
+        }
+    }
+
+    public void beforeScenario(ExecutionContext context) {
+        currentTestScenarioName = context.getCurrentScenario().getName();
+        ((JavascriptExecutor) driver).executeScript(
+                "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \""
+                        + currentTestScenarioName + "\"} }'");
+
+        logger.info("##### Start test: {}", currentTestScenarioName);
+    }
+
+    public void afterScenario(ExecutionContext context) {
+        currentTestScenarioName = context.getCurrentScenario().getName();
+        logger.info("##### Finish test: {}", currentTestScenarioName);
+    }
+}
+</code>
+</pre>
+</div>
+
 
 <h5 class="small-subtitle">TJob Configuration</h5>
 
@@ -2426,7 +2507,18 @@ This test has been developed in JavaScript using <a target="_blank" href="http:/
 <h5 class="small-subtitle">conf.js</h5>
 <pre>
 <code class="javascript">
-var env = require('./envs.js');
+var envs = {
+    // The address of a running selenium server.
+    seleniumAddress: process.env.ET_EUS_API || 'http://localhost:4444/wd/hub',
+    sutUrl: process.env.ET_SUT_HOST ? 'http://' + process.env.ET_SUT_HOST + ':8080' : 'http://172.18.0.8:8080',
+
+    // Capabilities to be passed to the webdriver instance.
+    capabilities: {
+        browserName: process.env.BROWSER || 'chrome',
+        version: process.env.ET_EUS_API ? (process.env.BROWSER_VERSION ? process.env.BROWSER_VERSION : '') : 'ANY',
+    },
+};
+
 
 class ElasTestBrowserManager {
     
@@ -2460,9 +2552,9 @@ class ElasTestBrowserManager {
         }
         this.firstTime = false;
         browser.waitForAngularEnabled(false);
-        await browser.executeScript('<<##et => {"command": "startTest", "args": {"testName": "' + result.description + '"} }>>');
+        await browser.executeScript('\'{"elastestCommand": "startTest", "args": {"testName": "' + result.description + '"} }\'');
         console.log('##### Start test: ' + result.description);
-        browser.get(env.sutUrl);
+        browser.get(envs.sutUrl);
     }
 
     specDone(result) {
@@ -2475,10 +2567,10 @@ class ElasTestBrowserManager {
 }
 
 exports.config = {
-    seleniumAddress: env.seleniumAddress,
+    seleniumAddress: envs.seleniumAddress,
     specs: ['test-webapp-spec.js'],
-    sutUrl: env.sutUrl,
-    capabilities: env.capabilities,
+    sutUrl: envs.sutUrl,
+    capabilities: envs.capabilities,
     onPrepare: function() {
         var jasmineReporters = require('jasmine-reporters');
         jasmine.getEnv().addReporter(
@@ -2503,7 +2595,6 @@ exports.config = {
 <h5 class="small-subtitle">test-webapp-spec.js</h5>
 <pre>
 <code class="javascript">
-
 describe('Test WebApp Application', function() {
     it('Check that the title and body are not empty', async () => {
         // Add row
@@ -2565,24 +2656,6 @@ function sleep(millis) {
 </pre>
 </div>
 
-<div class="row">
-<h5 class="small-subtitle">envs.js</h5>
-<pre>
-<code class="javascript">
-module.exports = {
-    // The address of a running selenium server.
-    seleniumAddress: process.env.ET_EUS_API || 'http://localhost:4444/wd/hub',
-    sutUrl: process.env.ET_SUT_HOST ? 'http://' + process.env.ET_SUT_HOST + ':8080' : 'http://172.17.0.3:8080',
-
-    // Capabilities to be passed to the webdriver instance.
-    capabilities: {
-        browserName: process.env.BROWSER || 'chrome',
-        version: process.env.ET_EUS_API ? (process.env.BROWSER_VERSION ? process.env.BROWSER_VERSION : '') : 'ANY',
-    },
-};
-</code>
-</pre>
-</div>
 <h5 class="small-subtitle">TJob Configuration</h5>
 
 <ul>
@@ -2613,7 +2686,18 @@ This test has been developed in JavaScript using <a target="_blank" href="http:/
 <h5 class="small-subtitle">conf.js</h5>
 <pre>
 <code class="javascript">
-var env = require('./envs.js');
+var envs = {
+    // The address of a running selenium server.
+    seleniumAddress: process.env.ET_EUS_API || 'http://localhost:4444/wd/hub',
+    sutUrl: process.env.ET_SUT_HOST ? 'http://' + process.env.ET_SUT_HOST + ':8080' : 'http://172.17.0.3:8080',
+
+    // Capabilities to be passed to the webdriver instance.
+    capabilities: {
+        browserName: process.env.BROWSER || 'chrome',
+        version: process.env.ET_EUS_API ? (process.env.BROWSER_VERSION ? process.env.BROWSER_VERSION : '') : 'ANY',
+    },
+};
+
 
 class ElasTestBrowserManager {
     
@@ -2642,9 +2726,9 @@ class ElasTestBrowserManager {
 
     async asyncSpecStarted(result) {
         browser.waitForAngularEnabled(false);
-        await browser.executeScript('<<##et => {"command": "startTest", "args": {"testName": "' + result.description + '"} }>>');
+        await browser.executeScript('\'{"elastestCommand": "startTest", "args": {"testName": "' + result.description + '"} }\'');
         console.log('##### Start test: ' + result.description);
-        browser.get(env.sutUrl);
+        browser.get(envs.sutUrl);
     }
 
     specDone(result) {
@@ -2657,10 +2741,10 @@ class ElasTestBrowserManager {
 }
 
 exports.config = {
-    seleniumAddress: env.seleniumAddress,
+    seleniumAddress: envs.seleniumAddress,
     specs: ['test-webapp-spec.js'],
-    sutUrl: env.sutUrl,
-    capabilities: env.capabilities,
+    sutUrl: envs.sutUrl,
+    capabilities: envs.capabilities,
     onPrepare: function() {
         var jasmineReporters = require('jasmine-reporters');
         jasmine.getEnv().addReporter(
@@ -2685,7 +2769,6 @@ exports.config = {
 <h5 class="small-subtitle">test-webapp-spec.js</h5>
 <pre>
 <code class="javascript">
-
 describe('Test WebApp Application', function() {
     it('Check that the title and body are not empty', async () => {
         // Add row
@@ -2747,24 +2830,6 @@ function sleep(millis) {
 </pre>
 </div>
 
-<div class="row">
-<h5 class="small-subtitle">envs.js</h5>
-<pre>
-<code class="javascript">
-module.exports = {
-    // The address of a running selenium server.
-    seleniumAddress: process.env.ET_EUS_API || 'http://localhost:4444/wd/hub',
-    sutUrl: process.env.ET_SUT_HOST ? 'http://' + process.env.ET_SUT_HOST + ':8080' : 'http://172.17.0.3:8080',
-
-    // Capabilities to be passed to the webdriver instance.
-    capabilities: {
-        browserName: process.env.BROWSER || 'chrome',
-        version: process.env.ET_EUS_API ? (process.env.BROWSER_VERSION ? process.env.BROWSER_VERSION : '') : 'ANY',
-    },
-};
-</code>
-</pre>
-</div>
 <h5 class="small-subtitle">TJob Configuration</h5>
 
 <ul>

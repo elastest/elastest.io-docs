@@ -38,11 +38,11 @@
 -   <a target="_blank" href="/docs/testing/multi-configuration-tjobs">Multi-configuration TJobs.</a> Execute same TJob with different configurations, compare several executions and improve visualization with matrices and graphs (Basic Orchestration).
 -   <a target="_blank" href="/docs/testing/sut/#outsideExternalES">New type of Sut:</a> Use External Elasticsearch.
 -   <a target="_blank" href="/docs/web-browsers/manual-browsers">Now the init/pull progress of the browsers is shown in the modal window</a>.
--   <strong class="italicEtColor ">ElasTest Internal Error messages are now displayed</strong> on the results page of a TJob Execution.
--   <strong class="italicEtColor ">Ability to duplicate TJobs and Suts</strong> on the specific project page.
+-   <strong class="italicEtColor">ElasTest Internal Error messages are now displayed</strong> on the results page of a TJob Execution.
+-   <strong class="italicEtColor">Ability to duplicate TJobs and Suts</strong> on the specific project page.
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
--   Now the <strong class="italicEtColor ">list of executions is reloaded when deleting a project</strong> in the Dashboard section.
+-   Now the <strong class="italicEtColor">list of executions is reloaded when deleting a project</strong> in the Dashboard section.
 -   <a target="_blank" href="/docs/testlink">Automatic sync when TestLink is started manually and be ready</a> to show projects directly instead of needing to re-navigate
 
 <!-- ************************* -->
@@ -54,23 +54,23 @@
 
 <h5 class="smaller-subtitle">Improvements</h5>
 -   <a target="_blank" href="/docs/deploying/ubuntu/#elastestData">Now you can configure the ElasTest data folder at startup.</a> If the folder is changed in future startups, the contents of the config folder must be copied if TL was reached at any time.
--   <strong class="italicEtColor ">TestLink and Jenkins credentials.</strong> The credentials will be the same credentials as those introduced for ElasTest. If it has not been entered, they will be created.
+-   <strong class="italicEtColor">TestLink and Jenkins credentials.</strong> The credentials will be the same credentials as those introduced for ElasTest. If it has not been entered, they will be created.
 -   <a target="_blank" href="/docs/web-browsers/manual-browsers/">Manually started browsers can now be opened in a new tab</a>.
--   <strong class="italicEtColor ">Now it shows where the logs and metrics of a TJobExec are stored</strong> (MYSQL if it is mini or ELASTICSEARCH if it is experimental)
--   <strong class="italicEtColor ">Now the volumes created by the execution of a TJob are removed at the end of this</strong>.
--   <strong class="italicEtColor ">Error message on start ElasTest if main container (ETM) is exited.</strong> An error file is also generated in case the user wants to send it to the ElasTest team.
--   <strong class="italicEtColor ">The time conversion of the monitoring traces is now more efficient.</strong> It is calculated once per host name and only transforms if necessary.
--   Now the connections to the <strong class="italicEtColor ">WebSockets are reconnected automatically if the connection is lost</strong>.
+-   <strong class="italicEtColor">Now it shows where the logs and metrics of a TJobExec are stored</strong> (MYSQL if it is mini or ELASTICSEARCH if it is experimental)
+-   <strong class="italicEtColor">Now the volumes created by the execution of a TJob are removed at the end of this</strong>.
+-   <strong class="italicEtColor">Error message on start ElasTest if main container (ETM) is exited.</strong> An error file is also generated in case the user wants to send it to the ElasTest team.
+-   <strong class="italicEtColor">The time conversion of the monitoring traces is now more efficient.</strong> It is calculated once per host name and only transforms if necessary.
+-   Now the connections to the <strong class="italicEtColor">WebSockets are reconnected automatically if the connection is lost</strong>.
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
--   <strong class="italicEtColor ">Automatic navigation to the results page</strong> when the execution of the test finishes.
--   <strong class="italicEtColor ">Problem with duplicate logs fixed</strong>.
+-   <strong class="italicEtColor">Automatic navigation to the results page</strong> when the execution of the test finishes.
+-   <strong class="italicEtColor">Problem with duplicate logs fixed</strong>.
 -   <a target="_blank" href="/docs/jenkins/advanced-example/">Automatic subscription to the Sut logs of a Jenkins execution</a>.
--   <strong class="italicEtColor ">The problem with the generation of the Jenkins url when starting from the platform in experimental mode and as a server has been solved.</strong> 
--   <strong class="italicEtColor ">Bug with the Nginx proxy image fixed. </strong> It did not receive the SIGTERM signal and ElasTest Platform took a long time to stop (until it gave a waiting time of 90 and stopped the proxy to force)
--   <strong class="italicEtColor ">Startup problems in Windows and MacOS has been solved.</strong> Now the volumes `/etc/localtime` and `/etc/timezone` are no longer binded to the `elastest/etm` container; instead ElasTest Platform is that requests it via HTTP and sends it as a parameter to the ETM.
--   <strong class="italicEtColor ">Both Jenkins and the ElasTest plugin are now correctly configured</strong> when Jenkins starts from the Platform.
--   Problem with <strong class="italicEtColor ">splitted log traces and without date</strong> has been fixed.
+-   <strong class="italicEtColor">The problem with the generation of the Jenkins url when starting from the platform in experimental mode and as a server has been solved.</strong> 
+-   <strong class="italicEtColor">Bug with the Nginx proxy image fixed. </strong> It did not receive the SIGTERM signal and ElasTest Platform took a long time to stop (until it gave a waiting time of 90 and stopped the proxy to force)
+-   <strong class="italicEtColor">Startup problems in Windows and MacOS has been solved.</strong> Now the volumes `/etc/localtime` and `/etc/timezone` are no longer binded to the `elastest/etm` container; instead ElasTest Platform is that requests it via HTTP and sends it as a parameter to the ETM.
+-   <strong class="italicEtColor">Both Jenkins and the ElasTest plugin are now correctly configured</strong> when Jenkins starts from the Platform.
+-   Problem with <strong class="italicEtColor">splitted log traces and without date</strong> has been fixed.
 
 <!-- ************************* -->
 <!-- ****** 1.0.0-beta1 ****** -->
