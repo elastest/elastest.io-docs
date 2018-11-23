@@ -339,6 +339,8 @@ public class ElastestBaseTest {
 </pre>
 </div>
 
+>   Java shutdown hook (**`Runtime.getRuntime().addShutdownHook`**) is used to make sure to close the browser once all the tests have been executed.
+
 The start/end log traces are still printed in the **@BeforeEach** but the browser starts now inside the **@BeforeAll**. Also, for Elastest to know when each test starts, it is possible to send a **`command by invoking a script`** in **@BeforeEach**.
 
             ((JavascriptExecutor) driver).executeScript(
@@ -1626,6 +1628,8 @@ public class ElastestBaseTest {
 </pre>
 </div>
 
+>   As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.
+
 <div class="row">
 <h5 class="small-subtitle">WebAppTestsRunner class</h5>
 <pre>
@@ -1808,7 +1812,6 @@ public class WebAppTestDefinition extends ElastestBaseTest {
 
 }
 </code>
-
 </pre>
 </div>
 
@@ -1907,6 +1910,8 @@ public class ElastestBaseTest {
 </code>
 </pre>
 </div>
+
+>   As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.
 
 <div class="row">
 <h5 class="small-subtitle">WebAppTestRunner class</h5>
@@ -2191,9 +2196,10 @@ public class ElastestBaseTest {
     }
 }
 </code>
-
 </pre>
 </div>
+
+>   As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.
 
 <h5 class="small-subtitle">TJob Configuration</h5>
 
@@ -2370,6 +2376,7 @@ public class WebAppTest extends ElastestBaseTest {
 </pre>
 </div>
 
+>   As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.
 
 <div class="row">
 <h5 class="small-subtitle">ElastestBaseTest class</h5>
