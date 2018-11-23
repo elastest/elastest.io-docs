@@ -1628,7 +1628,7 @@ public class ElastestBaseTest {
 </pre>
 </div>
 
->   As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.
+<p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.</p>
 
 <div class="row">
 <h5 class="small-subtitle">WebAppTestsRunner class</h5>
@@ -1911,7 +1911,7 @@ public class ElastestBaseTest {
 </pre>
 </div>
 
->   As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.
+<p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.</p>
 
 <div class="row">
 <h5 class="small-subtitle">WebAppTestRunner class</h5>
@@ -2199,7 +2199,8 @@ public class ElastestBaseTest {
 </pre>
 </div>
 
->   As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.
+
+<p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Gauge does not allow to extend classes that define hooks or step definition.</p>
 
 <h5 class="small-subtitle">TJob Configuration</h5>
 
@@ -2376,8 +2377,6 @@ public class WebAppTest extends ElastestBaseTest {
 </pre>
 </div>
 
->   As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Cucumber does not allow to extend classes that define hooks or step definition.
-
 <div class="row">
 <h5 class="small-subtitle">ElastestBaseTest class</h5>
 <pre>
@@ -2473,6 +2472,7 @@ public class ElastestBaseTest {
 </pre>
 </div>
 
+<p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Gauge does not allow to extend classes that define hooks or step definition.</p>
 
 <h5 class="small-subtitle">TJob Configuration</h5>
 
