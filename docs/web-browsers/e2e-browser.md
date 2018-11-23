@@ -2502,6 +2502,69 @@ public class ElastestBaseTest {
 This test has been developed in JavaScript using <a target="_blank" href="http://protractortest.org/">Protractor</a>.
 </p>
 
+<div class="row">
+<h5 class="small-subtitle">test-webapp-spec.js</h5>
+<pre>
+<code class="javascript">
+describe('Test WebApp Application', function() {
+    it('Check that the title and body are not empty', async () => {
+        // Add row
+        await addRow('', '');
+        await sleep(2000);
+
+        // Check row
+        var title = element(by.id('title')).getText();
+        var body = element(by.id('body')).getText();
+
+        console.log('Checking Message...');
+        expect(title).not.toEqual('');
+        expect(body).not.toEqual('');
+
+        clearMessages();
+    });
+
+    it('Find title and body', async () => {
+        // Add row
+        await addRow('MessageTitle', 'MessageBody');
+        await sleep(2000);
+
+        // Check row
+        var title = element(by.id('title')).getText();
+        var body = element(by.id('body')).getText();
+
+        console.log('Checking Message...');
+
+        expect(title).toEqual('MessageTitle');
+        expect(body).toEqual('MessageBody');
+
+        clearMessages();
+    });
+});
+
+async function addRow(title, body) {
+    console.log('Inserting data...');
+    element(by.id('title-input')).sendKeys(title);
+    element(by.id('body-input')).sendKeys(body);
+    await sleep(2000);
+    console.log('Adding Message...');
+    element(by.id('submit')).click();
+}
+
+function clearMessages() {
+    console.log('Clearing Messages...');
+    element(by.id('clearSubmit')).click();
+}
+
+function sleep(millis) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve(true);
+        }, millis);
+    });
+}
+</code>
+</pre>
+</div>
 
 <div class="row">
 <h5 class="small-subtitle">conf.js</h5>
@@ -2587,9 +2650,34 @@ exports.config = {
     },
 };
 </code>
-
 </pre>
 </div>
+
+<h5 class="small-subtitle">TJob Configuration</h5>
+
+<ul>
+<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Protractor Multi Browser Test</code></strong></li>
+<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/protractor-web-multiple-browsers-test/testresults</code></strong></li>
+<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
+<li><strong>Environment docker image</strong>: <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitnode/Dockerfile"><code>elastest/test-etm-alpinegitnode</code></a></li>
+<li><strong>Commands</strong>: 
+<pre>
+    <code>
+    git clone https://github.com/elastest/demo-projects;
+    cd /demo-projects/webapp/protractor-web-multiple-browsers-test;
+    protractor conf.js;
+    </code>
+</pre>
+</li>
+<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
+</ul>
+
+</div><!-- end of multi protractor -->
+
+<div id="protractor-single" class="subTestExample">
+<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/protractor-web-single-browser-test">Source Code in GitHub</a>.
+This test has been developed in JavaScript using <a target="_blank" href="http://protractortest.org/">Protractor</a>.
+</p>
 
 <div class="row">
 <h5 class="small-subtitle">test-webapp-spec.js</h5>
@@ -2652,35 +2740,8 @@ function sleep(millis) {
     });
 }
 </code>
-
 </pre>
 </div>
-
-<h5 class="small-subtitle">TJob Configuration</h5>
-
-<ul>
-<li><strong>TJob Name</strong>: can be called as you want, but we will call it <strong><code>Protractor Multi Browser Test</code></strong></li>
-<li><strong>Test Results Path</strong>: <strong><code>/demo-projects/webapp/protractor-web-multiple-browsers-test/testresults</code></strong></li>
-<li><strong>Select a SuT</strong>: <strong><code>WebApp</code></strong></li>
-<li><strong>Environment docker image</strong>: <a href="https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitnode/Dockerfile"><code>elastest/test-etm-alpinegitnode</code></a></li>
-<li><strong>Commands</strong>: 
-<pre>
-    <code>
-    git clone https://github.com/elastest/demo-projects;
-    cd /demo-projects/webapp/protractor-web-multiple-browsers-test;
-    protractor conf.js;
-    </code>
-</pre>
-</li>
-<li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
-</ul>
-
-</div><!-- end of multi protractor -->
-
-<div id="protractor-single" class="subTestExample">
-<p>You can view the <a target="_blank" href="https://github.com/elastest/demo-projects/tree/master/webapp/protractor-web-single-browser-test">Source Code in GitHub</a>.
-This test has been developed in JavaScript using <a target="_blank" href="http://protractortest.org/">Protractor</a>.
-</p>
 
 <div class="row">
 <h5 class="small-subtitle">conf.js</h5>
@@ -2761,72 +2822,6 @@ exports.config = {
     },
 };
 </code>
-
-</pre>
-</div>
-
-<div class="row">
-<h5 class="small-subtitle">test-webapp-spec.js</h5>
-<pre>
-<code class="javascript">
-describe('Test WebApp Application', function() {
-    it('Check that the title and body are not empty', async () => {
-        // Add row
-        await addRow('', '');
-        await sleep(2000);
-
-        // Check row
-        var title = element(by.id('title')).getText();
-        var body = element(by.id('body')).getText();
-
-        console.log('Checking Message...');
-        expect(title).not.toEqual('');
-        expect(body).not.toEqual('');
-
-        clearMessages();
-    });
-
-    it('Find title and body', async () => {
-        // Add row
-        await addRow('MessageTitle', 'MessageBody');
-        await sleep(2000);
-
-        // Check row
-        var title = element(by.id('title')).getText();
-        var body = element(by.id('body')).getText();
-
-        console.log('Checking Message...');
-
-        expect(title).toEqual('MessageTitle');
-        expect(body).toEqual('MessageBody');
-
-        clearMessages();
-    });
-});
-
-async function addRow(title, body) {
-    console.log('Inserting data...');
-    element(by.id('title-input')).sendKeys(title);
-    element(by.id('body-input')).sendKeys(body);
-    await sleep(2000);
-    console.log('Adding Message...');
-    element(by.id('submit')).click();
-}
-
-function clearMessages() {
-    console.log('Clearing Messages...');
-    element(by.id('clearSubmit')).click();
-}
-
-function sleep(millis) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(true);
-        }, millis);
-    });
-}
-</code>
-
 </pre>
 </div>
 
