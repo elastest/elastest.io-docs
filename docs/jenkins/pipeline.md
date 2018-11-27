@@ -125,7 +125,11 @@ Once the execution is complete, you can view it in both Jenkins and ElasTest
 
 As can be seen in the last image, ElasTest shows different information, such as **test results** or **logs**. You can also see a card of metrics (All Metrics), but in this particular test is not sent any so it will appear empty.
 
-<h4 class="holder-subtitle link-top">Advanced Examples</h4>
+<!-- ******************************** -->
+<!-- ******* Advanced Example ******* -->
+<!-- ******************************** -->
+
+<h4 class="holder-subtitle link-top">Advanced Example</h4>
 
 The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations and offers the following options:
 
@@ -135,16 +139,16 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 -   **`surefireReportsPattern`**: used to tell ElasTest the path where the test results will be located.
 -   **`monitoring`**: used to send or not the Sut monitoring traces to Elastest.
 
-Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a SUT is started and a test battery is executed on it.
+Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a [Sut](/testing/sut) is started and a test battery is executed on it.
 To configure this option, ElasTest provides the connection info using [environment variables](/testing/environment-variables). This example is included in the Jenkins instance provided by ElasTest. If you use your own Jenkins, you will have to configure it manually in the following way:
 
-<h4 class="small-subtitle">WebApp</h4>
+<h5 class="small-subtitle">JUnit5 Multi Browser Test</h5>
 
 This pipeline configures the ElasTes plugin, starts the SUT and clones the repository with the test to execute it.
 
 ```
 node{
-    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true) {
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
         stage ('Executing Test') {
             echo 'Print env variables'
             sh 'env'
@@ -154,7 +158,7 @@ node{
                 echo "${c.id}"
                 def sutContainerName = env.ET_SUT_CONTAINER_NAME;
                 def sutNetwork = getFirstNetwork(sutContainerName)
-                def sutIp = containerIp(sutContainerName, sutNetwork)
+                def sutIp = containerIp(sutContainerName,sutNetwork)
                 sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
                 withEnv(['ET_SUT_HOST=' + sutIp]) {
                     echo 'Set up test environment'
@@ -162,11 +166,11 @@ node{
                     echo 'Cloning repository'
                     git 'https://github.com/elastest/demo-projects'
                     echo 'Run test'
-                    sh "cd ./web-java-test/;'${mvnHome}/bin/mvn' -Dtest=WebAppTest test"
+                    sh "cd ./webapp/junit5-web-multiple-browsers-test/;'${mvnHome}/bin/mvn' -Dbrowser=chrome -DforkCount=0 test"
                 }
             }
-
-        }
+            
+        }        
     }
 }
 
@@ -176,7 +180,7 @@ def getFirstNetwork(containerName) {
         script: "docker inspect " + containerName + " -f \"{{json .NetworkSettings.Networks}}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
         returnStdout: true
     ).trim()
-
+    
     echo containerName+" Network = " + network;
     return network;
 }
@@ -187,7 +191,7 @@ def containerIp(containerName, network) {
         script: "docker inspect --format=\"{{.NetworkSettings.Networks." + network + ".IPAddress}}\" "+ containerName,
         returnStdout: true
     ).trim()
-
+    
     echo containerName+" IP = " + containerIp;
     return containerIp;
 }
@@ -195,15 +199,16 @@ def containerIp(containerName, network) {
 
 The example above can be split into the following sections:
 
--   **ElasTest plugin configuration** : You can choose to send the logs of your build
+-   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary configuration.
 
 <p></p>
 
 ```
 node{
-    elastest() {
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
         .......
-    {
+    }
+}
 ```
 
 <p></p>
@@ -213,8 +218,8 @@ node{
 
 ```
 def sutImage = docker.image('elastest/demo-web-java-test-sut')
-            echo 'Start SUT'
-            sutImage.withRun("--name ${env.ET_SUT_CONTAINER_NAME}") { c ->
+echo 'Start SUT'
+sutImage.withRun("--name ${env.ET_SUT_CONTAINER_NAME}") { c ->
 ```
 
 <p></p>
@@ -224,9 +229,9 @@ def sutImage = docker.image('elastest/demo-web-java-test-sut')
 
 ```
 def sutContainerName = env.ET_SUT_CONTAINER_NAME;
-            def sutNetwork = getFirstNetwork(sutContainerName)
-            def sutIp = containerIp(sutContainerName,network)
-            sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+def sutNetwork = getFirstNetwork(sutContainerName)
+def sutIp = containerIp(sutContainerName,sutNetwork)
+sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'ocker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
 ```
 
 <p></p>
@@ -238,17 +243,12 @@ def sutContainerName = env.ET_SUT_CONTAINER_NAME;
 ```
 ....
 withEnv(['ET_SUT_HOST=' + sutIp]) {
-            echo 'Set up test environment'
-            mvnHome = tool 'M3.3.9'
-            echo 'Cloning repository'
-            git 'https://github.com/elastest/demo-projects'
-            echo 'Run test'
-            sh "cd ./web-java-test/;'${mvnHome}/bin/mvn' -Dtest=WebAppTest test"
-        }
+    echo 'Set up test environment'
+    mvnHome = tool 'M3.3.9'
+    echo 'Cloning repository'
+    git 'https://github.com/elastest/demo-projects'
+    echo 'Run test'
+    sh "cd ./webapp/junit5-web-multiple-browsers-test/;'${mvnHome}/bin/mvn' -Dbrowser=chrome -DforkCount=0 test"
+}
 ....
 ```
-
-<div class="range range-xs-center warning-range">
-  <div class="cell-xs-4 cell-lg-1 cell-lg-push-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
-  <div class="cell-xs-8 cell-lg-11 cell-lg-push-11 warning-text"><p><i>You can refresh your mind visiting our tutorial <a href="/docs/testing/e2e-rest">How implement a test</a>.</i></p></div>
-</div>

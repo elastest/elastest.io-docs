@@ -14,7 +14,7 @@ From a standard Jenkins Job, this plugin allows you:
 
 To configure a Freestyle Job with ElasTest integrated, you will must select the _Integrate Jenkins with ElasTest_ field. In this case, the _EUS_ field is not required that is why this example do not need a web browser.
 
-To complete this freestyle job, you must download the project inside of this [repository](https://github.com/elastest/demo-projects) and introduce `cd unit-java-test;mvn test` in the **Build command**.
+To complete this freestyle job, you must download the project inside of this [repository](https://github.com/elastest/demo-projects) and introduce **`cd ./unit/junit5-unit-test;mvn test`** in the **Build command**.
 
 <br>
 <div class="docs-gallery inline-block">
