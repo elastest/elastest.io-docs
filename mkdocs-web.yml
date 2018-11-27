@@ -26,8 +26,8 @@ pages:
 
 - ['jenkins/index.md', 'Jenkins', 'Jenkins integration']
 - ['jenkins/try-jenkins.md',  'Jenkins', 'Try Jenkins plugin']
-- ['jenkins/freestyle.md',  'Jenkins', 'Freestyle']
-- ['jenkins/pipeline.md',  'Jenkins', 'Pipeline']
+- ['jenkins/pipeline.md',  'Jenkins', 'Pipeline Examples']
+- ['jenkins/freestyle.md',  'Jenkins', 'Freestyle Examples']
 
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']

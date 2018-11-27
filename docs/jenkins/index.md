@@ -6,7 +6,7 @@
 </div>
 </div>
 
-<img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_jenkins.png"/>
+<img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/elastest_jenkins.png"/>
 
 ElasTest provides a Jenkins plugin for you to use the platform in your CI environment. Thanks to this you can make use of some features provided by ElasTest, such as log analysis or the use of on-demand browsers. There are two operating modes:
 
@@ -24,7 +24,7 @@ To install the ElasTest Plugin you should follow this steps:
 <p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/plugin_install.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/plugin_install.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">Plugin configuration</h4>
@@ -39,5 +39,5 @@ The plugin configuration is very simple and you only have to fill in the followi
 Before you execute your first Job integrated with ElasTest, you can check if the connection between Jenkins and ElasTest is successfully established.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/conf.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/conf.png"/></a>
 </div>
