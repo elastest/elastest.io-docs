@@ -57,26 +57,3 @@ That's all. When you connect to your ElasTest URL, enter the username and passwo
 
 <h4 class="holder-subtitle link-top">ElasTest data</h4>
 You can see the Elastest data information <a href="/docs/deploying/ubuntu/#elastestData">here</a>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: true,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>

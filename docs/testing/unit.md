@@ -133,13 +133,11 @@ You can click too on the **`View In LogAnalyzer`** button for navigate to <a hre
     <a data-fancybox="gallery-1" href="/docs/images/your-first-test/view_in_loganalyzer.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/view_in_loganalyzer.png"/></a>
 </div>
 
-
 Or you can click on the **`View Case In LogAnalyzer`** button view the specific test execution logs:
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/images/your-first-test/view_case_in_loganalyzer.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/view_case_in_loganalyzer.png"/></a>
 </div>
-
 
 <!-- ****************************** -->
 <!-- *** CREATING TJOB YOURSELF *** -->
@@ -194,7 +192,6 @@ In our case, we will need to insert the following data for the TJob "JUnit5 Unit
           cd /demo-projects/unit/junit5-unit-test;
           mvn -B test
 
-
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/images/your-first-test/new_tjob_junit5_unit_test.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/new_tjob_junit5_unit_test.png"/></a>
 </div>
@@ -206,7 +203,6 @@ Click on the "Run TJob" button:
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/images/your-first-test/project_page_with_tjob.png"><img class="img-responsive img-wellcome" src="/docs/images/your-first-test/project_page_with_tjob.png"/></a>
 </div>
-
 
 <!-- ********************************* -->
 <!-- * XML report, Test Results Path * -->
@@ -228,30 +224,28 @@ The appearance of an xml report, such as the one generated when running the TJob
 
 There is no official documentation on this xml format but you can find some examples on the internet, such as the following:
 
-- <a target="_blank" href="https://www.ibm.com/support/knowledgecenter/en/SSQ2R2_14.1.0/com.ibm.rsar.analysis.codereview.cobol.doc/topics/cac_useresults_junit.html">JUnit XML format</a>
-- <a target="_blank" href="http://help.catchsoftware.com/display/ET/JUnit+Format">JUnit Format</a>
+-   <a target="_blank" href="https://www.ibm.com/support/knowledgecenter/en/SSQ2R2_14.1.0/com.ibm.rsar.analysis.codereview.cobol.doc/topics/cac_useresults_junit.html">JUnit XML format</a>
+-   <a target="_blank" href="http://help.catchsoftware.com/display/ET/JUnit+Format">JUnit Format</a>
 
-Thanks to this file, ElasTest knows information about each of the executed tests, such as the result, the duration or its name. 
+Thanks to this file, ElasTest knows information about each of the executed tests, such as the result, the duration or its name.
 
 In order to know which logs belong to each test and to be able to filter them, ElasTest looks for patterns in the logs that indicate the beginning and the end of the test. Both patterns must be printed on each test and have the following form:
 
-- **Start test trace**:
+-   **Start test trace**:
 
-        ##### Start test: TESTNAME
+          ##### Start test: TESTNAME
 
-- **Finish test trace**:
+-   **Finish test trace**:
 
-        ##### Finish test: TESTNAME
+          ##### Finish test: TESTNAME
 
 Where **`TESTNAME`** is the name of the test. The way of obtaining the name of the test depends on the technology in which the test is developed:
 
-- In the case of **`JUnit5 Unit Test`** that we have used as an example above, it is developed in Java with JUnit5. As can be seen in the <a href="#elastestBaseCode">ElasTestBase code</a>, the name of the test is obtained by means of the testInfo parameter:
-        
-        testInfo.getTestMethod().get().getName()
+-   In the case of **`JUnit5 Unit Test`** that we have used as an example above, it is developed in Java with JUnit5. As can be seen in the <a href="#elastestBaseCode">ElasTestBase code</a>, the name of the test is obtained by means of the testInfo parameter:
+      
+     testInfo.getTestMethod().get().getName()
 
-- We have included other example tests developed with other technologies. You can see it in the <a href="#moreExamples">More Examples section</a>
-            
-
+-   We have included other example tests developed with other technologies. You can see it in the <a href="#moreExamples">More Examples section</a>
 
 <!-- ********************************** -->
 <!-- ********* Other Examples ********* -->
@@ -369,11 +363,10 @@ import os
 import sys
 import xmlrunner
 import ElasTestBase
-from Calc import *
+from Calc import \*
 
 leftOperand = 3
 rightOperand = 2
-
 
 class TestUnit(ElasTestBase.ElasTestBase):
 
@@ -397,17 +390,15 @@ class TestUnit(ElasTestBase.ElasTestBase):
 
         self.assertEqual(sub(leftOperand, rightOperand), expected)
 
-
-if __name__ == '__main__':
-    file_path = './testresults'
-    if not os.path.exists(file_path):
-        os.makedirs(file_path)
-    file_name = file_path + '/results.xml'
-    with open(file_name, 'wb') as output:
-        unittest.main(
-            testRunner=xmlrunner.XMLTestRunner(output=output),
-            failfast=False, buffer=False, catchbreak=False)
-
+if **name** == '**main**':
+file_path = './testresults'
+if not os.path.exists(file_path):
+os.makedirs(file_path)
+file_name = file_path + '/results.xml'
+with open(file_name, 'wb') as output:
+unittest.main(
+testRunner=xmlrunner.XMLTestRunner(output=output),
+failfast=False, buffer=False, catchbreak=False)
 
 </code>
 </pre>
@@ -420,8 +411,8 @@ if __name__ == '__main__':
 import unittest
 
 class ElasTestBase(unittest.TestCase):
-    def setUp(self):
-        print '##### Start test: ' + self._testMethodName
+def setUp(self):
+print '##### Start test: ' + self.\_testMethodName
 
     def tearDown(self):
         print '##### Finish test: ' + self._testMethodName
@@ -466,19 +457,19 @@ leftOperand = 3;
 rightOperand = 2;
 
 describe('Unit Test', function() {
-    it('Sum', function() {
-        expectedResult = 5;
-        console.log('Checking if ' + leftOperand + ' + ' + rightOperand + ' = ' + expectedResult);
-        expect(calc.sum(leftOperand, rightOperand)).toEqual(expectedResult);
-    });
+it('Sum', function() {
+expectedResult = 5;
+console.log('Checking if ' + leftOperand + ' + ' + rightOperand + ' = ' + expectedResult);
+expect(calc.sum(leftOperand, rightOperand)).toEqual(expectedResult);
+});
 
     it('Sub', function() {
         expectedResult = 1;
         console.log('Checking if ' + leftOperand + ' - ' + rightOperand + ' = ' + expectedResult);
         expect(calc.sub(leftOperand, rightOperand)).toEqual(expectedResult);
     });
-});
 
+});
 
 </code>
 </pre>
@@ -491,24 +482,25 @@ describe('Unit Test', function() {
 var jasmineReporters = require('jasmine-reporters');
 
 jasmine.getEnv().addReporter(
-    new jasmineReporters.JUnitXmlReporter({
-        consolidateAll: true,
-        savePath: 'testresults',
-        filePrefix: 'xml-report',
-    }),
+new jasmineReporters.JUnitXmlReporter({
+consolidateAll: true,
+savePath: 'testresults',
+filePrefix: 'xml-report',
+}),
 );
 
 var reporterCurrentSpec = {
-    specStarted: function(result) {
-        console.log('##### Start test: ' + result.description);
-    },
-    specDone: function(result) {
-        console.log('##### Finish test: ' + result.description);
-    },
+specStarted: function(result) {
+console.log('##### Start test: ' + result.description);
+},
+specDone: function(result) {
+console.log('##### Finish test: ' + result.description);
+},
 };
 
 jasmine.getEnv().addReporter(reporterCurrentSpec);
 </code>
+
 </pre>
 </div>
 
@@ -531,34 +523,9 @@ jasmine.getEnv().addReporter(reporterCurrentSpec);
 </ul>
 </div>
 
-
 <!-- ********************* -->
 <!-- ****** Scripts ****** -->
 <!-- ********************* -->
-
-<!-- Gallery  -->
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>
 
 <script>
 $('#junit4-btn').click(function(event) {

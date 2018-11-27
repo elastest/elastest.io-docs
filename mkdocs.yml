@@ -25,8 +25,9 @@ pages:
 - ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
 
 - ['jenkins/index.md', 'Jenkins', 'Jenkins integration']
-- ['jenkins/try-jenkins.md',  'Jenkins', 'Try jenkins']
-- ['jenkins/advanced-example.md',  'Jenkins', 'Advanced example']
+- ['jenkins/try-jenkins.md',  'Jenkins', 'Try Jenkins plugin']
+- ['jenkins/freestyle.md',  'Jenkins', 'Freestyle']
+- ['jenkins/pipeline.md',  'Jenkins', 'Pipeline']
 
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
