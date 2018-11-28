@@ -127,7 +127,121 @@ Once the execution is complete, you can view it in both Jenkins and ElasTest
 
 As can be seen in the last image, ElasTest shows different information, such as **test results** or **logs**. You can also see a card of metrics (All Metrics), but in this particular test is not sent any so it will appear empty.
 
+<!-- ********************************** -->
+<!-- ********** Rest Example ********** -->
+<!-- ********************************** -->
 
+<h4 class="holder-subtitle link-top">Rest Test</h4>
+
+Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a [Sut](/testing/sut) is started and a test is executed using it.
+To configure this option, ElasTest provides the connection info using [environment variables](/testing/environment-variables).
+
+Here we will run our [JUnit5 Rest Test](https://github.com/elastest/demo-projects/tree/master/rest/junit5-rest-test) provided by default in ElasTest, which makes use of a rest application as a SuT and has a single test that is responsible for making a GET request to that Sut. This test has been developed in Java using [JUnit5](https://junit.org/junit5/):
+
+```
+node{
+    elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        stage ('Executing Test') {
+            def sutImage = docker.image('elastest/demo-rest-java-test-sut')
+            echo 'Start SUT'
+            sutImage.withRun("--name ${env.ET_SUT_CONTAINER_NAME} --network=elastest_elastest") { c ->
+                echo "${c.id}"
+                def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+                def sutNetwork = getFirstNetwork(sutContainerName)
+                def sutIp = containerIp(sutContainerName,network)
+                sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+                withEnv(['ET_SUT_HOST=' + sutIp]) {
+                    echo 'Set up test environment'
+                    mvnHome = tool 'M3.3.9'
+                    echo 'Cloning repository'
+                    git 'https://github.com/elastest/demo-projects'
+                    echo 'Run test'
+                    sh "cd ./rest/junit5-rest-test;'${mvnHome}/bin/mvn' -B -DforkCount=0 test"
+                }
+            }
+
+        }
+    }
+}
+
+def getFirstNetwork(containerName) {
+    echo "Inside getFirstNetwork function"
+    network = sh (
+        script: "docker inspect " + containerName + " -f \"{{json .NetworkSettings.Networks}}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
+        returnStdout: true
+    ).trim()
+
+    echo containerName+" Network = " + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo "Inside containerIp function"
+    containerIp = sh (
+        script: "docker inspect --format=\"{{.NetworkSettings.Networks." + network + ".IPAddress}}\" "+ containerName,
+        returnStdout: true
+    ).trim()
+
+    echo containerName+" IP = " + containerIp;
+    return containerIp;
+}
+```
+
+The example above can be split into the following sections:
+
+-   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options).
+
+<p></p>
+
+```
+node{
+    elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        .......
+    }
+}
+```
+
+<p></p>
+
+-   **Sut configuration** : The SUT must be started, passing the `${env.ET_SUT_CONTAINER_NAME}` env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
+    <p></p>
+
+```
+def sutImage = docker.image('elastest/demo-rest-java-test-sut')
+echo 'Start SUT'
+sutImage.withRun("--name ${env.ET_SUT_CONTAINER_NAME} --network=elastest_elastest") { c ->
+```
+
+<p></p>
+
+-   **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used.
+    <p></p>
+
+```
+def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+def sutNetwork = getFirstNetwork(sutContainerName)
+def sutIp = containerIp(sutContainerName,network)
+sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+```
+
+<p></p>
+
+-   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as a environment variable or pass it as a maven property so that the test knows where the SUT is.
+
+<p></p>
+
+```
+....
+withEnv(['ET_SUT_HOST=' + sutIp]) {
+    echo 'Set up test environment'
+    mvnHome = tool 'M3.3.9'
+    echo 'Cloning repository'
+    git 'https://github.com/elastest/demo-projects'
+    echo 'Run test'
+    sh "cd ./rest/junit5-rest-test;'${mvnHome}/bin/mvn' -B -DforkCount=0 test"
+}
+....
+```
 
 <!-- ********************************** -->
 <!-- ******* WebBrowser Example ******* -->
@@ -135,12 +249,11 @@ As can be seen in the last image, ElasTest shows different information, such as 
 
 <h4 class="holder-subtitle link-top">WebBrowser Example</h4>
 
-Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a [Sut](/testing/sut) is started and a test battery is executed on it.
-To configure this option, ElasTest provides the connection info using [environment variables](/testing/environment-variables). This example is included in the Jenkins instance provided by ElasTest. If you use your own Jenkins, you will have to configure it manually in the following way:
+Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a [Sut](/testing/sut) is started and a test battery is executed using it, making use of WebBrowsers.
+To configure this option, ElasTest provides the connection info using [environment variables](/testing/environment-variables).
 
-<h5 class="small-subtitle">JUnit5 Multi Browser Test</h5>
-
-This pipeline configures the ElasTes plugin, starts the SUT and clones the repository with the test to execute it.
+Here we will run our [JUnit5 Multi Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-multiple-browsers-test) provided by default in ElasTest, which makes use of a Spring Boot Application as a SuT that has two input fields (title and body) and a button to add them as a table row. Also has three test that are responsible for add rows to that Sut and verify that the added row has the expected content.
+This test has been developed in Java using [JUnit5](https://junit.org/junit5/):
 
 ```
 node{
@@ -232,7 +345,7 @@ sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' ela
 
 <p></p>
 
--   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as a environment variable or pass it as a maven property due to the browsers we have used need to know where is the SUT located.
+-   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as a environment variable or pass it as a maven property so that the test and the browsers we are going to use know where the Sut is located.
 
 <p></p>
 
