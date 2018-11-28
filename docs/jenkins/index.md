@@ -11,6 +11,7 @@
 ElasTest provides a Jenkins plugin for you to use the platform in your CI environment. Thanks to this you can make use of some features provided by ElasTest, such as log analysis or the use of on-demand browsers. There are two operating modes:
 
 *   **Use the Jenkins instance of ElasTest**: ElasTest provides an instance of Jenkins to be used. You don't need to install the ElasTest Jenkins plugin, it's already incorporated.
+    *   This instance can be started by [starting ElasTest with the --jenkins](/try-elastest) parameter or if you prefer it can be started from the ElasTest GUI once it has been started (this is explained on the [next page](/jenkins/try-jenkins)).
 *   **Use your own Jenkins**: Before you can use ElasTest as Jenkins plugin you need to install the plugin and complete its onfiguration. After this you will be ready to use ElasTest in a Free Style Job or in a Pipeline Job.
 
 
