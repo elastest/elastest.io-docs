@@ -18,32 +18,32 @@
 </div>
 </div>
 
-<h4 class="holder-subtitle link-top">ElasTest main features</h4>
+<h3 class="holder-subtitle link-top">ElasTest main features</h3>
 
 <div class="range range-xs-center" style="margin-top: 0; text-align: center">
     <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50"><span class="icon icon-xlg icon-circle icon-carrot-filled fa fa-sitemap icon-primary"></span>
-        <h3 class="h4 text-bold">Test management</h3>
+        <h4 class="h4 text-bold">Test management</h4>
         <p class="inset-sm-left-15 inset-sm-right-15"><strong>Build your testing environment with the tools offered by ElasTest</strong><hr class="doc-features">Easily connect all the components wherever they are and run your tests in a few clicks</p>
     </div>
     <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50"><span class="icon icon-xlg icon-circle icon-carrot-filled fa fa-line-chart icon-primary"></span>
-        <h3 class="h4 text-bold">Metrics monitoring</h3>
+        <h4 class="h4 text-bold">Metrics monitoring</h4>
         <p class="inset-sm-left-15 inset-sm-right-15"><strong>Get useful information from all your components</strong><hr class="doc-features">Every test, web browser, database, application... generates logs and consumes computing resources. And knowing when and how they change can give you a huge advantage as a tester</p>
     </div>
     <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50"><span class="icon icon-xlg icon-circle icon-carrot-filled fa fa-chrome icon-primary"></span>
-        <h3 class="h4 text-bold">Web browsers</h3>
+        <h4 class="h4 text-bold">Web browsers</h4>
         <p class="inset-sm-left-15 inset-sm-right-15"><strong>Any browser. Of any version</strong><hr class="doc-features">As testers we know how hard it is to ensure that our applications work properly in all browsers and versions. ElasTest makes this an easy task</p>
     </div>
     <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50"><span class="icon icon-xlg icon-circle icon-carrot-filled fa fa-sort-amount-desc icon-primary"></span>
-        <h3 class="h4 text-bold">Log analyzer</h3>
+        <h4 class="h4 text-bold">Log analyzer</h4>
         <p class="inset-sm-left-15 inset-sm-right-15"><strong>A powerfool tool for finding what you want in the vast flood of logs</strong><hr class="doc-features">Gathering logs is only the first step. None of this would make sense if you couldn't dive into your logs with a powerful, intuitive and adaptative tool as ElasTest Log Analyzer</p>
     </div>
     <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50"><span class="icon icon-xlg icon-circle icon-carrot-filled fa fa-chrome icon-primary"></span>
-        <h3 class="h4 text-bold">Jenkins integration</h3>
+        <h4 class="h4 text-bold">Jenkins integration</h4>
         <p class="inset-sm-left-15 inset-sm-right-15"><strong>ElasTest and Jenkins work together with a marvelous integration</strong><hr class="doc-features">ElasTest provides a Jenkins plugin for you to use the platform in your CI environment. Thanks to this you can make use of some features provided by ElasTest, such as log analysis or the use of on-demand browsers.</p>
     </div>
 </div>
 
-<h4 class="holder-subtitle link-top" id="elastest-core-concepts">ElasTest core concepts</h4>
+<h3 class="holder-subtitle link-top" id="elastest-core-concepts">ElasTest core concepts</h3>
 
 <p>
 ElasTest is built around 3 main elements:
@@ -81,7 +81,7 @@ In other words: <strong>SuT's, TJob's and TSS's are the modules that ElasTest ca
 
 </p>
 
-<h4 class="holder-subtitle link-top">ElasTest technologies</h4>
+<h3 class="holder-subtitle link-top">ElasTest technologies</h3>
 
 <img src="./images/elastest-tech.png" alt="ElasTest technologies" class="img-responsive reveal-inline-block offset-top-10" style="border: none">
 

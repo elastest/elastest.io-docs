@@ -1,6 +1,6 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Pipeline Job</h2>
+<h2 id="content" class="h1">Pipeline Jobs</h2>
 <div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
@@ -17,12 +17,12 @@ From a Pipeline this plugin allows:
 
 Let's see how to create some examples of Jenkins Job that use the plugin. If you are using the [Jenkins instance of ElasTest](/jenkins/), these examples are loaded by default and you will be able to run them directly without having to create them, but let's see their configurations to understand how to use the plugin.
 
-<h4 class="holder-subtitle link-top">Unit Test</h4>
+<h3 class="holder-subtitle link-top">Unit Test</h3>
 
 This Job will run the demo example [JUnit5 Unit Test](https://github.com/elastest/demo-projects/tree/master/unit/junit5-unit-test), which has a single class with two methods, sum and sub, that receive two numerical values to add or subtract respectively.
-This test has been developed in Java using [JUnit5](https://junit.org/junit5/).
+This test has been developed in Java using [JUnit5](https://junit.org/junit5/). The code of this project is explained in detail [here](/testing/unit)
 
-The script that will contain the Job is as follows:
+The [Jenkins Pipeline code](https://jenkins.io/doc/book/pipeline/syntax/) that will contain the Job is as follows:
 
 ```
 node{
@@ -40,7 +40,7 @@ node{
 }
 ```
 
-The script above can be split into the following sections:
+The code above can be split into the following sections:
 
 -   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options).
 
@@ -50,7 +50,7 @@ The script above can be split into the following sections:
 node{
     elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', project: 'Jenkins Examples') {
         .......
-    {
+    }
 }
 ```
 
@@ -79,7 +79,7 @@ stage ('Executing Test') {
 
 <p></p>
 
-You must [access Jenkins](/jenkins/try-jenkins), create a Pipeline Job with the name you want (we'll use **jenkins-junit5-unit-test**), insert the script and save:
+To create this Job must [access Jenkins](/jenkins/try-jenkins), create a Pipeline Job with the name you want (we'll use **jenkins-junit5-unit-test**), insert the code and save:
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline/junit5_unit_test_pipeline_script.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline/junit5_unit_test_pipeline_script.png"/></a>
@@ -87,13 +87,13 @@ You must [access Jenkins](/jenkins/try-jenkins), create a Pipeline Job with the 
 
 Once created, you can execute it as follows:
 
-<h5 class="small-subtitle">1. Click to "Build now" button</h5>
+<h4 class="small-subtitle">1. Click to "Build now" button</h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_junit_example_main_build_btn.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_junit_example_main_build_btn.png"/></a>
 </div>
 
-<h5 class="small-subtitle">2. Running view</h5>
+<h4 class="small-subtitle">2. Running view</h4>
 
 After pressing the button, you will see the job running on Jenkins:
 
@@ -101,7 +101,14 @@ After pressing the button, you will see the job running on Jenkins:
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_junit_example_running.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_junit_example_running.png"/></a>
 </div>
 
-On the other hand, ElasTest will have created a project called **`Jenkins Examples`** in **Projects section**, that will contain a TJob with the same name as Jenkins Job (jenkins-junit5-unit-test).
+Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while).
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/junit5_unit_test_build_et_icon.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/junit5_unit_test_build_et_icon.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_running.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_running.png"/></a>
+</div>
+
+ElasTest will have created a project called **`Jenkins Examples`** in **Projects section**, that will contain a [TJob](/#tjob) with the same name as Jenkins Job (jenkins-junit5-unit-test).
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_jenkins_project.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_jenkins_project.png"/></a>
@@ -113,7 +120,7 @@ Navigating to this TJob you can see the current execution:
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_running.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_running.png"/></a>
 </div>
 
-<h5 class="small-subtitle">3. Results view</h5>
+<h4 class="small-subtitle">3. Results view</h4>
 
 Once the execution is complete, you can view it in both Jenkins and ElasTest
 
@@ -131,12 +138,14 @@ As can be seen in the last image, ElasTest shows different information, such as 
 <!-- ********** Rest Example ********** -->
 <!-- ********************************** -->
 
-<h4 class="holder-subtitle link-top">Rest Test</h4>
+<h3 class="holder-subtitle link-top">Rest Test (End2End)</h3>
 
 Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a [Sut](/testing/sut) is started and a test is executed using it.
 To configure this option, ElasTest provides the connection info using [environment variables](/testing/environment-variables).
 
-Here we will run our [JUnit5 Rest Test](https://github.com/elastest/demo-projects/tree/master/rest/junit5-rest-test) provided by default in ElasTest, which makes use of a rest application as a SuT and has a single test that is responsible for making a GET request to that Sut. This test has been developed in Java using [JUnit5](https://junit.org/junit5/):
+Here we will run our [JUnit5 Rest Test](https://github.com/elastest/demo-projects/tree/master/rest/junit5-rest-test) provided by default in ElasTest, which makes use of a rest application as a SuT and has a single test that is responsible for making a GET request to that Sut. This test has been developed in Java using [JUnit5](https://junit.org/junit5/). The code of this project is explained in detail [here](/testing/e2e-rest).
+
+The [Jenkins Pipeline code](https://jenkins.io/doc/book/pipeline/syntax/) that will contain the Job is as follows:
 
 ```
 node{
@@ -144,11 +153,11 @@ node{
         stage ('Executing Test') {
             def sutImage = docker.image('elastest/demo-rest-java-test-sut')
             echo 'Start SUT'
-            sutImage.withRun("--name ${env.ET_SUT_CONTAINER_NAME} --network=elastest_elastest") { c ->
+            def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+            sutImage.withRun("--name ${sutContainerName} --network=elastest_elastest") { c ->
                 echo "${c.id}"
-                def sutContainerName = env.ET_SUT_CONTAINER_NAME;
                 def sutNetwork = getFirstNetwork(sutContainerName)
-                def sutIp = containerIp(sutContainerName,network)
+                def sutIp = containerIp(sutContainerName,sutNetwork)
                 sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
                 withEnv(['ET_SUT_HOST=' + sutIp]) {
                     echo 'Set up test environment'
@@ -159,7 +168,6 @@ node{
                     sh "cd ./rest/junit5-rest-test;'${mvnHome}/bin/mvn' -B -DforkCount=0 test"
                 }
             }
-
         }
     }
 }
@@ -203,30 +211,31 @@ node{
 
 <p></p>
 
--   **Sut configuration** : The SUT must be started, passing the `${env.ET_SUT_CONTAINER_NAME}` env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
-    <p></p>
+-   **Sut configuration** : The SUT must be started, passing the **`${env.ET_SUT_CONTAINER_NAME}`** env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
+
+<p></p>
 
 ```
 def sutImage = docker.image('elastest/demo-rest-java-test-sut')
 echo 'Start SUT'
-sutImage.withRun("--name ${env.ET_SUT_CONTAINER_NAME} --network=elastest_elastest") { c ->
+def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+sutImage.withRun("--name ${sutContainerName} --network=elastest_elastest") { c ->
 ```
 
 <p></p>
 
--   **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used.
+-   **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.
     <p></p>
 
 ```
-def sutContainerName = env.ET_SUT_CONTAINER_NAME;
 def sutNetwork = getFirstNetwork(sutContainerName)
-def sutIp = containerIp(sutContainerName,network)
+def sutIp = containerIp(sutContainerName,sutNetwork)
 sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
 ```
 
 <p></p>
 
--   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as a environment variable or pass it as a maven property so that the test knows where the SUT is.
+-   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as an environment variable or pass it as a maven property so that the test knows where the SUT is.
 
 <p></p>
 
@@ -247,13 +256,15 @@ withEnv(['ET_SUT_HOST=' + sutIp]) {
 <!-- ******* WebBrowser Example ******* -->
 <!-- ********************************** -->
 
-<h4 class="holder-subtitle link-top">WebBrowser Example</h4>
+<h3 class="holder-subtitle link-top">WebBrowser Example</h3>
 
 Bellow, you will find an example of pipeline where using the ElasTest plugin and implements severals configurations, a [Sut](/testing/sut) is started and a test battery is executed using it, making use of WebBrowsers.
 To configure this option, ElasTest provides the connection info using [environment variables](/testing/environment-variables).
 
 Here we will run our [JUnit5 Multi Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-multiple-browsers-test) provided by default in ElasTest, which makes use of a Spring Boot Application as a SuT that has two input fields (title and body) and a button to add them as a table row. Also has three test that are responsible for add rows to that Sut and verify that the added row has the expected content.
-This test has been developed in Java using [JUnit5](https://junit.org/junit5/):
+This test has been developed in Java using [JUnit5](https://junit.org/junit5/). The code of this project is explained in detail [here](/web-browsers/e2e-browser).
+
+The [Jenkins Pipeline code](https://jenkins.io/doc/book/pipeline/syntax/) that will contain the Job is as follows:
 
 ```
 node{
@@ -322,7 +333,7 @@ node{
 
 <p></p>
 
--   **Sut configuration** : The SUT must be started, passing the `${env.ET_SUT_CONTAINER_NAME}` env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
+-   **Sut configuration** : The SUT must be started, passing the **`${env.ET_SUT_CONTAINER_NAME}`** env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
     <p></p>
 
 ```
@@ -345,7 +356,7 @@ sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' ela
 
 <p></p>
 
--   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as a environment variable or pass it as a maven property so that the test and the browsers we are going to use know where the Sut is located.
+-   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as an environment variable or pass it as a maven property so that the test and the browsers we are going to use know where the Sut is located.
 
 <p></p>
 
@@ -366,7 +377,7 @@ withEnv(['ET_SUT_HOST=' + sutIp]) {
 <!-- ****** ElasTest Plugin options ****** -->
 <!-- ************************************* -->
 
-<h4 class="holder-subtitle link-top" id="options">ElasTest Plugin options</h4>
+<h3 class="holder-subtitle link-top" id="options">ElasTest Plugin options</h3>
 
 The installation of ElasTest, Jenkins and the collaboration between them, allows several configurations and offers the following options:
 
@@ -375,3 +386,74 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 -   **`sut`**: allows to select an external Sut against which to execute the job.
 -   **`tss: ['EUS']`**: is used to indicate to ElasTest that the job needs to use the EUS service to use a web browser.
 -   **`monitoring`**: used to send or not the Sut monitoring traces to Elastest.
+
+<!-- ************************************** -->
+<!-- ************ Known Issues ************ -->
+<!-- ************************************** -->
+
+<!-- <h3 class="holder-subtitle link-top" id="options">Jenkins deployment known issues</h3> -->
+
+<!-- ************************************** -->
+<!-- ************ Add ElasTest ************ -->
+<!-- ************************************** -->
+
+<!-- <h3 class="holder-subtitle link-top" id="options">Add ElasTest to your current Jenkins Jobs</h3>
+
+<h4 class="small-subtitle">1. Indentify your <strong class="etColor">test types</strong>:</h4>
+
+-   Unit
+-   Rest
+-   WebBrowsers
+
+<h4 class="small-subtitle">2. Modify your <strong class="etColor">code</strong>:</h4>
+
+##### **Unit**
+
+For Unit Tests no modification is necessary to make it work but if you want ElasTest to be able to differentiate the logs of each of the test cases, it is necessary to add a start/finish log trace in each one. This is explained in detail [here](/testing/unit#xmlAndtestResultsPath).
+
+##### **Rest**
+
+For Rest Tests no modification is necessary to make it work but if you want ElasTest to be able to differentiate the logs of each of the test cases, it is necessary to add a start/finish log trace in each one. This is explained in detail [here](/testing/unit#xmlAndtestResultsPath).
+
+##### **WebBrowsers**
+
+You will need to make use of the **`ET_EUS_API`** [environment variable](/testing/environment-variables) provided by ElasTest to manage the browsers that the test will use. For example, if you use _Selenium RemoteWebDriver_, the code should be similar to the following:
+
+```
+String eusURL = System.getenv("ET_EUS_API");
+WebDriver driver = new RemoteWebDriver(new URL(eusURL), caps);
+```
+
+<h4 class="small-subtitle">3. Modify your <strong class="etColor">Jenkinsfile</strong>:</h4>
+
+For any type of test you need to make use of the step "elastest()" and enclose your code in it:
+
+```
+node{
+    elastest() {
+        .... YOUR CODE HERE ...
+    }
+}
+```
+
+If your tests generate [xml report files](/testing/unit#xmlAndtestResultsPath) (as JUnit does for example) you can use [option](#options) **`surefireReportsPattern`** to indicate the path where they will be generated, so ElasTest can use them to get information:
+
+```
+node{
+    elastest(surefireReportsPattern: '**/path/to/report/files/*.xml') {
+        .... YOUR CODE HERE ...
+    }
+}
+```
+
+##### **Unit**.
+
+Just make the changes listed above
+
+##### **Rest**
+
+Depending on how you start the rest application, you will have to make different modifications:
+
+-   If your application is a Docker container started with **docker run** you will need to modify the command to give the container a name. This name will be the value of the **`ET_SUT_CONTAINER_NAME`** [environment variable](/testing/environment-variables) provided by ElasTest:
+
+##### **WebBrowsers** -->

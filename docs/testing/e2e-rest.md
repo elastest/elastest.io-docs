@@ -6,7 +6,7 @@
 </div>
 </div>
 
-Unit and integration tests are important to verify that isolated and integrated software modules are behaving as expected. Nevertheless, **end to end tests** (sometimes called system tests) are also important, because they allow to test the system as a whole, as seen for the end user. End to end tests are different from unit and integration tests because the [SuT](/#elastest-core-concepts) (Software under Test) is deployed in the same environment as in production.
+Unit and integration tests are important to verify that isolated and integrated software modules are behaving as expected. Nevertheless, **end to end tests** (sometimes called system tests) are also important, because they allow to test the system as a whole, as seen for the end user. End to end tests are different from unit and integration tests because the [SuT](/#sut) (Software under Test) is deployed in the same environment as in production.
 
 To execute an end to end test in ElasTest, the SuT have to be declared explicitly. Then, any TJob can be associated to that SuT. In this way, the SuT can be managed independently the number of TJob executed against it.
 

@@ -6,7 +6,7 @@
 </div>
 </div>
 
-When ElasTest is executing tests against an already deployed [SuT](/#elastest-core-concepts), it is necessary to explicitly gather monitoring information from it if we want to benefit from ElasTest monitoring and analysis features. The required instrumentation can be done in two different ways:
+When ElasTest is executing tests against an already deployed [SuT](/#sut), it is necessary to explicitly gather monitoring information from it if we want to benefit from ElasTest monitoring and analysis features. The required instrumentation can be done in two different ways:
 
  - **Automated instrumentation**: If the SuT is a linux box with ssh access, ElasTest will be able to instrument it automatically. ***(Feature coming soon)***
  - **Manual instrumentation**: The SuT admin may install itself the instrumentation agents or configure the platform to send monitoring information to ElasTest.

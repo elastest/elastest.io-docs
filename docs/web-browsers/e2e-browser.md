@@ -6,7 +6,7 @@
 </div>
 </div>
 
-If you want to use a web browser in your test, you can “install” a web browser in your [TJob](/#elastest-core-concepts) Docker container. The problem with this approach is that you can not see what happens in the browser. You can not see the browser console. Also, it is a bit of a challenge to execute the same tests with different browser versions.
+If you want to use a web browser in your test, you can “install” a web browser in your [TJob](/#tjob) Docker container. The problem with this approach is that you can not see what happens in the browser. You can not see the browser console. Also, it is a bit of a challenge to execute the same tests with different browser versions.
 
 One of the main features provided by ElasTest is allowing tests to use web browsers. That browsers will be fully monitored, showing its windows in real time in ElasTest web interface and also recording it to later inspection. Also, the browser console will be shown alongside test and SuT logs.
 

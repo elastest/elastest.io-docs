@@ -6,7 +6,7 @@
 </div>
 </div>
 
-Running unit and integration tests with ElasTest doesn't require launching beforehand a [SuT](/#elastest-core-concepts). The test itself will manage the execution of the tested software. So the only requirment is to create a TJob into a Project and launch it.
+Running unit and integration tests with ElasTest doesn't require launching beforehand a [Sut](/#sut). The test itself will manage the execution of the tested software. So the only requirment is to create a TJob into a Project and launch it.
 
 Here we will run our [JUnit5 Unit Test](https://github.com/elastest/demo-projects/tree/master/unit/junit5-unit-test) provided by default in ElasTest, which has a single class with two methods, sum and sub, that receive two numerical values to add or subtract respectively.
 This test has been developed in Java using [JUnit5](https://junit.org/junit5/):

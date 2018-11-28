@@ -6,7 +6,6 @@
 </div>
 </div>
 
-
 Once started ElasTest, you can make use of the Jenkins instance provided, which contains some example jobs loaded by default.
 
 If you did not start ElasTest with the **`--jenkins`** parameter (see how to [start ElasTest](/try-elastest) and its parameters), the Jenkins instance will not be available but you can start it manually from the ElasTest GUI navigating to the **`Jenkins`** section and clicking on the **`Start Jenkins`** button.
@@ -49,7 +48,6 @@ Open Jenkins by clicking on the button and enter your login credentials, you wil
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_junit_example_main_build_btn.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_junit_example_main_build_btn.png"/></a>
 </div>
 
-
 <h5 class="small-subtitle">4. Running view</h5>
 
 After pressing the button, you will see the job running on Jenkins:
@@ -58,7 +56,14 @@ After pressing the button, you will see the job running on Jenkins:
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_junit_example_running.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_junit_example_running.png"/></a>
 </div>
 
-On the other hand, ElasTest will have created a project called **`Jenkins Examples`** in **Projects section**, that will contain a TJob with the same name as Jenkins Job (jenkins-junit5-unit-test). 
+Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while).
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/junit5_unit_test_build_et_icon.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/junit5_unit_test_build_et_icon.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_running.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_running.png"/></a>
+</div>
+
+ElasTest will have created a project called **`Jenkins Examples`** in **Projects section**, that will contain a [TJob](/#tjob) with the same name as Jenkins Job (jenkins-junit5-unit-test).
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_jenkins_project.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_jenkins_project.png"/></a>
