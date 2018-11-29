@@ -393,12 +393,6 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 -   **`monitoring`**: used to send or not the Sut monitoring traces to Elastest.
 
 <!-- ************************************** -->
-<!-- ************ Known Issues ************ -->
-<!-- ************************************** -->
-
-<h3 class="holder-subtitle link-top" id="options">Jenkins deployment known issues</h3>
-
-<!-- ************************************** -->
 <!-- ************ Add ElasTest ************ -->
 <!-- ************************************** -->
 
@@ -504,3 +498,13 @@ elastest(tss: ['EUS'], ...other options...) {
 ```
 
 Thanks to this option, ElasTest will be in charge of **managing the browsers**, **recording** the tests and **associating the videos** to them, as well as sending the logs of the browsers console. It also initializes [environment variable](/testing/environment-variables) **ET_EUS_API** that we mentioned in the step [Modify your code](#modifyYourCode) and that you need to use in the code of your tests.
+
+
+<!-- ************************************** -->
+<!-- ************ Known Issues ************ -->
+<!-- ************************************** -->
+
+<h3 class="holder-subtitle link-top" id="options">Jenkins deployment known issues</h3>
+
+-   If ElasTest and Jenkins are on **different machines** and Jenkins starts a Sut, it must have its **public IP** so that ElasTest browsers can access it.
+-   If **Jenkins slaves** are used, Sut **monitoring doesn't work**.
