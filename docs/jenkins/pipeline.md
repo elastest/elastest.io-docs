@@ -24,7 +24,7 @@ This test has been developed in Java using [JUnit5](https://junit.org/junit5/). 
 
 The [Jenkins Pipeline code](https://jenkins.io/doc/book/pipeline/syntax/) that will contain the Job is as follows:
 
-```
+```groovy
 node{
     elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', project: 'Jenkins Examples') {
         stage ('Executing Test') {
@@ -46,7 +46,7 @@ The code above can be split into the following sections:
 
 <p></p>
 
-```
+```groovy
 node{
     elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', project: 'Jenkins Examples') {
         .......
@@ -63,7 +63,7 @@ node{
 
 <p></p>
 
-```
+```groovy
 ....
 stage ('Executing Test') {
         echo 'Set up test environment'
@@ -76,6 +76,7 @@ stage ('Executing Test') {
 }
 ....
 ```
+>   *** This example will only work if the Maven tool is configured**
 
 <p></p>
 
@@ -147,7 +148,7 @@ Here we will run our [JUnit5 Rest Test](https://github.com/elastest/demo-project
 
 The [Jenkins Pipeline code](https://jenkins.io/doc/book/pipeline/syntax/) that will contain the Job is as follows:
 
-```
+```groovy
 node{
     elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
         stage ('Executing Test') {
@@ -201,7 +202,7 @@ The example above can be split into the following sections:
 
 <p></p>
 
-```
+```groovy
 node{
     elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
         .......
@@ -215,7 +216,7 @@ node{
 
 <p></p>
 
-```
+```groovy
 def sutImage = docker.image('elastest/demo-rest-java-test-sut')
 echo 'Start SUT'
 def sutContainerName = env.ET_SUT_CONTAINER_NAME;
@@ -227,7 +228,7 @@ sutImage.withRun("--name ${sutContainerName} --network=elastest_elastest") { c -
 -   **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.
     <p></p>
 
-```
+```groovy
 def sutNetwork = getFirstNetwork(sutContainerName)
 def sutIp = containerIp(sutContainerName,sutNetwork)
 sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
@@ -239,7 +240,7 @@ sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' ela
 
 <p></p>
 
-```
+```groovy
 ....
 withEnv(['ET_SUT_HOST=' + sutIp]) {
     echo 'Set up test environment'
@@ -251,6 +252,8 @@ withEnv(['ET_SUT_HOST=' + sutIp]) {
 }
 ....
 ```
+
+>   *** This example will only work if the Maven tool is configured**
 
 <!-- ********************************** -->
 <!-- ******* WebBrowser Example ******* -->
@@ -266,7 +269,7 @@ This test has been developed in Java using [JUnit5](https://junit.org/junit5/). 
 
 The [Jenkins Pipeline code](https://jenkins.io/doc/book/pipeline/syntax/) that will contain the Job is as follows:
 
-```
+```groovy
 node{
     elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
         stage ('Executing Test') {
@@ -323,7 +326,7 @@ The example above can be split into the following sections:
 
 <p></p>
 
-```
+```groovy
 node{
     elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
         .......
@@ -336,7 +339,7 @@ node{
 -   **Sut configuration** : The SUT must be started, passing the **`${env.ET_SUT_CONTAINER_NAME}`** env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
     <p></p>
 
-```
+```groovy
 def sutImage = docker.image('elastest/demo-web-java-test-sut')
 echo 'Start SUT'
 sutImage.withRun("--name ${env.ET_SUT_CONTAINER_NAME}") { c ->
@@ -347,7 +350,7 @@ sutImage.withRun("--name ${env.ET_SUT_CONTAINER_NAME}") { c ->
 -   **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used.
     <p></p>
 
-```
+```groovy
 def sutContainerName = env.ET_SUT_CONTAINER_NAME;
 def sutNetwork = getFirstNetwork(sutContainerName)
 def sutIp = containerIp(sutContainerName,sutNetwork)
@@ -360,7 +363,7 @@ sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' ela
 
 <p></p>
 
-```
+```groovy
 ....
 withEnv(['ET_SUT_HOST=' + sutIp]) {
     echo 'Set up test environment'
@@ -372,6 +375,8 @@ withEnv(['ET_SUT_HOST=' + sutIp]) {
 }
 ....
 ```
+
+>   *** This example will only work if the Maven tool is configured**
 
 <!-- ************************************* -->
 <!-- ****** ElasTest Plugin options ****** -->
@@ -399,13 +404,18 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 
 <h3 class="holder-subtitle link-top" id="options">Add ElasTest to your current Jenkins Jobs</h3>
 
+<div class="range range-xs range-xs-center warning-range">
+    <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+    <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>We are preparing improvements and new features in the ElasTest Jenkins plugin for the next release.</i></p></div>
+</div>
+
 <h4 class="small-subtitle">1. Indentify your <strong class="etColor">test types</strong>:</h4>
 
 -   Unit
 -   Rest
 -   WebBrowsers
 
-<h4 class="small-subtitle">2. Modify your <strong class="etColor">code</strong>:</h4>
+<h4 class="small-subtitle" id="modifyYourCode">2. Modify your <strong class="etColor">code</strong>:</h4>
 
 ##### **Unit**
 
@@ -419,16 +429,16 @@ For Rest Tests no modification is necessary to make it work but if you want Elas
 
 You will need to make use of the **`ET_EUS_API`** [environment variable](/testing/environment-variables) provided by ElasTest to manage the browsers that the test will use. For example, if you use _Selenium RemoteWebDriver_, the code should be similar to the following:
 
-```
+```java
 String eusURL = System.getenv("ET_EUS_API");
 WebDriver driver = new RemoteWebDriver(new URL(eusURL), caps);
 ```
 
 <h4 class="small-subtitle">3. Modify your <strong class="etColor">Jenkinsfile</strong>:</h4>
 
-For any type of test you need to make use of the step "elastest()" and enclose your code in it:
+For any type of test you need to make use of the step **`elastest()`** and enclose your code in it:
 
-```
+```groovy
 node{
     elastest() {
         .... YOUR CODE HERE ...
@@ -438,7 +448,7 @@ node{
 
 If your tests generate [xml report files](/testing/unit#xmlAndtestResultsPath) (as JUnit does for example) you can use [option](#options) **`surefireReportsPattern`** to indicate the path where they will be generated, so ElasTest can use them to get information:
 
-```
+```groovy
 node{
     elastest(surefireReportsPattern: '**/path/to/report/files/*.xml') {
         .... YOUR CODE HERE ...
@@ -446,14 +456,51 @@ node{
 }
 ```
 
-##### **Unit**.
+If you are using **Unit Test this is all you need to modify**. Let's see what changes are needed for the rest of the cases:
 
-Just make the changes listed above
+##### **If you use a Sut**
 
-##### **Rest**
+Depending on **how you start the Sut**, you will have to make different modifications:
 
-Depending on how you start the rest application, you will have to make different modifications:
+-   If your application is a Docker container started with **`docker run`** you will need to modify the command to give the **container a name**. This name will be the value of the **`ET_SUT_CONTAINER_NAME`** [environment variable](/testing/environment-variables) provided by ElasTest:
+<p></p>
+```groovy
+def sutImage = docker.image('your-image')
+def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+sutImage.withRun("--name ${sutContainerName}") { c ->
+    ....
+}
+```
 
--   If your application is a Docker container started with **docker run** you will need to modify the command to give the container a name. This name will be the value of the **`ET_SUT_CONTAINER_NAME`** [environment variable](/testing/environment-variables) provided by ElasTest:
+<p></p>
 
-##### **WebBrowsers**
+-   If your application is started with a **`docker-compose`** you will need to modify the command to set a **project name**. This name will be the value of the **`ET_SUT_CONTAINER_NAME`** [environment variable](/testing/environment-variables) provided by ElasTest:
+<p></p>
+```groovy
+sh "docker-compose -p ${env.ET_SUT_CONTAINER_NAME} up -d"
+```
+
+<p></p>
+
+- If your application starts **`directly from the code`** (like for example with java -jar command) or is started on an **`external machine`** you don't have to do anything, but in this case the Sut logs will be part of the TJob logs.
+
+<p></p>
+
+Whether your application is a **docker container** or **docker-compose**, you can use the **`monitoring: true`** [option](#options) so that ElasTest is able to receive metrics from the Sut.
+
+```groovy
+elastest(monitoring: true, ...other options...) {
+        ....
+}
+```
+
+##### **If you use a WebBrowsers**
+If you use WebBrowsers in your tests, it is necessary to use the [option](#options) **`tss: ['EUS']`**:
+
+```groovy
+elastest(tss: ['EUS'], ...other options...) {
+        ....
+}
+```
+
+Thanks to this option, ElasTest will be in charge of **managing the browsers**, **recording** the tests and **associating the videos** to them, as well as sending the logs of the browsers console. It also initializes [environment variable](/testing/environment-variables) **ET_EUS_API** that we mentioned in the step [Modify your code](#modifyYourCode) and that you need to use in the code of your tests.

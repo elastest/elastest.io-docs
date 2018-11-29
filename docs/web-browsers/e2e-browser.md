@@ -14,10 +14,10 @@ Let's see how to launch a TJob that makes use of a web browser inside Elastest.
 Here we will run our [JUnit5 Multi Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-multiple-browsers-test) provided by default in ElasTest, which makes use of a Spring Boot Application as a SuT that has two input fields (title and body) and a button to add them as a table row. Also has three test that are responsible for add rows to that Sut and verify that the added row has the expected content.
 This test has been developed in Java using [JUnit5](https://junit.org/junit5/):
 
-<div class="row">
-<h5 class="small-subtitle">WebAppTest class</h5>
-<pre>
-<code class="java">
+
+##### **WebAppTest class**
+
+```java
 public class WebAppTest extends ElastestBaseTest {
 
     @Test
@@ -131,18 +131,16 @@ public class WebAppTest extends ElastestBaseTest {
         Thread.sleep(1000);
     }
 }
-</code>
-</pre>
-</div>
+```
 
 >-  In the code **`Thread.sleep()`** is used for a better visualization of the video that ElasTest records from the test, but it is not necessary to use it.
 >-  The **`checkTitleAndBodyNoEmpty`** test simulates a test that fails.   
 
 <p>In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs and start/stop browsers at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.</p>
-<div class="row">
-<h5 class="small-subtitle">ElastestBaseTest class</h5>
-<pre>
-<code class="java">
+
+##### **ElastestBaseTest class**
+
+```java
 public class ElastestBaseTest {
     protected static final Logger logger = LoggerFactory
             .getLogger(ElastestBaseTest.class);
@@ -229,9 +227,7 @@ public class ElastestBaseTest {
     }
 
 }
-</code>
-</pre>
-</div>
+```
 
 >-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`**  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
 
@@ -243,11 +239,10 @@ public class ElastestBaseTest {
 If you prefer, ElasTest also provides the same example but making use of a single browser for all tests, whose name in this case is [JUnit5 Single Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-single-browser-test).
 The WebAppTest class is exactly the same, the change is in the ElastestBaseTest class:
 
-<div class="row">
-<h5 class="small-subtitle">ElastestBaseTest class</h5>
-<pre>
-<code class="java">
 
+##### **ElastestBaseTest class**
+
+```java
 public class ElastestBaseTest {
     protected static final Logger logger = LoggerFactory
             .getLogger(ElastestBaseTest.class);
@@ -335,9 +330,7 @@ public class ElastestBaseTest {
         logger.info("##### Finish test: {}", testName);
     }
 }
-</code>
-</pre>
-</div>
+```
 
 >   Java shutdown hook (**`Runtime.getRuntime().addShutdownHook`**) is used to make sure to close the browser once all the tests have been executed.
 
