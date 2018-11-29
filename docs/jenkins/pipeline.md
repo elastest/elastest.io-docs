@@ -391,13 +391,13 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 <!-- ************ Known Issues ************ -->
 <!-- ************************************** -->
 
-<!-- <h3 class="holder-subtitle link-top" id="options">Jenkins deployment known issues</h3> -->
+<h3 class="holder-subtitle link-top" id="options">Jenkins deployment known issues</h3>
 
 <!-- ************************************** -->
 <!-- ************ Add ElasTest ************ -->
 <!-- ************************************** -->
 
-<!-- <h3 class="holder-subtitle link-top" id="options">Add ElasTest to your current Jenkins Jobs</h3>
+<h3 class="holder-subtitle link-top" id="options">Add ElasTest to your current Jenkins Jobs</h3>
 
 <h4 class="small-subtitle">1. Indentify your <strong class="etColor">test types</strong>:</h4>
 
@@ -456,4 +456,4 @@ Depending on how you start the rest application, you will have to make different
 
 -   If your application is a Docker container started with **docker run** you will need to modify the command to give the container a name. This name will be the value of the **`ET_SUT_CONTAINER_NAME`** [environment variable](/testing/environment-variables) provided by ElasTest:
 
-##### **WebBrowsers** -->
+##### **WebBrowsers**
