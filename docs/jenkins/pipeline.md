@@ -135,6 +135,14 @@ Once the execution is complete, you can view it in both Jenkins and ElasTest
 
 As can be seen in the last image, ElasTest shows different information, such as **test results** or **logs**. You can also see a card of metrics (All Metrics), but in this particular test is not sent any so it will appear empty.
 
+You can also see the logs of both the entire execution and each of the test cases in [LogAnalyzer](/log-analyzer) by clicking on the corresponding buttons:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_loganalyzer.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_loganalyzer.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/elastest_junit_example_testcase_loganalyzer.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/elastest_junit_example_testcase_loganalyzer.png"/></a>
+</div>
+
+
 <!-- ********************************** -->
 <!-- ********** Rest Example ********** -->
 <!-- ********************************** -->
