@@ -17,7 +17,8 @@
 -   All active live sessions are now shown in <a target="_blank" href="/docs/web-browsers/manual-browsers">Web Browsers section</a>.
 -   A <strong class="italicEtColor">button to restore the demo projects</strong> has been added on the project card.
 -   <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> has been updated to <strong class="italicEtColor">Java 8</strong>.
--   A system of retries has been added to send the traces to ElasTest in the <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.
+-   A system of **retries** has been added to send the traces to ElasTest in the <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.
+-   The use of **Suts managed by ElasTest** is allowed now in <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.
 -   **Logstash** has been updated to 6.5.0 version (Logstash is only available in Elastest <a target="_blank" href="/docs/experimental">experimental mode</a>)
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
