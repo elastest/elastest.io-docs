@@ -21,7 +21,7 @@
     </div>
 </div>
 
-<h4 class="holder-subtitle link-top">Best practices for issue reporting</h4>
+<h3 class="holder-subtitle link-top">Best practices for issue reporting</h3>
 
 ElasTest team is happy to help any user, either because of a simple doubt about the use of the platform or because of an unexpected bug. But to make it easier for us to answer your questions, please consider following this scheme when reporting an issue (whatever channel you use):
 
@@ -29,7 +29,7 @@ ElasTest team is happy to help any user, either because of a simple doubt about 
 2. **ElasTest version**: Version of ElasTest (see [below](#elastest-version) how to get it)
 3. **How to reproduce**: A step-by-step guide on how to reproduce the problem. Elaborate as much as possible
 
-<h4 class="holder-subtitle link-top" id="elastest-version">Getting ElasTest version</h4>
+<h3 class="holder-subtitle link-top" id="elastest-version">Getting ElasTest version</h3>
 
 You can always check the version of ElasTest you are running just by clicking on the "Help" icon.
 
@@ -42,26 +42,3 @@ There you have the version of each internal module of ElasTest. The global versi
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/images/elastest_version.png"><img class="img-responsive img-wellcome" src="/docs/images/elastest_version.png"/></a>
 </div>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: true,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>

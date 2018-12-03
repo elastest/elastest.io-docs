@@ -9,6 +9,8 @@
 | Variable name | Description | Sample value | Available when | Accesible from |
 | --- | --- | --- | --- | --- |
 | **ET_SUT_HOST** | IP of th SuT. Can be used inside the TJobs to connect to the SuT | "172.18.0.16" | There's a SuT configured for the TJob | TJob |
+| **ET_SUT_PORT** | Port of th SuT. Can be used inside the TJobs to connect to the SuT | "8080" | There's a SuT configured for the TJob | TJob |
+| **ET_SUT_PROTOCOL** | Protocol of th SuT. Can be used inside the TJobs to connect to the SuT | "http" | There's a SuT configured for the TJob | TJob |
 | **ET_EUS_API** | HTTP endpoint to launch remote web drivers from the TJobs | "http://172.18.0.14:8040/eus/v1/" | Web Browser Service is enabled for the TJob | TJob |
 | **ET_MON_LSHTTP_API** | Logstash API URL to send http requests with custom monitoring information to ElasTest | "http://172.18.0.12:80/logstash/" | Always available | TJob, SuT, TSS |
 | **ET_MON_LSHTTPS_API** | Logstash Secure API URL to send http requests with custom monitoring information to ElasTest | "http://172.18.0.12:443/logstash/" | Always available | TJob, SuT, TSS |

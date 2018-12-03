@@ -6,25 +6,37 @@
 </div>
 </div>
 
-<img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_jenkins.png"/>
+<img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/elastest_jenkins.png"/>
 
 ElasTest provides a Jenkins plugin for you to use the platform in your CI environment. Thanks to this you can make use of some features provided by ElasTest, such as log analysis or the use of on-demand browsers. There are two operating modes:
 
 *   **Use the Jenkins instance of ElasTest**: ElasTest provides an instance of Jenkins to be used. You don't need to install the ElasTest Jenkins plugin, it's already incorporated.
+    *   This instance can be started by [starting ElasTest with the --jenkins](/try-elastest) parameter or if you prefer it can be started from the ElasTest GUI once it has been started (this is explained on the [next page](/jenkins/try-jenkins)).
 *   **Use your own Jenkins**: Before you can use ElasTest as Jenkins plugin you need to install the plugin and complete its onfiguration. After this you will be ready to use ElasTest in a Free Style Job or in a Pipeline Job.
 
 
 <h4 class="holder-subtitle link-top">Plugin installation</h4>
+Currently ElasTest Plugin is in beta so to install it is necessary to do it from the [experimental repository of Jenkins](https://jenkins.io/doc/developer/publishing/releasing-experimental-updates/).
 
 To install the ElasTest Plugin you should follow this steps:
 
-*   Go to your Jenkins installation and click in **Manage Jenkins / Manage Plugins**.
-*   The next step is to open the **Available** tab and search "elastest". The ElasTest plugin will appear and you will check the box and click the "Install plugin" button.
+*   Go to your Jenkins installation and navigate through **Manage Jenkins / Manage Plugins / Advanced**.
+*   In the **Update site** section set the value **`https://updates.jenkins.io/update-center.json`** in the URL field
+*   Click on the **Submit** button and then on **Check now**
+<p></p>
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/experimental_repo.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/experimental_repo.png"/></a>
+</div>
+
+*   Navigate through **Manage Jenkins / Manage Plugins**.
+*   The next step is to open the **Available** tab and search **elastest**. The ElasTest plugin will appear and you will check the box and click the **Install plugin** button.
+*   Once installed, you can reset the update repository.
 
 <p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/plugin_install.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/plugin_install.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">Plugin configuration</h4>
@@ -39,29 +51,5 @@ The plugin configuration is very simple and you only have to fill in the followi
 Before you execute your first Job integrated with ElasTest, you can check if the connection between Jenkins and ElasTest is successfully established.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/jenkins/images/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/conf.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/jenkins/images/integration/conf.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/integration/conf.png"/></a>
 </div>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: false,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
-}
-</script>

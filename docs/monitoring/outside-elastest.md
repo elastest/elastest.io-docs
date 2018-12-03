@@ -6,7 +6,7 @@
 </div>
 </div>
 
-When ElasTest is executing tests against an already deployed [SuT](../../docs#elastest-core-concepts), it is necessary to explicitly gather monitoring information from it if we want to benefit from ElasTest monitoring and analysis features. The required instrumentation can be done in two different ways:
+When ElasTest is executing tests against an already deployed [SuT](/#sut), it is necessary to explicitly gather monitoring information from it if we want to benefit from ElasTest monitoring and analysis features. The required instrumentation can be done in two different ways:
 
  - **Automated instrumentation**: If the SuT is a linux box with ssh access, ElasTest will be able to instrument it automatically. ***(Feature coming soon)***
  - **Manual instrumentation**: The SuT admin may install itself the instrumentation agents or configure the platform to send monitoring information to ElasTest.
@@ -59,7 +59,7 @@ To illustrate this process, let's see a pretty common use case: you have an app 
 
 
 
-<div id="monitor-custom-log" class="beats-tutorial">
+<div id="monitor-custom-log" class="badge-tutorial beats-tutorial">
 
   <p>Monitor custom log in my server thanks to <a href="https://www.elastic.co/products/beats/filebeat">Filebeat</a></p>
 
@@ -150,7 +150,7 @@ fields:
 
 
 
-<div id="monitor-custom-metric" class="beats-tutorial" hidden>
+<div id="monitor-custom-metric" class="badge-tutorial beats-tutorial" hidden>
 
   <p>Monitor a custom metric in my server thanks to <a href="https://www.elastic.co/products/beats/metricbeat">Metricbeat</a></p>
 
@@ -282,28 +282,5 @@ window.onload = function() {
       scrollTop: $("#badges-beats").offset().top
     }, 1);
   }
-}
-</script>
-
-<script src="//code.jquery.com/jquery-3.2.1.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js"></script>
-
-<script>
-var galleries = $('div.docs-gallery');
-for (var i = 1; i <= galleries.length; i++) {
-    $().fancybox({
-    selector : '[data-fancybox="gallery-' + i + '"]',
-    infobar : true,
-    arrows : false,
-    loop: true,
-    protect: true,
-    transitionEffect: 'slide',
-    buttons : [
-        'close'
-    ],
-    clickOutside : 'close',
-    clickSlide   : 'close',
-  });
 }
 </script>

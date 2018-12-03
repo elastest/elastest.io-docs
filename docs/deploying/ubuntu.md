@@ -4,7 +4,7 @@
 </div>
 </div>
 
-<h4 class="holder-subtitle link-top">Introduction</h4>
+<h3 class="holder-subtitle link-top">Introduction</h3>
 
 Through the following lines you will find a guide to deploy ElasTest on a single machine (physical or virtual). So the same steps can be applied to a server on your data center or an instance on AWS, OpenStack, Azure or Google Cloud.
 
@@ -14,11 +14,11 @@ You only need remote or physical access to a **Linux** interactive shell to run 
 
 You can also deploy ElasTest on <a href="/docs/deploying/aws/">Amazon Web Services</a>
 
-<h4 class="holder-subtitle link-top">Accesing the instance</h4>
+<h3 class="holder-subtitle link-top">Accesing the instance</h3>
 
 Depends on your infraestructure the access will be different. Please, refer to your system administrator to know how to grant access to the console.
 
-<h4 class="holder-subtitle link-top">Installing Docker</h4>
+<h3 class="holder-subtitle link-top">Installing Docker</h3>
 
 First of all, you'll need to install Docker, please, refer to the official documentation to install onto your platform:
 
@@ -32,7 +32,7 @@ If you want to use docker with a regular user add the user to _docker_ group:
 sudo usermod -aG docker YOUR_USER
 ```
 
-<h4 class="holder-subtitle link-top">Launching ElasTest</h4>
+<h3 class="holder-subtitle link-top">Launching ElasTest</h3>
 
 In order to launch ElasTest platform just type
 
@@ -87,7 +87,7 @@ docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.soc
 
 <!-- OPTIONS -->
 
-<h5 class="small-subtitle">Options</h5>
+<h4 class="small-subtitle">Options</h4>
 
 You can include the option **`--server-address=(docker-machine ip)`** to set up the machine ip address.
 
@@ -125,11 +125,11 @@ You can execute **`--help`** if you need more information about the options.
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 ```
 
-<h4 class="holder-subtitle link-top">Running ElasTest on system boot</h4>
+<h3 class="holder-subtitle link-top">Running ElasTest on system boot</h3>
 
 To start ElasTest automatically on a system with Systemd, two scripts are needed:
 
-<h5 class="small-subtitle">1) Start ElasTest (<code>/usr/local/bin/elastest-start</code>)</h5>
+<h4 class="small-subtitle">1) Start ElasTest (<code>/usr/local/bin/elastest-start</code>)</h4>
 
 This script will launch elastest and contains the following lines:
 
@@ -152,7 +152,7 @@ Set execution permissions:
 sudo chmod 0755 /usr/local/bin/elastest-start
 ```
 
-<h5 class="small-subtitle">2) Stop ElasTest (<code>/usr/local/bin/elastest-stop</code>)</h5>
+<h4 class="small-subtitle">2) Stop ElasTest (<code>/usr/local/bin/elastest-stop</code>)</h4>
 
 The second script is `elastest-stop` to stop ElasTest.
 
@@ -167,7 +167,7 @@ Set execution permissions:
 sudo chmod 0755 /usr/local/bin/elastest-stop
 ```
 
-<h5 class="small-subtitle">3) Systemd start script (<code>/etc/systemd/system/elastest.service</code>)</h5>
+<h4 class="small-subtitle">3) Systemd start script (<code>/etc/systemd/system/elastest.service</code>)</h4>
 
 ```text
 [Unit]
@@ -198,7 +198,7 @@ Enable the service to start with the system
 sudo systemctl enable elastest
 ```
 
-<h5 class="small-subtitle">Start and Stop ElasTest</h5>
+<h4 class="small-subtitle">Start and Stop ElasTest</h4>
 
 From now on, everytime you want to launch ElasTest:
 
@@ -212,7 +212,7 @@ or stop
 sudo systemctl stop elastest
 ```
 
-<h4 class="holder-subtitle link-top">Swap space</h4>
+<h3 class="holder-subtitle link-top">Swap space</h3>
 
 It is possible that elastest needs some swap space. If your server is physical, it probably has some space already. You can check by running:
 
@@ -238,7 +238,7 @@ Swap:             0           0           0
 
 If you're working on the cloud, you'll probably need to add some swap space. To do that follow this steps:
 
-<h5 class="small-subtitle">1) Creating a swap file</h5>
+<h4 class="small-subtitle">1) Creating a swap file</h4>
 
 With Ubuntu:
 
@@ -264,19 +264,19 @@ Now, set up the proper file permissions:
 sudo chmod 0600 /swapfile
 ```
 
-<h5 class="small-subtitle">2) Mark the file as swap space</h5>
+<h4 class="small-subtitle">2) Mark the file as swap space</h4>
 
 ```bash
 sudo mkswap /swapfile
 ```
 
-<h5 class="small-subtitle">3) Activate the swap</h5>
+<h4 class="small-subtitle">3) Activate the swap</h4>
 
 ```bash
 sudo swapon /swapfile
 ```
 
-<h5 class="small-subtitle">4) Checking</h5>
+<h4 class="small-subtitle">4) Checking</h4>
 
 If you run the _free_ command again you'll see the swap space available.
 
@@ -284,7 +284,7 @@ If you run the _free_ command again you'll see the swap space available.
 free -m
 ```
 
-<h5 class="small-subtitle">5) Making changes permanent</h5>
+<h4 class="small-subtitle">5) Making changes permanent</h4>
 
 To make those changes permanent, add the following line to your _/etc/fstab_ file:
 
@@ -292,20 +292,20 @@ To make those changes permanent, add the following line to your _/etc/fstab_ fil
 sudo echo "/swapfile none swap sw 0 0" >> /etc/fstab
 ```
 
-<h4 id="elastestData" class="holder-subtitle link-top">ElasTest data</h4>
+<h3 id="elastestData" class="holder-subtitle link-top">ElasTest data</h3>
 
 ElasTest makes use of a folder and two volumes to store the data:
 
-<h5 class="small-subtitle">/data folder</h5>
+<h4 class="small-subtitle">/data folder</h4>
 
 As you may have seen above in the ElasTest start command, two volumes are binded. The first one is the **`/data`** folder that, in the example commands, we have bind to the host's **`~/.elastest`** folder, but you can choose the host folder you want.
 
 In this folder some data like the videos of the tests or configurations of Elastest are saved.
 
-<h5 class="small-subtitle">elastest_edm-mysql volume</h5>
+<h4 class="small-subtitle">elastest_edm-mysql volume</h4>
 The **`elastest_edm-mysql`** volume contains the ElasTest database, which contains all the data information of the tests, such as projects, suts, monitoring traces, test results, etc.
 
-<h5 class="small-subtitle">elastest_etm-testlink volume</h5>
+<h4 class="small-subtitle">elastest_etm-testlink volume</h4>
 The **`elastest_etm-testlink`** volume contains TestLink configuration information, such as the name of the MySql schema created in the database of **`elastest_edm-mysql`** volume.
 
 <!---
