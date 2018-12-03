@@ -9,7 +9,7 @@
 <!-- ************************* -->
 
 <h3 id="1.0.0-beta4" class="small-subtitle">1.0.0-beta4</h3>
-<h4 class="smaller-subtitle">end/11/2018</h4>
+<h4 class="smaller-subtitle">03/12/2018</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
