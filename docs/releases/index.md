@@ -13,6 +13,8 @@
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
+-   We've made improvements to the <a target="_blank" href="/docs/">Documentation</a>.
+-   We have improved <a target="_blank" href="/docs/testing/unit/">example projects</a> and added new ones. The technologies used are <a target="_blank" href="https://junit.org/junit5/">Java JUnit5</a>, <a target="_blank" href="https://junit.org/junit4/">Java JUnit4</a>, <a target="_blank" href="https://www.python.org/">Python</a>, <a target="_blank" href="https://jasmine.github.io/">JS Jasmine</a>, <a target="_blank" href="http://www.protractortest.org/#/">JS Protractor</a>, <a target="_blank" href="">Java Karate</a>, <a target="_blank" href="https://docs.cucumber.io/">Java Cucumber</a> and <a target="_blank" href="https://gauge.org/">Java Gauge</a>.
 -   It is no longer necessary to specify the  **`--server-address=localhost`** when running on <a target="_blank" href="/docs/try-elastest/#forMac">MAC</a> or <a target="_blank" href="/docs/try-elastest/#forWindows">Windows</a> (In docker for Windows, in Docker toolbox **`--server-address=$(docker-machine ip)`** is still necessary).
 -   All active live sessions are now shown in <a target="_blank" href="/docs/web-browsers/manual-browsers">Web Browsers section</a>.
 -   A <strong class="italicEtColor">button to restore the demo projects</strong> has been added on the project card.
@@ -20,6 +22,7 @@
 -   A system of **retries** has been added to send the traces to ElasTest in the <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.
 -   The use of **Suts managed by ElasTest** is allowed now in <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.
 -   **Logstash** has been updated to 6.5.0 version (Logstash is only available in Elastest <a target="_blank" href="/docs/experimental">experimental mode</a>)
+-   Now the tests can use a <a target="_blank" href="/docs/web-browsers/e2e-browser">single browser</a> for all the tests but the videos are associated with each test.
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 -   Now the <a target="_blank" href="/docs/testing/environment-variables/">environment variables</a> ET_SUT_PORT and ET_SUT_PROTOCOL are passed to the test container.
