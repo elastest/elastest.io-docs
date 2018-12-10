@@ -396,7 +396,7 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 
 -   **`surefireReportsPattern`** will contain the path where the xml files containing the test results are stored and which will be used by ElasTest to display the test information. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.
 -   **`project`** is used to indicate the name of the ElasTest project where the TJob associated with Jenkins Job will be created. This field is optional and if it is not used, a project will be created with the same name as the Job.
--   **`sut`**: allows to select an external Sut against which to execute the job.
+-   **`sut`**: allows you to select a Sut created in ElasTest against which to execute the job, indicating its id.
 -   **`tss: ['EUS']`**: is used to indicate to ElasTest that the job needs to use the EUS service to use a web browser.
 -   **`monitoring`**: used to send or not the Sut monitoring traces to Elastest.
 
