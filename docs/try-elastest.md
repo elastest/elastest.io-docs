@@ -268,6 +268,10 @@ ElasTest needs some minimun system specifications in order to run smoothly:
   </tr>
 </table>
 
+<h3 class="holder-subtitle link-top">ElasTest on a Virtual Machine</h3>
+
+To run ElasTest on a virtual machine it is necessary to use the **`--server-address`** option with the ip of the VM as value.
+
 <h3 class="holder-subtitle link-top">ElasTest on a server</h3>
 
 To run ElasTest on a server follow the steps detailed in the <a href="/docs/deploying/ubuntu/">Linux Server </a>section.
