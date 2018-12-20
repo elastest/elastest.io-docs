@@ -100,7 +100,7 @@ The request has to use the POST method. There are different formats to send diff
    "@timestamp": 9999999999,
    "exec": "XX",
    "component": "YY",
-   "type": "cpu",
+   "et_type": "cpu",
    "stream_type": "composed_metric",
    "cpu": {
      "total_usage": 80,

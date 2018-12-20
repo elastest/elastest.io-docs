@@ -5,6 +5,26 @@
 </div>
 
 <!-- ************************* -->
+<!-- ****** 1.0.0-beta5 ****** -->
+<!-- ************************* -->
+
+<h3 id="1.0.0-beta5" class="small-subtitle">1.0.0-beta5</h3>
+<h4 class="smaller-subtitle"20/12/2018</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   Now you can configure a Sut with parameters in <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.
+-   Now when you specify the use of a <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>, you can also set the *`path`* in which the service is located, if necessary.
+-   A new <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> has been added to the TJob execution containers: **`ET_NETWORK`**.
+-   **Containers** now contain **`labels`** with information to be used by ElasTest.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   Fixed the bug that appeared randomly when running a TJob with EUS
+-   **ET_SUT_CONTAINER_NAME** <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> was not being sent to <a target="_blank" href="/docs/testing/sut/#sutInNewContainer">Sut in new container</a>.
+
+
+<!-- ************************* -->
 <!-- ****** 1.0.0-beta4 ****** -->
 <!-- ************************* -->
 
@@ -15,7 +35,7 @@
 
 -   We've made improvements to the <a target="_blank" href="/docs/">Documentation</a>.
 -   We have improved <a target="_blank" href="/docs/testing/unit/">example projects</a> and added new ones. The technologies used are <a target="_blank" href="https://junit.org/junit5/">Java JUnit5</a>, <a target="_blank" href="https://junit.org/junit4/">Java JUnit4</a>, <a target="_blank" href="https://www.python.org/">Python</a>, <a target="_blank" href="https://jasmine.github.io/">JS Jasmine</a>, <a target="_blank" href="http://www.protractortest.org/#/">JS Protractor</a>, <a target="_blank" href="">Java Karate</a>, <a target="_blank" href="https://docs.cucumber.io/">Java Cucumber</a> and <a target="_blank" href="https://gauge.org/">Java Gauge</a>.
--   It is no longer necessary to specify the  **`--server-address=localhost`** when running on <a target="_blank" href="/docs/try-elastest/#forMac">MAC</a> or <a target="_blank" href="/docs/try-elastest/#forWindows">Windows</a> (In docker for Windows, in Docker toolbox **`--server-address=$(docker-machine ip)`** is still necessary).
+-   It is no longer necessary to specify the **`--server-address=localhost`** when running on <a target="_blank" href="/docs/try-elastest/#forMac">MAC</a> or <a target="_blank" href="/docs/try-elastest/#forWindows">Windows</a> (In docker for Windows, in Docker toolbox **`--server-address=$(docker-machine ip)`** is still necessary).
 -   All active live sessions are now shown in <a target="_blank" href="/docs/web-browsers/manual-browsers">Web Browsers section</a>.
 -   A <strong class="italicEtColor">button to restore the demo projects</strong> has been added on the project card.
 -   <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> has been updated to <strong class="italicEtColor">Java 8</strong>.

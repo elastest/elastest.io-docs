@@ -399,6 +399,7 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 -   **`sut`**: allows you to select a Sut created in ElasTest against which to execute the job, indicating its id.
 -   **`tss: ['EUS']`**: is used to indicate to ElasTest that the job needs to use the EUS service to use a web browser.
 -   **`monitoring`**: used to send or not the Sut monitoring traces to Elastest.
+-   **`sutParams: ['PARAM_NAME': 'value']`**: used to send parameters to Sut.
 
 <!-- ************************************** -->
 <!-- ************ Add ElasTest ************ -->

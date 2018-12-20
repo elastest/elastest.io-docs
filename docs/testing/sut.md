@@ -41,7 +41,7 @@ You can start a SuT from commands. For example, you can clone and build maven pr
     <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_in_commands_container.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_in_commands_container.png"/></a>
 </div>
 
-<h6 class="small-subtitle">SuT In New Container</h6>
+<h6 class="small-subtitle" id="sutInNewContainer">SuT In New Container</h6>
 You can start a SuT from docker image. The difference with `With Docker Image` option is that you can generate a docker image in execution time. For example, you can clone a project from GitHub and after generate docker image and start it.
 
 It's necessary sets on `docker run` command the `--name` parameter with the `$ET_SUT_CONTAINER_NAME` environment variable.
