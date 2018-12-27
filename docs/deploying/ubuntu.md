@@ -18,6 +18,26 @@ You can also deploy ElasTest on <a href="/docs/deploying/aws/">Amazon Web Servic
 
 Depends on your infraestructure the access will be different. Please, refer to your system administrator to know how to grant access to the console.
 
+In order to Elastest to work properly, some ports must be open:
+
+| Port/s | Comment |
+| ------ | ------- |
+| 37000  |
+| 37443  |
+| 5044   | Logstash |
+| 22     | SSH |
+| 32768 - 61000 | ElastestRange |
+| 8180 |
+| 5001 |
+| 2376 |
+| 8001 | 
+| 37006 |
+| 8082 |
+| 3000 |
+| 8080 |
+
+**Note**: All ports are TCP.
+
 <h3 class="holder-subtitle link-top">Installing Docker</h3>
 
 First of all, you'll need to install Docker, please, refer to the official documentation to install onto your platform:
