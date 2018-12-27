@@ -14,7 +14,7 @@ The easiest way to deploy ElasTest is by using our Amazon CloudFormation templat
     <a data-fancybox="gallery-1" href="/docs/deploying/images/new_stack.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/new_stack.png"/></a>
 </div>
 
-<h4 class="small-subtitle">2) Select option "Choose a template" and use <a href="https://raw.githubusercontent.com/elastest/elastest-toolbox/master/AWS/cloud-formation-latest.json">this JSON file</a></h4>
+<h4 class="small-subtitle">2) Select option "Choose a template" and use <a href="https://raw.githubusercontent.com/elastest/elastest-toolbox/master/AWS/cloud-formation-latest.yaml">this YAML file</a></h4>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/deploying/images/template.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/template.png"/></a>
@@ -31,6 +31,8 @@ The easiest way to deploy ElasTest is by using our Amazon CloudFormation templat
 | InstanceType     | The type of machine you want (recommended at least _m4.large_) | Elastest needs resources to run, please be genereous                                                                                             |
 | KeyName          | One of your AWS keys                                           | RSA key to access the instance through SSH                                                                                                       |
 | SwapSize         | Recommended at least _4_                                       | The amount of swap memory in GB                                                                                                                  |
+| WantJenkins      | true                                                           | Choose wether you want to deploy Jenkins CI with Elastest                                                                                        |
+| WantTestLink     | true                                                           | Choose wether you want to deploy TestLink Project Manager with Elastest                                                                          |
 
 <br>
 
@@ -47,7 +49,7 @@ The easiest way to deploy ElasTest is by using our Amazon CloudFormation templat
 
 No more configuration is needed. Click on **Next** -> **Next** -> **Create**
 
-Your stack status will show _CREATE_IN_PROGRESS_. Wait a few minutes until it shows _CREATE_COMPLETE_. Then you can check _Output_ tab to see the URL where you can access your ElasTest dashboard.
+Your stack status will show _CREATE_IN_PROGRESS_. Wait a few minutes (between 20 ~ 30) until it shows _CREATE_COMPLETE_. Then you can check _Output_ tab to see the URL where you can access your ElasTest dashboard.
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/deploying/images/output_tab.png"><img class="img-responsive img-wellcome" src="/docs/deploying/images/output_tab.png"/></a>
