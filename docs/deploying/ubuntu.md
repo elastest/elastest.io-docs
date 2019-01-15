@@ -22,19 +22,8 @@ In order to Elastest to work properly, some ports must be open:
 
 | Port/s | Comment |
 | ------ | ------- |
-| 37000  |
-| 37443  |
-| 5044   | Logstash |
 | 22     | SSH |
 | 32768 - 61000 | ElastestRange |
-| 8180 |
-| 5001 |
-| 2376 |
-| 8001 | 
-| 37006 |
-| 8082 |
-| 3000 |
-| 8080 |
 
 **Note**: All ports are TCP.
 
