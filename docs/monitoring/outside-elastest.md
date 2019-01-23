@@ -8,18 +8,16 @@
 
 When ElasTest is executing tests against an already deployed [SuT](/#sut), it is necessary to explicitly gather monitoring information from it if we want to benefit from ElasTest monitoring and analysis features. The required instrumentation can be done in two different ways:
 
- - **Automated instrumentation**: If the SuT is a linux box with ssh access, ElasTest will be able to instrument it automatically. ***(Feature coming soon)***
- - **Manual instrumentation**: The SuT admin may install itself the instrumentation agents or configure the platform to send monitoring information to ElasTest.
-
-
+-   **Automated instrumentation**: If the SuT is a linux box with ssh access, ElasTest will be able to instrument it automatically. **_(Feature coming soon)_**
+-   **Manual instrumentation**: The SuT admin may install itself the instrumentation agents or configure the platform to send monitoring information to ElasTest.
 
 <h4 class="holder-subtitle link-top">Manual instrumentation</h4>
 
 Manual instrumentation can be done by:
 
-- **Using Beats technology: [Beats](https://www.elastic.co/products/beats)** is a platform for single-purpose data shippers created to work with Logstash and ElasticSearch. There are a lot of beats agents to collect monitoring information from all kinds of sources. For example: [Filebeat](https://www.elastic.co/products/beats/filebeat), [Metricbeat](https://www.elastic.co/products/beats/metricbeat) or [Packetbeat](https://www.elastic.co/products/beats/packetbeat). If you can't find a certain beat agent among the official ones, you can always search [beats bult by the community](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html) or [create your own beat](https://www.elastic.co/guide/en/beats/devguide/current/new-beat.html).
+-   **Using Beats technology: [Beats](https://www.elastic.co/products/beats)** is a platform for single-purpose data shippers created to work with Logstash and ElasticSearch. There are a lot of beats agents to collect monitoring information from all kinds of sources. For example: [Filebeat](https://www.elastic.co/products/beats/filebeat), [Metricbeat](https://www.elastic.co/products/beats/metricbeat) or [Packetbeat](https://www.elastic.co/products/beats/packetbeat). If you can't find a certain beat agent among the official ones, you can always search [beats bult by the community](https://www.elastic.co/guide/en/beats/libbeat/current/community-beats.html) or [create your own beat](https://www.elastic.co/guide/en/beats/devguide/current/new-beat.html).
 
-- **Sending metrics with http POST requests**: If beats agents doesn’t suit your needs, you can always send monitoring information with http requests. Check out section [Custom monitoring](/monitoring/custom) to learn how.
+-   **Sending metrics with http POST requests**: If beats agents doesn’t suit your needs, you can always send monitoring information with http requests. Check out section [Custom monitoring](/monitoring/custom) to learn how.
 
 To create a SuT ready to be manually instrumented, fill the form as shown in the image below on "New SuT" page:
 
@@ -27,13 +25,13 @@ To create a SuT ready to be manually instrumented, fill the form as shown in the
     <a data-fancybox="gallery-1" href="/docs/monitoring/images/new_SuT_manual_instrumentation_1.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/new_SuT_manual_instrumentation_1.png"/></a>
 </div>
 
-Once you click on _Save and get monitoring details_  button, the following configuration parameters will be shown:
+Once you click on _Save and get monitoring details_ button, the following configuration parameters will be shown:
 
-- **Logstash Container IP**: The Logstash Container IP.
-- **Logstash Beats Host**: The public host (IP or FQDN) in which Logstash is located for send Beats traces (along with the Beats Port).
-- **Logstash Beats Port**: The port in which Logstash can receive beats monitoring information.
-- **HTTP Api Url**: The complete URL for send http requests to Logstash with monitoring information.
-- **Execution ID**: The execution identification value that has to be included in events sent to Logstash. This value is used to identify what events belongs to this SuT.
+-   **Logstash Container IP**: The Logstash Container IP.
+-   **Logstash Beats Host**: The public host (IP or FQDN) in which Logstash is located for send Beats traces (along with the Beats Port).
+-   **Logstash Beats Port**: The port in which Logstash can receive beats monitoring information.
+-   **HTTP Api Url**: The complete URL for send http requests to Logstash with monitoring information.
+-   **Execution ID**: The execution identification value that has to be included in events sent to Logstash. This value is used to identify what events belongs to this SuT.
 
 We will be using them in the following section.
 
@@ -47,17 +45,10 @@ As ElasTest already includes the required packages for using Beats ([Logstash](h
 
 To illustrate this process, let's see a pretty common use case: you have an app deployed somewhere in the cloud, and you want to run a TJob in ElasTest to test some feature of it. And you also want ElasTest to **monitor certain log** that your app produces on some custom path and the **CPU usage on your server**.
 
-
-
-
 <div id="badges-beats" class="badges-menu badges-menu-beats noselectionable link-top">
     <span id="monitor-custom-log-btn" class="badge badge-default my-badge my-big-badge selected">Monitor my<br>custom log</span>
     <span id="monitor-custom-metric-btn" class="badge badge-default my-badge my-big-badge">Monitor my<br>CPU usage</span>
 </div>
-
-
-
-
 
 <div id="monitor-custom-log" class="badge-tutorial beats-tutorial">
 
@@ -78,7 +69,15 @@ sudo dpkg -i filebeat-6.1.0-amd64.deb</code></pre>
 
   <p>Take a look to <a href="https://www.elastic.co/guide/en/beats/filebeat/current/filebeat-configuration.html">Step 2 of Filebeat documentation</a>. In our machine the Filebeat configuration file is <code>/etc/filebeat/filebeat.yml</code>. The predefined default value for Filebeat is to gather all logs inside "/var/log/" folder:</p>
 
+  <h6 class="small-subtitle">Filebeat 6.2 version or lower</h6>
   <pre><code class="yml hljs">filebeat.prospectors:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/*.log</code></pre>
+
+  <h6 class="small-subtitle">Filebeat 6.3 version or higher</h6>
+  <pre><code class="yml hljs">filebeat.inputs:
 - type: log
   enabled: true
   paths:
@@ -111,8 +110,9 @@ fields:
   </ul>
 
   <p>So the final look of <code>filebeat.yml</code> in its simplest form is:
-    <pre><code class="yml hljs">#====== "filebeat.yml" to send to ElasTest the logs generated on "/path/to/MY_CUSTOM_LOG.log" ======
 
+<h6 class="small-subtitle">Filebeat 6.2 version or lower</h6>
+<pre><code class="yml hljs">#====== "filebeat.yml" to send to ElasTest the logs generated on "/path/to/MY_CUSTOM_LOG.log" ======
 filebeat.prospectors:
 - type: log
   enabled: true
@@ -120,14 +120,33 @@ filebeat.prospectors:
     - /path/to/MY_CUSTOM_LOG.log
 
 output.logstash:
-  hosts: ["LOGSTASH_IP:LOGSTASH_BEATS_PORT"]
+hosts: ["LOGSTASH_IP:LOGSTASH_BEATS_PORT"]
 
 fields_under_root: true
 fields:
-  exec: XX
-  component: sut
-  stream: YY
+exec: XX
+component: sut
+stream: YY
 </code></pre>
+
+<h6 class="small-subtitle">Filebeat 6.3 version or higher</h6>
+
+<pre><code class="yml hljs">#====== "filebeat.yml" to send to ElasTest the logs generated on "/path/to/MY_CUSTOM_LOG.log" ======
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /path/to/MY_CUSTOM_LOG.log
+  fields_under_root: true
+  fields:
+    exec: XX
+    component: sut
+    stream: YY
+
+output.logstash:
+  hosts: ["LOGSTASH_IP:LOGSTASH_BEATS_PORT"]
+</code></pre>
+
   </p>
 
   <p>Whenever you are happy with your Filebeat configuration, run the service:
@@ -147,8 +166,6 @@ fields:
     <a data-fancybox="gallery-3" href="/docs/monitoring/images/my_stream.png"><img class="img-responsive img-wellcome" src="/docs/monitoring/images/my_stream.png"/></a>
   </div>
 </div>
-
-
 
 <div id="monitor-custom-metric" class="badge-tutorial beats-tutorial" hidden>
 
@@ -212,24 +229,26 @@ fields:
     <pre><code class="yml hljs">#====== "metricbeat.yml" to send to ElasTest the cpu usage of our server ======
 
 metricbeat.modules:
-- module: system
-  metricsets:
-    - cpu
-  enabled: true
-  period: 1s
-  processes: ['.*']
-  cpu_ticks: false
+
+-   module: system
+    metricsets:
+    -   cpu
+        enabled: true
+        period: 1s
+        processes: ['.*']
+        cpu_ticks: false
 
 output.logstash:
-  hosts: ["YOUR_SUT_IP:5044"]
+hosts: ["YOUR_SUT_IP:5044"]
 
 fields_under_root: true
 fields:
-  exec: XX
-  component: sut
-  stream: YY
-  stream_type: composed_metrics
+exec: XX
+component: sut
+stream: YY
+stream_type: composed_metrics
 </code></pre>
+
   </p>
 
   <p>Whenever you are happy with your Filebeat configuration, run the service:

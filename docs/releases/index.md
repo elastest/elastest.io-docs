@@ -5,16 +5,38 @@
 </div>
 
 <!-- ************************* -->
+<!-- ****** 1.0.0-beta6 ****** -->
+<!-- ************************* -->
+
+<h3 id="1.0.0-beta6" class="small-subtitle">1.0.0-beta6</h3>
+<h4 class="smaller-subtitle">23/01/2018</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   **`QUEUED status`** has been added for TJob executions that are queued when there are more than 4 simultaneous executions.
+-   The **`--logs`** option of <a target="_blank" href="/docs/try-elastest/">ElasTest Platform</a> has been removed. The starting logs of ElasTest containers will now be automatically displayed in the logs of the ElasTest Platform container. This also solves container freezing problems.
+-   General improvements in the **`stability`** of ElasTest
+
+<div class="docs-gallery inline-block" style="margin-left: 23px;">
+    <a data-fancybox="gallery-1" href="/docs/releases/images/platform_start_log-1.0.0-beta6.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/platform_start_log-1.0.0-beta6.png"/></a>
+</div>
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   Fixed bug with **Logstash** in <a target="_blank" href="/docs/experimental/">experimental mode</a> that didn't process **WebRTC traces** correctly.
+-   Fixed bug by running **`several TJobs with browsers`** that made them fail.
+
+<!-- ************************* -->
 <!-- ****** 1.0.0-beta5 ****** -->
 <!-- ************************* -->
 
 <h3 id="1.0.0-beta5" class="small-subtitle">1.0.0-beta5</h3>
-<h4 class="smaller-subtitle"20/12/2018</h4>
+<h4 class="smaller-subtitle">20/12/2018</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
 -   Now you can configure a Sut with parameters in <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.
--   Now when you specify the use of a <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>, you can also set the *`path`* in which the service is located, if necessary.
+-   Now when you specify the use of a <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>, you can also set the _`path`_ in which the service is located, if necessary.
 -   A new <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> has been added to the TJob execution containers: **`ET_NETWORK`**.
 -   **Containers** now contain **`labels`** with information to be used by ElasTest.
 
@@ -22,7 +44,6 @@
 
 -   Fixed the bug that appeared randomly when running a TJob with EUS
 -   **ET_SUT_CONTAINER_NAME** <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> was not being sent to <a target="_blank" href="/docs/testing/sut/#sutInNewContainer">Sut in new container</a>.
-
 
 <!-- ************************* -->
 <!-- ****** 1.0.0-beta4 ****** -->

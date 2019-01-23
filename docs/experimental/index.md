@@ -62,7 +62,12 @@ And finally the Experimental mode, the heaviest of all, which like the previous 
 
 
 
-To start ElasTest in Experimental mode execute this command from the shell:
+To start ElasTest in Experimental mode it is necessary to first execute the following command to increase the [virtual memory limit for Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html):
+```text
+sysctl -w vm.max_map_count=262144
+```
+
+Once this is done, you can start ElasTest with the following command from the shell:
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform:dev start -m=experimental
 ```

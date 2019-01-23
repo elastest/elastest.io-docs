@@ -77,11 +77,21 @@ Pulling some necessary images...
 
 Preload images finished.
 
-Starting ElasTest Platform (normal mode)...
+Starting ElasTest Platform latest (normal Mode)...
+
+Creating volume "elastest_platform-services" with local driver
+Creating elastest_platform-services_1 ... done
+Creating elastest_edm-mysql_1         ... done
+Creating elastest_etm-filebeat_1      ... done
+Creating elastest_etm-jenkins_1       ... done
+Creating elastest_etm-testlink_1      ... done
+Creating elastest_etm_1               ... done
+Creating elastest_etm-proxy_1         ... done
 
 ElasTest services are starting. This will likely take some time. The ElasTest URL will be shown when ready.
 
-ElasTest Platform is available at http://X.Y.Z.W:37000
+
+ElasTest Platform is available at http://W.X.Y.Z:37000
 
 Press Ctrl+C to stop.
 ```
@@ -108,12 +118,6 @@ You can set an access username and password using the options **`--user`** and *
 
 ```
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --user=elastest --password=elastest
-```
-
-The **`--logs`** option allows you to show all the containers logs.
-
-```
-docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --logs
 ```
 
 You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
