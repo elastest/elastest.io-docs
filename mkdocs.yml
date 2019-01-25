@@ -32,6 +32,8 @@ pages:
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
 
+- ['test-services/ess.md', 'Test Services', 'Security Service (ESS)']
+
 - ['testing/environment-variables.md', 'Environment variables']
 - ['releases/index.md', 'Releases']
 
