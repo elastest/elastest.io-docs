@@ -32,6 +32,10 @@ pages:
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
 
+- ['test-services/ece.md', 'Test Services', 'Cost Engine (ECE)']
+- ['test-services/eds.md', 'Test Services', 'Device Emulator Service (EDS)']
+- ['test-services/emp.md', 'Test Services', 'Monitoring Platform (EMP)']
+- ['test-services/ems.md', 'Test Services', 'Monitoring Service (EMS)']
 - ['test-services/ess.md', 'Test Services', 'Security Service (ESS)']
 
 - ['testing/environment-variables.md','Environment variables']

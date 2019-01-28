@@ -27,10 +27,13 @@ ESS can be launched during the execution of a TJob. The following demo explains 
 
 Create a new TJob in ElasTest with the following configuration:
 
--   **TJob name**: ESS demo,
--   **Current SuT**: None,
--   **Environment Docker Image**: dockernash/test-tjob-ess,
--   **Commands**: python fteaching-tjob.py example
+-   **TJob name**: **`ESS demo`**,
+-   **Current SuT**: Select **`None`**,
+-   **Environment Docker Image**: **`dockernash/test-tjob-ess`**
+-   **Commands**: 
+
+        python fteaching-tjob.py http://example.org/
+
 -   **Test Support Services**: Check **`EUS`** and **`ESS`**
 
 Save the TJob and click the execute button. The security alerts for the SuT will be displayed under the **`ess section`**.
@@ -54,47 +57,47 @@ You can scan a web site using ESS. To do this, it is necessary to create an ESS 
 3. From the drop down list, select "ESS" and click the button "Create Instance"
 
     <div class="docs-gallery inline-block">
-        <a data-fancybox="gallery-1" href="/docs/test-services/images/tss_page_ess_selected.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/tss_page_ess_selected.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/tss_page_ess_selected.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/tss_page_ess_selected.png"/></a>
     </div>
 
 4. Wait until the ESS instance is completely ready
 
     <div class="docs-gallery inline-block">
-        <a data-fancybox="gallery-1" href="/docs/test-services/images/loading_ess.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/loading_ess.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/loading_ess.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/loading_ess.png"/></a>
     </div>
 
 5. Click on the "View Service Details" icon
 
     <div class="docs-gallery inline-block">
-        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess_ready.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess_ready.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/ess_ready.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/ess_ready.png"/></a>
     </div>
 
 6. Scroll down to see the Web-GUI of ESS
 
     <div class="docs-gallery inline-block">
-        <a data-fancybox="gallery-1" href="/docs/test-services/images/1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/1.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/1.png"/></a>
     </div>
 
 7. Enter the URL of the Web site that must be tested using ESS
 
     <div class="docs-gallery inline-block">
-        <a data-fancybox="gallery-1" href="/docs/test-services/images/2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/2.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/2.png"/></a>
     </div>
 
 8. Wait until the Spidering and Active Scan completes
 
     <div class="docs-gallery inline-block">
-        <a data-fancybox="gallery-1" href="/docs/test-services/images/3.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/3.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/3.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/3.png"/></a>
     </div>
 
 9. Check the results generated
 
     <div class="docs-gallery inline-block">
-        <a data-fancybox="gallery-1" href="/docs/test-services/images/4.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/4.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/4.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/4.png"/></a>
     </div>
 
 10. Click on each Alert to see the details
 
     <div class="docs-gallery inline-block">
-        <a data-fancybox="gallery-1" href="/docs/test-services/images/5.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/5.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/5.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/5.png"/></a>
     </div>
