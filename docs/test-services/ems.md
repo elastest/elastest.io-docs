@@ -21,7 +21,7 @@ To enable the use of the EMS in a TJob, make sure to tick the corresponding chec
 
 The EMS will then receive metrics from the machine running the SuT and the lines written by both the TJob and the SuT to the standard output as events.
 
-The host of the EMS is loaded into the environment variable `ET_EMS_LSBEATS_HOST` of the TJob, so the OpenAPI endpoint of the EMS is accessible by the TJob at the address `${ET_EMS_LSBEATS_HOST}:8888`.
+The host of the EMS is loaded into the environment variable **`ET_EMS_LSBEATS_HOST`** of the TJob, so the OpenAPI endpoint of the EMS is accessible by the TJob at the address **`${ET_EMS_LSBEATS_HOST}:8888`**.
 
 The TJob can use the endpoint of the EMS to deploy _Monitoring Artifacts_, which are sets of rules to correlate events and check if one or many facets of the test are behaving properly.
 
@@ -38,28 +38,28 @@ Events received by the EMS go through three stages:
 3. Finally, outgoing events are stamped with further channels following the rules of the same Stampers.
 
 <h4 class="small-subtitle">Stampers</h4>
-Stampers are accessed through the endpoint `${ET_EMS_LSBEATS_HOST}:8888/stamper`.
-To deploy a new stamper, we need to execute a `POST` method to this endpoint, specifying the version of the language used. The only supported version as of today is `tag0.1`, which makes the URI `${ET_EMS_LSBEATS_HOST}:8888/stamper` the only valid endpoint to deploy stampers.
+Stampers are accessed through the endpoint **`${ET_EMS_LSBEATS_HOST}:8888/stamper`**.
+To deploy a new stamper, we need to execute a **`POST`** method to this endpoint, specifying the version of the language used. The only supported version as of today is **`tag0.1`**, which makes the URI **`${ET_EMS_LSBEATS_HOST}:8888/stamper`** the only valid endpoint to deploy stampers.
 
 <h5 class="small-subtitle">Stampers specification</h5>
 
-The body of the `POST` request contains the specification of the stamper to be deployed, which consists in a set of lines of the form
+The body of the **`POST`** request contains the specification of the stamper to be deployed, which consists in a set of lines of the form
 ```
 when EXPRESSION do CHANNEL
 ```
-This construct indicates that, when expression `EXPRESSION` is true for an event, then such an event must be stamped with channel stamp `CHANNEL`.
+This construct indicates that, when expression **`EXPRESSION`** is true for an event, then such an event must be stamped with channel stamp **`CHANNEL`**.
 The EMS will compute the smallest set of channels that satisfies all the rules.
-A `CHANNEL` is a string that starts with character `#`.
-An `EXPRESSION` is one of the following constructions:
+A **`CHANNEL`** is a string that starts with character **`#`**.
+An **`EXPRESSION`** is one of the following constructions:
 ```
 e.path(PATH)
 e.strcmp(PATH, "STRING")
 e.tag(CHANNEL)
 ```
-A `PATH` is a sequence of field ids separated by a dot.
-The expression `e.PATH(p)` is true for an event if its payload is a JSON object containing a field at path `p`.
-The expression `e.strcmp(p,s)` is true for an event if its payload is a JSON object containing a field at path `p` whose value is `s`.
-The expression `e.tag(c)` is true for an event if it is stamped with the channel stamp `c`.
+A **`PATH`** is a sequence of field ids separated by a dot.
+The expression **`e.PATH(p)`** is true for an event if its payload is a JSON object containing a field at path **`p`**.
+The expression **`e.strcmp(p,s)`** is true for an event if its payload is a JSON object containing a field at path **`p`** whose value is **`s`**.
+The expression **`e.tag(c)`** is true for an event if it is stamped with the channel stamp **`c`**.
 
 <h5 class="small-subtitle">Example</h5>
 For example, if a Stamper is deployed with the following definition:
@@ -68,16 +68,16 @@ when e.strcmp(type,"net") do #NetData
 when e.path(message.info) do #TJobMsg
 when e.tag(#testresult) do #websocket 
 ```
-Then, an event stamped with channel `#testresult` will also be stamped with channel stamp `#websocket`.
-An event whose payload is `{message: {info: "Info"}}` will be stamped with stamp `#TJobMsg` but not with channel stamp `#NetData`.
-An event whose payload is `{type: "net", message: "Server"}` will be stamped with channel stamp `#NetData` but not with channel stamp `#TJobMsg`.
-Finally, an event whose payload is `{message: {info: "Info"}, type: "net"}` will be stamped with both channel stamps `#TJobMsg` and `#NetData`.
+Then, an event stamped with channel **`#testresult`** will also be stamped with channel stamp **`#websocket`**.
+An event whose payload is **`{message: {info: "Info"}}`** will be stamped with stamp **`#TJobMsg`** but not with channel stamp **`#NetData`**.
+An event whose payload is **`{type: "net", message: "Server"}`** will be stamped with channel stamp **`#NetData`** but not with channel stamp **`#TJobMsg`**.
+Finally, an event whose payload is **`{message: {info: "Info"}, type: "net"}`** will be stamped with both channel stamps **`#TJobMsg`** and **`#NetData`**.
 
 <h5 class="small-subtitle">Default rules and output endpoint</h5>
-If the payload of an event is a JSON object that contains a field `channels` whose value is a JSON array of strings, then the event is stamped with each of these strings as channel stamps.
-If none of the deployed Stampers contain a rule to stamp an event with channel `#websocket`, then every event is stamped with this channel stamp.
-Events stamped with channel `#websocket` are transmitted over the websocket endpoint at the address `${ET_EMS_LSBEATS_HOST}:3232`.
-The TJob can establish a websocket connection to this endpoint to receive the events processed and generated by the EMS stamped with the channel `#websocket`.
+If the payload of an event is a JSON object that contains a field **`channels`** whose value is a JSON array of strings, then the event is stamped with each of these strings as channel stamps.
+If none of the deployed Stampers contain a rule to stamp an event with channel **`#websocket`**, then every event is stamped with this channel stamp.
+Events stamped with channel **`#websocket`** are transmitted over the websocket endpoint at the address **`${ET_EMS_LSBEATS_HOST}:3232`**.
+The TJob can establish a websocket connection to this endpoint to receive the events processed and generated by the EMS stamped with the channel **`#websocket`**.
 
-<h4 class="small-subtitle">Machines</h4>
-TODO
+<!-- <h4 class="small-subtitle">Machines</h4>
+TODO -->
