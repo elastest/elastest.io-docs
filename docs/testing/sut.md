@@ -134,7 +134,9 @@ After filling SuT name and description fields, click on _Save and get monitoring
 
 <h5 class="small-subtitle">Instrumented by ElasTest</h5>
 
-Your SuT is already deployed on an external server and you want to automatically send its logs and metrics to ElasTest. Elastest will be responsible for accessing your Sut to send monitoring traces.
+Your SuT is already deployed on an external server and you want to automatically send its logs and metrics to ElasTest. Elastest will be responsible for accessing your Sut to send monitoring traces, through the ElasTest Instrumentation Manager (EIM) service.
+
+EIM is integrated with ElasTest and allows to instrumentalize and de-instrumentalize the deployed SuTs. TJobs can also executed to verify that the SuTs are successfully instrumentalized.
 
 **Fields to declare:**
 
@@ -142,18 +144,32 @@ Your SuT is already deployed on an external server and you want to automatically
 -   **SuT Protocol**: Protocol of your SuT. **`http`** is selected by default.
 -   **User**: The user for access to your SuT.
 -   **Private Key**: The Private Key for access to your SuT.
--   **Instrumentalize**: If is checked, the Sut will be instrumented once the configuration is saved and it will start sending monitoring traces to ElasTest.
+-   **Instrumentalize**: If checked, it will be registered in the EIM so that the EIM can install Beats agents for SuT monitoring.
 -   **Sut Logs Path**: Full path where the logs that you want to monitor are located. One or more routes can be indicated.
 
 **Optional Fields:**
 
 -   **SuT Port**: Port of your SuT.
 -   **Password**: Password of your SuT.
+-   **Dockerized SuT**: To indicate that your Sut consists of one or more Docker containers. You must indicate The path where docker writes the **`containers logs`** and the path of **`docker.sock`**.
 
 <p></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_outside_eim.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_outside_eim.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_outside_eim2.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_outside_eim2.png"/></a>
 </div>
+
+Once the Sut is created, it can be associated with one or more TJobs of the same project. Each time a TJob is executed, ElasTest will install beat agents in the Sut to monitor the execution. The installed beats are:
+
+-   [Packetbeat](https://www.elastic.co/guide/en/beats/packetbeat/5.6/packetbeat-overview.html)
+-   [Filebeat](https://www.elastic.co/guide/en/beats/filebeat/5.6/filebeat-overview.html)
+-   [Metricbeat](https://www.elastic.co/guide/en/beats/metricbeat/5.6/metricbeat-overview.html)
+
+<div class="range range-xs range-xs-center warning-range">
+    <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+    <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>IMPORTANT: For proper operation, there should not be more than one execution of the same TJob simultaneously.</i></p></div>
+</div>
+
 
 <h5 id="outsideExternalES" class="small-subtitle">Use external Elasticsearch</h5>
 
