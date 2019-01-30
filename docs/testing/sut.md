@@ -13,9 +13,9 @@ ElasTest supports two deployment modes of SuT:
 
 When creating a new SuT you are able to defined what mode of deployment ElasTest should work with.
 
-<h4 class="holder-subtitle link-top">SuT deployed by ElasTest</h4>
+<h4 id="deployedElastest" class="holder-subtitle link-top">SuT deployed by ElasTest</h4>
 
-<h5 class="small-subtitle">With Commands Container</h5>
+<h5 id="elastestWithCommands" class="small-subtitle">With Commands Container</h5>
 
 Your SuT is packaged as a Docker image. You must write the _Commands Container Image_ and the commands below. These commands will run like the docker image CMD.
 
@@ -61,7 +61,7 @@ It's necessary sets on `docker-compose up` command the `-p` parameter with the `
     <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_in_docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_in_docker_compose.png"/></a>
 </div>
 
-<h5 class="small-subtitle">With Docker image</h5>
+<h5 id="elastestWithDockerImage" class="small-subtitle">With Docker image</h5>
 
 Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and run it as the `Dockerfile` states.
 
@@ -76,7 +76,7 @@ Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and
     <a data-fancybox="gallery-1" href="/docs/testing/images/sut/docker_image.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/docker_image.png"/></a>
 </div>
 
-<h5 class="small-subtitle">With docker-compose</h5>
+<h5 id="elastestWithDockerCompose" class="small-subtitle">With docker-compose</h5>
 
 Your SuT is declared as a docker-compose. ElasTest will pull all the necessary images from DockerHub and run them as the field _Docker Compose_ states
 
@@ -92,9 +92,9 @@ Your SuT is declared as a docker-compose. ElasTest will pull all the necessary i
     <a data-fancybox="gallery-1" href="/docs/testing/images/sut/docker_compose.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/docker_compose.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">SuT outside ElasTest</h4>
+<h4 id="deployedOutside" class="holder-subtitle link-top">SuT outside ElasTest</h4>
 
-<h5 class="small-subtitle">No instrumentation</h5>
+<h5 id="outsideNoInstrumentation" class="small-subtitle">No instrumentation</h5>
 
 Your SuT is already deployed on an external server and you don't want to send any logs or metrics to ElasTest.
 
@@ -112,7 +112,7 @@ Your SuT is already deployed on an external server and you don't want to send an
     <a data-fancybox="gallery-1" href="/docs/testing/images/sut/sut_outside_no_instrumentation.png"><img class="img-responsive img-wellcome" src="/docs/testing/images/sut/sut_outside_no_instrumentation.png"/></a>
 </div>
 
-<h5 class="small-subtitle">Manual instrumentation</h5>
+<h5 id="outsideManual" class="small-subtitle">Manual instrumentation</h5>
 
 Your SuT is already deployed on an external server and you want to manually send its logs and metrics to ElasTest.
 
@@ -132,7 +132,7 @@ Your SuT is already deployed on an external server and you want to manually send
 
 After filling SuT name and description fields, click on _Save and get monitoring details_ button to get all the necessary fields to manually instrument your server following [these instructions]().
 
-<h5 class="small-subtitle">Instrumented by ElasTest</h5>
+<h5 id="outsideEim" class="small-subtitle">Instrumented by ElasTest</h5>
 
 Your SuT is already deployed on an external server and you want to automatically send its logs and metrics to ElasTest. Elastest will be responsible for accessing your Sut to send monitoring traces, through the ElasTest Instrumentation Manager (EIM) service.
 

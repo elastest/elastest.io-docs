@@ -41,7 +41,7 @@ pages:
 - ['testing/environment-variables.md','Environment variables']
 - ['releases/index.md', 'Releases']
 
-- ['experimental/index.md', 'Experimental']
+- ['experimental/index.md']
 - ['roadmap/index.md', 'Roadmap']
 
 theme: null

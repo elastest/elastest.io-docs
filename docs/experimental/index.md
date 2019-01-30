@@ -4,7 +4,13 @@
 </div>
 </div>
 
-ElasTest has three execution modes. Normal mode (default mode), Experimental-lite and Experimental. Each of them increases the number of features offered by ElasTest from less to more.
+
+<div class="range range-xs-center warning-range">
+  <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+  <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>IMPORTANT: this section is deprecated since 1.0.0-beta7 version.</i></p></div>
+</div>
+
+ElasTest (version 1.0.0-beta6 and lower) has three execution modes. Normal mode (default mode), Experimental-lite and Experimental. Each of them increases the number of features offered by ElasTest from less to more.
 
 The Normal mode has already been mentioned in this documentation as it is the default mode in which ElasTest works and offers users the following basic functionalities:
 

@@ -22,7 +22,7 @@ Pulling some necessary images...
 
 Preload images finished.
 
-Starting ElasTest Platform latest (normal Mode)...
+Starting ElasTest Platform latest (mini Mode)...
 
 Creating volume "elastest_platform-services" with local driver
 Creating elastest_platform-services_1 ... done
@@ -44,6 +44,16 @@ You can then open in your web browser the shown URL to access to ElasTest dashbo
 To stop ElasTest, press **`Ctrl+C`** in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with [Unit Tests](your-first-test) project.
 
 <h4 class="small-subtitle">Options</h4>
+
+You can add **`--mode`** to start ElasTest in a specific [mode](/#modes). If not indicated, the default mode will be **mini**. Modes:
+
+-   mini
+-   singlenode
+
+<p></p>
+```text
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --mode=mini
+```
 
 You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
@@ -63,29 +73,54 @@ You can execute **`--help`** if you need more information about the options.
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 ```
 
-
 <h4 class="small-subtitle">Recommended system specifications</h4>
 
 ElasTest needs some minimun system specifications in order to run smoothly:
 
-<table>
-  <tr>
-    <td>Processor</td>
-    <td>1GHz or faster</td>
-  </tr>
-  <tr>
-    <td>RAM</td>
-    <td>8GB (highly recommended 16GB)</td>
-  </tr>
-  <tr>
-    <td>SWAP</td>
-    <td>4GB (if RAM < 16GB)</td>
-  </tr>
-  <tr>
-    <td>Hard Disk</td>
-    <td>30GB</td>
-  </tr>
-</table>
+<div class="range range-xs-center" style="margin-top: 0; text-align: center">
+    <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50">
+      <h5 class="small-subtitle" style="text-align: start !important;">Mini mode</h5>
+      <table>
+        <tr>
+          <td>Processor</td>
+          <td>1GHz or faster</td>
+        </tr>
+        <tr><!--  -->
+          <td>RAM</td>
+          <td>8GB (highly recommended 16GB)</td>
+        </tr>
+        <tr>
+          <td>SWAP</td>
+          <td>4GB (if RAM < 16GB)</td>
+        </tr>
+        <tr>
+          <td>Hard Disk</td>
+          <td>30GB</td>
+        </tr>
+      </table>
+    </div>        
+    <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50">
+      <h5 class="small-subtitle" style="text-align: start !important;">Single-node mode</h5>
+      <table>
+        <tr>
+          <td>Processor</td>
+          <td>1GHz or faster</td>
+        </tr>
+        <tr>
+          <td>RAM</td>
+          <td>32GB</td>
+        </tr>
+        <tr>
+          <td>SWAP</td>
+          <td>4GB</td>
+        </tr>
+        <tr>
+          <td>Hard Disk</td>
+          <td>100GB</td>
+        </tr>
+      </table>
+    </div>
+</div>
 
 <!-- FOR MAC -->
 <h3 class="holder-subtitle link-top" id="forMac">For Mac</h3>
@@ -104,7 +139,7 @@ Pulling some necessary images...
 
 Preload images finished.
 
-Starting ElasTest Platform latest (normal Mode)...
+Starting ElasTest Platform latest (mini Mode)...
 
 Creating volume "elastest_platform-services" with local driver
 Creating elastest_platform-services_1 ... done
@@ -126,6 +161,16 @@ You can then open in your web browser the shown URL to access to ElasTest dashbo
 To stop ElasTest, press **`Ctrl+C`** in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with [Unit Tests](your-first-test) project.
 
 <h4 class="small-subtitle">Options</h4>
+
+You can add **`--mode`** to start ElasTest in a specific [mode](/#modes). If not indicated, the default mode will be **mini**. Modes:
+
+-   mini
+-   singlenode
+
+<p></p>
+```text
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --mode=mini
+```
 
 You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
@@ -154,24 +199,51 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -
 
 ElasTest needs some minimun system specifications in order to run smoothly:
 
-<table>
-  <tr>
-    <td>Processor</td>
-    <td>1GHz or faster</td>
-  </tr>
-  <tr>
-    <td>RAM</td>
-    <td>16GB</td>
-  </tr>
-  <tr>
-    <td>SWAP</td>
-    <td>4GB (if RAM < 16GB)</td>
-  </tr>
-  <tr>
-    <td>Hard Disk</td>
-    <td>30GB</td>
-  </tr>
-</table>
+<div class="range range-xs-center" style="margin-top: 0; text-align: center">
+    <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50">
+      <h5 class="small-subtitle" style="text-align: start !important;">Mini mode</h5>
+      <table>
+        <tr>
+          <td>Processor</td>
+          <td>1GHz or faster</td>
+        </tr>
+        <tr><!--  -->
+          <td>RAM</td>
+          <td>8GB (highly recommended 16GB)</td>
+        </tr>
+        <tr>
+          <td>SWAP</td>
+          <td>4GB (if RAM < 16GB)</td>
+        </tr>
+        <tr>
+          <td>Hard Disk</td>
+          <td>30GB</td>
+        </tr>
+      </table>
+    </div>        
+    <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50">
+      <h5 class="small-subtitle" style="text-align: start !important;">Single-node mode</h5>
+      <table>
+        <tr>
+          <td>Processor</td>
+          <td>1GHz or faster</td>
+        </tr>
+        <tr>
+          <td>RAM</td>
+          <td>32GB</td>
+        </tr>
+        <tr>
+          <td>SWAP</td>
+          <td>4GB</td>
+        </tr>
+        <tr>
+          <td>Hard Disk</td>
+          <td>100GB</td>
+        </tr>
+      </table>
+    </div>
+</div>
+
 
 <!-- FOR WINDOWS -->
 <h3 class="holder-subtitle link-top" id="forWindows">For Windows</h3>
@@ -192,6 +264,7 @@ docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.soc
 ```
 
 **_Docker Toolbox_** (_run it from your Docker Toolbox terminal_)
+
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address=$(docker-machine ip)
 ```
@@ -203,7 +276,7 @@ Pulling some necessary images...
 
 Preload images finished.
 
-Starting ElasTest Platform latest (normal Mode)...
+Starting ElasTest Platform latest (mini Mode)...
 
 Creating volume "elastest_platform-services" with local driver
 Creating elastest_platform-services_1 ... done
@@ -224,9 +297,17 @@ You can then open in your web browser the shown URL to access to ElasTest dashbo
 
 To stop ElasTest, press **`Ctrl+C`** in the shell used to start it. Now you can try any of the test projects available by default when you start ElasTest. You can start with [Unit Tests](your-first-test) project.
 
-
-
 <h4 class="small-subtitle">Options</h4>
+
+You can add **`--mode`** to start ElasTest in a specific [mode](/#modes). If not indicated, the default mode will be **mini**. Modes:
+
+-   mini
+-   singlenode
+
+<p></p>
+```text
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --mode=mini
+```
 
 You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
@@ -255,24 +336,50 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform -
 
 ElasTest needs some minimun system specifications in order to run smoothly:
 
-<table>
-  <tr>
-    <td>Processor</td>
-    <td>1GHz or faster</td>
-  </tr>
-  <tr>
-    <td>RAM</td>
-    <td>16GB</td>
-  </tr>
-  <tr>
-    <td>SWAP</td>
-    <td>4GB (if RAM < 16GB)</td>
-  </tr>
-  <tr>
-    <td>Hard Disk</td>
-    <td>30GB</td>
-  </tr>
-</table>
+<div class="range range-xs-center" style="margin-top: 0; text-align: center">
+    <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50">
+      <h5 class="small-subtitle" style="text-align: start !important;">Mini mode</h5>
+      <table>
+        <tr>
+          <td>Processor</td>
+          <td>1GHz or faster</td>
+        </tr>
+        <tr><!--  -->
+          <td>RAM</td>
+          <td>8GB (highly recommended 16GB)</td>
+        </tr>
+        <tr>
+          <td>SWAP</td>
+          <td>4GB (if RAM < 16GB)</td>
+        </tr>
+        <tr>
+          <td>Hard Disk</td>
+          <td>30GB</td>
+        </tr>
+      </table>
+    </div>        
+    <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-50">
+      <h5 class="small-subtitle" style="text-align: start !important;">Single-node mode</h5>
+      <table>
+        <tr>
+          <td>Processor</td>
+          <td>1GHz or faster</td>
+        </tr>
+        <tr>
+          <td>RAM</td>
+          <td>32GB</td>
+        </tr>
+        <tr>
+          <td>SWAP</td>
+          <td>4GB</td>
+        </tr>
+        <tr>
+          <td>Hard Disk</td>
+          <td>100GB</td>
+        </tr>
+      </table>
+    </div>
+</div>
 
 <h3 class="holder-subtitle link-top">ElasTest on a Virtual Machine</h3>
 
@@ -316,7 +423,6 @@ Update finished successfully.
 ```
 
 In order to clean the ElasTest installation, the old images associated with the previous version will be removed from the system after the update process has finished.
-
 
 <h3 class="holder-subtitle link-top">Using a specific ElasTest version</h3>
 

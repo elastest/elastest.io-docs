@@ -5,6 +5,30 @@
 </div>
 
 <!-- ************************* -->
+<!-- ****** 1.0.0-beta7 ****** -->
+<!-- ************************* -->
+
+<h3 id="1.0.0-beta7" class="small-subtitle">1.0.0-beta7</h3>
+<h4 class="smaller-subtitle">30/01/2018</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   ElasTest <a target="_blank" href="/docs/#modes">modes</a> have changed: Now there are two: **mini** (old normal + old experimental-lite) and **singlenode** (old experimental, more or less). Cluster mode coming soon.
+-   Upgrade **ElasTest GUI** to **`Angular 7`**
+-   **`Autorefresh`** has been added for the TJob Execution tables in the GUI Dashboard.
+-   **`Test Support Services section`** has been **removed** from all ElasTest modes.
+-   Now in <a target="_blank" href="/docs/#modes">singlenode</a> an instance of **`EUS is started`** when starting ElasTest and will be used for all executions. This reduces the execution time of TJobs, as they do not have to start an EUS instance, and also the consumption of resources.
+-   The <a target="_blank" href="/docs/web-browsers/manual-browsers/">WebBrowsers section</a> is now also shown in <a target="_blank" href="/docs/#modes">singlenode</a>, since it has an instance of EUS since the beginning.
+-   Changes in the way to **`instrumentalize`** an <a target="_blank" href="/docs/testing/sut/#outsideEim">external sut through EIM</a>: Now the Sut is instrumented only during the execution of a TJob. 
+-   <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> **1.0.0-beta8** released.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+-   Solved problem when running several Jobs in a **Jenkins with slaves** that make use of the <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> at the same time.
+-   Fixed bug in <a target="_blank" href="/docs/#modes">mini</a> that did not send the Endpoint environment vars of a TSS to the TJob, necessary for its use.
+
+
+
+<!-- ************************* -->
 <!-- ****** 1.0.0-beta6 ****** -->
 <!-- ************************* -->
 

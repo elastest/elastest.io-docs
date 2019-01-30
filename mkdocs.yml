@@ -41,7 +41,7 @@ pages:
 - ['testing/environment-variables.md', 'Environment variables']
 - ['releases/index.md', 'Releases']
 
-- ['experimental/index.md', 'Experimental']
+- ['experimental/index.md']
 
 theme: readthedocs
 repo_url: https://github.com/elastest/elastest.io-docs
