@@ -29,19 +29,20 @@ pages:
 - ['jenkins/pipeline.md',  'Jenkins', 'Pipeline Jobs']
 - ['jenkins/freestyle.md',  'Jenkins', 'Freestyle Jobs']
 
-- ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
-- ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
+- ['elastest-monitoring/index.md', 'ElasTest Monitoring']
 
 - ['test-services/ece.md', 'Test Services', 'Cost Engine (ECE)']
 - ['test-services/eds.md', 'Test Services', 'Device Emulator Service (EDS)']
-- ['test-services/emp.md', 'Test Services', 'Monitoring Platform (EMP)']
 - ['test-services/ems.md', 'Test Services', 'Monitoring Service (EMS)']
 - ['test-services/ess.md', 'Test Services', 'Security Service (ESS)']
 
 - ['testing/environment-variables.md', 'Environment variables']
+
+- ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
+- ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
+
 - ['releases/index.md', 'Releases']
 
-- ['experimental/index.md']
 
 theme: readthedocs
 repo_url: https://github.com/elastest/elastest.io-docs
