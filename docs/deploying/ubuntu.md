@@ -20,9 +20,9 @@ Depends on your infraestructure the access will be different. Please, refer to y
 
 In order to Elastest to work properly, some ports must be open:
 
-| Port/s | Comment |
-| ------ | ------- |
-| 22     | SSH |
+| Port/s        | Comment       |
+| ------------- | ------------- |
+| 22            | SSH           |
 | 32768 - 61000 | ElastestRange |
 
 **Note**: All ports are TCP.
@@ -64,7 +64,7 @@ The **server-address** is web address you will reach the platform. If you're dep
 
 Alternatively, you can use a domain name like **elastest.my_company.com** for the _server_address_ parameter.
 
-**`--testlink`** stands for TestLink and **`--jenkins`** stands for Jenkins. These fields are not obligatory but its use is **recommended**. 
+**`--testlink`** stands for TestLink and **`--jenkins`** stands for Jenkins. These fields are not obligatory but its use is **recommended**.
 
 You can also use your own Jenkins and install the <a href="/docs/jenkins/">ElasTest plugin for Jenkins</a>
 
@@ -77,7 +77,7 @@ Pulling some necessary images...
 
 Preload images finished.
 
-Starting ElasTest Platform latest (normal Mode)...
+Starting ElasTest Platform latest (mini Mode)...
 
 Creating volume "elastest_platform-services" with local driver
 Creating elastest_platform-services_1 ... done
@@ -108,35 +108,104 @@ docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.soc
 
 <h4 class="small-subtitle">Options</h4>
 
-You can include the option **`--server-address=(docker-machine ip)`** to set up the machine ip address.
+-   You can include the option **`--server-address=(docker-machine ip)`** to set up the machine ip address.
+    <p></p>
 
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --server-address="myip"
 ```
 
-You can set an access username and password using the options **`--user`** and **`--pass`** (or **`-u`** and **`-p`**)
+<p></p>
 
+-   You can add **`--mode`** to start ElasTest in a specific <a href="/docs/#modes">mode</a>: mini or singlenode. If not indicated, the default mode will be **mini**.
+    -   **IMPORTANT**: To start ElasTest in **singlenode** mode it is necessary to first execute the following command to increase the [virtual memory limit for Elasticsearch](https://www.elastic.co/guide/en/elasticsearch/reference/current/vm-max-map-count.html): **`sysctl -w vm.max_map_count=262144`**
+
+<p></p>
+```
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --mode=mini
+```
+<p></p>
+
+- You can set an access username and password using the options **`--user`** and **`--pass`** (or **`-u`** and **`-p`**)
+
+<p></p>
 ```
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --user=elastest --password=elastest
 ```
+<p></p>
 
-You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
+- You can add **`--testlink`** if you want to start the TestLink integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
 
+<p></p>
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --testlink
 ```
 
-The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
+<p></p>
 
+- The **`--jenkins`** option can be added if you want to start the Jenkins integrated in ElasTest and enable access to it. If you do not add this option, you can start it later manually from the ElasTest GUI.
+
+<p></p>
 ```text
 docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start --jenkins
 ```
 
-You can execute **`--help`** if you need more information about the options.
+<p></p>
 
+- You can execute **`--help`** if you need more information about the options.
+
+<p></p>
 ```
 docker run --rm -v /var/run/docker.sock:/var/run/docker.sock elastest/platform --help
 ```
+
+<h3 class="holder-subtitle link-top">Recommended system specifications</h3>
+  <p>ElasTest needs some minimum system specifications in order to run smoothly:</p>
+
+  <div class="range range-xs-center" style="margin-top: 0; text-align: center">
+      <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-20">
+        <h5 class="small-subtitle" style="text-align: start !important;">Mini mode</h5>
+        <table>
+          <tr>
+            <td>Processor</td>
+            <td>1GHz or faster</td>
+          </tr>
+          <tr><!--  -->
+            <td>RAM</td>
+            <td>8GB (highly recommended 16GB)</td>
+          </tr>
+          <tr>
+            <td>SWAP</td>
+            <td>4GB (if RAM < 16GB)</td>
+          </tr>
+          <tr>
+            <td>Hard Disk</td>
+            <td>30GB</td>
+          </tr>
+        </table>
+      </div>        
+      <div class="cell-xs-10 cell-sm-6 cell-md-6 offset-top-20">
+        <h5 class="small-subtitle" style="text-align: start !important;">Single-node mode</h5>
+        <table>
+          <tr>
+            <td>Processor</td>
+            <td>1GHz or faster</td>
+          </tr>
+          <tr>
+            <td>RAM</td>
+            <td>32GB</td>
+          </tr>
+          <tr>
+            <td>SWAP</td>
+            <td>4GB</td>
+          </tr>
+          <tr>
+            <td>Hard Disk</td>
+            <td>100GB</td>
+          </tr>
+        </table>
+      </div>
+  </div>
 
 <h3 class="holder-subtitle link-top">Running ElasTest on system boot</h3>
 

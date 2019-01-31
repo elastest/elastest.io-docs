@@ -85,6 +85,20 @@ In other words: <strong>SuT's, TJob's and TSS's are the modules that ElasTest ca
 
 <img src="./images/elastest-tech.png" alt="ElasTest technologies" class="img-responsive reveal-inline-block offset-top-10" style="border: none">
 
+<h3 id="modes" class="holder-subtitle link-top">ElasTest modes</h3>
+
+ElasTest has different execution modes:
+
+-   **Mini** (mini): This mode is intended for testing ElasTest on a **`laptop`** or **`small server`**.
+-   **Single-Node** (singlenode): This mode is intended for testing on **`servers`** with with better technical characteristics. The main differences with **`mini`** are:
+    -   Logs and metrics are stored in ElasticSearch and processed with Logstash, while in mini they are saved in MySQL.
+    -   Modular architecture based on containers (ESM)
+    -   The ElasTest Platform Monitoring service is available
+-   **Cluster** (coming soon)
+
+In the following section ([Try ElasTest](/try-elastest/)) you can find out more about how to start a specific mode and what its technical features are.
+
+
 <!---
  Script for open external links in a new tab
 -->

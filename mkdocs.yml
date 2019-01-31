@@ -20,22 +20,32 @@ pages:
 
 - ['testlink/index.md', 'TestLink with ElasTest']
 
-- ['monitoring/index.md', 'Monitoring', 'Monitoring']
-- ['monitoring/outside-elastest.md', 'Monitoring', 'Monitoring outside Elastest']
-- ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
+- ['monitoring/index.md', 'Test Monitoring', 'Test Monitoring']
+- ['monitoring/outside-elastest.md', 'Test Monitoring', 'Monitoring outside Elastest']
+- ['monitoring/custom.md', 'Test Monitoring', 'Custom monitoring']
 
 - ['jenkins/index.md', 'Jenkins', 'Jenkins integration']
 - ['jenkins/try-jenkins.md',  'Jenkins', 'Try Jenkins plugin']
 - ['jenkins/pipeline.md',  'Jenkins', 'Pipeline Jobs']
 - ['jenkins/freestyle.md',  'Jenkins', 'Freestyle Jobs']
 
+
+- ['test-services/introduction.md', 'Test Services', 'Introduction']
+- ['test-services/ebs.md', 'Test Services', 'Big Data Service (EBS)']
+- ['test-services/ece.md', 'Test Services', 'Cost Engine (ECE)']
+- ['test-services/eds.md', 'Test Services', 'Device Emulator Service (EDS)']
+- ['test-services/ems.md', 'Test Services', 'Monitoring Service (EMS)']
+- ['test-services/ess.md', 'Test Services', 'Security Service (ESS)']
+
+- ['testing/environment-variables.md', 'Environment variables']
+
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
 
-- ['testing/environment-variables.md', 'Environment variables']
+- ['elastest-monitoring/index.md', 'ElasTest Monitoring']
+
 - ['releases/index.md', 'Releases']
 
-- ['experimental/index.md', 'Experimental']
 
 theme: readthedocs
 repo_url: https://github.com/elastest/elastest.io-docs
