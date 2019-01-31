@@ -7,7 +7,7 @@
 There are two types of Test Services:
 
 -   **Test Support Services (TSSs).** Conceived as services that are enabled on demand, they provide additional functionality that can be used during the execution of a TJob. One instance of these services will be created each time a job is executed.
-    -   **[ElasTest Device Service (EUS).](/web-browsers/manual-browsers/)** Service that provides browsers for both manual interaction and automated interacion under the control of tests, by means of starting browsers in containers.
+    -   **[ElasTest User Emulator Service (EUS).](/web-browsers/manual-browsers/)** Service that provides browsers for both manual interaction and automated interacion under the control of tests, by means of starting browsers in containers.
     -   **[ElasTest Device Service (EDS).](/test-services/eds)** Emulates the behaviors of the sensors, actuators and smart devices you need to perform your tests.
     -   **[ElasTest Monitoring Service (EMS).](/test-services/ems)** Service that allows monitoring the execution of the TJobs and SUTs, in a similar way to the normal mode, but with a greater capacity of configuration.
     -   **[ElasTest Bigdata Service (EBS).](/test-services/ebs)** Service that provides a computing engine based on Apache Spark to be utilized by tests inside ElasTest, as well as other ElasTest services. It is disposable, meaning that it can be commissioned/decommissioned on demand and scalable, meaning that it can be resized to provide capacity for faster/bigger calculations. EBS enables ElasTest to easily perform operations on huge datasets being stored locally, in distributed filesystems (HDFS) or remote ones (e.g. Amazon S3).
