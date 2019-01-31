@@ -9,7 +9,7 @@
 <!-- ************************* -->
 
 <h3 id="1.0.0-beta7" class="small-subtitle">1.0.0-beta7</h3>
-<h4 class="smaller-subtitle">30/01/2018</h4>
+<h4 class="smaller-subtitle">31/01/2018</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
@@ -26,6 +26,7 @@
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 -   Solved problem when running several Jobs in a **Jenkins with slaves** that make use of the <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> at the same time.
 -   Fixed bug in <a target="_blank" href="/docs/#modes">mini</a> that did not send the Endpoint environment vars of a TSS to the TJob, necessary for its use.
+-   Fixed bug in <a target="_blank" href="/docs/log-analyzer/">LogAnalyzer</a> who didn't check well if TestLink was started and never showed TestLink's projects.
 
 
 
