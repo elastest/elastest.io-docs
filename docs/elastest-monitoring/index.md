@@ -10,7 +10,7 @@ ElasTest can be used to primarily monitor the health of various componets of Ela
 
 <h3 class="holder-subtitle link-top" id="options">Resources usage</h3>
 
-<h4 class="small-subtitle">Accessing the Monitoring</h4>
+<h4 class="small-subtitle">Accessing the Monitoring Dashboard</h4>
 
 To visualize the data being monitored, click on the Elastest Monitoring Platform button in the ElasTest dashboard
 
@@ -20,7 +20,7 @@ To visualize the data being monitored, click on the Elastest Monitoring Platform
 
 <h4 class="small-subtitle">Visualizing the Relevant Metrics</h4>
 
-After accessing the EMP dashboard, the metrics will be displayed like in the following figure, once the data starts to be collected:
+After accessing the monitoring dashboard, the metrics will be displayed like in the following figure, once the data starts to be collected:
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/img06.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/img06.png"/></a>

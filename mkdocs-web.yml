@@ -31,6 +31,7 @@ pages:
 
 - ['elastest-monitoring/index.md', 'ElasTest Monitoring']
 
+- ['test-services/introduction.md', 'Test Services', 'Introduction']
 - ['test-services/ece.md', 'Test Services', 'Cost Engine (ECE)']
 - ['test-services/eds.md', 'Test Services', 'Device Emulator Service (EDS)']
 - ['test-services/ems.md', 'Test Services', 'Monitoring Service (EMS)']

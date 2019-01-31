@@ -95,8 +95,6 @@ ElasTest has different execution modes:
     -   Modular architecture based on containers (ESM)
     -   The ElasTest Platform Monitoring service is available
 -   **Cluster** (coming soon)
-    -   **Multi-Node**: Scalable ElasTest installed in a cluster of linux machines
-    -   **Kubernetes**: Helm chart to deploy on Kubernetes
 
 In the following section ([Try ElasTest](/try-elastest/)) you can find out more about how to start a specific mode and what its technical features are.
 
