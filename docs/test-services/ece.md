@@ -8,9 +8,7 @@
 
 ElasTest Cost Engine (ECE) enables you to estimate the cost of executing your tests over ElasTest platform. Additionally, once the tests have finished execution, ECE allows you to see a detailed breakup of true cost across all physical and virtual resources used by various test execution runs.
 
-<h3 class="holder-subtitle link-top" id="options">Using ECE</h3>
-
-<h4 class="small-subtitle">Staring up the engine</h4>
+<h3 class="holder-subtitle link-top">Staring up the engine</h3>
 
 Before the cost engine can be used, it has to be started. Click on the play button next to ece in the Test Engines panel in ElasTest dshboard.
 
@@ -40,7 +38,7 @@ True Cost button fetches the list of all known executions of the selected TJob, 
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ece/img04.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ece/img04.png"/></a>
 </div>
 
-<h4 class="small-subtitle">Estimating the cost of test execution</h4>
+<h3 class="holder-subtitle link-top">Estimating the cost of test execution</h3>
 
 In order to estimate the cost of execution of your tests, click on the Analyze button next to your registered TJob id. You will be shown a form depending on the test support services you have selected while registering your TJob definition in the ElasTest dashboard.
 
@@ -72,7 +70,7 @@ The result shows the following data -
 
 This stage should provide the user a fairly detailed estimate of cost of executing their TJobs with ElasTest.
 
-<h4 class="small-subtitle">Finding the true cost of test runs</h4>
+<h3 class="holder-subtitle link-top">Finding the true cost of test runs</h3>
 
 For computing the true cost of your current and past test executions, simply click the **True Cost** button next to your registered TJob.
 

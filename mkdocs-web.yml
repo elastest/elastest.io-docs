@@ -20,9 +20,9 @@ pages:
 
 - ['testlink/index.md', 'TestLink with ElasTest']
 
-- ['monitoring/index.md', 'Monitoring', 'Monitoring']
-- ['monitoring/outside-elastest.md', 'Monitoring', 'Monitoring outside Elastest']
-- ['monitoring/custom.md', 'Monitoring', 'Custom monitoring']
+- ['monitoring/index.md', 'Test Monitoring', 'Test Monitoring']
+- ['monitoring/outside-elastest.md', 'Test Monitoring', 'Monitoring outside Elastest']
+- ['monitoring/custom.md', 'Test Monitoring', 'Custom monitoring']
 
 - ['jenkins/index.md', 'Jenkins', 'Jenkins integration']
 - ['jenkins/try-jenkins.md',  'Jenkins', 'Try Jenkins plugin']

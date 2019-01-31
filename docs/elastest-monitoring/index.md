@@ -33,3 +33,35 @@ Moreover, if we hover over the plots, we use the mouse pointer to observe the va
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/img07.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/img07.png"/></a>
 </div>
+
+<h3 class="holder-subtitle link-top" id="options">Containers</h3>
+
+ElasTest also provides in its GUI a section to visualize the **`status`**, the **`general info`** and the **`logs`** of the containers of the **main services** of ElasTest, as well as the version that is being used. You can access this section by clicking on the button with interrogation icon (?):
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/help_button.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/help_button.png"/></a>
+</div>
+
+This section looks like this:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/help_page.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/help_page.png"/></a>
+</div>
+
+It has two buttons on the top right: the first to manually refresh the information and the second to activate or deactivate the autorefresh of this information.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/help_page_upper_buttons.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/help_page_upper_buttons.png"/></a>
+</div>
+
+If you click on the "view logs" button, the last logs of that container will be loaded at the bottom of the page:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/help_page_etm_logs.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/help_page_etm_logs.png"/></a>
+</div>
+
+Clicking on the "load previous" button will load all the logs of that container:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/help_page_etm_logs_load_more.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/help_page_etm_logs_load_more.png"/></a>
+</div>
