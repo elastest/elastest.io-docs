@@ -286,9 +286,9 @@ Although ElasTest can be used on both Mac and Windows, it is **recommended to us
 
 <h3 id="linuxVM" class="holder-subtitle link-top">ElasTest on a Linux Virtual Machine</h3>
 
-To run ElasTest on a virtual machine it is necessary to use the **`--server-address`** option with the ip of the VM as value.
+To run ElasTest on a Linux Virtual Machine and be able to access it from the host it is necessary to use the **`--server-address`** option with the IP of the VM that the host sees as value. Once you have started ElasTest you should be able to access the url **`http://VM-IP:37000`** from your browser on the host.
 
-<h3 id="server" class="holder-subtitle link-top">ElasTest on a server or AWS</h3>
+<h3 id="server" class="holder-subtitle link-top">ElasTest on a server</h3>
 
 <h4 class="small-subtitle">Linux server</h4>
 

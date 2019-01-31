@@ -29,7 +29,6 @@ pages:
 - ['jenkins/pipeline.md',  'Jenkins', 'Pipeline Jobs']
 - ['jenkins/freestyle.md',  'Jenkins', 'Freestyle Jobs']
 
-- ['elastest-monitoring/index.md', 'ElasTest Monitoring']
 
 - ['test-services/introduction.md', 'Test Services', 'Introduction']
 - ['test-services/ebs.md', 'Test Services', 'Big Data Service (EBS)']
@@ -42,6 +41,9 @@ pages:
 
 - ['deploying/ubuntu.md', 'Deploying ElasTest', 'Linux Server']
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
+
+- ['elastest-monitoring/index.md', 'ElasTest Monitoring']
+
 - ['releases/index.md', 'Releases']
 
 - ['roadmap/index.md', 'Roadmap']
