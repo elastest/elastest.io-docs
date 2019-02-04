@@ -130,17 +130,17 @@ Each machine can be either a **predicate** over an event, a **stream** definitio
    sum
    ```
 
-   A `PREDICATE` is true or false for an event just like in the stampers definition.
-   A `STREAMID` refers to a stream declared in this monitoring machine (not necessarily a different one).
-   An `if e0 then e1` expression produces the value specified by the expression `e1` when the expression `e0` evaluates to true.
-   The expression `Prev s` is true if at some point in the past the stream `s` evaluated to `true`.
-   The construct `e.getstr(PATH)` retrieves the string value at path `PATH` of the event.
-   A `NUMEXPR` represents a numeric expression. Its syntax is detailed later on.
-   The constructs `<`, `<=`, `=`, `>`, `>=`, and `!=` compare the values of evaluating both sides of the expression.
-   The construct `e.getnum(PATH)` retrieves the numeric value at path `PATH` of the event.
-   The constructs `+`, `-`, `*`, and `/`, compute a numerical operation on the values of evaluating both sides of the expression.
-   An `AGGREGATION(s0 within s1)` computes an aggregation over the values of the stream `s0`, but only considering those values generated when stream `s1` evaluated to true.
-   The different aggregations that can be computed are the average of the numerical values (`avg`), the sum of the numerical values (`sum`), and counting the events (`count`).
+   + A `PREDICATE` is true or false for an event just like in the stampers definition.
+   + A `STREAMID` refers to a stream declared in this monitoring machine (not necessarily a different one).
+   + An `if e0 then e1` expression produces the value specified by the expression `e1` when the expression `e0` evaluates to true.
+   + The expression `Prev s` is true if at some point in the past the stream `s` evaluated to `true`.
+   + The construct `e.getstr(PATH)` retrieves the string value at path `PATH` of the event.
+   + A `NUMEXPR` represents a numeric expression. Its syntax is detailed later on.
+   + The constructs `<`, `<=`, `=`, `>`, `>=`, and `!=` compare the values of evaluating both sides of the expression.
+   + The construct `e.getnum(PATH)` retrieves the numeric value at path `PATH` of the event.
+   + The constructs `+`, `-`, `*`, and `/`, compute a numerical operation on the values of evaluating both sides of the expression.
+   + An `AGGREGATION(s0 within s1)` computes an aggregation over the values of the stream `s0`, but only considering those values generated when stream `s1` evaluated to true.
+   + The different aggregations that can be computed are the average of the numerical values (`avg`), the sum of the numerical values (`sum`), and counting the events (`count`).
 
 3. A **trigger** is a clause that specifies an action to be performed when a stream produces a true value.
    A **trigger** is declared in the following way:
@@ -214,17 +214,17 @@ stream bool testcorrect := Prev low_is_running /\ Prev high_is_running /\ avgbwh
 
 trigger tjobfinished do emit testcorrect on #testresult
 ```
-The predicate `isnet` filters the events containing information about the net.
-The boolean streams `lowstarted/ended` indicate when the period of only one download starts and ends.
-The boolean streams `highstarted/ended` indicate when the period of two downloads in parallel starts and ends.
-The boolean stream `tjobfinised` indicates that the test is over.
-The numeric stream `outBandwidth` extracts the bandwidth usage from a specific field in the event.
-The boolean stream `low_is_running` indicates that only one download is being performed.
-The boolean stream `high_is_running` indicates that two downloads are being performed in parallel.
-The numeric stream `avgbwlow` calculates the average bandwidth when there is only one download.
-The numeric stream `avgbwhigh` calculates the average bandwidth when there are two downloads in parallel.
-The boolean stream `testcorrect` assesses that (a) there was a low bandwidth period, (b) there was a high bandwidth period, and (c), the average bandwidth during two parallel downloads is greater than (almost) the double of the bandwidth consumed by a single download.
-Finally, the `trigger` clause emits the result of `testcorrect` over the channel `#testresult` when the TJob is over.
++ The predicate `isnet` filters the events containing information about the net.
++ The boolean streams `lowstarted/ended` indicate when the period of only one download starts and ends.
++ The boolean streams `highstarted/ended` indicate when the period of two downloads in parallel starts and ends.
++ The boolean stream `tjobfinised` indicates that the test is over.
++ The numeric stream `outBandwidth` extracts the bandwidth usage from a specific field in the event.
++ The boolean stream `low_is_running` indicates that only one download is being performed.
++ The boolean stream `high_is_running` indicates that two downloads are being performed in parallel.
++ The numeric stream `avgbwlow` calculates the average bandwidth when there is only one download.
++ The numeric stream `avgbwhigh` calculates the average bandwidth when there are two downloads in parallel.
++ The boolean stream `testcorrect` assesses that (a) there was a low bandwidth period, (b) there was a high bandwidth period, and (c), the average bandwidth during two parallel downloads is greater than (almost) the double of the bandwidth consumed by a single download.
++ Finally, the `trigger` clause emits the result of `testcorrect` over the channel `#testresult` when the TJob is over.
 
 After the initialization phase, the TJob connects to the EMS websocket endpoint and also proceeds to perform the downloads, printing a message beteween the different stages.
 This can be seen in [the main TJob routine](https://github.com/elastest/elastest-monitoring-service/blob/master/e2e-test/tjob/main.go):
