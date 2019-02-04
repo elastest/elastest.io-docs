@@ -38,6 +38,7 @@ Events received by the EMS go through three stages:
 3. Finally, outgoing events are stamped with further channels following the rules of the same Stampers.
 
 <h4 class="small-subtitle">Stampers</h4>
+
 Stampers are accessed through the endpoint **`${ET_EMS_LSBEATS_HOST}:8888/stamper`**.
 To deploy a new stamper, we need to execute a **`POST`** method to this endpoint, specifying the version of the language used. The only supported version as of today is **`tag0.1`**, which makes the URI **`${ET_EMS_LSBEATS_HOST}:8888/stamper/tag0.1`** the only valid endpoint to deploy stampers.
 
@@ -141,16 +142,102 @@ Each machine can be either a **predicate** over an event, a **stream** definitio
    An `AGGREGATION(s0 within s1)` computes an aggregation over the values of the stream `s0`, but only considering those values generated when stream `s1` evaluated to true.
    The different aggregations that can be computed are the average of the numerical values (`avg`), the sum of the numerical values (`sum`), and counting the events (`count`).
 
-<h5 class="small-subtitle">Example</h5>
+3. A **trigger** is a clause that specifies an action to be performed when a stream produces a true value.
+   A **trigger** is declared in the following way:
+   ```
+   trigger s1 do emit s2 on #ch
+   ```
+   In this case, whenever stream `s1` produces a value true, the value of `s2` will be emitted over the channel `#ch`.
 
-For example, if a Stamper is deployed with the following definition:
+<h3 class="holder-subtitle link-top">Example</h3>
+
+Suppose we have a webserver and want to assess that when a client is downloading a file and then a second one starts a download too, then the bandwidth consumption roughly doubles.
+
+The ElasTest infrastructure provides us the means to extract data from the server automatically, and we can use the EMS to organize and process this data according to our desired property.
+
+<h4 class="small-subtitle">The System Under Test</h4>
+
+For this example we will use a well-known webserver, nginx.
+The SuT configuration can be seen in the following image:
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/sut.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/sut.png"/></a>
+</div>
+
+The system under test is an ngninx application listening on port `80`, with a file called `sparse` of 500GB in its server root directory.
+
+<h4 class="small-subtitle">The TJob</h4>
+
+The TJob is a custom application whose source code can be found [here](https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob), and which has been deployed as a Docker image to Dockerhub at [imdeasoftware/e2etjob](https://hub.docker.com/r/imdeasoftware/e2etjob).
+The TJob configuration is the following:
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
+</div>
+And, of course, we have to make sure that the EMS checkbox is checked:
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob2.png"/></a>
+</div>
+
+When the TJob starts, it deploys these event stampers:
 ```
-when e.strmatch(type,"net") do #NetData
-when e.path(message.info) do #TJobMsg
+when e.strcmp(type,"net") do #NetData
+when e.path(message) do #TJobMsg
+
 when e.tag(#testresult) do #websocket 
+when e.tag(#lowavg) do #websocket 
+when e.tag(#highavg) do #websocket 
 ```
-Then, an event stamped with channel **`#testresult`** will also be stamped with channel stamp **`#websocket`**.
-An event whose payload is **`{message: {info: "Info"}}`** will be stamped with stamp **`#TJobMsg`** but not with channel stamp **`#NetData`**.
-An event whose payload is **`{type: "net", message: "Server"}`** will be stamped with channel stamp **`#NetData`** but not with channel stamp **`#TJobMsg`**.
-Finally, an event whose payload is **`{message: {info: "Info"}, type: "net"}`** will be stamped with both channel stamps **`#TJobMsg`** and **`#NetData`**.
+We can see that
++ An event stamped with channel **`#testresult`** will also be stamped with channel stamp **`#websocket`**.
++ An event whose payload is **`{message: {info: "Info"}}`** will be stamped with stamp **`#TJobMsg`** but not with channel stamp **`#NetData`**.
++ An event whose payload is **`{type: "net", message: "Server"}`** will be stamped with channel stamp **`#NetData`** but not with channel stamp **`#TJobMsg`**.
++ Finally, an event whose payload is **`{message: {info: "Info"}, type: "net"}`** will be stamped with both channel stamps **`#TJobMsg`** and **`#NetData`**.
 
+The TJob also deploys the following monitoring machine at startup:
+```
+pred isnet := e.tag(#NetData) /\ e.strmatch(containerName, "nginx")
+
+stream bool lowstarted := e.strmatch(message, "STARTING FIRST DOWNLOAD")
+stream bool lowended := e.strmatch(message, "STARTING SECOND DOWNLOAD")
+stream bool highstarted := e.strmatch(message, "STARTING SECOND DOWNLOAD")
+stream bool highended:= e.strmatch(message, "FINISHIN SECOND DOWNLOAD")
+stream bool tjobfinished := e.strmatch(message, "FINISHING TEST")
+
+stream num outBandwidth := if isnet then e.getnum(net.txBytes_ps)
+
+stream bool low_is_running := Prev lowstarted /\ ~Prev lowended
+stream bool high_is_running := Prev highstarted /\ ~Prev highended
+
+stream num avgbwlow := avg(outBandwidth within low_is_running)
+stream num avgbwhigh := avg(outBandwidth within high_is_running)
+
+stream bool testcorrect := Prev low_is_running /\ Prev high_is_running /\ avgbwhigh > avgbwlow * 1.8
+
+trigger tjobfinished do emit testcorrect on #testresult
+```
+The predicate `isnet` filters the events containing information about the net.
+The boolean streams `lowstarted/ended` indicate when the period of only one download starts and ends.
+The boolean streams `highstarted/ended` indicate when the period of two downloads in parallel starts and ends.
+The boolean stream `tjobfinised` indicates that the test is over.
+The numeric stream `outBandwidth` extracts the bandwidth usage from a specific field in the event.
+The boolean stream `low_is_running` indicates that only one download is being performed.
+The boolean stream `high_is_running` indicates that two downloads are being performed in parallel.
+The numeric stream `avgbwlow` calculates the average bandwidth when there is only one download.
+The numeric stream `avgbwhigh` calculates the average bandwidth when there are two downloads in parallel.
+The boolean stream `testcorrect` assesses that (a) there was a low bandwidth period, (b) there was a high bandwidth period, and (c), the average bandwidth during two parallel downloads is greater than (almost) the double of the bandwidth consumed by a single download.
+Finally, the `trigger` clause emits the result of `testcorrect` over the channel `#testresult` when the TJob is over.
+
+After the initialization phase, the TJob connects to the EMS websocket endpoint and also proceeds to perform the downloads, printing a message beteween the different stages.
+This can be seen in [the main TJob routine](https://github.com/elastest/elastest-monitoring-service/blob/master/e2e-test/tjob/main.go):
+```go
+fmt.Println("STARTING FIRST DOWNLOAD")
+go DownloadFile(fileUrl)
+time.Sleep(60 * time.Second)
+fmt.Println("STARTING SECOND DOWNLOAD")
+go DownloadFile(fileUrl)
+time.Sleep(60 * time.Second)
+fmt.Println("FINISHING SECOND DOWNLOAD")
+time.Sleep(5 * time.Second)
+fmt.Println("FINISHING TEST")
+```
+
+Then, the TJob checks the value of the event received over the channel `#testresult` and exits with a _success_ or _fail_ code accordingly.
