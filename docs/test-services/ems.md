@@ -166,21 +166,53 @@ Suppose we have a webserver and want to assess that when a client is downloading
 
 The ElasTest infrastructure provides us the means to extract data from the server automatically, and we can use the EMS to organize and process this data according to our desired property.
 
-<h4 class="small-subtitle">The System Under Test</h4>
+<h4 class="small-subtitle">The Sut</h4>
 
 For this example we will use a well-known webserver, nginx.
-The SuT configuration can be seen in the following image:
+The SuT configuration is the following:
+
+-   **SuT Name**: **`nginx`**
+-   Select **`Deployed By Elastest`**
+-   Select **`With Docker Compose`**
+-   **Docker Compose**:
+
+        version: '3'
+
+        services:
+
+            nginx-service:
+                image: nginx
+                entrypoint:
+                    - /bin/bash
+                    - "-c"
+                    - "dd if=/dev/random of=/usr/share/nginx/html/sparse bs=1024 count=1 seek=5242880000;nginx;sleep infinity"
+                expose:
+                    - "80"
+
+-   **Main Service**: **`nginx-service`**
+-   **Wait for http port**: **`80`**
+
+<p></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/sut.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/sut.png"/></a>
 </div>
 
-The system under test is an ngninx application listening on port `80`, with a file called `sparse` of 500GB in its server root directory.
+The sut is an ngninx application listening on port `80`, with a file called `sparse` of 500GB in its server root directory.
 
 <h4 class="small-subtitle">The TJob</h4>
 
 The TJob is a custom application whose source code can be found [here](https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob), and which has been deployed as a Docker image to Dockerhub at [imdeasoftware/e2etjob](https://hub.docker.com/r/imdeasoftware/e2etjob).
 
 The TJob configuration is the following:
+
+-   **TJob name**: **`Double bandwidth`**
+-   **Current SuT**: Select **`nginx`**
+-   **Environment Docker Image**: **`imdeasoftware/e2etjob`**
+-   **Commands**: 
+
+        cd /go;./tjob
+
+-   **Test Support Services**: Check **`EMS`**
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
