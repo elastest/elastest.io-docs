@@ -88,47 +88,56 @@ Each machine can be either a **predicate** over an event, a **stream** definitio
 1. A **predicate** is a named boolean expression over an event, whose evaluation does not depend on previous events.
    A **predicate** named `s` is declared in the following way:
 
-   ```
-   pred s := PREDICATE
-   ```
+```
+pred s := PREDICATE
+```
+
    The syntax of the `PREDICATE` is the same as the stampers expression, because both constructs are stateless.
 
 2. A **stream** definition is a stream of values calculated as events are fed into the EMS. 
    Streams can be stateful and their values can be **boolean** (`bool`), **numeric** (`num`) or **string**.
    A stream named `s` of type `t` is defined in the following way:
-   ```
-   stream t s := STREAMEXPR
-   ```
+
+```
+stream t s := STREAMEXPR
+```
+
    The syntax of a stream expression is the following:
-   ```
-   PREDICATE
-   STREAMID
-   if STREAMEXPR then STREAMEXPR
-   Prev STREAMID
-   e.getstr(PATH)
-   NUMEXPR
-   NUMEXPR < NUMEXPR
-   NUMEXPR <= NUMEXPR
-   NUMEXPR = NUMEXPR
-   NUMEXPR > NUMEXPR
-   NUMEXPR >= NUMEXPR
-   NUMEXPR != NUMEXPR
-   ```
+
+```
+PREDICATE
+STREAMID
+if STREAMEXPR then STREAMEXPR
+Prev STREAMID
+e.getstr(PATH)
+NUMEXPR
+NUMEXPR < NUMEXPR
+NUMEXPR <= NUMEXPR
+NUMEXPR = NUMEXPR
+NUMEXPR > NUMEXPR
+NUMEXPR >= NUMEXPR
+NUMEXPR != NUMEXPR
+```
+
    Where `NUMEXPR` is defined as:
-   ```
-   e.getnum(PATH)
-   NUMEXPR + NUMEXPR
-   NUMEXPR - NUMEXPR
-   NUMEXPR * NUMEXPR
-   NUMEXPR / NUMEXPR
-   AGGREGATION(STREAMID within STREAMID)
-   ```
+
+```
+e.getnum(PATH)
+NUMEXPR + NUMEXPR
+NUMEXPR - NUMEXPR
+NUMEXPR * NUMEXPR
+NUMEXPR / NUMEXPR
+AGGREGATION(STREAMID within STREAMID)
+```
+
    And `AGGREGATION` is one of the following:
-   ```
-   avg
-   count
-   sum
-   ```
+
+```
+avg
+count
+sum
+```
+<p></p>
 
    + A `PREDICATE` is true or false for an event just like in the stampers definition.
    + A `STREAMID` refers to a stream declared in this monitoring machine (not necessarily a different one).
@@ -144,9 +153,11 @@ Each machine can be either a **predicate** over an event, a **stream** definitio
 
 3. A **trigger** is a clause that specifies an action to be performed when a stream produces a true value.
    A **trigger** is declared in the following way:
-   ```
-   trigger s1 do emit s2 on #ch
-   ```
+
+```
+trigger s1 do emit s2 on #ch
+```
+
    In this case, whenever stream `s1` produces a value true, the value of `s2` will be emitted over the channel `#ch`.
 
 <h3 class="holder-subtitle link-top">Example</h3>
@@ -168,10 +179,13 @@ The system under test is an ngninx application listening on port `80`, with a fi
 <h4 class="small-subtitle">The TJob</h4>
 
 The TJob is a custom application whose source code can be found [here](https://github.com/elastest/elastest-monitoring-service/tree/master/e2e-test/tjob), and which has been deployed as a Docker image to Dockerhub at [imdeasoftware/e2etjob](https://hub.docker.com/r/imdeasoftware/e2etjob).
+
 The TJob configuration is the following:
+
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob1.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob1.png"/></a>
 </div>
+
 And, of course, we have to make sure that the EMS checkbox is checked:
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ems/tjob2.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ems/tjob2.png"/></a>
@@ -193,6 +207,7 @@ We can see that
 + Finally, an event whose payload is **`{message: {info: "Info"}, type: "net"}`** will be stamped with both channel stamps **`#TJobMsg`** and **`#NetData`**.
 
 The TJob also deploys the following monitoring machine at startup:
+
 ```
 pred isnet := e.tag(#NetData) /\ e.strmatch(containerName, "nginx")
 
@@ -214,6 +229,7 @@ stream bool testcorrect := Prev low_is_running /\ Prev high_is_running /\ avgbwh
 
 trigger tjobfinished do emit testcorrect on #testresult
 ```
+
 + The predicate `isnet` filters the events containing information about the net.
 + The boolean streams `lowstarted/ended` indicate when the period of only one download starts and ends.
 + The boolean streams `highstarted/ended` indicate when the period of two downloads in parallel starts and ends.
