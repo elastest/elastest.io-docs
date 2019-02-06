@@ -166,6 +166,8 @@ Suppose we have a webserver and want to assess that when a client is downloading
 
 The ElasTest infrastructure provides us the means to extract data from the server automatically, and we can use the EMS to organize and process this data according to our desired property.
 
+The following example is **already included in ElasTest** within the project **`EMS Example`**, although we are going to explain how to create it.
+
 <h4 class="small-subtitle">The Sut</h4>
 
 For this example we will use a well-known webserver, nginx.
