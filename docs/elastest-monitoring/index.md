@@ -6,9 +6,15 @@
 </div>
 </div>
 
-ElasTest can be used to primarily monitor the health of various componets of ElasTest platform and allows correlated queries aiding the fault location within the platform in an optimized manner.
+ElasTest is able to monitor the health of various of its components. Monitoring capabilities can be divided in two areas:
 
-<h3 class="holder-subtitle link-top" id="options">Resources usage</h3>
+-   **Resource usage**: Monitors CPU, memory and other component metrics.
+-   **Component containers**: Monitors docker status and logs.
+
+
+<h3 class="holder-subtitle link-top">Resources usage</h3>
+
+ElasTest is able to monitor the health of various of its componets and allows correlated queries aiding the fault location within the platform in an optimized manner.
 
 <h4 class="small-subtitle">Accessing the Monitoring Dashboard</h4>
 
@@ -26,7 +32,7 @@ After accessing the monitoring dashboard, the metrics will be displayed like in 
     <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/img06.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/img06.png"/></a>
 </div>
 
-In the figure above, we can observe the global hosts, and we can select an individual host in a cluster, to observe its metrics. On the top left we have a summary of the running containers' metrics. On the top right we see the active containers and the workload it represents for the node on the color scale. Finally, underneath, we have specific metrics for the node such as network activity, CPU usage and memory.
+In the figure above, on the top left we have a summary of the running containers' metrics. On the top right we see the active containers and the workload it represents for the node on the color scale. Finally, underneath, we have specific metrics for the node such as network activity, CPU usage and memory.
 
 Moreover, if we hover over the plots, we use the mouse pointer to observe the values for a specific time in the metrics plot, as seen in the following figure:
 
@@ -34,9 +40,9 @@ Moreover, if we hover over the plots, we use the mouse pointer to observe the va
     <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/img07.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/img07.png"/></a>
 </div>
 
-<h3 class="holder-subtitle link-top" id="options">Containers</h3>
+<h3 class="holder-subtitle link-top">Component containers</h3>
 
-ElasTest also provides in its GUI a section to visualize the **`status`**, the **`general info`** and the **`logs`** of the containers of the **main services** of ElasTest, as well as the version that is being used. You can access this section by clicking on the button with interrogation icon (?):
+ElasTest also provides in its GUI a section to visualize the **`status`**, the **`general info`** and the **`logs`** of the containers of the **core components** of ElasTest, as well as the version that is being used. You can access this section by clicking on the button with interrogation icon (?):
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/help_button.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/help_button.png"/></a>

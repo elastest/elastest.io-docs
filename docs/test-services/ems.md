@@ -10,7 +10,7 @@ The ElasTest Monitoring Service (EMS) provides a monitoring infrastructure suita
 This service allows the user and the platform to deploy machines able to process events in real time and generate complex, higher level events from them. 
 This can help to better understand what's happening, detect anomalies, correlate issues, and even stress the tests automatically; all of which aims to maximize the chances of uncover bugs and their causes. 
 
-<h3 class="holder-subtitle link-top" id="options">How to use the EMS to ease test development in Elastest</h3>
+<h3 class="holder-subtitle link-top">How to use the EMS to ease test development in Elastest</h3>
 
 To achieve its goal, the Elastest Monitoring Service provides an OpenAPI endpoint whose specification can be found at http://elastest.io/docs/api/ems.
 
@@ -28,7 +28,7 @@ The TJob can use the endpoint of the EMS to deploy _Monitoring Artifacts_, which
 You will find the methods to deploy, modify and undeploy Monitoring Artifacts listed and specified at http://elastest.io/docs/api/ems.
 The functioning and syntax of the Monitoring Artifacts is explained in the next section.
 
-<h3 class="holder-subtitle link-top" id="options">EMS internals</h3>
+<h3 class="holder-subtitle link-top">EMS internals</h3>
 
 Events in the EMS consist of a timestamp, a payload or content, and a set of channels stamps indicating the channels to which they belong.
 The Monitoring Artifacts can be separated into two main groups: the _Stampers_ and the _Machines_.

@@ -4,6 +4,32 @@
 </div>
 </div>
 
+
+<!-- ************************* -->
+<!-- ********* 1.0.0 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.0.0" class="small-subtitle">1.0.0</h3>
+<h4 class="smaller-subtitle">13/02/2018</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   Now when you run a <a target="_blank" href="/docs/testlink">TestLink</a> test plan from ElasTest, you can **`select the browser and the desired version`**.
+-   Added **`"View in log analyzer" button`** on <a target="_blank" href="/docs/testlink">TestLink</a> test plan execution page.
+-   **`Metrics`** can now also be compared in the **TJob Executions comparator**.
+-   A button has been added to the **log cards** to **`download`** them as a *.log* file.
+-   Now you can select one or more **Projects** and **`delete them all`** at once. You can also do the same with the **TJob Executions**, inside the tJob page.
+-   Now the search of **logs and metrics** of an execution is done with **`start/end date range`**, which corrects the timeout problem when requesting them.
+-   Added the **`log-level`** option to the **ElasTest Platform**, so that the user can set the log level of the ETM.
+-  **`EMS Example`** and **`EDS Example`** demo projects added.
+
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   Fixed bug in <a target="_blank" href="/docs/#modes">mini</a> that did not check the correct port of the **`TSS`**. 
+-   Now EUS does not launch an exception when starting a <a target="_blank" href="/docs/web-browsers/manual-browsers/">browser</a> if the maximize command fails.
+-   Fixed a bug in the **`finished TJob Execution`** page that when clicking in the trash and giving to cancel, the button remained disabled
+
 <!-- ************************* -->
 <!-- ****** 1.0.0-beta7 ****** -->
 <!-- ************************* -->

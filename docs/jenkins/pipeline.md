@@ -405,7 +405,7 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
 <!-- ************ Add ElasTest ************ -->
 <!-- ************************************** -->
 
-<h3 class="holder-subtitle link-top" id="options">Add ElasTest to your current Jenkins Jobs</h3>
+<h3 class="holder-subtitle link-top">Add ElasTest to your current Jenkins Jobs</h3>
 
 <div class="range range-xs range-xs-center warning-range">
     <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
@@ -513,6 +513,6 @@ Thanks to this option, ElasTest will be in charge of **managing the browsers**, 
 <!-- ************ Known Issues ************ -->
 <!-- ************************************** -->
 
-<h3 class="holder-subtitle link-top" id="options">Jenkins deployment known issues</h3>
+<h3 class="holder-subtitle link-top">Jenkins deployment known issues</h3>
 
 -   If ElasTest and Jenkins are on **different machines** and Jenkins starts a Sut, it must have its **public IP** so that ElasTest browsers can access it.

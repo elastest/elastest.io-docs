@@ -333,10 +333,10 @@ In order to clean the ElasTest installation, the old images associated with the 
 
 <h4 class="small-subtitle">Using a specific ElasTest version</h4>
 
-To use a specific ElasTest version available, only need to set it as elastest/platform tag, that is, adding **`:version`**. For example, to use the **`1.0.0-beta7`** version you would have to execute the following command
+To use a specific ElasTest version available, only need to set it as elastest/platform tag, that is, adding **`:version`**. For example, to use the **`1.0.0`** version you would have to execute the following command
 
 ```text
-docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:1.0.0-beta7 start
+docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform:1.0.0 start
 ```
 
 <h4 class="small-subtitle">ElasTest data</h4>
