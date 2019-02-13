@@ -516,4 +516,3 @@ Thanks to this option, ElasTest will be in charge of **managing the browsers**, 
 <h3 class="holder-subtitle link-top" id="options">Jenkins deployment known issues</h3>
 
 -   If ElasTest and Jenkins are on **different machines** and Jenkins starts a Sut, it must have its **public IP** so that ElasTest browsers can access it.
--   If **Jenkins slaves** are used, Sut **monitoring doesn't work**.
