@@ -26,7 +26,6 @@ The future releases of ESS will support the detection of vulnerabilities enablin
 
 ## Using ESS in a TJob
 A normal TJob simply contains the code for executing a test (e.g. executing a selenium test using a web browser provided by the EUS). Once the test has dinished executing, the program returns and the TJob execution is completed. For scan a TJob using ESS, the author of the TJob must add the following steps before exiting.
-
 1. read the value of the *ET_ESS_API* environmental variable to get the URL of the ESS API. The following is an example (in Python) of how this can be done.
 ```
 import os
