@@ -22,6 +22,7 @@
 -   Now the search of **logs and metrics** of an execution is done with **`start/end date range`**, which corrects the timeout problem when requesting them.
 -   Added the **`log-level`** option to the **ElasTest Platform**, so that the user can set the log level of the ETM.
 -  **`EMS Example`** and **`EDS Example`** demo projects added.
+-  Updated the integrated <a target="blank" href="/docs/jenkins">Jenkins</a> with the latest version of the <a target="blank" href="https://plugins.jenkins.io/elastest">ElasTest plugin</a>.
 
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
