@@ -28,11 +28,13 @@ To illustrate this scenarios, let's see how to start a Selenium Web Driver using
 <pre><code class="java">// Chrome
 
 DesiredCapabilities caps = new DesiredCapabilities().chrome();
+caps.setCapability("live", true);
 WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);
 
 // Firefox
 
 DesiredCapabilities caps = new DesiredCapabilities().firefox();
+caps.setCapability("live", true);
 WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);</code></pre>
 </div>
 
