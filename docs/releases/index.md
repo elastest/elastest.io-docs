@@ -4,6 +4,23 @@
 </div>
 </div>
 
+<!-- ************************* -->
+<!-- ********* 1.0.1 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.0.1" class="small-subtitle">1.0.1</h3>
+<h4 class="smaller-subtitle">19/02/2018</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   Performance improvements in <a target="_blank" href="/docs/monitoring">saving selected logs and metrics</a>
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   The **`Test Case Steps are now shown again`** during the execution of the <a target="_blank" href="/docs/testlink">TestLink</a> test plan .
+-   Fixed problem with **`browser`** in <a target="_blank" href="/docs/testlink">TestLink</a>that after some time deleted the session automatically.
+-   Solved problem with <a target="_blank" href="/docs/testlink">TestLink</a> plan execution that when stopping a execution manually the **`correct message`** was not shown because it failed when parsing the DELETE response.
+-   Fixed bug with <a target="_blank" href="/docs/log-analyzer/">LogAnalyzer</a> that when pressing the button **Reload Log** did not show the content.
 
 <!-- ************************* -->
 <!-- ********* 1.0.0 ********* -->
@@ -17,17 +34,16 @@
 -   Now when you run a <a target="_blank" href="/docs/testlink">TestLink</a> test plan from ElasTest, you can **`select the browser and the desired version`**.
 -   Added **`"View in log analyzer" button`** on <a target="_blank" href="/docs/testlink">TestLink</a> test plan execution page.
 -   **`Metrics`** can now also be compared in the **TJob Executions comparator**.
--   A button has been added to the **log cards** to **`download`** them as a *.log* file.
+-   A button has been added to the **log cards** to **`download`** them as a _.log_ file.
 -   Now you can select one or more **Projects** and **`delete them all`** at once. You can also do the same with the **TJob Executions**, inside the tJob page.
 -   Now the search of **logs and metrics** of an execution is done with **`start/end date range`**, which corrects the timeout problem when requesting them.
 -   Added the **`log-level`** option to the **ElasTest Platform**, so that the user can set the log level of the ETM.
--  **`EMS Example`** and **`EDS Example`** demo projects added.
--  Updated the integrated <a target="blank" href="/docs/jenkins">Jenkins</a> with the latest version of the <a target="blank" href="https://plugins.jenkins.io/elastest">ElasTest plugin</a>.
-
+-   **`EMS Example`** and **`EDS Example`** demo projects added.
+-   Updated the integrated <a target="blank" href="/docs/jenkins">Jenkins</a> with the latest version of the <a target="blank" href="https://plugins.jenkins.io/elastest">ElasTest plugin</a>.
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 
--   Fixed bug in <a target="_blank" href="/docs/#modes">mini</a> that did not check the correct port of the **`TSS`**. 
+-   Fixed bug in <a target="_blank" href="/docs/#modes">mini</a> that did not check the correct port of the **`TSS`**.
 -   Now EUS does not launch an exception when starting a <a target="_blank" href="/docs/web-browsers/manual-browsers/">browser</a> if the maximize command fails.
 -   Fixed a bug in the **`finished TJob Execution`** page that when clicking in the trash and giving to cancel, the button remained disabled
 
@@ -46,7 +62,7 @@
 -   **`Test Support Services section`** has been **removed** from all ElasTest modes.
 -   Now in <a target="_blank" href="/docs/#modes">singlenode</a> an instance of **`EUS is started`** when starting ElasTest and will be used for all executions. This reduces the execution time of TJobs, as they do not have to start an EUS instance, and also the consumption of resources.
 -   The <a target="_blank" href="/docs/web-browsers/manual-browsers/">WebBrowsers section</a> is now also shown in <a target="_blank" href="/docs/#modes">singlenode</a>, since it has an instance of EUS since the beginning.
--   Changes in the way to **`instrumentalize`** an <a target="_blank" href="/docs/testing/sut/#outsideEim">external sut through EIM</a>: Now the Sut is instrumented only during the execution of a TJob. 
+-   Changes in the way to **`instrumentalize`** an <a target="_blank" href="/docs/testing/sut/#outsideEim">external sut through EIM</a>: Now the Sut is instrumented only during the execution of a TJob.
 -   Now you can select several TJob runs and **`compare`** their test results.
 -   <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> **1.0.0-beta8** released.
 
@@ -54,8 +70,6 @@
 -   Solved problem when running several Jobs in a **Jenkins with slaves** that make use of the <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> at the same time.
 -   Fixed bug in <a target="_blank" href="/docs/#modes">mini</a> that did not send the Endpoint environment vars of a TSS to the TJob, necessary for its use.
 -   Fixed bug in <a target="_blank" href="/docs/log-analyzer/">LogAnalyzer</a> who didn't check well if TestLink was started and never showed TestLink's projects.
-
-
 
 <!-- ************************* -->
 <!-- ****** 1.0.0-beta6 ****** -->
