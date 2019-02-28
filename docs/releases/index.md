@@ -5,11 +5,38 @@
 </div>
 
 <!-- ************************* -->
+<!-- ********* 1.0.2 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.0.2" class="small-subtitle">1.0.2</h3>
+<h4 class="smaller-subtitle">01/03/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   <a target="_blank" href="/docs/executions-comparator/#log-comparator">Log Comparator</a> added in <a target="_blank" href="/docs/executions-comparator/">TJob Executions comparator</a>.
+-   **Projects/tJobs/Suts/Execs tables** can now be **`sorted`** by columns.
+-   We have incorporated a **`new code editor`** in the **TJob and Sut edition** for the commands field, instead of using textarea.
+
+<div class="docs-gallery inline-block" style="margin-top: 6px; margin-left: 23px;">
+    <a data-fancybox="gallery-1" href="/docs/releases/images/td_code_editor.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/td_code_editor.png"/></a>
+</div>
+
+-   Now all **modal windows** are **`draggable`**.
+-   TJobExec Test Case **tabs** have now **`lazy load`**.
+-   Now you can pass a **`list of hosts`** to <a target="_blank" href="/docs/testlink">TestLink</a> browsers to put them in their **/etc/hosts**.
+-   Improvements in <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   Fixed some problems with <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>.
+-   Fixed Bug with <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a> that failed to set an empty path.
+
+<!-- ************************* -->
 <!-- ********* 1.0.1 ********* -->
 <!-- ************************* -->
 
 <h3 id="1.0.1" class="small-subtitle">1.0.1</h3>
-<h4 class="smaller-subtitle">19/02/2018</h4>
+<h4 class="smaller-subtitle">19/02/2019</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
@@ -27,13 +54,13 @@
 <!-- ************************* -->
 
 <h3 id="1.0.0" class="small-subtitle">1.0.0</h3>
-<h4 class="smaller-subtitle">13/02/2018</h4>
+<h4 class="smaller-subtitle">13/02/2019</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
 -   Now when you run a <a target="_blank" href="/docs/testlink">TestLink</a> test plan from ElasTest, you can **`select the browser and the desired version`**.
 -   Added **`"View in log analyzer" button`** on <a target="_blank" href="/docs/testlink">TestLink</a> test plan execution page.
--   **`Metrics`** can now also be compared in the **TJob Executions comparator**.
+-   **`Metrics`** can now also be compared in the <a target="_blank" href="/docs/executions-comparator/">TJob Executions comparator</a>.
 -   A button has been added to the **log cards** to **`download`** them as a _.log_ file.
 -   Now you can select one or more **Projects** and **`delete them all`** at once. You can also do the same with the **TJob Executions**, inside the tJob page.
 -   Now the search of **logs and metrics** of an execution is done with **`start/end date range`**, which corrects the timeout problem when requesting them.
@@ -52,7 +79,7 @@
 <!-- ************************* -->
 
 <h3 id="1.0.0-beta7" class="small-subtitle">1.0.0-beta7</h3>
-<h4 class="smaller-subtitle">31/01/2018</h4>
+<h4 class="smaller-subtitle">31/01/2019</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
@@ -76,7 +103,7 @@
 <!-- ************************* -->
 
 <h3 id="1.0.0-beta6" class="small-subtitle">1.0.0-beta6</h3>
-<h4 class="smaller-subtitle">23/01/2018</h4>
+<h4 class="smaller-subtitle">23/01/2019</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
@@ -84,7 +111,7 @@
 -   The **`--logs`** option of <a target="_blank" href="/docs/try-elastest/">ElasTest Platform</a> has been removed. The starting logs of ElasTest containers will now be automatically displayed in the logs of the ElasTest Platform container. This also solves container freezing problems.
 -   General improvements in the **`stability`** of ElasTest
 
-<div class="docs-gallery inline-block" style="margin-left: 23px;">
+<div class="docs-gallery inline-block" style="margin-top: 6px; margin-left: 23px;">
     <a data-fancybox="gallery-1" href="/docs/releases/images/platform_start_log-1.0.0-beta6.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/platform_start_log-1.0.0-beta6.png"/></a>
 </div>
 

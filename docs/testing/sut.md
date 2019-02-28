@@ -179,16 +179,21 @@ Your SuT is already deployed on an external server and you store your monitoring
 
 -   **SuT IP**: IP or DNS of your SuT. Thanks to this field your TJobs may know how to reach your SuT through environment variable `ET_SUT_HOST`. Check [Environment variables](/testing/environment-variables) to learn more.
 -   **SuT Protocol**: Protocol of your SuT. **`http`** is selected by default.
--   **Elasticsearch IP**: IP or DNS of your Elasticsearch.
--   **Elasticsearch Port**: Port of your Elasticsearch.
--   **ES Indices**: Elasticsearch indices where the Sut monitoring traces be stored. If there are more than one index, type them separated by commas.
+-   **Elasticsearch**:
+    -   **Protocol**: Protocol of your Elasticsearch.
+    -   **IP**: IP or DNS of your Elasticsearch.
+    -   **Port**: Port of your Elasticsearch.
+    -   **Stream Fields**: field or fields used to sort the different logs. For each value a log card will be displayed in ElasTest. If more than one field is indicated (separated by commas) it will be sorted by combination of values of each field following the order indicated.
+    -   **ES Indices**: Elasticsearch indices where the Sut monitoring traces be stored. If there are more than one index, type them separated by commas.
 
 **Optional Fields:**
 
 -   **SuT Port**: Port of your SuT.
--   **Elasticsearch User**: The User of your Elasticsearch.
--   **Elasticsearch Pass**: The Password of your Elasticsearch.
--   **Use Indices by Execution**: If checked, a parameter with the indices will be added. For each TJob Execution, you can to indicate the inidices.
+-   **Elasticsearch**:
+    -   **Path**: Path of your Elasticsearch if it is behind a proxy.
+    -   **User**: The User of your Elasticsearch.
+    -   **Pass**: The Password of your Elasticsearch.
+    -   **Use Indices by Execution**: If checked, a parameter with the indices will be added. For each TJob Execution, you can to indicate the inidices.
 
 <p></p>
 <div class="docs-gallery inline-block">

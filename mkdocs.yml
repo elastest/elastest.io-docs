@@ -18,6 +18,8 @@ pages:
 
 - ['log-analyzer/index.md', 'Log Analyzer']
 
+- ['executions-comparator/index.md', 'Executions Comparator']
+
 - ['testlink/index.md', 'TestLink with ElasTest']
 
 - ['monitoring/index.md', 'Test Monitoring', 'Test Monitoring']
