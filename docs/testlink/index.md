@@ -16,23 +16,21 @@ TestLink GUI is accessible from ElasTest. When ElasTest is started, a TestLink i
 
 Another feature that provides the integration between Elastest and TestLink is the possibility to access from the notes of a test case in TestLink to its execution in Elastest.
 
-
 <h4>TestLink UI in ElasTest</h4>
 
 The GUI provided by ElasTest to execute the manual test cases has the following sections:
 
-* TestLink Home
-* TestLink Projects
-* TestLink Test Plan
-* TestLink Test Plan Execution
-* TestLink Test Plan Execution Results
+-   TestLink Home
+-   TestLink Projects
+-   TestLink Test Plan
+-   TestLink Test Plan Execution
+-   TestLink Test Plan Execution Results
 
 <h5 class="small-subtitle">TestLink Home</h5>
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-3" href="/docs/testlink/images/testlink.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testlink.png"/></a>
 </div>
-
 
 Clicking TestLink button in left side menu of ElasTest will display the TestLink page.
 
@@ -66,9 +64,17 @@ You can associate a SuT previously created in the editing page.
 
 <h5 class="small-subtitle">TestLink Test Plan Execution</h5>
 
-On the other hand, you can run the test plan clicking the "Execute Test Plan" button located on the top right. Immediately after clicking on the button, a modal will be displayed and you must select a build to run the test.
+On the other hand, you can run the test plan clicking the "Execute Test Plan" button located on the top right. Immediately after clicking on the button, a modal will be displayed in which you can select the next configuration:
 
-You must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.
+-   **Select Build** to run the test.
+-   **Select Browser and it's version**
+-   **Configure a hosts list** to put them in the browser container **/etc/hosts**.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal.png"/></a>
+</div>
+
+Once the configuration has been selected and the *Run test plan button* has been pressed, you must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute.png"/></a>
@@ -85,8 +91,6 @@ Once you have completed all the test cases you will can see an overview of your 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_view.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_view.png"/></a>
 </div>
-
-
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/execution_files.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execution_files.png"/></a>
