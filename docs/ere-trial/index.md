@@ -19,9 +19,9 @@ Recommending automated test cases for reuse/adaptation | Based on short natural 
 ElasTest Recommendation Engine runs in the context of [ElasTest platform](https://elastest.io/docs/) and can be launched from ElasTest Dashboard.
 
 #### Procedure
-1. Start ElasTest platform using the `enable-ere` flag:
+1. Start ElasTest platform:
 
-`docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform start -m=singlenode --enable-ere`
+`docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform start -m=singlenode`
 
 **Note:** The size of /elastest/ere-trial image is 4.2 GB. We are currently working on decreasing it.
 
