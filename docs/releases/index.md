@@ -5,10 +5,10 @@
 </div>
 
 <!-- ************************* -->
-<!-- ********* 1.0.2 ********* -->
+<!-- ********* 1.1.0 ********* -->
 <!-- ************************* -->
 
-<h3 id="1.0.2" class="small-subtitle">1.0.2</h3>
+<h3 id="1.1.0" class="small-subtitle">1.1.0</h3>
 <h4 class="smaller-subtitle">01/03/2019</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
