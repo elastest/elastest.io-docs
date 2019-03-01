@@ -23,14 +23,15 @@ ElasTest Recommendation Engine runs in the context of [ElasTest platform](https:
 
 `docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock --rm elastest/platform start -m=singlenode`
 
-**Note:** The size of /elastest/ere-trial image is 4.2 GB. We are currently working on decreasing it.
-
 2. Use browser to access ElasTest Dashboard.
 3. Navigate to Test Engines page and start 'ere'.
+
+**Note:**
+The first time you start ERE, you need to wait a couple of minutes for the image to get pulled from ElasTest repository. Once the image is present on your system, starting and stopping ERE is quick. The current size of /elastest/ere-trial image is 4.2 GB (it will be decreased in future releases).
+
 4. Click on eye icon to access ERE UI.
 
 ![alt text](./img/test-engines.png)
-
 
 ### <a name="new_recom"></a> New Recommendation wizard
 Click on 'New Recommendation' button in the main page to enter a description of a test case. In the 'Area Description' field, provide a more general description of the tested area, such as a description of functionality of the class under test. In the 'Task Description' field, indicate the specific task or functionality to be tested. Click OK to submit your query.
