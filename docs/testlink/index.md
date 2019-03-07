@@ -67,9 +67,10 @@ You can associate a SuT previously created in the editing page.
 On the other hand, you can run the test plan clicking the "Execute Test Plan" button located on the top right. Immediately after clicking on the button, a modal will be displayed in which you can select the next configuration:
 
 -   **Select Build** to run the test.
--   **Select Browser and it's version**
+-   **Select Browser and it's version**.
+-   **Select a Platform**.
 -   **Configure a hosts list** to put them in the browser container **/etc/hosts**.
-
+<p></p>
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal.png"/></a>
 </div>
