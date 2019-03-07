@@ -5,6 +5,31 @@
 </div>
 
 <!-- ************************* -->
+<!-- ********* 1.2.0 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.2.0" class="small-subtitle">1.2.0</h3>
+<h4 class="smaller-subtitle">01/03/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   <a target="_blank" href="/docs/executions-comparator/#log-comparator">Log Comparator:</a>
+    -   Now you can set the **`timeout`** to calculate the diff. Default: 0 (infinite)
+    -   The **`line numbering`** for the **Tests Logs mode** starts at **1 for each test case** and the line number is **not shown in the name** of the test case.
+    -   Now the **Complete** mode shows the complete message **as it is saved** (sometimes it has timestamp and sometimes not) and the **Non-timestamp** mode **`removes`** it from messages that contain it.
+-   <a target="_blank" href="/docs/testlink">TestLink:</a>
+    -   Added a button to the main table that **`removes`** all synchronized data from elastest and **`resynchronizes`** it.
+    -   TestLink now allows you to **`select a platform`** when running a Test Plan.
+    -   **`General improvements`** in stability and styles.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   <a target="_blank" href="/docs/testlink">TestLink:</a>
+    -   Test cases are now executed **`sorted by id`** during execution and not randomly.
+    -   Fixed the bug that, if a test case was associated with **more than one test plan**, **`only appeared`** in the Test Plan to which it had been **associated recently**.
+    -   Now the **url** of an **external sut** **`opens automatically`** in the browser during execution.
+
+<!-- ************************* -->
 <!-- ********* 1.1.0 ********* -->
 <!-- ************************* -->
 

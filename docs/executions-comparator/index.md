@@ -63,12 +63,12 @@ In addition, within **each of these tabs** there will be one tab **for each pair
 There are several possible filters that are divided into two categories:
 
 -   **`View`**:
-    -   **Complete logs**: compare all available logs.
+    -   **Complete logs**: compare all available logs. *(Default)*
     -   **Test Logs**: compare only the logs of the test cases.
     -   **Failed Tests**: compare only the logs of the failed test cases.
 -   **`Comparison`**:
-    -   **Complete**: includes the timestamp in the logs comparison.
-    -   **No timestamp**: only includes the message.
+    -   **Complete**: displays the complete message as it is saved.
+    -   **No timestamp**: if the message contains timestamp, removes it. *(Default)*
     -   **Time diff**: includes the time diff between traces in the logs comparison.
 
 To start the check you should press the button Start Comparison:
