@@ -40,9 +40,9 @@ Moreover, if we hover over the plots, we use the mouse pointer to observe the va
     <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/img07.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/img07.png"/></a>
 </div>
 
-<h3 class="holder-subtitle link-top">Component containers</h3>
+<h3 class="holder-subtitle link-top" id="componentContainers">Component containers</h3>
 
-ElasTest also provides in its GUI a section to visualize the **`status`**, the **`general info`** and the **`logs`** of the containers of the **core components** of ElasTest, as well as the version that is being used. You can access this section by clicking on the button with interrogation icon (?):
+ElasTest also provides in its GUI a section to visualize the **`status`**, the **`general info`** and the **`logs`** of the containers of the **core components** of ElasTest, as well as the version that is being used. You can access this section by clicking on the button with interrogation icon (?) or from the **Manage Elastest** section:
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/elastest-monitoring/images/help_button.png"><img class="img-responsive img-wellcome" src="/docs/elastest-monitoring/images/help_button.png"/></a>

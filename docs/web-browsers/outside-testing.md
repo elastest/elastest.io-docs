@@ -29,31 +29,54 @@ To illustrate this scenarios, let's see how to start a Selenium Web Driver using
 
 DesiredCapabilities caps = new DesiredCapabilities().chrome();
 caps.setCapability("live", true);
+caps.setCapability("elastestTimeout", 0);
 WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);
 
 // Firefox
 
 DesiredCapabilities caps = new DesiredCapabilities().firefox();
 caps.setCapability("live", true);
+caps.setCapability("elastestTimeout", 0);
 WebDriver driver = new RemoteWebDriver(new URL("https://MY_REMOTE_WEB_BROWSER_URL.com"), caps);</code></pre>
 </div>
 
 <div id="js-test" class="web-langs" hidden>
 <pre><code class="javascript">// Chrome
 
+var caps = {
+    live : true,
+    elastestTimeout :  0
+};
+
 var browserBuilder = new webdriver.Builder().forBrowser("chrome");
 browserBuilder.usingServer("https://MY_REMOTE_WEB_BROWSER_URL.com");
+browserBuilder.withCapabilities(caps)
 driver = browserBuilder.build();
+
 
 // Firefox
 
+var caps = {
+    live : true,
+    elastestTimeout :  0
+};
+
 var browserBuilder = new webdriver.Builder().forBrowser("firefox");
 browserBuilder.usingServer("https://MY_REMOTE_WEB_BROWSER_URL.com");
-driver = browserBuilder.build();</code></pre>
+browserBuilder.withCapabilities(caps)
+driver = browserBuilder.build();
+</code></pre>
 </div>
 
 <p>
-That's all the extra configuration needed. The rest of the code is exactly the same as in a regular Selenium test.
+That's all the extra configuration needed. As you can see, two custom capabilities of ElasTest are indicated:</p>
+
+- **`live`**: this capability tells ElasTest to display the session in the WebBrowsers section of the GUI.
+- **`elastestTimeout`** (optional): allows you to set a timeout (in seconds) to end the session automatically if you do not interact with the browser through selenium. The default value, if the capability is not used, is 60 and in the example above it is set to 0, which disables timeout (infinite).
+
+You can also make use of the capability **`testName`**, which associates the session id with the name of the test and allows you to differentiate your tests in the ElasTest GUI.
+
+<p> The rest of the code is exactly the same as in a regular Selenium test.
 Whenever you run it, ElasTest will launch the requested browser on-demand and the test will be remotely executed against it.
 </p>
 
