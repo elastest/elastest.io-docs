@@ -5,6 +5,37 @@
 </div>
 
 <!-- ************************* -->
+<!-- ********* 1.3.0 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.3.0" class="small-subtitle">1.3.0</h3>
+<h4 class="smaller-subtitle">20/03/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   The **`maximum number of executions`** can now be configured in the **TJobs**.
+-   **Usability** and **performance** <strong class="italicEtColor">enhancements</strong>:
+    -   In the <strong class="italicEtColor">Projects section</strong>, only the **id** and **name** of the projects are brought from the backend instead of bringing all their data.
+    -   In the section of a <strong class="italicEtColor">specific Project</strong>, up to four times the complete object was being requested from the backend. Now **only what is necessary is requested**.
+    -   <strong class="italicEtColor">Dashboard</strong> section:
+        -   The **`Show All`** button has been **replaced by** **`Show 12 more`**.
+        -   The **`spinner`** is **not shown** when **new information** is obtained.
+        -   Now the **executions** loaded at the beginning are **`not reloaded again`**.
+    -   Now in the section of a <strong class="italicEtColor">specific TJob</strong> the **`executions are paginated`**.
+-   A **new section** has been added: **`Manage Elastest`**. Here you can view the status, the general info and the logs of the containers of the core components of ElasTest, as well as the version that is being used. In <a target="_blank" href="/docs/#modes">singlenode mode</a> you can also manage Elasticsearch indices
+-   For <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>, the user is now allowed to indicate a **`list of fields`** with a **list of values** by which to **filter** to save the traces.
+-   <a target="_blank" href="/docs/monitoring">Monitoring traces</a> are now removed when deleting a **TJobExecution, TJob, Sut, SutExecution or Project** (the entire index in Elasticsearch for <a target="_blank" href="/docs/#modes">singlenode mode</a> OR the data in Mysql for <a target="_blank" href="/docs/#modes">mini mode</a>)
+-   **Elasticsearch** has been updated to version <a target="_blank" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/release-notes-6.6.1.html">6.6.1</a> (for <a target="_blank" href="/docs/#modes">singlenode mode</a>)
+-   Now a **message** is displayed **while logs are loaded** in <a target="_blank" href="/docs/log-analyzer/">LogAnalyzer</a>
+-   **Stop Session** button added to <a target="_blank" href="/docs/web-browsers/manual-browsers/">WebBrowsers </a> for live sessions.
+-   For <a target="_blank" href="/docs/web-browsers/outside-testing">testing with Web Browsers from outside ElasTest</a> it is now possible to set a **timeout** to end the session automatically if you do not interact with the browser through selenium after the set time. To do this, it is necessary to make use of the custom capability **`elastestTimeout`**.
+-   For <a target="_blank" href="/docs/jenkins">Jenkins TJobs</a> the **`Jenkins icon`** is now shown instead of the edit pencil.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+-   Fixed the bug that when running several <a target="_blank" href="/docs/web-browsers/e2e-browser">TJob Execs that use EUS</a> showed all sessions within an execution, instead of only showing the corresponding ones.
+-   Some minor bugs have been fixed in <a target="_blank" href="/docs/log-analyzer/">LogAnalyzer</a>. Among them it's worth mentioning that it didn't show the full height of a trace that contained line breaks.
+
+<!-- ************************* -->
 <!-- ********* 1.2.0 ********* -->
 <!-- ************************* -->
 
