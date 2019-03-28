@@ -5,6 +5,23 @@
 </div>
 
 <!-- ************************* -->
+<!-- ********* 1.3.1 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.3.1" class="small-subtitle">1.3.1</h3>
+<h4 class="smaller-subtitle">28/03/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   **Usability** and **performance** <strong class="italicEtColor">enhancements</strong> in TJob Execution page and in the Test Case Execution page of a TJob Execution.
+
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   Fixed the bug where **videos were not played** when they contained **`special characters in their name`**.
+-   Fixed some bugs in <a target="_blank" href="/docs/log-analyzer/">LogAnalyzer</a>
+
+<!-- ************************* -->
 <!-- ********* 1.3.0 ********* -->
 <!-- ************************* -->
 
