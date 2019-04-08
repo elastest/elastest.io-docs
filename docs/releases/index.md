@@ -5,6 +5,27 @@
 </div>
 
 <!-- ************************* -->
+<!-- ********* 1.4.0 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.4.0" class="small-subtitle">1.4.0</h3>
+<h4 class="smaller-subtitle">08/04/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   <a target="_blank" href="/docs/web-browsers/e2e-browser">Browsers started by a TJob</a> run now have a **fixed name**, allowing you to compare browser logs between different executions**.
+-   It is now possible to <strong class="italicEtColor">upload files</strong> to a **browser** and also <strong class="italicEtColor">download</strong> them.
+-   A button has been added to **`upload files to the browser context`** on the <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan **execution** page.
+-   It is possible to **attach evidence files** to the executions by means of an api that the TJob receives in an <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> (*ET_ETM_TJOB_ATTACHMENT_API*).
+-   The **`View in loganalyzer`** button has been added to the section of a **specific Test Case**.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+-   Fixed a bug in <a target="_blank" href="/docs/executions-comparator/#log-comparator">Log Comparator</a> that failed to get start/finish traces when testName had special characters or reserved for regex (*:[]$*...).
+-   **Browser logs** that contain **line breaks** are now split and combined with the line break character, since it used to give an exception and were not being saved.
+-   Definitively fixed <a target="_blank" href="/docs/log-analyzer/">LogAnalyzer</a> date bug with Test Cases.
+-   If there is a connection problem on get **browser images** from Docker Hub, the **cached** images are used.
+
+<!-- ************************* -->
 <!-- ********* 1.3.1 ********* -->
 <!-- ************************* -->
 
@@ -14,7 +35,6 @@
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
 -   **Usability** and **performance** <strong class="italicEtColor">enhancements</strong> in TJob Execution page and in the Test Case Execution page of a TJob Execution.
-
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 

@@ -19,6 +19,7 @@
 | **ET_SUT_CONTAINER_NAME** | SuT container name | "sut_37" | Always available | TJob, SuT, TSS |
 | **ET_MON_INTERNAL_LSBEATS_PORT**  |  Port through which traces are sent to logstash | "5037" | Always available | TJob, SuT, TSS |
 | **ET_SUT_LOG_TAG** | It allows us to assign a label in the log driver output of the SuT container. This tag contains information that ElasTest uses internally to identify logs | "sut_37_exec" | Is an external TJob | TJob |
+| **ET_ETM_TJOB_ATTACHMENT_API** | It contains an api url that allows us to attach evidence files to the execution | "http://172.18.0.1:37000/api/tjob/exec/707/attachment" | Always available | TJob |
 
 <br>
 * **TSS**: Test Support Services

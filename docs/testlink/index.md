@@ -81,9 +81,15 @@ Once the configuration has been selected and the *Run test plan button* has been
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute.png"/></a>
 </div>
 
-If you have associated a Sut to the Test Plan, you must wait until the Sut is ready to be used, then the browser will start as indicated in the previous paragraph and the url of the Sut will be loaded in that browser to test.
+If you have **`associated a Sut`** to the Test Plan, you must wait until the Sut is ready to be used, then the browser will start as indicated in the previous paragraph and the url of the Sut will be loaded in that browser to test.
 
-When your test is finished, you must fill the fields for each Test Case and click "Save & Next" button.
+If you need to **`attach files`** you have on your machine to your browser, you can add them to the browser context by using the **Upload files to browser context** button. You can select more than one file at a time. Once uploaded to the browser context, you can find them in */home/ubuntu/et_shared_files*.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute_uploadfile.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute_uploadfile.png"/></a>
+</div>
+
+When your test is finished, you must fill the fields for each Test Case and click **Save & Next** button.
 
 <h5 class="small-subtitle">TestLink Test Plan Execution Result</h5>
 
