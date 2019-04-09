@@ -4,6 +4,19 @@
 </div>
 </div>
 
+
+<!-- ************************* -->
+<!-- ********* 1.4.1 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.4.1" class="small-subtitle">1.4.1</h3>
+<h4 class="smaller-subtitle">09/04/2019</h4>
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+-   Fixed a bug in <a target="_blank" href="/docs/executions-comparator/#log-comparator">Log Comparator</a>.
+-   Fixed a bug in ElasTest <a target="_blank" href="/docs/#modes">mini</a> that, when running a TJob with EUS and another TSS **did not connect** to the correct url of the EUS WebSocket.
+-   Fixed a bug that didn't start the **correct Jenkins version** by starting it with the *-jk* command.
+
 <!-- ************************* -->
 <!-- ********* 1.4.0 ********* -->
 <!-- ************************* -->
@@ -13,7 +26,7 @@
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
--   <a target="_blank" href="/docs/web-browsers/e2e-browser">Browsers started by a TJob</a> run now have a **fixed name**, allowing you to compare browser logs between different executions**.
+-   <a target="_blank" href="/docs/web-browsers/e2e-browser">Browsers started by a TJob</a> run now have a **fixed name**, allowing you to compare browser logs between different **executions**.
 -   It is now possible to <strong class="italicEtColor">upload files</strong> to a **browser** and also <strong class="italicEtColor">download</strong> them.
 -   A button has been added to **`upload files to the browser context`** on the <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan **execution** page.
 -   It is possible to **attach evidence files** to the executions by means of an api that the TJob receives in an <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> (*ET_ETM_TJOB_ATTACHMENT_API*).
