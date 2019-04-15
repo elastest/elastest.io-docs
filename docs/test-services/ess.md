@@ -75,7 +75,7 @@ We have created the docker image of similar TJob and it's code is available [her
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/3.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/3.png"/></a>
 </div>
 
-6. Check the checkboxe corresponding to ESS and other requires TSSes (see example image shown below)
+6. Check the checkboxes corresponding to ESS and other requires TSSes (see example image shown below)
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/test-services/images/ess/4.png"><img class="img-responsive img-wellcome" src="/docs/test-services/images/ess/4.png"/></a>
 </div>
