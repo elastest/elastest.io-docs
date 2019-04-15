@@ -426,7 +426,7 @@ The installation of ElasTest, Jenkins and the collaboration between them, allows
     <div class="cell-xs-10 cell-lg-11 warning-text"><p><i>We are preparing improvements and new features in the ElasTest Jenkins plugin for the next release.</i></p></div>
 </div>
 
-<h4 class="small-subtitle">1. Indentify your <strong class="etColor">test types</strong>:</h4>
+<h4 class="small-subtitle">1. Identify your <strong class="etColor">test types</strong>:</h4>
 
 -   Unit
 -   Rest
