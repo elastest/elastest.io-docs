@@ -70,12 +70,12 @@ On the other hand, you can run the test plan clicking the "Execute Test Plan" bu
 -   **Select Browser and it's version**.
 -   **Select a Platform**.
 -   **Configure a hosts list** to put them in the browser container **/etc/hosts**.
-<p></p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal.png"/></a>
-</div>
+    <p></p>
+    <div class="docs-gallery inline-block">
+        <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal.png"/></a>
+    </div>
 
-Once the configuration has been selected and the *Run test plan button* has been pressed, you must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.
+Once the configuration has been selected and the _Run test plan button_ has been pressed, you must wait a few seconds until the browser loads. After that, you can see the Test Plan information on the left and a web browser on the right. On the bottom, you will can see all the logs of your test.
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute.png"/></a>
@@ -83,13 +83,27 @@ Once the configuration has been selected and the *Run test plan button* has been
 
 If you have **`associated a Sut`** to the Test Plan, you must wait until the Sut is ready to be used, then the browser will start as indicated in the previous paragraph and the url of the Sut will be loaded in that browser to test.
 
-If you need to **`attach files`** you have on your machine to your browser, you can add them to the browser context by using the **Upload files to browser context** button. You can select more than one file at a time. Once uploaded to the browser context, you can find them in */home/ubuntu/et_shared_files*.
+If you need to **`attach files`** you have on your machine to your browser, you can add them to the browser context by using the **Upload files to browser context** button. You can select more than one file at a time. Once uploaded to the browser context, you can find them in _/home/ubuntu/et_shared_files_.
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/testlink/images/testplan_execute_uploadfile.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/testplan_execute_uploadfile.png"/></a>
 </div>
 
-When your test is finished, you must fill the fields for each Test Case and click **Save & Next** button.
+It is also possible to **`obtain a file`** from the context of the browser, making use of the **Download file from browser context** button.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/download_file_btn.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/download_file_btn.png"/></a>
+</div>
+
+Clicking will open a **modal window** where we can enter the **`full path`** where the file is within the context of the browser:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/download_file_path.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/download_file_path.png"/></a>
+</div>
+
+Once the route has been entered, just click on the DOWNLOAD button and the file will be downloaded. 
+
+To run Test Cases, you must fill the fields for each and click Save & Next button.
 
 <h5 class="small-subtitle">TestLink Test Plan Execution Result</h5>
 

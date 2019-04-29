@@ -46,6 +46,8 @@ pages:
 - ['deploying/aws.md', 'Deploying ElasTest', 'Amazon Web Services']
 
 - ['elastest-monitoring/index.md', 'ElasTest Monitoring']
+- ['manage-elastest/monitoring-containers.md', 'Manage ElasTest', 'Monitoring Containers']
+- ['manage-elastest/manage-elasticsearch.md', 'Manage ElasTest', 'Manage Elasticsearch']
 
 - ['releases/index.md', 'Releases']
 

@@ -4,6 +4,27 @@
 </div>
 </div>
 
+<!-- ************************* -->
+<!-- ********* 1.5.0 ********* -->
+<!-- ************************* -->
+
+<h3 id="1.5.0" class="small-subtitle">1.5.0</h3>
+<h4 class="smaller-subtitle">29/04/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   Added a button to **`download files`** from the browser context during a <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan Execution.
+-   Now you can select one or more <a target="_blank" href="/docs/testing/sut">Suts</a> and **`delete them all at once`**.
+-   It is now possible to **`activate/deactivate the All-In-One chart`** from the **Monitoring Configuration** modal window.
+-   Now when configuring in a <a target="_blank" href="/docs/jenkins">Jenkins</a> job the **maximum number of builds to keep**, this number will be synchronized with the **`maximum number of executions in ElasTest`**.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   Now, in <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a>, the **log traces** are sent to ElasTest with the **`timestamp`**, thus solving the problem of incorrect dates.
+-   Fixed a bug on the page of a <a target="_blank" href="/docs/testlink">TestLink</a> **Test Case Execution** that brokes the GUI.
+-   Now when a **test suite** has all its tests skipped, the **`suite is also shown as skipped`** and not as success.
+-   Fixed a bug in the modal window of an execution of a **TJob with parameters** that, when removing all parameters, the **`button to add more parameters disappeared`**.
+-   Fixed a bug in <a target="_blank" href="/docs/#modes">singlenode mode</a>: The **Delete red indices** button was **`always disabled`** and could not be pressed even if there were red indices.
 
 <!-- ************************* -->
 <!-- ********* 1.4.1 ********* -->
@@ -29,7 +50,7 @@
 -   <a target="_blank" href="/docs/web-browsers/e2e-browser">Browsers started by a TJob</a> run now have a **fixed name**, allowing you to compare browser logs between different **executions**.
 -   It is now possible to <strong class="italicEtColor">upload files</strong> to a **browser** and also <strong class="italicEtColor">download</strong> them.
 -   A button has been added to **`upload files to the browser context`** on the <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan **execution** page.
--   It is possible to **attach evidence files** to the executions by means of an api that the TJob receives in an <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> (*ET_ETM_TJOB_ATTACHMENT_API*).
+-   It is possible to **attach evidence files** to the executions by means of an api that the TJob receives in an <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> (_ET_ETM_TJOB_ATTACHMENT_API_).
 -   The **`View in loganalyzer`** button has been added to the section of a **specific Test Case**.
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
@@ -72,7 +93,7 @@
         -   The **`spinner`** is **not shown** when **new information** is obtained.
         -   Now the **executions** loaded at the beginning are **`not reloaded again`**.
     -   Now in the section of a <strong class="italicEtColor">specific TJob</strong> the **`executions are paginated`**.
--   A **new section** has been added: **`Manage Elastest`**. Here you can view the status, the general info and the logs of the containers of the core components of ElasTest, as well as the version that is being used. In <a target="_blank" href="/docs/#modes">singlenode mode</a> you can also manage Elasticsearch indices
+-   A **new section** has been added: **`Manage Elastest`**. Here you can view the status, the general info and the logs of the <a target="_blank" href="/docs/manage-elastest/monitoring-containers">containers</a> of the core components of ElasTest, as well as the version that is being used. In <a target="_blank" href="/docs/#modes">singlenode mode</a> you can also <a target="_blank" href="/docs/manage-elastest/manage-elasticsearch">manage Elasticsearch indices</a>
 -   For <a target="_blank" href="/docs/testing/sut/#outsideExternalES">Sut with external Elasticsearch</a>, the user is now allowed to indicate a **`list of fields`** with a **list of values** by which to **filter** to save the traces.
 -   <a target="_blank" href="/docs/monitoring">Monitoring traces</a> are now removed when deleting a **TJobExecution, TJob, Sut, SutExecution or Project** (the entire index in Elasticsearch for <a target="_blank" href="/docs/#modes">singlenode mode</a> OR the data in Mysql for <a target="_blank" href="/docs/#modes">mini mode</a>)
 -   **Elasticsearch** has been updated to version <a target="_blank" href="https://www.elastic.co/guide/en/elasticsearch/reference/current/release-notes-6.6.1.html">6.6.1</a> (for <a target="_blank" href="/docs/#modes">singlenode mode</a>)

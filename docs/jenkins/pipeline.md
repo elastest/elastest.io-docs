@@ -524,6 +524,17 @@ Thanks to this option, ElasTest will be in charge of **managing the browsers**, 
 
 
 <!-- ************************************** -->
+<!-- ************ Limit Builds ************ -->
+<!-- ************************************** -->
+
+<h3 id="limitBuilds" class="holder-subtitle link-top">Setting max nº of builds</h3>
+If in your Jenkins job you check the **Discard old builds** option and set a value for **Max # of builds to keep**, it will also be set in ElasTest, saving only the last N runs.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline/max_builds.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline/max_builds.png"/></a>
+</div>
+
+<!-- ************************************** -->
 <!-- ************ Known Issues ************ -->
 <!-- ************************************** -->
 

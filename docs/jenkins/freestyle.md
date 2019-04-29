@@ -6,7 +6,6 @@
 </div>
 </div>
 
-
 As mentioned above, the ElasTest plugin can also be used from a freestyle project, although at the moment it only offers some basic functionalities:
 
 -   Send the logs generated during the build of a Job to ElasTest
@@ -30,4 +29,15 @@ After we run the Freestyle Job, we can check the results in both platforms, **Je
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-4" href="/docs/jenkins/images/jenkins_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/jenkins_log.png"/></a>
     <a data-fancybox="gallery-4" href="/docs/jenkins/images/elastest_log.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/elastest_log.png"/></a>
+</div>
+
+<!-- ************************************** -->
+<!-- ************ Limit Builds ************ -->
+<!-- ************************************** -->
+
+<h3 id="limitBuilds" class="holder-subtitle link-top">Setting max nº of builds</h3>
+If in your Jenkins job you check the **Discard old builds** option and set a value for **Max # of builds to keep**, it will also be set in ElasTest, saving only the last N runs.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-2" href="/docs/jenkins/images/pipeline/max_builds.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/pipeline/max_builds.png"/></a>
 </div>
