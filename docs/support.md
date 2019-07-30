@@ -11,11 +11,11 @@
         <h3 class="h4 text-bold">Google Group</h3>
         <p class="inset-sm-left-15 inset-sm-right-15">For any doubts about the features or the use of ElasTest</p>
     </div>
-    <div class="cell-xs-10 cell-sm-6 cell-md-4 offset-top-50"><a href="https://github.com/elastest/elastest/issues" target="_blank" class="btn btn-primary btn-anis-effect btn-circle"><span class="icon fa fa-github"></span></a>
+    <div class="cell-xs-10 cell-sm-6 cell-md-4 offset-top-50"><a href="https://github.com/elastest/elastest/issues" target="_blank" class="btn btn-primary btn-anis-effect btn-circle"><span class="icon mdi mdi-github-circle"></span></a>
         <h3 class="h4 text-bold">GitHub issues</h3>
         <p class="inset-sm-left-15 inset-sm-right-15">For any bug you come across when using ElasTest</p>
     </div>
-    <div class="cell-xs-10 cell-sm-6 cell-md-4 offset-top-50"><a href="https://stackoverflow.com/questions/tagged/elastest" target="_blank" class="btn btn-primary btn-anis-effect btn-circle"><span class="icon fa fa-stack-overflow"></span></a>
+    <div class="cell-xs-10 cell-sm-6 cell-md-4 offset-top-50"><a href="https://stackoverflow.com/questions/tagged/elastest" target="_blank" class="btn btn-primary btn-anis-effect btn-circle"><span class="icon fab fa-stack-overflow"></span></a>
         <h3 class="h4 text-bold">Stack Overflow</h3>
         <p class="inset-sm-left-15 inset-sm-right-15">Get support from the community</p>
     </div>
