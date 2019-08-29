@@ -1,8 +1,10 @@
 site_name: ElasTest Documentation
 pages:
 
+# What is ElasTest Section
 - ['index.md', 'What is ElasTest?']
 
+# Tutorial Section
 - ['tutorials/getting-started.md', 'Tutorials', 'Getting started']
 - ['tutorials/jenkins-plugin.md', 'Tutorials', 'Jenkins plugin']
 - ['tutorials/using-browsers-in-elastest.md', 'Tutorials', 'Using browsers in ElasTest']
@@ -12,12 +14,12 @@ pages:
 - ['tutorials/custom-metrics.md', 'Tutorials', 'Custom metrics']
 - ['tutorials/ere-with-custom-code.md', 'Tutorials', 'ERE with custom code']
 - ['tutorials/using-ebs-to-perform-analytics.md', 'Tutorials', 'Using EBS to perform analytics']
-- ['tutorials/estimating-the costs-of-tests-on-aws.md', 'Tutorials', 'Estimating the costs of tests on AWS']
+- ['tutorials/estimating-the-costs-of-tests-on-aws.md', 'Tutorials', 'Estimating the costs of tests on AWS']
 - ['tutorials/observability-for-5g-infrastructures.md', 'Tutorials', 'Observability for 5G infrastructures']
 - ['tutorials/ems.md', 'Tutorials', 'EMS (show how specific visualizations for TJobs and ElasTest TSS work)']
 - ['tutorials/kubernetes.md', 'Tutorials', 'Kubernetes (Q3)']
 
-# - ['', 'Demos']
+# Demos Section
 - ['demos/api-testing.md', 'Demos', 'API testing']
 - ['demos/e2e-testing.md', 'Demos', 'E2E testing']
 - ['demos/functional-exploratory-testing.md', 'Demos', 'Functional / Exploratory testing']
@@ -28,23 +30,38 @@ pages:
 - ['demos/test-recommendation.md', 'Demos', 'Test recommendation']
 - ['demos/test-cost-estimation.md', 'Demos', 'Test cost estimation']
 
-# - ['', 'Cheatsheet']
+# CheatSheet Section
+- ['try-elastest.md', 'Cheatsheet', 'Try ElasTest']
+- ['releases/index.md', 'Cheatsheet', 'Releases']
+- ['testing/unit.md','Cheatsheet', 'Run unit tests']
+- ['testing/e2e-rest.md','Cheatsheet', 'Run end2end tests']
+- ['testing/sut.md','Cheatsheet', 'Software under Test']
+- ['testing/parameterized-tests.md','Cheatsheet', 'Parameterized tests']
+- ['testing/multi-configuration-tjobs.md','Cheatsheet', 'Multi-Configuration TJobs']
+- ['web-browsers/manual-browsers.md','Cheatsheet', 'Launching Web Browsers on ElasTest']
+- ['web-browsers/e2e-browser.md','Cheatsheet', 'Run en2end tests with Web Browsers']
+- ['web-browsers/outside-testing.md','Cheatsheet', 'Testing with Web Browsers from outside ElasTest']
+- ['roadmap/index.md', 'Cheatsheet', 'Roadmap']
 
+# Reference Documentation Section
 - ['testing/environment-variables.md', 'Reference documentation', 'Enviroment variables']
 - ['test-services/ems.md', 'Reference documentation', 'Elastest Monitoring Service (EMS)']
 - ['test-services/ebs.md', 'Reference documentation', 'ElasTest BigData Service (EBS)']
-# - ['', 'Reference documentation', 'ElasTest Device impersonation Service (EDS - IoT)']
+- ['test-services/eds.md', 'Reference documentation', 'ElasTest Device impersonation Service (EDS - IoT)']
 # - ['', 'Reference documentation', 'ElasTest Instrumentation Manager (EIM)']
 - ['test-services/ess.md', 'Reference documentation', 'ElasTest Security Service (ESS)']
 
+# Deployment Section
 - ['deploying/ubuntu.md', 'Deployment', 'Linux Server']
 - ['deploying/aws.md', 'Deployment', 'Amazon Web Services']
 - ['deploying/kubernetes.md', 'Deployment', 'Kubernetes (Q3)']
 
+# Managment Section
 - ['elastest-monitoring/index.md', 'Management', 'Monitoring ElasTest']
 - ['manage-elastest/monitoring-containers.md', 'Management', 'Monitoring containers']
 - ['manage-elastest/manage-elasticsearch.md', 'Management', 'Monitoring ElasticSearch']
 
+# Support Section
 - ['support.md', 'Support']
 
 theme: null

@@ -6,21 +6,21 @@
 </div>
 </div>
 
-A sample application (backend + db) is started, and a parameterized test is run several times with different parameter values. Logs & metrics are collected and the later are shown together in a comparative graph.
+<p>A sample application (backend + db) is started, and a parameterized test is run several times with different parameter values. Logs & metrics are collected and the later are shown together in a comparative graph.</p>
 
 <div class="run-div">
-    <hr>
+    <hr />
     <div class="row row-run-demo no-margin">
         <div class="col col-md-2 col-sm-4 col-xs-12">
-            <img src="../../images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
+            <img src="/docs/images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
         </div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <a class="btn btn-xs btn-primary" title="Try it now">Try it now</a>
         </div>
     </div>
-    <hr>
+    <hr />
     <div class="row row-run-demo no-margin">
-        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="../../images/docker.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/docker.png" style="border: none;" alt="" /></div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <div class="row no-margin">
                 <div class="col-lg-1 col-md-2 col-sm-2 no-padding">
@@ -61,20 +61,40 @@ A sample application (backend + db) is started, and a parameterized test is run 
             </div>
         </div>
     </div>
-    <hr>
+    <hr />
     <div class="row row-run-demo no-margin">
-        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="../../images/amazonAWS.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/amazonAWS.png" style="border: none;" alt="" /></div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <a href="/docs/deploying/aws/" class="btn btn-xs btn-primary" title="Deploy on Amazon">Deploy on Amazon</a>
         </div>
     </div>
-    <hr>
+    <hr />
     <div class="row row-run-demo no-margin">
-        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="../../images/kubernetes.png" style="border: none; max-height: 124px; padding-top: 8px;" alt="" /></div>
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/kubernetes.png" style="border: none; max-height: 124px; padding-top: 8px;" alt="" /></div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <a href="/docs/deploying/kubernetes" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
                     title="On quarter 3">Deploy on Kubernetes (Q3)</a>
         </div>
     </div>
-    <hr>
-<div>
+    <hr />
+</div>
+
+<h5 class="small-subtitle">Multi-Configuration TJobs</h5>
+
+For this it is necessary to activate the "multi" option in the TJob creation page, and new Multi-Configuration we add the variable **`BROWSER`** with the values: **`chrome`** and **`firefox`**. This TJob run the test with the chrome browser and after with the firefox.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/demos/images/multi-configuration/configure.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/multi-configuration/configure.png"/></a>
+</div>
+
+When run the TJobs we will see two executions with the values indicates for each, **`chrome`** and **`firefox`**:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/demos/images/multi-configuration/running.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/multi-configuration/running.png"/></a>
+</div>
+
+Then we can see the comparative of the two executions:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/demos/images/multi-configuration/finish.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/multi-configuration/finish.png"/></a>
+</div>

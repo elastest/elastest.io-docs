@@ -6,21 +6,21 @@
 </div>
 </div>
 
-On quarter 3
+<p><i class="fas fa-hammer fa-3x"></i>On quarter 3</p>
 
 <div class="run-div">
-    <hr>
+    <hr />
     <div class="row row-run-demo no-margin">
         <div class="col col-md-2 col-sm-4 col-xs-12">
-            <img src="../../images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
+            <img src="/docs/images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
         </div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <a class="btn btn-xs btn-primary" title="Try it now">Try it now</a>
         </div>
     </div>
-    <hr>
+    <hr />
     <div class="row row-run-demo no-margin">
-        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="../../images/docker.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/docker.png" style="border: none;" alt="" /></div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <div class="row no-margin">
                 <div class="col-lg-1 col-md-2 col-sm-2 no-padding">
@@ -61,20 +61,22 @@ On quarter 3
             </div>
         </div>
     </div>
-    <hr>
+    <hr />
     <div class="row row-run-demo no-margin">
-        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="../../images/amazonAWS.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/amazonAWS.png" style="border: none;" alt="" /></div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <a href="/docs/deploying/aws/" class="btn btn-xs btn-primary" title="Deploy on Amazon">Deploy on Amazon</a>
         </div>
     </div>
-    <hr>
+    <hr />
     <div class="row row-run-demo no-margin">
-        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="../../images/kubernetes.png" style="border: none; max-height: 124px; padding-top: 8px;" alt="" /></div>
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/kubernetes.png" style="border: none; max-height: 124px; padding-top: 8px;" alt="" /></div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <a href="/docs/deploying/kubernetes" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
                     title="On quarter 3">Deploy on Kubernetes (Q3)</a>
         </div>
     </div>
-    <hr>
-<div>
+    <hr />
+</div>
+
+<p><i class="fas fa-hammer fa-3x"></i> Work In Progress</p>
