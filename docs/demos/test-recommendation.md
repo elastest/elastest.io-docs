@@ -8,6 +8,7 @@
 
 <p><i class="fas fa-hammer fa-3x"></i> Work In Progress</p>
 
+<!--
 <div class="run-div">
     <hr />
     <div class="row row-run-demo no-margin">
@@ -78,5 +79,4 @@
     </div>
     <hr />
 </div>
-
-<p><i class="fas fa-hammer fa-3x"></i> Work In Progress</p>
+-->

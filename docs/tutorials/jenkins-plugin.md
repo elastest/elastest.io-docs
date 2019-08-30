@@ -29,7 +29,7 @@ To install the ElasTest Plugin you should follow this steps:
 <p></p>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/tutorials/images/jenkins/integration/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/plugin_install.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/integration/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/plugin_install.png"/></a>
 </div>
 
 <h4 class="small-subtitle">Plugin configuration</h4>
@@ -44,28 +44,108 @@ The plugin configuration is very simple and you only have to fill in the followi
 Before you execute your first Job integrated with ElasTest, you can check if the connection between Jenkins and ElasTest is successfully established.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-3" href="/docs/tutorials/images/jenkins/integration/conf.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/conf.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/integration/conf.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/conf.png"/></a>
 </div>
 
 <h4 class="holder-subtitle link-top">Usage</h4>
 
+
+<h4 class="small-subtitle">Test</h4>
+
+Let's see how launch a TJob that makes use a web browser inside Elastest. Here we will run our [API Test](https://github.com/elastest-experiments/webapp-2/tree/master/AMICOServer/src/test/java/com/example/demo/e2e/api), which makes use of a Spring Boot Application as a SuT the application is a plataform for education. Also has one test what check that a user not logged can't access to the sensible information.
+
+##### **TestAPIRestTemplate**
+
+```java
+public class TestAPIRestTemplate extends ElasTestBase{
+
+	final static Logger log = getLogger(lookup().lookupClass());
+
+    protected static String sutUrl;
+    protected static String profile_uri;
+
+    @BeforeAll
+    public static void setupClass() {
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8000/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort + "/";
+        }
+        
+        profile_uri = sutUrl + "api/users/{user}";
+        logger.info("Webapp URL: " + sutUrl);
+    }
+    
+	@Test
+	public void checkShowProfile() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+		String url = profile_uri.replace("{user}", "amico");
+		RestTemplate restTemplate = new RestTemplate(SSLClientFactory.getClientHttpRequestFactory(HttpClientType.HttpClient));
+
+		HttpStatus status;
+		HttpStatus expected = HttpStatus.UNAUTHORIZED;
+
+		try {
+			ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+			status = response.getStatusCode();
+		} catch (HttpStatusCodeException e) {
+			status = e.getStatusCode();
+		}
+
+		Assert.assertEquals("failure - expected HTTP status " + expected, expected, status);
+		log.info("The response is correct");
+	}
+
+}
+```
+
+>-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`**  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+
+
+##### **ElasTestBase**
+
+```java
+public class ElasTestBase {
+
+    protected static final Logger logger = LoggerFactory.getLogger(ElasTestBase.class);
+
+    @BeforeEach
+    public void logStart(TestInfo testInfo) {
+        logger.info("##### Start test: " + testInfo.getTestMethod().get().getName());
+    }
+
+    @AfterEach
+    public void logEnd(TestInfo testInfo) {
+        logger.info("##### Finish test: " + testInfo.getTestMethod().get().getName());
+    }
+
+}
+```
+
+In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.
+
 <h4 class="small-subtitle">Elastest pipeline</h4>
 
-To run our tests using Jenkins in Elastest, first open the Jenkins and click in **`new task`**
+To run our tests using Jenkins in Elastest, first open the Jenkins and click in **`new Item`**
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/pipeline/new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/new-item.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/new-item.png"/></a>
 </div>
 
-Writte the name of the item: **`AMICourses`** and select **`Pipeline`**
+Write the name of the item: **`AMICourses`** and select **`Pipeline`**
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/pipeline/item-name.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/item-name.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/item-name.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/item-name.png"/></a>
 </div>
 
 Now we will write the Pipeline: 
 
-*   The application we will use is [AMICOurses](https://github.com/elastest-experiments/webapp-2.git).
 *   The test we will launch is [Test](https://github.com/elastest-experiments/webapp-2/blob/master/AMICOServer/src/test/java/com/example/demo/e2e/api/TestAPIRestTemplate.java), this tests check that the not logged user don't see sensible information.
 
 The application contains a bug with the objective of the show the logs and compare the good execution with the bug execution. Finally the **`Pipeline`** that we will use is:
@@ -108,7 +188,7 @@ node{
 def getFirstNetwork(containerName) {
     echo "Inside getFirstNetwork function"
     network = sh (
-        script: "docker inspect " + containerName + " -f \"{{json .NetworkSettings.Networks}}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
+        script: "docker inspect " + containerName + " -f \"{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
         returnStdout: true
     ).trim()
     
@@ -119,7 +199,7 @@ def getFirstNetwork(containerName) {
 def containerIp(containerName, network) {
     echo "Inside containerIp function"
     containerIp = sh (
-        script: "docker inspect --format=\"{{.NetworkSettings.Networks." + network + ".IPAddress}}\" "+ containerName,
+        script: "docker inspect --format=\"{%raw%}{{.NetworkSettings.Networks." + network + ".IPAddress}}{%endraw%}\" "+ containerName,
         returnStdout: true
     ).trim()
     
@@ -200,29 +280,29 @@ stage("Run Tests") {
 Copy the **`Pipeline`** and paste in the **Pipeline** section, as follows:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/pipeline/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/pipeline.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/pipeline.png"/></a>
 </div>
 
 When the Job is created, we will click in **`Build Now`** button:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/pipeline/run-tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/run-tjob.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/run-tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/run-tjob.png"/></a>
 </div>
 
 After pressing the button, you will see the job running on Jenkins:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/pipeline/running-tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/running-tjob.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/running-tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/running-tjob.png"/></a>
 </div>
 
 Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while). ElasTest will have created a project called **`Jenkins Examples`** also you show the project in this section.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/pipeline/open-in-elastest.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/open-in-elastest.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/open-in-elastest.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/open-in-elastest.png"/></a>
 </div>
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/pipeline/execution.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/execution.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/execution.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/execution.png"/></a>
 </div>
 
 <h4 class="small-subtitle">Collecting logs & metrics automatically</h4>
@@ -230,7 +310,7 @@ Entering the build page, you will see the Open in ElasTest button, where you can
 ElasTest collect logs and metrics automatically this will show in the section **`TJob Monitoring`** of the **`TJob`**. There logs may download if click in the button marked.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/logs/tjob-monitoring.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/tjob-monitoring.png"/></a>
+    <a data-fancybox="gallery-3" href="/docs/tutorials/images/jenkins/logs/tjob-monitoring.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/tjob-monitoring.png"/></a>
 </div>
 
 <h4 class="small-subtitle">Observing sut & test behaviour in elastest</h4>
@@ -238,7 +318,7 @@ ElasTest collect logs and metrics automatically this will show in the section **
 In the **TJob** we will observe the logs of the sut or test selecting the **sut** or **test** like we show in the following image:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/logs/sut-logs.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/sut-logs.png"/></a>
+    <a data-fancybox="gallery-4" href="/docs/tutorials/images/jenkins/logs/sut-logs.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/sut-logs.png"/></a>
 </div>
 
 <h4 class="small-subtitle">Comparing executions (logs & metrics)</h4>
@@ -285,7 +365,7 @@ node{
 def getFirstNetwork(containerName) {
     echo "Inside getFirstNetwork function"
     network = sh (
-        script: "docker inspect " + containerName + " -f \"{{json .NetworkSettings.Networks}}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
+        script: "docker inspect " + containerName + " -f \"{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
         returnStdout: true
     ).trim()
     
@@ -296,7 +376,7 @@ def getFirstNetwork(containerName) {
 def containerIp(containerName, network) {
     echo "Inside containerIp function"
     containerIp = sh (
-        script: "docker inspect --format=\"{{.NetworkSettings.Networks." + network + ".IPAddress}}\" "+ containerName,
+        script: "docker inspect --format=\"{%raw%}{{.NetworkSettings.Networks." + network + ".IPAddress}}{%endraw%}\" "+ containerName,
         returnStdout: true
     ).trim()
     
@@ -308,23 +388,23 @@ def containerIp(containerName, network) {
 When we changed it, we will relaunch the job. And we will see:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/logs/jenkis-job.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/jenkis-job.png"/></a>
+    <a data-fancybox="gallery-5" href="/docs/tutorials/images/jenkins/logs/jenkis-job.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/jenkis-job.png"/></a>
 </div>
 
 Now we will go to the **`AMICourses`** TJob in elastest and select the two executions from the table and finally press the **Compare Executions** button.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/logs/select-tjobs-for-comparing.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/select-tjobs-for-comparing.png"/></a>
+    <a data-fancybox="gallery-5" href="/docs/tutorials/images/jenkins/logs/select-tjobs-for-comparing.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/select-tjobs-for-comparing.png"/></a>
 </div>
 
-Once added you will see the following card, in this card we will see the metric comparisons and we will select the **test_default_log** and click the **** button for the show the comparison logs.
+Once added you will see the following card, in this card we will see the metric comparisons and we will select the **test_default_log** and click the **Start Comparison** button for the show the comparison logs.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/logs/compare-metrics-select-comparison.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/compare-metrics-select-comparison.png"/></a>
+    <a data-fancybox="gallery-5" href="/docs/tutorials/images/jenkins/logs/compare-metrics-select-comparison.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/compare-metrics-select-comparison.png"/></a>
 </div>
 
-When push the button we will show the comparative betwen th two executions. In this case we will check that the left log return a 401 error nevertheless the right log return some information in JSON format. The test check that the not logged person no see the information that not correspond them. Therefore we check that the error is because the application return sensible information when not logged user.
+When push the button we will show the comparative betwen the two executions. In this case we will check that the left log return a 401 error nevertheless the right log return some information in JSON format. The test check that the not logged person no see the information that not correspond them. Therefore we check that the error is because the application return sensible information when not logged user.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/logs/compare-error.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/compare-error.png"/></a>
+    <a data-fancybox="gallery-5" href="/docs/tutorials/images/jenkins/logs/compare-error.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/logs/compare-error.png"/></a>
 </div>

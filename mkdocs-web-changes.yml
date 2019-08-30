@@ -32,7 +32,6 @@ pages:
 
 # CheatSheet Section
 - ['try-elastest.md', 'Cheatsheet', 'Try ElasTest']
-- ['releases/index.md', 'Cheatsheet', 'Releases']
 - ['testing/unit.md','Cheatsheet', 'Run unit tests']
 - ['testing/e2e-rest.md','Cheatsheet', 'Run end2end tests']
 - ['testing/sut.md','Cheatsheet', 'Software under Test']
@@ -41,6 +40,15 @@ pages:
 - ['web-browsers/manual-browsers.md','Cheatsheet', 'Launching Web Browsers on ElasTest']
 - ['web-browsers/e2e-browser.md','Cheatsheet', 'Run en2end tests with Web Browsers']
 - ['web-browsers/outside-testing.md','Cheatsheet', 'Testing with Web Browsers from outside ElasTest']
+- ['log-analyzer/index.md', 'Cheatsheet', 'Log Analyzer']
+- ['executions-comparator/index.md', 'Cheatsheet', 'Executions Comparator']
+- ['testlink/index.md', 'Cheatsheet', 'TestLink with ElasTest']
+- ['monitoring/index.md', 'Cheatsheet', 'Test Monitoring']
+- ['monitoring/outside-elastest.md', 'Cheatsheet', 'Monitoring outside Elastest']
+- ['monitoring/custom.md', 'Cheatsheet', 'Custom monitoring']
+- ['jenkins/pipeline.md', 'Cheatsheet', 'Pipeline Jobs']
+- ['jenkins/freestyle.md', 'Cheatsheet', 'Freestyle Jobs']
+- ['releases/index.md', 'Cheatsheet', 'Releases']
 - ['roadmap/index.md', 'Cheatsheet', 'Roadmap']
 
 # Reference Documentation Section

@@ -123,9 +123,42 @@ public class FullTeachingTestE2EREST extends FullTeachingTestE2E {
 
 We can observe the all code in this [link](https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2EREST.java).
 
->-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`**  variables will be the IP and port of our SuT respectively. (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+>-  The test mark the init of the test case in the **`setup`** method and the finish of the test case in the **`dispose`** method. With the code `log.info("##### Start test: " + info.getTestMethod().get().getName());`and `log.info("##### Finish test: " + info.getTestMethod().get().getName());` respectively.  
 
-<h5 class="small-subtitle">Jenkins <i class="fab fa-jenkins"></i></h5>
+```java
+@ExtendWith(SeleniumExtension.class)
+public class FullTeachingTestE2E {
+
+    protected static String APP_URL;
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    final static Logger log = getLogger(lookup().lookupClass());
+
+    public FullTeachingTestE2E() {
+        if (System.getenv("ET_EUS_API") == null) {
+            // Outside ElasTest
+            ChromeDriverManager.getInstance().setup();
+            FirefoxDriverManager.getInstance().setup();
+        }
+
+        if (System.getenv("ET_SUT_HOST") != null) {
+            APP_URL = "https://" + System.getenv("ET_SUT_HOST") + ":5000/";
+        } else {
+            APP_URL = System.getProperty("app.url");
+            if (APP_URL == null) {
+                APP_URL = "https://localhost:5000/";
+            }
+        }
+...
+```
+
+We can observe the all code in this [link](https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2E.java).
+
+>-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** variables will be the IP of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+
+##### Jenkins <i class="fab fa-jenkins"></i>
 
 ```groovy
 node{
@@ -138,7 +171,7 @@ node{
         }
         try {
             stage("Start Sut") {
-                sh "cd docker-compose/full-teaching-without-network; export BUG_TAG=demo; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d"
+                sh "cd docker-compose/full-teaching-without-network; export BUG_TAG=bug2; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d"
                 sutContainerName = env.ET_SUT_CONTAINER_NAME + "_full-teaching_1";
                 sutNetwork = getFirstNetwork(sutContainerName)
                 sutIp = containerIp(sutContainerName,network)
@@ -204,8 +237,8 @@ node{
 <p></p>
 
 ```groovy
-sh "cd docker-compose; export AMICO_IMAGE=webapp-2-fixed-profile; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d"
-sutContainerName = env.ET_SUT_CONTAINER_NAME + "_webapp2_1";
+sh "cd docker-compose/full-teaching-without-network; export BUG_TAG=bug2; docker-compose --no-ansi -p ${env.ET_SUT_CONTAINER_NAME} up -d"
+sutContainerName = env.ET_SUT_CONTAINER_NAME + "_full-teaching_1";
 sutNetwork = getFirstNetwork(sutContainerName)
 sutIp = containerIp(sutContainerName,network)
 ```
@@ -249,3 +282,34 @@ stage("Run Tests") {
 ```
 
 <p></p>
+
+To run the Test in Jenkins first create a new **`Item`**, after enter the **`FullTeaching Browser`** name and select the 
+**`Pipeline`** optinion. Finally click in **`Ok`** button.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/new-item.png"/></a>
+</div>
+
+After, you write the [Pipeline](#jenkins) and paste in the **`Pipeline`** section. After click the **`Save`** button.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/create-pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/create-pipeline.png"/></a>
+</div>
+
+When the **`Job`** was created, you click in the **`Build Run`**:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/run-Tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/run-Tjob.png"/></a>
+</div>
+
+We will see the finish execution in Jenkins:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/execution-jenkins.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/execution-jenkins.png"/></a>
+</div>
+
+Finally we can see the YJob execution in ElasTest:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/tjob.png"/></a>
+</div>

@@ -6,9 +6,58 @@
 </div>
 </div>
 
-After [launching Elastest](/try-elastest), there will be a "Unit Tests" sample project available on the dashboard (among others) so users can quickly run their first test. To do so:
+First we will run ElasTest, in the following section we can see the minimum specifications. ElasTest have other forms for deploy, the different types of deployments and options can see in this [link](/try-elastest/).
+
+<div class="run-div">
+    <div class="row row-run-demo no-margin">
+        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/docker.png" style="border: none;" alt="" /></div>
+        <div class="col col-md-10 col-sm-8 col-xs-12">
+            <div class="row no-margin">
+                <div class="col-lg-1 col-md-2 col-sm-2 no-padding">
+                    <button id="btn-copy-2" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
+                    title="Copy to Clipboard">Copy</button>
+                </div>
+                <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
+                    <code id="code-2">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start</code>
+                </div>
+                <br/>
+                <div class="row no-margin docker-info-div">
+                    <div class="col-lg-1 col-md-2 col-sm-2 no-padding docker-info-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
+                        <p class="docker-subtitle">Recommended system specifications</p>
+                        <p>ElasTest needs some minimum system specifications in order to run smoothly:</p>
+                        <table>
+                            <tr>
+                                <td>Processor</td>
+                                <td>1GHz or faster</td>
+                            </tr>
+                            <tr>
+                                <td>RAM</td>
+                                <td>16GB</td>
+                            </tr>
+                            <tr>
+                                <td>SWAP</td>
+                                <td>4GB (if RAM < 16GB)</td>
+                            </tr>
+                            <tr>
+                                <td>Hard Disk</td>
+                                <td>30GB</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ElasTest contains by default different example Tests, we will use this Tests for the examples in the different tutorials.
 
 <h4 class="holder-subtitle link-top">Running the "JUnit5 Rest Test" TJob</h4>
+
+There will be a "Rest Api" sample project available on the dashboard (among others) so users can quickly run their first test. To do so:
 
 <h5 class="small-subtitle">1. Access your ElasTest dashboard</h5>
 <p>In this place we can see all projects, TJob running, TJob finished as well as the menu with the differents sections.</p>

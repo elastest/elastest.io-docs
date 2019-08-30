@@ -6,6 +6,13 @@
 </div>
 </div>
 
+<p>
+    <div class="range range-xs range-xs-center warning-range">
+        <div class="cell-xs-2 cell-lg-1" style="text-align: center;"><span class="icon mdi mdi-information-outline warning-span"></span></div>
+        <div class="cell-xs-10 cell-lg-11 warning-text"><p>IMPORTANT: This feature not working in <b>ElasTest Mini</b> mode.</p></div>
+    </div>
+</p>
+
 ElasTest is able to monitor the health of various of its components. Monitoring capabilities can be divided in two areas:
 
 -   **Resource usage**: Monitors CPU, memory and other component metrics.
