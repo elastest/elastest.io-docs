@@ -1,58 +1,80 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Jenkins plugin</h2>
+<h2 id="content" class="h1">End to End Testing in ElasTest</h2>
 <div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
 </div>
 
-<h4 class="holder-subtitle link-top">Installation</h4>
+<h4 class="small-subtitle">Using Jenkins with ElasTest</h4>
 
-<img style="border: none; margin: auto" class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/elastest_jenkins.png"/>
-
-To ease the integration of ElasTest in Continuous Integration environments, a plugin has been created for the most widespread open source CI server, Jenkins. Thanks to this plugin you will be able to make use of the functionalities provided by ElasTest from any Freestyle or Pipeline project.
-
-To start trying ElasTest from Jenkins, you can choose one of these two options:
-
-*   **Use the Jenkins integrated in ElasTest**. ElasTest provides an already integrated Jenkins server ready to use. This means that it is not necessary to install the ElasTest plugin (it is already installed) or perform any other configuration.You can start the integrated Jenkis in two ways:
-    *   Start Jenkins with ElasTest: just add the option [[--jenkins|-jk]](/try-elastest) to the start command of ElasTest.
-    *   Start Jenkins from ElasTest GUI: can also be started from the ElasTest GUI once it has been started (this is explained on the [next page](/jenkins/try-jenkins)).
-*   **Integrate your own Jenkins with ElasTest**. If you alredy have a Jekins as a CI server, before you can use ElasTest as Jenkins plugin you need to install the plugin and complete its onfiguration. This proccess is described below.
-
-
-<h4 class="small-subtitle">Plugin installation</h4>
-To install the ElasTest Plugin you should follow this steps:
-
-*   Navigate through **Manage Jenkins / Manage Plugins**.
-*   The next step is to open the **Available** tab and search **elastest**. The ElasTest plugin will appear and you will check the box and click the **Install plugin** button.
-
-<p></p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/integration/plugin_install.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/plugin_install.png"/></a>
-</div>
-
-<h4 class="small-subtitle">Plugin configuration</h4>
-
-The plugin configuration is very simple and you only have to fill in the following fields:
-
-*   **ElasTest URL**: complete URL of ElasTest (including protocol and port)
-*   **Username**: ElasTest username (configured on ElasTest launch)
-*   **Password**: ElasTest password (configured on ElasTest launch)
-
-<br>
-Before you execute your first Job integrated with ElasTest, you can check if the connection between Jenkins and ElasTest is successfully established.
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/jenkins/integration/conf.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/integration/conf.png"/></a>
-</div>
-
-<h4 class="holder-subtitle link-top">Usage</h4>
-
+For this tutorial we use Jenkins, for view how install the ElasTest plugin in Jenkins or how use the integrated Jenkins in ElasTest please visit the following [link](/tutorials/using-jenkins/).
 
 <h4 class="small-subtitle">Test</h4>
 
-Let's see how launch a TJob that makes use a web browser inside Elastest. Here we will run our [API Test](https://github.com/elastest-experiments/webapp-2/tree/master/AMICOServer/src/test/java/com/example/demo/e2e/api), which makes use of a Spring Boot Application as a SuT the application is a plataform for education. Also has one test what check that a user not logged can't access to the sensible information.
+Let's see how launch a TJob that makes use a web browser inside Elastest. Here we will run our [API Test](https://github.com/elastest-experiments/webapp-2/tree/master/AMICOServer/src/test/java/com/example/demo/e2e/api), which makes use of a Spring Boot Application as a SuT the application is a platform for education. Also has one test what check that a user not logged can't access to the sensible information.
+
+First we can see the code of the normal api test. The **`profile_uri`** variable contains the URL of the application that we will atack. 
+
+##### **TestAPIRestTemplateWithoutElasTest**
+
+```java
+public class TestAPIRestTemplateWithoutElasTest {
+
+	final static Logger log = getLogger(lookup().lookupClass());
+
+    protected static String profile_uri;
+
+    @BeforeAll
+    public static void setupClass() {
+        profile_uri = "http://localhost:8000/api/users/{user}";
+    }
+    
+	@Test
+	public void checkShowProfile() throws KeyManagementException, NoSuchAlgorithmException, KeyStoreException {
+		String url = profile_uri.replace("{user}", "amico");
+		RestTemplate restTemplate = new RestTemplate(SSLClientFactory.getClientHttpRequestFactory(HttpClientType.HttpClient));
+
+		HttpStatus status;
+		HttpStatus expected = HttpStatus.UNAUTHORIZED;
+
+		try {
+			ResponseEntity<String> response = restTemplate.getForEntity(url, String.class);
+			status = response.getStatusCode();
+		} catch (HttpStatusCodeException e) {
+			status = e.getStatusCode();
+		}
+
+		Assert.assertEquals("failure - expected HTTP status " + expected, expected, status);
+		log.info("The response is correct");
+	}
+
+}
+```
+
+Now we will see the changes we need for adapt the test to ElasTest. First need add the ElasTestBase in the project, which is responsible for printing logs at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a> 
+
+##### **ElasTestBase**
+
+```java
+public class ElasTestBase {
+
+    protected static final Logger logger = LoggerFactory.getLogger(ElasTestBase.class);
+
+    @BeforeEach
+    public void logStart(TestInfo testInfo) {
+        logger.info("##### Start test: " + testInfo.getTestMethod().get().getName());
+    }
+
+    @AfterEach
+    public void logEnd(TestInfo testInfo) {
+        logger.info("##### Finish test: " + testInfo.getTestMethod().get().getName());
+    }
+
+}
+```
+
+In the test should extends the class ElasTestBase.
 
 ##### **TestAPIRestTemplate**
 
@@ -105,30 +127,17 @@ public class TestAPIRestTemplate extends ElasTestBase{
 }
 ```
 
->-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`**  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
-
-
-##### **ElasTestBase**
+We need added the following variables:
 
 ```java
-public class ElasTestBase {
-
-    protected static final Logger logger = LoggerFactory.getLogger(ElasTestBase.class);
-
-    @BeforeEach
-    public void logStart(TestInfo testInfo) {
-        logger.info("##### Start test: " + testInfo.getTestMethod().get().getName());
-    }
-
-    @AfterEach
-    public void logEnd(TestInfo testInfo) {
-        logger.info("##### Finish test: " + testInfo.getTestMethod().get().getName());
-    }
-
-}
+String sutHost = System.getenv("ET_SUT_HOST");
+String sutPort = System.getenv("ET_SUT_PORT");
+String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
 ```
 
-In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.
+This variables we supply information about the **`SUT`**.
+
+>-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`**  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
 
 <h4 class="small-subtitle">Elastest pipeline</h4>
 
@@ -144,11 +153,80 @@ Write the name of the item: **`AMICourses`** and select **`Pipeline`**
     <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/item-name.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/item-name.png"/></a>
 </div>
 
-Now we will write the Pipeline: 
+##### **Normal Pipeline**
 
-*   The test we will launch is [Test](https://github.com/elastest-experiments/webapp-2/blob/master/AMICOServer/src/test/java/com/example/demo/e2e/api/TestAPIRestTemplate.java), this tests check that the not logged user don't see sensible information.
+We will see the normal **`Pipeline`** for used this Test in Jenkins.
 
-The application contains a bug with the objective of the show the logs and compare the good execution with the bug execution. Finally the **`Pipeline`** that we will use is:
+```groovy
+node{   
+    stage('Setting environment'){
+        git "https://github.com/elastest-experiments/webapp-2.git"
+    }
+    
+    try{
+        stage('Start Sut') {
+            echo 'Running SUT'
+            sh "cd docker-compose; export AMICO_IMAGE=webapp-2-fixed-profile; docker-compose up -d && ./wait-app.sh 8000"
+        }
+        stage("Run Tests") {   
+            echo 'Running test'
+            mvnHome = tool 'M3.3.9'
+            sh "cd AMICOServer; '${mvnHome}/bin/mvn' -Dtest=TestAPIRestTemplate -B test"
+            step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+        }
+    } finally {
+        echo 'Stopping SUT'
+        sh "cd docker; docker-compose down"
+    }
+}
+```
+
+The example above can be split into the following sections:
+
+<p></p>
+
+-   **Start SUT** : This block started the SUT application. The script **`wait-app.sh`** wait for the **`SUT`** is ready.
+
+<p></p>
+
+```groovy
+stage('Start Sut') {
+    echo 'Running SUT'
+    sh "cd docker-compose; export AMICO_IMAGE=webapp-2-fixed-profile; docker-compose up -d && ./wait-app.sh 8000"
+}
+```
+
+<p></p>
+
+-   **Run Test** : The tests execute if the SUT working correctly.
+
+<p></p>
+
+```groovy
+stage("Run Tests") {   
+    echo 'Running test'
+    mvnHome = tool 'M3.3.9'
+    sh "cd AMICOServer; '${mvnHome}/bin/mvn' -Dtest=TestAPIRestTemplate -B test"
+    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+}
+```
+
+<p></p>
+
+-   **Stop SUT** : The SUT will stop when the test is finished.
+
+<p></p>
+
+```groovy
+} finally {
+    echo 'Stopping SUT'
+    sh "cd docker; docker-compose down"
+}
+```
+
+##### **ElasTest Pipeline**
+
+Now we will see the changes we need for adapt the **`Pipeline`** to ElasTest.
 
 ```groovy
 node{
@@ -238,12 +316,41 @@ sutIp = containerIp(sutContainerName,network)
 <p></p>
 
 -   **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.
-    <p></p>
+
+<p></p>
 
 ```groovy
 echo 'Sut ip: '+ sutIp
 sh 'docker run -e IP=' + sutIp + ' -e PORT=8000 --network=' + sutNetwork + ' elastest/etm-check-service-up'
 ```
+
+We need added the following code in the **`Pipeline`**:
+
+```groovy
+def getFirstNetwork(containerName) {
+    echo "Inside getFirstNetwork function"
+    network = sh (
+        script: "docker inspect " + containerName + " -f \"{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
+        returnStdout: true
+    ).trim()
+    
+    echo containerName+" Network = " + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo "Inside containerIp function"
+    containerIp = sh (
+        script: "docker inspect --format=\"{%raw%}{{.NetworkSettings.Networks." + network + ".IPAddress}}{%endraw%}\" "+ containerName,
+        returnStdout: true
+    ).trim()
+    
+    echo containerName+" IP = " + containerIp;
+    return containerIp;
+}
+```
+
+This code obtain the network and the ip of the **`SUT`** container this information is needed for wait the **`SUT`** is ready to launch the Tests. It's functions has like the script **`wait-app.sh`** we seen in the normal [Pipeline](#normal-pipeline).
 
 <p></p>
 
@@ -277,7 +384,7 @@ stage("Run Tests") {
 
 <p></p>
 
-Copy the **`Pipeline`** and paste in the **Pipeline** section, as follows:
+Copy the **`ElasTest Pipeline`** and paste in the **Pipeline** section, as follows:
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2" href="/docs/tutorials/images/jenkins/pipeline/pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/jenkins/pipeline/pipeline.png"/></a>

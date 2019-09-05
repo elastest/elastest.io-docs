@@ -6,27 +6,241 @@
 </div>
 </div>
 
-Once started ElasTest, you can make use of the Jenkins instance provided, which contains some example jobs loaded by default.
+<h4 class="small-subtitle">Using Jenkins with ElasTest</h4>
 
-If you did not start ElasTest with the **`--jenkins`** parameter (see how to [start ElasTest](/try-elastest) and its parameters), the Jenkins instance will not be available but you can start it manually from the ElasTest GUI navigating to the **`Jenkins`** section and clicking on the **`Start Jenkins`** button.
+For this tutorial we use Jenkins, for view how install the ElasTest plugin in Jenkins or how use the integrated Jenkins in ElasTest please visit the following [link](/tutorials/using-jenkins/).
+
+<h4 class="holder-subtitle link-top">Launch web browser Job without SUT with Jenkins Plugin</h4>
+
+We will use the browsers in ElasTest, we use a simple test that open a google page and search. The test has following:
+
+##### **UseBrowser class**
+
+```java
+public class UseBrowser extends ElastestBaseTest{
+    protected static final Logger logger = LoggerFactory
+            .getLogger(UseBrowser.class);
+
+	@Test
+	public void searchInGoogle() {
+		String URL = "https://google.com/";
+		
+		this.driver.get(URL);		
+		logger.info("Go to http://google.es/...");
+		
+		sleep(2000);
+		
+		logger.info("Searching 'test' word...");
+		WebElement searchInput = driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"));
+		searchInput.sendKeys("test");
+		searchInput.sendKeys(Keys.ENTER);
+		
+		sleep(2000);
+		
+		logger.info("Finish test correctly");
+	}
+	
+	public void sleep(int time) {
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
+
+We will see that the test extends the class **`ElastestBaseTest`**, this class is nedded for using the browser in ElasTest. We see the class in the following box:
+
+##### **ElastestBaseTest class**
+
+```java
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+
+    protected WebDriver driver;
+
+    @BeforeAll
+    public static void setupClass() {
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: " + sutUrl);
+
+        browserType = System.getProperty("browser");
+        logger.info("Browser Type: {}", browserType);
+        eusURL = System.getenv("ET_EUS_API");
+        
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+    }
+
+    @BeforeEach
+    public void setupTest(TestInfo info) throws MalformedURLException {
+        String testName = info.getTestMethod().get().getName();
+        logger.info("##### Start test: {}", testName);
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                driver = new ChromeDriver();
+            } else {
+                driver = new FirefoxDriver();
+            }
+        } else {
+            DesiredCapabilities caps;
+            if (browserType == null || browserType.equals(CHROME)) {
+                caps = DesiredCapabilities.chrome();
+            } else {
+                caps = DesiredCapabilities.firefox();
+            }
+
+            browserVersion = System.getProperty("browserVersion");
+            if (browserVersion != null) {
+                logger.info("Browser Version: {}", browserVersion);
+                caps.setVersion(browserVersion);
+            }
+
+            caps.setCapability("testName", testName);
+            driver = new RemoteWebDriver(new URL(eusURL), caps);
+        }
+
+        driver.get(sutUrl);
+    }
+
+    @AfterEach
+    public void teardown(TestInfo info) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        String testName = info.getTestMethod().get().getName();
+        logger.info("##### Finish test: {}", testName);
+    }
+
+}
+```
+
+>-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`**  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+
+>-  **`ET_EUS_API`** variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
+
+>-  The values of the variables **browserType** and **browserVersion** are taken from the **properties** browser and browserVersion respectively, which you can pass in the test run command with **`-Dbrowser=chrome`**.
+
+
+### Jenkins Pipeline
+
+```groovy
+node{
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        stage ('Executing Test') {
+            echo 'Set up test environment'
+            mvnHome = tool 'M3.3.9'
+            echo 'Cloning repository'
+            git 'https://github.com/elastest/demo-projects'
+            echo 'Running Test'
+            sh "cd ./basic-using-browser/;'${mvnHome}/bin/mvn' -Dtest=UseBrowser -Dbrowser=chrome test"
+        }
+    }
+}
+```
+
+The example above can be split into the following sections:
+
+<p></p>
+
+-   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options). In this case is very important the part **`tss: ['EUS']`** because allow us use the browsers.
+
+<p></p>
+
+```groovy
+node{
+    elastest(tss: ['EUS'], surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        .......
+    }
+}
+```
+
+<p></p>
+
+-   **Test Execution** : Dowload the git project and execution test, we change the type of browser with the variable **`-Dbrowser=`**, and define the version with the variable **`-DbrowserVersion=`**
+
+<p></p>
+
+### Launch
+
+#### 1. Access your Jenkins
+When you will open Jenkins click in the **`New Item`**
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_section_not_started_marked.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_section_not_started_marked.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-new-item.png"/></a>
 </div>
 
-Jenkins start progress will be shown:
+#### 2. Define the name and type the Job 
+Input the **`UsingBrowserInElasTest`** and select the **`Pipeline`** option them click in the **`Ok`** button:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_section_starting.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_section_starting.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-define-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-define-item.png"/></a>
 </div>
 
-Once started, a button to open Jenkins in a new browser tab and another button to show the access credentials will be shown (If you started Jenkins with ElasTest --jenkins parameter, these buttons will be displayed directly)
+#### 3. You add the **Pipeline** 
+
+Copy the [ElasTest Pipeline](#jenkins-pipeline) and paste in the **Pipeline** section, as follows:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_started_marked.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_started_marked.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-create-pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-create-pipeline.png"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">Launch web browser Job width Jenkins Plugin</h4>
+#### 4. Inside Pipeline page
+When we inside into the Pipeline page we will click in the **`Build Now`** to launch the Job in ElasTest
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-build-now.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-build-now.png"/></a>
+</div>
+
+#### 5. Go to the TJob execution screen
+
+Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while).
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-open-in-elastest.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-open-in-elastest.png"/></a>
+</div>
+
+When the TJob was opened you will see the video of the browser session and logs:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/basic-browser-execution.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/basic-browser-execution.png"/></a>
+</div>
+
+Gif with the video of the browser session:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/browser-session.gif"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/browser-session.gif"/></a>
+</div>
+
+<h4 class="holder-subtitle link-top">Launch web browser Job and SUT with Jenkins Plugin</h4>
 
 We using a Full-Teaching application for this tutorial. Now we run the Full-Teaching with bug for show the logs.
 
@@ -218,7 +432,7 @@ def containerIp(containerName, network) {
 
 The example above can be split into the following sections:
 
--   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options).
+-   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options). In this case is very important the part **`tss: ['EUS']`** because allow us use the browsers.
 
 <p></p>
 
@@ -251,6 +465,32 @@ sutIp = containerIp(sutContainerName,network)
 ```groovy
 echo 'Sut ip: '+ sutIp
 sh 'docker run -e IP=' + sutIp + ' -e PORT=8000 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+```
+
+We need added the following code in the **`Pipeline`**:
+
+```groovy
+def getFirstNetwork(containerName) {
+    echo "Inside getFirstNetwork function"
+    network = sh (
+        script: "docker inspect " + containerName + " -f \"{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
+        returnStdout: true
+    ).trim()
+    
+    echo containerName+" Network = " + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo "Inside containerIp function"
+    containerIp = sh (
+        script: "docker inspect --format=\"{%raw%}{{.NetworkSettings.Networks." + network + ".IPAddress}}{%endraw%}\" "+ containerName,
+        returnStdout: true
+    ).trim()
+    
+    echo containerName+" IP = " + containerIp;
+    return containerIp;
+}
 ```
 
 <p></p>
@@ -287,29 +527,29 @@ To run the Test in Jenkins first create a new **`Item`**, after enter the **`Ful
 **`Pipeline`** optinion. Finally click in **`Ok`** button.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/new-item.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/new-item.png"/></a>
 </div>
 
 After, you write the [Pipeline](#jenkins) and paste in the **`Pipeline`** section. After click the **`Save`** button.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/create-pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/create-pipeline.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/create-pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/create-pipeline.png"/></a>
 </div>
 
 When the **`Job`** was created, you click in the **`Build Run`**:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/run-Tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/run-Tjob.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/run-Tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/run-Tjob.png"/></a>
 </div>
 
 We will see the finish execution in Jenkins:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/execution-jenkins.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/execution-jenkins.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/execution-jenkins.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/execution-jenkins.png"/></a>
 </div>
 
-Finally we can see the YJob execution in ElasTest:
+Finally we can see the TJob execution in ElasTest:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/tjob.png"/></a>
+    <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/tjob.png"/></a>
 </div>

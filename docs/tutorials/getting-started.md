@@ -6,89 +6,286 @@
 </div>
 </div>
 
-First we will run ElasTest, in the following section we can see the minimum specifications. ElasTest have other forms for deploy, the different types of deployments and options can see in this [link](/try-elastest/).
+ElasTest can run in differents platforms like **Laptop**, **Linux VM** and **Server**. We use for this example the **Linux Laptop** deploy for wich need the following system specifications:
 
-<div class="run-div">
-    <div class="row row-run-demo no-margin">
-        <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/docker.png" style="border: none;" alt="" /></div>
-        <div class="col col-md-10 col-sm-8 col-xs-12">
-            <div class="row no-margin">
-                <div class="col-lg-1 col-md-2 col-sm-2 no-padding">
-                    <button id="btn-copy-2" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
-                    title="Copy to Clipboard">Copy</button>
-                </div>
-                <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
-                    <code id="code-2">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start</code>
-                </div>
-                <br/>
-                <div class="row no-margin docker-info-div">
-                    <div class="col-lg-1 col-md-2 col-sm-2 no-padding docker-info-icon">
-                        <i class="fas fa-info-circle"></i>
-                    </div>
-                    <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
-                        <p class="docker-subtitle">Recommended system specifications</p>
-                        <p>ElasTest needs some minimum system specifications in order to run smoothly:</p>
-                        <table>
-                            <tr>
-                                <td>Processor</td>
-                                <td>1GHz or faster</td>
-                            </tr>
-                            <tr>
-                                <td>RAM</td>
-                                <td>16GB</td>
-                            </tr>
-                            <tr>
-                                <td>SWAP</td>
-                                <td>4GB (if RAM < 16GB)</td>
-                            </tr>
-                            <tr>
-                                <td>Hard Disk</td>
-                                <td>30GB</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
+  <table>
+    <tr>
+      <td>Processor</td>
+      <td>1GHz or faster</td>
+    </tr>
+    <tr><!--  -->
+      <td>RAM</td>
+      <td>16GB</td>
+    </tr>
+    <tr>
+      <td>SWAP</td>
+      <td>4GB (if RAM < 16GB)</td>
+    </tr>
+    <tr>
+      <td>Hard Disk</td>
+      <td>30GB</td>
+    </tr>
+  </table>
+</div>
+
+Once you have docker installed, execute the following command to start ElasTest:
+
+<div class="row row-run-demo no-margin">
+    <div class="col col-md-10 col-sm-8 col-xs-12">
+        <div class="row no-margin">
+            <div class="col-lg-1 col-md-2 col-sm-2 no-padding">
+                <button id="btn-copy-2" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
+                title="Copy to Clipboard">Copy</button>
+            </div>
+            <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
+                <code id="code-2">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start</code>
             </div>
         </div>
     </div>
 </div>
 
-ElasTest contains by default different example Tests, we will use this Tests for the examples in the different tutorials.
+If you need run ElasTest in other **Operating System** or in a **Virtual Machine** or **Server**. Please visit the following [link](/try-elastest/).
 
-<h4 class="holder-subtitle link-top">Running the "JUnit5 Rest Test" TJob</h4>
+<h4 class="holder-subtitle link-top">Running the "JUnit5 Rest Test" TJob in Jenkins</h4>
 
-There will be a "Rest Api" sample project available on the dashboard (among others) so users can quickly run their first test. To do so:
+For this tutorial we use Jenkins, for view how install the ElasTest plugin in **Jenkins** or how use the integrated Jenkins in ElasTest please visit the following [link](/tutorials/using-jenkins/).
 
-<h5 class="small-subtitle">1. Access your ElasTest dashboard</h5>
-<p>In this place we can see all projects, TJob running, TJob finished as well as the menu with the differents sections.</p>
-
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/dashboard.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/dashboard.png"/></a>
-</div>
-
-<h5 class="small-subtitle">2. Get into "Rest Api" project</h5>
-<p>If we click in the name of the project we will go to the page with the TJobs of the project.</p>
+There will be a **"jenkins-junit5-rest-test"** sample project available on the Jenkins integrated in ElasTest (among others) so users can quickly run their first test. To do so:
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/select-proyect.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/select-proyect.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/jenkins-elastest-job.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/jenkins-elastest-job.png"/></a>
 </div>
 
-<h5 class="small-subtitle">3. We can see dashboard of the project </h5>
-<p>Besides the play of the TJobs we will can edit, copy and delete them.</p>
-<div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/proyects.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/proyects.png"/></a>
-</div>
+If you use the **Jenkins** integrated in ElasTest, click in the **`jenkins-junit5-rest-test`** Job and go to the [4 STEP](#4-inside-pipeline-page), however if you don't use the integrated **Jenkins** following the next steps:
 
-<h5 class="small-subtitle">4. Run the 'JUnit5 Rest Test' TJob</h5>
-<p>We can play the test pressing the play button. The button is show in the next image:</p>
+#### 1. Access your Jenkins
+When you will open Jenkins click in the **`New Item`**
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/run-test.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/run-test.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/jenkins-new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/jenkins-new-item.png"/></a>
 </div>
 
-<h5 class="small-subtitle">5. Execution screen is open automatically</h5>
+#### 2. Define the name and type the Job 
+Input the **`jenkins-junit5-rest-test`** and select the **`Pipeline`** option them click in the **`Ok`** button:
 
-<p>Our TJob will start running: you will see the test information and log.</p>
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/jenkins-enter-item-name.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/jenkins-enter-item-name.png"/></a>
+</div>
+
+#### 3. You add the **Pipeline** 
+In the following section we will see the **`Pipeline`** with ElasTest and without **`ElasTest`** and compare them.
+
+
+##### Normal Pipeline (Without ElasTest)
+
+```groovy
+node{   
+    stage ('Executing Test') {
+        docker.image('elastest/demo-rest-java-test-sut').withRun('-p 8080:8080') { c -> 
+            echo 'Set up test environment'
+            mvnHome = tool 'M3.3.9'
+            echo 'Cloning repository'
+            git 'https://github.com/elastest/demo-projects'
+            echo 'Run test'
+            sh "cd ./rest/junit5-rest-test;'${mvnHome}/bin/mvn' -B test"
+        }
+    }
+}
+```
+
+The example above can be split into the following sections:
+
+<p></p>
+
+-   **Start SUT** : This block started the SUT application.
+
+<p></p>
+
+```groovy
+...
+docker.image('elastest/demo-rest-java-test-sut').withRun('-p 8080:8080') { c -> 
+...
+```
+
+<p></p>
+
+-   **Run Test** : The tests execute if the SUT working correctly.
+
+<p></p>
+
+```groovy
+...
+echo 'Set up test environment'
+mvnHome = tool 'M3.3.9'
+echo 'Cloning repository'
+git 'https://github.com/elastest/demo-projects'
+echo 'Run test'
+sh "cd ./rest/junit5-rest-test;'${mvnHome}/bin/mvn' -B test"
+...
+```
+
+##### ElasTest Pipeline
+
+```groovy
+node{
+    elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        stage ('Executing Test') {
+            echo 'Print env variables'
+            sh 'env'
+            def sutImage = docker.image('elastest/demo-rest-java-test-sut')
+            echo 'Start SUT'
+            def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+            sutImage.withRun("--name ${sutContainerName} --network=elastest_elastest") { c ->
+                echo "${c.id}"
+                def sutNetwork = getFirstNetwork(sutContainerName)
+                def sutIp = containerIp(sutContainerName,sutNetwork)
+                sh 'docker run -e IP=' + sutIp + ' -e PORT=8080 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+                withEnv(['ET_SUT_HOST=' + sutIp]) {
+                    echo 'Set up test environment'
+                    mvnHome = tool 'M3.3.9'
+                    echo 'Cloning repository'
+                    git 'https://github.com/elastest/demo-projects'
+                    echo 'Run test'
+                    sh "cd ./rest/junit5-rest-test;'${mvnHome}/bin/mvn' -B -DforkCount=0 test"
+                }
+            }
+            
+        }        
+    }
+}
+
+def getFirstNetwork(containerName) {
+    echo "Inside getFirstNetwork function"
+    network = sh (
+        script: "docker inspect " + containerName + " -f \"{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
+        returnStdout: true
+    ).trim()
+    
+    echo containerName+" Network = " + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo "Inside containerIp function"
+    containerIp = sh (
+        script: "docker inspect --format=\"{%raw%}{{.NetworkSettings.Networks." + network + ".IPAddress}}{%endraw%}\" "+ containerName,
+        returnStdout: true
+    ).trim()
+    
+    echo containerName+" IP = " + containerIp;
+    return containerIp;
+}
+```
+
+The example above can be split into the following sections:
+
+-   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options).
+
+<p></p>
+
+```groovy
+node{
+    elastest(surefireReportsPattern: '**/target/surefire-reports/TEST-*.xml', monitoring: true, project: 'Jenkins Examples') {
+        .......
+    }
+}
+```
+
+<p></p>
+
+-   **Sut configuration** : The SUT must be started, passing the **`${env.ET_SUT_CONTAINER_NAME}`** env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
+
+<p></p>
+
+```groovy
+...
+def sutImage = docker.image('elastest/demo-rest-java-test-sut')
+echo 'Start SUT'
+def sutContainerName = env.ET_SUT_CONTAINER_NAME;
+sutImage.withRun("--name ${sutContainerName} --network=elastest_elastest") { c ->
+...
+```
+
+<p></p>
+
+-   **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.
+
+<p></p>
+
+```groovy
+echo 'Sut ip: '+ sutIp
+sh 'docker run -e IP=' + sutIp + ' -e PORT=8000 --network=' + sutNetwork + ' elastest/etm-check-service-up'
+```
+
+We need added the following code in the **`Pipeline`**:
+
+```groovy
+def getFirstNetwork(containerName) {
+    echo "Inside getFirstNetwork function"
+    network = sh (
+        script: "docker inspect " + containerName + " -f \"{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
+        returnStdout: true
+    ).trim()
+    
+    echo containerName+" Network = " + network;
+    return network;
+}
+
+def containerIp(containerName, network) {
+    echo "Inside containerIp function"
+    containerIp = sh (
+        script: "docker inspect --format=\"{%raw%}{{.NetworkSettings.Networks." + network + ".IPAddress}}{%endraw%}\" "+ containerName,
+        returnStdout: true
+    ).trim()
+    
+    echo containerName+" IP = " + containerIp;
+    return containerIp;
+}
+```
+
+This code obtain the network and the ip of the **`SUT`** container this information is needed for wait the **`SUT`** is ready to launch the Tests.
+
+<p></p>
+
+-   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as an environment variable or pass it as a maven property so that the test knows where the SUT is.
+
+<p></p>
+
+```groovy
+withEnv(['ET_SUT_HOST=' + sutIp]) {
+    echo 'Set up test environment'
+    mvnHome = tool 'M3.3.9'
+    echo 'Cloning repository'
+    git 'https://github.com/elastest/demo-projects'
+    echo 'Run test'
+    sh "cd ./rest/junit5-rest-test;'${mvnHome}/bin/mvn' -B -DforkCount=0 test"
+}
+```
+
+<p></p>
+
+Copy the [ElasTest Pipeline](#elastest-pipeline) and paste it in the **Pipeline** section, as follows:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/jenkins-add-pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/jenkins-add-pipeline.png"/></a>
+</div>
+
+#### 4. Inside Pipeline page
+When we inside into the Pipeline page we will click in the **`Build Now`** to launch the Job in ElasTest
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/jenkins-build-now.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/jenkins-build-now.png"/></a>
+</div>
+
+#### 5. Go to the TJob execution screen
+
+Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while).
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/jenkins-open-in-elastest.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/jenkins-open-in-elastest.png"/></a>
+</div>
+
+When the TJob was opened you will see the test information and logs:
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/running.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/running.png"/></a>
@@ -115,7 +312,7 @@ There will be a "Rest Api" sample project available on the dashboard (among othe
     <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/select-logs-to-show.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/select-logs-to-show.png"/></a>
 </div>
 
-<h5 class="small-subtitle">6. Show metrics</h5>
+#### 6. Show metrics
 
 <p>We can show metrics of the test executions for different components. We select them in this button:</p>
 
