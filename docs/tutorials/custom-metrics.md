@@ -257,7 +257,7 @@ node{
 }
 ```
 
-If you ElasTest with credential use the env variables when run the test:
+If you using ElasTest with credential use the env variables when run the test:
 
 *   **`CREDENTIALS_NAME`**: For the user name.
 *   **`CREDENTIALS_PASS`**: For the user password.

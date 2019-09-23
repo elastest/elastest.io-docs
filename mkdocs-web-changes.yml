@@ -5,7 +5,6 @@ pages:
 - ['index.md', 'What is ElasTest?']
 
 # Tutorial Section
-- ['tutorials/using-jenkins.md', 'Tutorials', 'Using Jenkins']
 - ['tutorials/getting-started.md', 'Tutorials', 'Getting started']
 - ['tutorials/e2e-testing.md', 'Tutorials', 'E2E Testing in ElasTest']
 - ['tutorials/using-browsers-in-elastest.md', 'Tutorials', 'Using browsers in ElasTest']

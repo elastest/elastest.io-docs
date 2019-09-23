@@ -46,9 +46,29 @@ Once you have docker installed, execute the following command to start ElasTest:
 
 If you need run ElasTest in other **Operating System** or in a **Virtual Machine** or **Server**. Please visit the following [link](/try-elastest/).
 
-<h4 class="holder-subtitle link-top">Running the "JUnit5 Rest Test" TJob in Jenkins</h4>
+#### Using Jenkins integrated in ElasTest
 
-For this tutorial we use Jenkins, for view how install the ElasTest plugin in **Jenkins** or how use the integrated Jenkins in ElasTest please visit the following [link](/tutorials/using-jenkins/).
+The easiest way to have a look at what ElasTest can do for you and your tests is to make use of the Jenkins instance provided by the ElasTest platform, as it is populated with many example jobs by default.
+
+If you did not start ElasTest with the **`--jenkins`** parameter (see how to [start ElasTest](/try-elastest) and its parameters), the Jenkins instance will not be running by default. However, you can start it manually from the ElasTest GUI navigating to the **`Jenkins`** section and clicking on the **`Start Jenkins`** button. 
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_section_not_started_marked.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_section_not_started_marked.png"/></a>
+</div>
+
+Jenkins start progress will be shown:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_section_starting.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_section_starting.png"/></a>
+</div>
+
+Once started, two buttons are displayed. One button to open Jenkins in a new browser tab, and another button to show the access credentials. If you started Jenkins with ElasTest --jenkins parameter, these buttons will be displayed directly, instead of the `Start Jenkins` button.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/jenkins/images/try/jenkins_started_marked.png"><img class="img-responsive img-wellcome" src="/docs/jenkins/images/try/jenkins_started_marked.png"/></a>
+</div>
+
+<h4 class="holder-subtitle link-top">Running the "JUnit5 Rest Test" TJob in Jenkins</h4>
 
 There will be a **"jenkins-junit5-rest-test"** sample project available on the Jenkins integrated in ElasTest (among others) so users can quickly run their first test. To do so:
 
@@ -56,7 +76,7 @@ There will be a **"jenkins-junit5-rest-test"** sample project available on the J
     <a data-fancybox="gallery-1" href="/docs/tutorials/images/getting-started/jenkins-elastest-job.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/getting-started/jenkins-elastest-job.png"/></a>
 </div>
 
-If you use the **Jenkins** integrated in ElasTest, click in the **`jenkins-junit5-rest-test`** Job and go to the [4 STEP](#4-inside-pipeline-page), however if you don't use the integrated **Jenkins** following the next steps:
+If you use the [Jenkins integrated in ElasTest](#using-jenkins-integrated-in-elastest), click in the **`jenkins-junit5-rest-test`** Job and go to the [4 STEP](#4-inside-pipeline-page), however if you don't use the integrated **Jenkins** following the next steps:
 
 #### 1. Access your Jenkins
 When you will open Jenkins click in the **`New Item`**

@@ -6,11 +6,7 @@
 </div>
 </div>
 
-<h4 class="small-subtitle">Using Jenkins with ElasTest</h4>
-
-For this tutorial we use Jenkins, for view how install the ElasTest plugin in Jenkins or how use the integrated Jenkins in ElasTest please visit the following [link](/tutorials/using-jenkins/).
-
-<h4 class="holder-subtitle link-top">Launch web browser Job without SUT with Jenkins Plugin</h4>
+<h4 class="small-subtitle">Launch web browser Job without SUT with Jenkins Plugin</h4>
 
 We will use the browsers in ElasTest, we use a simple test that open a google page and search. The test has following:
 
