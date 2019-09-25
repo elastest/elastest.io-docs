@@ -48,7 +48,6 @@ pages:
 - ['monitoring/custom.md', 'Cheatsheet', 'Custom monitoring']
 - ['jenkins/pipeline.md', 'Cheatsheet', 'Pipeline Jobs']
 - ['jenkins/freestyle.md', 'Cheatsheet', 'Freestyle Jobs']
-- ['releases/index.md', 'Cheatsheet', 'Releases']
 - ['roadmap/index.md', 'Cheatsheet', 'Roadmap']
 
 # Reference Documentation Section
@@ -71,6 +70,9 @@ pages:
 - ['elastest-monitoring/index.md', 'Management', 'Monitoring ElasTest']
 - ['manage-elastest/monitoring-containers.md', 'Management', 'Monitoring containers']
 - ['manage-elastest/manage-elasticsearch.md', 'Management', 'Monitoring ElasticSearch']
+
+# Releases Section
+- ['releases/index.md', 'Releases']
 
 # Support Section
 - ['support.md', 'Support']
