@@ -15,7 +15,7 @@
             <img src="/docs/images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
         </div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
-            <a href="http://live.elastest.io:37000/#/projects/5/tjob/36/tjob-exec/53" target="_blank" class="btn btn-xs btn-primary" title="Try it now">Try it now</a>
+            <a href="http://live.elastest.io/#/projects/5/tjob/36/tjob-exec/53" target="_blank" class="btn btn-xs btn-primary" title="Try it now">Try it now</a>
         </div>
     </div>
     <hr />
