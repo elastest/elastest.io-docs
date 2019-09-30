@@ -101,9 +101,21 @@ Clicking will open a **modal window** where we can enter the **`full path`** whe
     <a data-fancybox="gallery-4" href="/docs/testlink/images/download_file_path.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/download_file_path.png"/></a>
 </div>
 
-Once the route has been entered, just click on the DOWNLOAD button and the file will be downloaded. 
+Once the route has been entered, just click on the DOWNLOAD button and the file will be downloaded.
 
-To run Test Cases, you must fill the fields for each and click Save & Next button.
+To **`run Test Cases`**, you must fill the fields for each and click **Save & Next** button.
+
+It's possible to **`pause`** an execution, and resume it later. In order to do this it is necessary to have **executed at least one test case**. From that moment on, a button to pause the execution will appear in the interface.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/plan_execution_pause.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/plan_execution_pause.png"/></a>
+</div>
+
+To resume it, navigate to Plan page and click to resume button:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/plan_execution_resume.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/plan_execution_resume.png"/></a>
+</div>
 
 <h5 class="small-subtitle">TestLink Test Plan Execution Result</h5>
 
