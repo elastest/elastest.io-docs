@@ -9,7 +9,7 @@
 <!-- ************************* -->
 
 <h3 id="1.6.0" class="small-subtitle">1.6.0</h3>
-<h4 class="smaller-subtitle">26/09/2019</h4>
+<h4 class="smaller-subtitle">04/10/2019</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
@@ -38,8 +38,10 @@
     -   ElasTest Security Service (**ESS**) can now be **`used in Test Plan Execution`**.
 -   New <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> is available in the TJob: **`ET_TEST_CONTAINER_NAME`**.
 -   Dockbeat collects now **`Browser container metrics`**.
+-   On **remove** TJobExec, TJob or External TJob Exec its **folders** associated with its content **`are deleted`**.
 -   The version of the **ElasTest Browsers** has been updated to **`2.1.0`**.
 -   It is now possible to deploy **`ElasTest browsers in AWS`**.
+-   The **download of executions as JSON** has been **`improved`**: now the logs and metrics of each test case are downloaded, in case of having start / finish traces that limit them
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 
