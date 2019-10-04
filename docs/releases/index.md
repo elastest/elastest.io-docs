@@ -5,10 +5,10 @@
 </div>
 
 <!-- ************************* -->
-<!-- ********* 1.6.0 ********* -->
+<!-- ********* 2.0.0 ********* -->
 <!-- ************************* -->
 
-<h3 id="1.6.0" class="small-subtitle">1.6.0</h3>
+<h3 id="2.0.0" class="small-subtitle">2.0.0</h3>
 <h4 class="smaller-subtitle">04/10/2019</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
@@ -18,11 +18,11 @@
     -   Great changes in the **`finished TJob Execution view`**: Test Results/Test cases are shown in tabs; Global execution data are now colapsed in a Expansion panel; If the execution fails and there are previous successful runs, Log Comparator is shown.
         <br>
         <div class="docs-gallery inline-block" style="margin-top: 6px; margin-left: 23px;">
-        <a data-fancybox="gallery-1" href="/docs/releases/images/1.6.0/feature_gui_finished_tjobexec_page.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/1.6.0/feature_gui_finished_tjobexec_page.png"/></a>
+        <a data-fancybox="gallery-1" href="/docs/releases/images/2.0.0/feature_gui_finished_tjobexec_page.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/2.0.0/feature_gui_finished_tjobexec_page.png"/></a>
         </div>
     -   Now in the log cards it is shown if there are errors or warnings and it is possible to filter them. Errors and warnings are also coloured.
         <div class="docs-gallery inline-block" style="margin-top: 6px; margin-left: 23px;">
-         <a data-fancybox="gallery-1" href="/docs/releases/images/1.6.0/feature_gui_log_card_error.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/1.6.0/feature_gui_log_card_error.png"/></a>
+         <a data-fancybox="gallery-1" href="/docs/releases/images/2.0.0/feature_gui_log_card_error.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/2.0.0/feature_gui_log_card_error.png"/></a>
         </div>
     -   **Space** between cards and other elements **`has been reduced`**.
     -   Now you can **select several TJobs** and **`delete them all at once`** in the Project section.

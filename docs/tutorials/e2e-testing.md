@@ -93,7 +93,7 @@ public class TestAPIRestTemplateWithoutElasTest {
 }
 ```
 
-Now we will see the changes we need for adapt the test to ElasTest. First need add the ElasTestBase in the project, which is responsible for printing logs at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a> 
+Now we will see the changes we need for adapt the test to ElasTest. First need add the **ElasTestBase** in the project, which is responsible for printing **logs at the beginning and end** of each test. These two logs have a **specific structure** and are used by ElasTest to filter the **logs and metrics** corresponding to **`each test`**, as well as knowing its **start and end date**. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a> 
 
 ##### **ElasTestBase**
 
