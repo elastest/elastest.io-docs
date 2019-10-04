@@ -560,7 +560,9 @@ Finally we can see the TJob execution in ElasTest:
 <hr>
 <br>
 
-<h3 class="small-subtitle" id="browsersInAWS">Launch web browser Job through AWS</h3>
+<h3 class="small-subtitle" id="browsersInAWS">Launching ElasTest web browsers in AWS</h3>
+
+Sometimes, it is useful to launch ElasTest browsers in AWS, which would allow to launch as many browsers as we want. This is a typical scenario when load tests are performed. ElasTest allows you to easily configure it to launch all browsers requested in AWS instances, just by configuring the EUS service to use AWS.
 
 Elastest can also start browsers on an **AWS** instance. For this, it is necessary to send the configuration through the test through a special capability called **`awsConfig`**, which must have a specific format:
 
