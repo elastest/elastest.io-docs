@@ -129,13 +129,12 @@ Only do click to Save button.
         Tag specifications must have the following format:
 
             [ { "resourceType":"instance", "tags":[ {"key":"KEY", "value":"VALUE"} ] } ]
-        
+
         You can use the following if you want:
 
             [ { "resourceType":"instance", "tags":[ {"key":"Type", "value":"OpenViduLoadTest"} ] } ]
 
-
--   **Activate WebRTC stats (Optional)**
+*   **Activate WebRTC stats (Optional)**
 
 If you want to receive **WebRTC statistics** from browsers, you should check the **`webRtcStats`** checkbox within **EUS** at **Test Support Services**.
 
@@ -146,3 +145,13 @@ If you want to receive **WebRTC statistics** from browsers, you should check the
 -   **Save the TJob**
 
 Only do click to Save button.
+
+<h6>Run TJob</h6>
+
+Just run the TJob and enjoy!
+
+Once the execution is finished, the result will be shown:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/demos/images/load-testing-with-aws/result.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/load-testing-with-aws/result.png"/></a>
+</div>
