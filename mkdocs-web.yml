@@ -19,7 +19,7 @@ pages:
 
     - 'Observability for 5G infrastructures': 'tutorials/observability-for-5g-infrastructures.md'
     - 'EMS (show how specific visualizations for TJobs and ElasTest TSS work)': 'tutorials/ems.md'
-    - 'Kubernetes (Q3)': 'tutorials/kubernetes.md'
+    - 'Kubernetes': 'tutorials/kubernetes.md'
 
 # Demos Section
 - Demos:
