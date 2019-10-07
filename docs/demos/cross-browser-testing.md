@@ -79,6 +79,12 @@
     <hr />
 </div>
 
+To execute a <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan with Crossbrowser you simply have to follow the same steps as for a normal execution, but in the modal window you have to check **`Enable Cross browser`** and add at least two browsers. To add browsers you just have to select them together with the version you want and press the **`Add browser`** button.
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal_enable_crossbrowser.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal_enable_crossbrowser.png"/></a>
+</div>
+
 <h5 class="small-subtitle">Video <i class="fas fa-video"></i></h5>
 
 <div class="docs-gallery inline-block">

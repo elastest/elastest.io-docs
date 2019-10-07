@@ -68,6 +68,7 @@ On the other hand, you can run the test plan clicking the "Execute Test Plan" bu
 
 -   **Select Build** to run the test.
 -   **Select Browser and it's version**.
+    -   You can check **`Enable Cross browser`** to use multiple browsers. View demo <a href="/docs/demos/cross-browser-testing" target="_blank">here</a>
 -   **Select a Platform**.
 -   **Configure a hosts list** to put them in the browser container **/etc/hosts**.
     <p></p>
