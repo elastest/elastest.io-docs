@@ -568,7 +568,7 @@ Elastest can also start browsers on an **AWS** instance. For this, it is necessa
 
 ```json
 {
-    "region": "region",
+    "region": "eu-west-1",
     "secretAccessKey": "secretAccessKey",
     "accessKeyId": "accessKeyId",
     "sshUser": "sshUser",
@@ -591,6 +591,8 @@ Elastest can also start browsers on an **AWS** instance. For this, it is necessa
     }
 }
 ```
+
+**`amiId`** and **`region`** values **must** be as above.
 
 We could **adapt** the code of our **`ElastestBaseTest.class from the first example`** to use browsers in **AWS**. For this we have added the **`initAwsConfig`** method that is called in the *@BeforeAll* and initializes the awsConfig object from values that can be sent in environment variables. Afterwards, you only need to add the awsConfig object to a **capability**.
 

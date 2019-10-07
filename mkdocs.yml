@@ -27,6 +27,7 @@ pages:
     - 'E2E testing': 'demos/e2e-testing.md'
     - 'Functional / Exploratory testing': 'demos/functional-exploratory-testing.md'
     - 'Multi-configuration': 'demos/multi-configuration.md'
+    - 'Load testing with AWS': 'demos/load-testing-with-aws.md'
     - 'Cross browser testing': 'demos/cross-browser-testing.md'
     - 'Security testing': 'demos/security-testing.md'
     - 'Chaos testing': 'demos/chaos-testing.md'
