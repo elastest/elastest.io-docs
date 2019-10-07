@@ -42,6 +42,7 @@
 -   On **remove** TJobExec, TJob or External TJob Exec its **folders** associated with its content **`are deleted`**.
 -   The version of the **ElasTest Browsers** has been updated to **`2.1.0`**.
 -   It is now possible to deploy <a target="_blank" href="/docs/tutorials/using-browsers-in-elastest/#browsersInAWS">ElasTest browsers in AWS</a>.
+    -   A <a target="_blank" href="/docs/demos/load-testing-with-aws/">demo project</a> has been added
 -   The **download of executions as JSON** has been **`improved`**: now the logs and metrics of each test case are downloaded, in case of having start / finish traces that limit them
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
