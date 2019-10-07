@@ -108,22 +108,41 @@ Only do click to Save button.
 <h6>Preparing TJob</h6>
 
 -   **Edit the TJob to set values to the predefined parameters**
+
     -   AWS_ACCESS_KEY_ID
     -   AWS_SECRET_ACCESS_KEY
     -   AWS_KEY_NAME
     -   AWS_SSH_PRIVATE_KEY
+
+        The ssh private key must have a specific format: the line breaks must be replaced by the literal character string **`\r\n`**. Example:
+
+            -----BEGIN RSA PRIVATE KEY-----\r\naaaaaaaaaaaaaaaaaaaaaaa\r\nbbbbbbbbbbbbbbbbbbbbbbbb\r\ncccccccccccccccccccccc\r\n-----END RSA PRIVATE KEY-----
+
     -   AWS_SECURITY_GROUPS
+
+        Security groups shall be established in the following format: **`["GROUP1","GROUP2",...]`**. If only one group is to be established, it must have the same format: **`["GROUP"]`**
+
+        <p></p>
+
     -   AWS_TAG_SPECIFICATIONS
 
-- **Activate WebRTC stats (Optional)**
+        Tag specifications must have the following format:
+
+            [ { "resourceType":"instance", "tags":[ {"key":"KEY", "value":"VALUE"} ] } ]
+        
+        You can use the following if you want:
+
+            [ { "resourceType":"instance", "tags":[ {"key":"Type", "value":"OpenViduLoadTest"} ] } ]
+
+
+-   **Activate WebRTC stats (Optional)**
 
 If you want to receive **WebRTC statistics** from browsers, you should check the **`webRtcStats`** checkbox within **EUS** at **Test Support Services**.
-
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/demos/images/load-testing-with-aws/webrtcstats.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/load-testing-with-aws/webrtcstats.png"/></a>
 </div>
 
-- **Save the TJob**
+-   **Save the TJob**
 
 Only do click to Save button.
