@@ -70,7 +70,7 @@ pages:
 - Deployment:
     - 'Linux Server': 'deploying/ubuntu.md'
     - 'Amazon Web Services': 'deploying/aws.md'
-    - 'Kubernetes (Q3)': 'deploying/kubernetes.md'
+    - 'Kubernetes': 'deploying/kubernetes.md'
 
 # Managment Section
 - Management:

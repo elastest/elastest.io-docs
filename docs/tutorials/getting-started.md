@@ -38,13 +38,13 @@ Once you have docker installed, execute the following command to start ElasTest:
                 title="Copy to Clipboard">Copy</button>
             </div>
             <div class="col-lg-11 col-md-10 col-sm-10 no-padding">
-                <code id="code-2">docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start</code>
+                <code id="code-2"><strong>docker run --rm -v ~/.elastest:/data -v /var/run/docker.sock:/var/run/docker.sock elastest/platform start</strong></code>
             </div>
         </div>
     </div>
 </div>
 
-If you need run ElasTest in other **Operating System** or in a **Virtual Machine** or **Server**. Please visit the following [link](/try-elastest/).
+If you need run ElasTest in other **Operating System**, **Virtual Machine** or in a **Server**, please visit the following [link](/try-elastest/).
 
 #### Using Jenkins integrated in ElasTest
 
