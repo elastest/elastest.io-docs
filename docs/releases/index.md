@@ -9,7 +9,7 @@
 <!-- ************************* -->
 
 <h3 id="2.0.0" class="small-subtitle">2.0.0</h3>
-<h4 class="smaller-subtitle">08/10/2019</h4>
+<h4 class="smaller-subtitle">15/10/2019</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
@@ -29,6 +29,7 @@
     -   Now you can **select several TJobs** and **`delete them all at once`** in the Project section.
     -   The **`number of TJobs and Suts`** contained in a project is now **shown** in the global project table.
     -   Now you can **`resize some cards`** like Browser card in <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan execution.
+    -   Now the **Sut Id** is shown in **`TJobExecution`** views and tables
     -   **`Network traces`** received by **Metricbeat** can be displayed now.
     -   It's possible to **`collapse the LogAnalyzer menu`**.
     -   **`Angular`** has been updated to version **`8`** and **`Covalent to 2.1.1`**.
@@ -60,6 +61,7 @@
     -   Solved **`concurrency problem on send messages`** through the **same websocket**.
     -   Fixed bug in which when a **request to the browser** returned a code **other than 200**, an **`exception`** was launched. This began to give problems with the last versions of chrome (>75) and with Firefox.
     -   Fixed a bug that did **`not intercept elastest scripts`** (elastestScript) and therefore, Single Browser test videos were not splitting and naming.
+-   Now the metric traces sent by each **Dockbeat** are filtered according to their execution id, since when several executions were launched all the dockbeats sent the metrics of all the executions and the information was **multiplied**.
 
 <!-- ************************* -->
 <!-- ********* 1.5.0 ********* -->
