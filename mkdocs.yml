@@ -13,13 +13,13 @@ pages:
     - 'Using EMS to build tests with dynamic info': 'tutorials/using-ems-to-build-tests-with-dynamic-info.md'
     - 'Using ESS to perform security checks': 'tutorials/using-ess-to-perform-security-checks.md'
     - 'Custom metrics': 'tutorials/custom-metrics.md'
+    - 'Kubernetes': 'tutorials/kubernetes.md'
     - 'ERE with custom code': 'tutorials/ere-with-custom-code.md'
     - 'Using EBS to perform analytics': 'tutorials/using-ebs-to-perform-analytics.md'
     - 'Estimating the costs of tests on AWS': 'tutorials/estimating-the-costs-of-tests-on-aws.md'
 
     - 'Observability for 5G infrastructures': 'tutorials/observability-for-5g-infrastructures.md'
     - 'EMS (show how specific visualizations for TJobs and ElasTest TSS work)': 'tutorials/ems.md'
-    - 'Kubernetes': 'tutorials/kubernetes.md'
 
 # Demos Section
 - Demos:
