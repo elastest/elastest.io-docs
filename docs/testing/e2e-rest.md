@@ -43,7 +43,7 @@ public class RestAppTest extends ElasTestBase {
 <blockquote><strong><code>ET_SUT_HOST</code></strong> variable will be the IP of our SuT. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)</blockquote>
 </div>
 
-In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.
+In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs at the beginning and end of each test. These two logs have a **specific structure** and are used by ElasTest to filter the **logs and metrics** corresponding to **`each test`**, as well as knowing its **start and end date**. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a> 
 
 <div id="elastestBaseCode" class="row">
 <h5 class="small-subtitle">ElasTestBase class</h5>

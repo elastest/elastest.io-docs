@@ -82,7 +82,7 @@
         <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/kubernetes.png" style="border: none; max-height: 124px; padding-top: 8px;" alt="" /></div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <a href="/docs/deploying/kubernetes" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
-                    title="On quarter 3">Deploy on Kubernetes (Q3)</a>
+                    title="Deploy on Kubernetes">Deploy on Kubernetes</a>
         </div>
     </div>
     <hr />

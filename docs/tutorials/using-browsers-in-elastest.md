@@ -6,7 +6,7 @@
 </div>
 </div>
 
-<h4 class="small-subtitle">Launch web browser Job without SUT with Jenkins Plugin</h4>
+<h3 class="small-subtitle">Launch web browser Job without SUT with Jenkins Plugin</h3>
 
 We will use the browsers in ElasTest, we use a simple test that open a google page and search. The test has following:
 
@@ -20,22 +20,22 @@ public class UseBrowser extends ElastestBaseTest{
 	@Test
 	public void searchInGoogle() {
 		String URL = "https://google.com/";
-		
-		this.driver.get(URL);		
+
+		this.driver.get(URL);
 		logger.info("Go to http://google.es/...");
-		
+
 		sleep(2000);
-		
+
 		logger.info("Searching 'test' word...");
 		WebElement searchInput = driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"));
 		searchInput.sendKeys("test");
 		searchInput.sendKeys(Keys.ENTER);
-		
+
 		sleep(2000);
-		
+
 		logger.info("Finish test correctly");
 	}
-	
+
 	public void sleep(int time) {
 		try {
 			Thread.sleep(time);
@@ -84,7 +84,7 @@ public class ElastestBaseTest {
         browserType = System.getProperty("browser");
         logger.info("Browser Type: {}", browserType);
         eusURL = System.getenv("ET_EUS_API");
-        
+
         if (eusURL == null) {
             if (browserType == null || browserType.equals(CHROME)) {
                 WebDriverManager.chromedriver().setup();
@@ -139,14 +139,13 @@ public class ElastestBaseTest {
 }
 ```
 
->-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`**  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+> -   **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`** variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
 
->-  **`ET_EUS_API`** variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
+> -   **`ET_EUS_API`** variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
 
->-  The values of the variables **browserType** and **browserVersion** are taken from the **properties** browser and browserVersion respectively, which you can pass in the test run command with **`-Dbrowser=chrome`**.
+> -   The values of the variables **browserType** and **browserVersion** are taken from the **properties** browser and browserVersion respectively, which you can pass in the test run command with **`-Dbrowser=chrome`**.
 
-
-### Jenkins Pipeline
+#### **Jenkins Pipeline** <i class="fab fa-jenkins"></i>
 
 ```groovy
 node{
@@ -185,23 +184,25 @@ node{
 
 <p></p>
 
-### Launch
+#### **Launch**
 
-#### 1. Access your Jenkins
+##### 1. Access your Jenkins
+
 When you will open Jenkins click in the **`New Item`**
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-new-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-new-item.png"/></a>
 </div>
 
-#### 2. Define the name and type the Job 
+##### 2. Define the name and type the Job
+
 Input the **`UsingBrowserInElasTest`** and select the **`Pipeline`** option them click in the **`Ok`** button:
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-define-item.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-define-item.png"/></a>
 </div>
 
-#### 3. You add the **Pipeline** 
+##### 3. You add the **Pipeline**
 
 Copy the [ElasTest Pipeline](#jenkins-pipeline) and paste in the **Pipeline** section, as follows:
 
@@ -209,14 +210,15 @@ Copy the [ElasTest Pipeline](#jenkins-pipeline) and paste in the **Pipeline** se
     <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-create-pipeline.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-create-pipeline.png"/></a>
 </div>
 
-#### 4. Inside Pipeline page
+##### 4. Inside Pipeline page
+
 When we inside into the Pipeline page we will click in the **`Build Now`** to launch the Job in ElasTest
 
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/jenkins-basic-browser-build-now.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/jenkins-basic-browser-build-now.png"/></a>
 </div>
 
-#### 5. Go to the TJob execution screen
+##### 5. Go to the TJob execution screen
 
 Entering the build page, you will see the Open in ElasTest button, where you can see the execution page in ElasTest (If the button does not appear refresh the page, it may take a while).
 
@@ -236,7 +238,11 @@ Gif with the video of the browser session:
     <a data-fancybox="gallery-1" href="/docs/tutorials/images/browser/browser-session.gif"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/browser-session.gif"/></a>
 </div>
 
-<h4 class="holder-subtitle link-top">Launch web browser Job and SUT with Jenkins Plugin</h4>
+<br>
+<hr>
+<br>
+
+<h3 class="small-subtitle">Launch web browser Job and SUT with Jenkins Plugin</h3>
 
 We using a Full-Teaching application for this tutorial. Now we run the Full-Teaching with bug for show the logs.
 
@@ -333,7 +339,7 @@ public class FullTeachingTestE2EREST extends FullTeachingTestE2E {
 
 We can observe the all code in this [link](https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2EREST.java).
 
->-  The test mark the init of the test case in the **`setup`** method and the finish of the test case in the **`dispose`** method. With the code `log.info("##### Start test: " + info.getTestMethod().get().getName());`and `log.info("##### Finish test: " + info.getTestMethod().get().getName());` respectively.  
+> -   The test mark the init of the test case in the **`setup`** method and the finish of the test case in the **`dispose`** method. With the code `log.info("##### Start test: " + info.getTestMethod().get().getName());`and `log.info("##### Finish test: " + info.getTestMethod().get().getName());` respectively.
 
 ```java
 @ExtendWith(SeleniumExtension.class)
@@ -366,9 +372,9 @@ public class FullTeachingTestE2E {
 
 We can observe the all code in this [link](https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2E.java).
 
->-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** variables will be the IP of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+> -   **`ET_SUT_HOST`**, **`ET_SUT_PORT`** variables will be the IP of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
 
-##### Jenkins <i class="fab fa-jenkins"></i>
+#### **Jenkins** <i class="fab fa-jenkins"></i>
 
 ```groovy
 node{
@@ -385,7 +391,7 @@ node{
                 sutContainerName = env.ET_SUT_CONTAINER_NAME + "_full-teaching_1";
                 sutNetwork = getFirstNetwork(sutContainerName)
                 sutIp = containerIp(sutContainerName,network)
-                
+
                 echo 'Sut ip: '+ sutIp
                 sh 'docker run -e IP=' + sutIp + ' -e PORT=5001 --network=' + sutNetwork + ' elastest/etm-check-service-up'
             }
@@ -409,7 +415,7 @@ def getFirstNetwork(containerName) {
         script: "docker inspect " + containerName + " -f \"{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
         returnStdout: true
     ).trim()
-    
+
     echo containerName+" Network = " + network;
     return network;
 }
@@ -420,7 +426,7 @@ def containerIp(containerName, network) {
         script: "docker inspect --format=\"{%raw%}{{.NetworkSettings.Networks." + network + ".IPAddress}}{%endraw%}\" "+ containerName,
         returnStdout: true
     ).trim()
-    
+
     echo containerName+" IP = " + containerIp;
     return containerIp;
 }
@@ -472,7 +478,7 @@ def getFirstNetwork(containerName) {
         script: "docker inspect " + containerName + " -f \"{%raw%}{{json .NetworkSettings.Networks}}{%endraw%}\" | awk \"{sub(/:.*/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/\\\"/,\\\"\\\")}1\" | awk \"{sub(/{/,\\\"\\\")}1\"",
         returnStdout: true
     ).trim()
-    
+
     echo containerName+" Network = " + network;
     return network;
 }
@@ -483,7 +489,7 @@ def containerIp(containerName, network) {
         script: "docker inspect --format=\"{%raw%}{{.NetworkSettings.Networks." + network + ".IPAddress}}{%endraw%}\" "+ containerName,
         returnStdout: true
     ).trim()
-    
+
     echo containerName+" IP = " + containerIp;
     return containerIp;
 }
@@ -519,7 +525,7 @@ stage("Run Tests") {
 
 <p></p>
 
-To run the Test in Jenkins first create a new **`Item`**, after enter the **`FullTeaching Browser`** name and select the 
+To run the Test in Jenkins first create a new **`Item`**, after enter the **`FullTeaching Browser`** name and select the
 **`Pipeline`** optinion. Finally click in **`Ok`** button.
 
 <div class="docs-gallery inline-block">
@@ -549,3 +555,195 @@ Finally we can see the TJob execution in ElasTest:
 <div class="docs-gallery inline-block">
     <a data-fancybox="gallery-2" href="/docs/tutorials/images/browser/tjob.png"><img class="img-responsive img-wellcome" src="/docs/tutorials/images/browser/tjob.png"/></a>
 </div>
+
+<br>
+<hr>
+<br>
+
+<h3 class="small-subtitle" id="browsersInAWS">Launching ElasTest web browsers in AWS</h3>
+
+Sometimes, it is useful to launch ElasTest browsers in AWS, which would allow to launch as many browsers as we want. This is a typical scenario when load tests are performed. ElasTest allows you to easily configure it to launch all browsers requested in AWS instances, just by configuring the EUS service to use AWS.
+
+Elastest can also start browsers on an **AWS** instance. For this, it is necessary to send the configuration through the test through a special capability called **`awsConfig`**, which must have a specific format:
+
+```json
+{
+    "region": "eu-west-1",
+    "secretAccessKey": "secretAccessKey",
+    "accessKeyId": "accessKeyId",
+    "sshUser": "sshUser",
+    "sshPrivateKey": "sshPrivateKey",
+    "awsInstancesConfig": {
+        "amiId": "ami-0bfc646d9bb6ad37c",
+        "instanceType": "instanceType",
+        "keyName": "keyName",
+        "numInstances": 1,
+        "securityGroups": ["group1", ...],
+        "tagSpecifications": [
+            {
+                "resourceType":"instance",
+                "tags":[
+                     {"key":"key", "value":"value"}
+                ]
+            },
+            ...
+        ]
+    }
+}
+```
+
+**`amiId`** and **`region`** values **must** be as above.
+
+We could **adapt** the code of our **`ElastestBaseTest.class from the first example`** to use browsers in **AWS**. For this we have added the **`initAwsConfig`** method that is called in the *@BeforeAll* and initializes the awsConfig object from values that can be sent in environment variables. Afterwards, you only need to add the awsConfig object to a **capability**.
+
+##### **ElastestBaseTest class**
+
+```java
+public class ElastestBaseTest {
+    protected static final Logger logger = LoggerFactory
+            .getLogger(ElastestBaseTest.class);
+
+    protected static final String CHROME = "chrome";
+    protected static final String FIREFOX = "firefox";
+
+    protected static String browserType;
+    protected static String browserVersion;
+    protected static String eusURL;
+    protected static String sutUrl;
+    protected static JsonObject awsConfig;
+
+    protected WebDriver driver;
+
+    @BeforeAll
+    public static void setupClass() {
+        String sutHost = System.getenv("ET_SUT_HOST");
+        String sutPort = System.getenv("ET_SUT_PORT");
+        String sutProtocol = System.getenv("ET_SUT_PROTOCOL");
+
+        if (sutHost == null) {
+            sutUrl = "http://localhost:8080/";
+        } else {
+            sutPort = sutPort != null ? sutPort : "8080";
+            sutProtocol = sutProtocol != null ? sutProtocol : "http";
+
+            sutUrl = sutProtocol + "://" + sutHost + ":" + sutPort;
+        }
+        logger.info("Webapp URL: " + sutUrl);
+
+        browserType = System.getProperty("browser");
+        logger.info("Browser Type: {}", browserType);
+        eusURL = System.getenv("ET_EUS_API");
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                WebDriverManager.chromedriver().setup();
+            } else {
+                WebDriverManager.firefoxdriver().setup();
+            }
+        }
+
+        initAwsConfig();
+    }
+
+    @BeforeEach
+    public void setupTest(TestInfo info) throws MalformedURLException {
+        String testName = info.getTestMethod().get().getName();
+        logger.info("##### Start test: {}", testName);
+
+        if (eusURL == null) {
+            if (browserType == null || browserType.equals(CHROME)) {
+                driver = new ChromeDriver();
+            } else {
+                driver = new FirefoxDriver();
+            }
+        } else {
+            DesiredCapabilities caps;
+            if (browserType == null || browserType.equals(CHROME)) {
+                caps = DesiredCapabilities.chrome();
+            } else {
+                caps = DesiredCapabilities.firefox();
+            }
+
+            browserVersion = System.getProperty("browserVersion");
+            if (browserVersion != null) {
+                logger.info("Browser Version: {}", browserVersion);
+                caps.setVersion(browserVersion);
+            }
+
+            caps.setCapability("testName", testName);
+
+            // AWS capabilities for browsers
+            ObjectMapper mapper = new ObjectMapper();
+            Map<String, String> awsConfigMap = mapper
+                    .readValue(awsConfig.toString(), Map.class);
+
+            capabilities.setCapability("awsConfig", awsConfigMap);
+
+            driver = new RemoteWebDriver(new URL(eusURL), caps);
+        }
+
+        driver.get(sutUrl);
+    }
+
+    @AfterEach
+    public void teardown(TestInfo info) {
+        if (driver != null) {
+            driver.quit();
+        }
+
+        String testName = info.getTestMethod().get().getName();
+        logger.info("##### Finish test: {}", testName);
+    }
+
+    public JsonObject initAwsConfig(){
+        awsConfig = new JsonObject();
+
+        // Aws Config
+        String region = System.getenv("AWS_REGION");
+        String secretAccessKey = System.getenv("AWS_SECRET_ACCESS_KEY");
+        String accessKeyId = System.getenv("AWS_ACCESS_KEY_ID");
+        String sshUser = System.getenv("AWS_SSH_USER");
+        String sshPrivateKey = System.getenv("AWS_SSH_PRIVATE_KEY");
+
+        // Instances config
+        String awsAmiId = System.getenv("AWS_AMI_ID");
+        String instanceType = System.getenv("AWS_INSTANCE_TYPE");
+        String keyName = System.getenv("AWS_KEY_NAME");
+        String securityGroups = System.getenv("AWS_SECURITY_GROUPS");
+        String tagSpecifications = System.getenv("AWS_TAG_SPECIFICATIONS");
+        int numInstances = Integer.parseInt(System.getenv("AWS_NUM_INSTANCES"));
+
+        JsonParser parser = new JsonParser();
+
+        awsConfig.addProperty("region", region);
+        awsConfig.addProperty("secretAccessKey", secretAccessKey);
+        awsConfig.addProperty("accessKeyId", accessKeyId);
+        awsConfig.addProperty("sshUser", sshUser);
+        awsConfig.addProperty("sshPrivateKey",
+                sshPrivateKey.replace("\\r\\n", System.lineSeparator()));
+
+        // Instances Config
+
+        JsonObject awsInstancesConfig = new JsonObject();
+        awsInstancesConfig.addProperty("amiId", awsAmiId);
+        awsInstancesConfig.addProperty("instanceType", instanceType);
+        awsInstancesConfig.addProperty("keyName", keyName);
+
+        awsInstancesConfig.addProperty("numInstances", numInstances);
+        JsonArray securityGroupsElement = parser.parse(securityGroups)
+                .getAsJsonArray();
+        awsInstancesConfig.add("securityGroups", securityGroupsElement);
+
+        JsonArray tagSpecificationsElement = parser.parse(tagSpecifications)
+                .getAsJsonArray();
+        awsInstancesConfig.add("tagSpecifications", tagSpecificationsElement);
+        awsConfig.add("awsInstancesConfig", awsInstancesConfig);
+        return awsConfig;
+    }
+
+}
+```
+
+###### **Demo**
+
+You can see a demo <a href="/docs/demos/load-testing-with-aws">here</a>.

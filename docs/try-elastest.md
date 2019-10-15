@@ -9,6 +9,7 @@ In this section we will see how to install and start ElasTest depending on the p
 -   ElasTest on [Laptop](#laptop)
 -   ElasTest on [Linux VM](#linuxVM)
 -   ElasTest on [Server](#server)
+-   ElasTest on [Kubernetes](#k8s)
 
 We'll also see how to [manage your ElasTest installation](#etInstallationManagement).
 
@@ -297,6 +298,11 @@ To run ElasTest on a Linux server follow the steps detailed in the <a href="/doc
 <h4 class="small-subtitle">Amazon Web Services</h4>
 
 ElasTest has been designed from the outset to offer an extremely simple deployment in Amazon Web Services. Check [Amazon Web Services](deploying/aws/) section to learn how to do it in a couple of minutes.
+
+
+<h3 id="k8s" class="holder-subtitle link-top">ElasTest on Kubernetes</h3>
+
+You have all the information <a href="/docs/deploying/kubernetes">here</a>.
 
 <h3 id="etInstallationManagement" class="holder-subtitle link-top">ElasTest Installation Management</h3>
 

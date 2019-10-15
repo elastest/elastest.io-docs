@@ -15,7 +15,7 @@
             <img src="/docs/images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
         </div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
-            <a href="http://live.elastest.io:37000/#/projects/5/tjob/36/tjob-exec/53" target="_blank" class="btn btn-xs btn-primary" title="Try it now">Try it now</a>
+            <a href="http://live.elastest.io/#/projects/5/tjob/36/tjob-exec/53" target="_blank" class="btn btn-xs btn-primary" title="Try it now">Try it now</a>
         </div>
     </div>
     <hr />
@@ -73,7 +73,7 @@
         <div class="col col-md-2 col-sm-4 col-xs-12"><img src="/docs/images/kubernetes.png" style="border: none; max-height: 124px; padding-top: 8px;" alt="" /></div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
             <a href="/docs/deploying/kubernetes" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="button"
-                    title="On quarter 3">Deploy on Kubernetes (Q3)</a>
+                    title="Deploy on Kubernetes">Deploy on Kubernetes</a>
         </div>
     </div>
     <hr />

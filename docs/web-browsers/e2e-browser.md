@@ -14,7 +14,6 @@ Let's see how to launch a TJob that makes use of a web browser inside Elastest.
 Here we will run our [JUnit5 Multi Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-multiple-browsers-test) provided by default in ElasTest, which makes use of a Spring Boot Application as a SuT that has two input fields (title and body) and a button to add them as a table row. Also has three test that are responsible for add rows to that Sut and verify that the added row has the expected content.
 This test has been developed in Java using [JUnit5](https://junit.org/junit5/):
 
-
 ##### **WebAppTest class**
 
 ```java
@@ -133,10 +132,10 @@ public class WebAppTest extends ElastestBaseTest {
 }
 ```
 
->-  In the code **`Thread.sleep()`** is used for a better visualization of the video that ElasTest records from the test, but it is not necessary to use it.
->-  The **`checkTitleAndBodyNoEmpty`** test simulates a test that fails.   
+> -   In the code **`Thread.sleep()`** is used for a better visualization of the video that ElasTest records from the test, but it is not necessary to use it.
+> -   The **`checkTitleAndBodyNoEmpty`** test simulates a test that fails.
 
-<p>In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs and start/stop browsers at the beginning and end of each test. These two logs have a specific structure and are used by ElasTest to filter the logs corresponding to each test. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.</p>
+<p>In addition, as can be seen in the example, this test class extends a class called ElasTestBase which is responsible for printing logs and start/stop browsers at the beginning and end of each test. These two logs have a **specific structure** and are used by ElasTest to filter the **logs and metrics** corresponding to **`each test`**, as well as knowing its **start and end date**. We explain this in more detail <a href="/docs/testing/unit#xmlAndtestResultsPath">here</a>.</p>
 
 ##### **ElastestBaseTest class**
 
@@ -174,7 +173,7 @@ public class ElastestBaseTest {
         browserType = System.getProperty("browser");
         logger.info("Browser Type: {}", browserType);
         eusURL = System.getenv("ET_EUS_API");
-        
+
         if (eusURL == null) {
             if (browserType == null || browserType.equals(CHROME)) {
                 WebDriverManager.chromedriver().setup();
@@ -229,16 +228,14 @@ public class ElastestBaseTest {
 }
 ```
 
->-  **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`**  variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+> -   **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`** variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
 
->-  **`ET_EUS_API`** variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
+> -   **`ET_EUS_API`** variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
 
->-  The values of the variables **browserType** and **browserVersion** are taken from the **properties** browser and browserVersion respectively, which you can pass in the test run command with **`-Dbrowser=chrome`**.
-
+> -   The values of the variables **browserType** and **browserVersion** are taken from the **properties** browser and browserVersion respectively, which you can pass in the test run command with **`-Dbrowser=chrome`**.
 
 If you prefer, ElasTest also provides the same example but making use of a single browser for all tests, whose name in this case is [JUnit5 Single Browser Test](https://github.com/elastest/demo-projects/tree/master/webapp/junit5-web-single-browser-test).
 The WebAppTest class is exactly the same, the change is in the ElastestBaseTest class:
-
 
 ##### **ElastestBaseTest class**
 
@@ -332,19 +329,19 @@ public class ElastestBaseTest {
 }
 ```
 
->   Java shutdown hook (**`Runtime.getRuntime().addShutdownHook`**) is used to make sure to close the browser once all the tests have been executed.
+> Java shutdown hook (**`Runtime.getRuntime().addShutdownHook`**) is used to make sure to close the browser once all the tests have been executed.
 
 The start/end log traces are still printed in the **@BeforeEach** but the browser starts now inside the **@BeforeAll**. Also, for Elastest to know when each test starts, it is possible to send a **`command by invoking a script`** in **@BeforeEach**.
 
             ((JavascriptExecutor) driver).executeScript(
                 "'{\"elastestCommand\": \"startTest\", \"args\": {\"testName\": \"" + testName + "\"} }'");
 
-The content of the script consists of a JSON object inside single quotes *(**'**)* which must contain the following keys:
+The content of the script consists of a JSON object inside single quotes _(**'**)_ which must contain the following keys:
 
 -   **`elastestCommand`**: the command that ElasTest must execute, in this case the value would be **`startTest`**.
 -   **`args`**: a JSON object with the arguments needed to execute the command. In this case the object will only contain one key-value pair: **`testName`**
 
-The keys must be sorted as stated above, as ElasTest will intercept the script when reading *elastestCommand*.
+The keys must be sorted as stated above, as ElasTest will intercept the script when reading _elastestCommand_.
 
 <!-- ******************* -->
 <!-- ******* RUN ******* -->
@@ -450,12 +447,11 @@ There are several ways to deploy a Sut in ElasTest, but they can be grouped in t
     -   **With Commands Container**: Your SuT is packaged as a Docker image. You must write the _Commands Container Image_ and the commands that will run like the docker image CMD.
     -   **With Docker Image**: Your SuT is packaged as a Docker image. ElasTest will pull it from DockerHub and run it as the `Dockerfile` states.
     -   **With Docker Compose**: Your SuT is declared as a docker-compose. ElasTest will pull all the necessary images from DockerHub and run them as the field `Docker Compose`.
--   **`Deployed outside ElasTest`**:  your software is already deployed somewhere.
+-   **`Deployed outside ElasTest`**: your software is already deployed somewhere.
     -   **No instrumentation**: No monitoring traces sent to ElasTest.
-    -   **Instrumented by ElasTest**:  Elastest will be responsible for accessing your Sut to send monitoring traces.
+    -   **Instrumented by ElasTest**: Elastest will be responsible for accessing your Sut to send monitoring traces.
     -   **Manual Instrumentation**: If you want to manually send its logs and metrics to ElasTest.
     -   **Use External Elasticsearch**: if you use your own [Elasticsearch](https://www.elastic.co/guide/index.html) to save the monitoring traces and you want ElasTest to access it to retrieve them.
-
 
 You can read [Software under Test](/testing/sut) for more detailed information about Sut.
 
@@ -496,7 +492,7 @@ In our case, we will need to insert the following data for the TJob "JUnit5 Mult
 
 *   **Select a SuT**: already created SuT to be tested through to the TJob (**`WebApp`**)
 
--   **Environment docker image**:  [**`elastest/test-etm-alpinegitjava`**](https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjava/Dockerfile) (image that contains Git, Maven and Java).
+-   **Environment docker image**: [**`elastest/test-etm-alpinegitjava`**](https://github.com/elastest/elastest-torm/blob/master/docker/services/examples/test-etm-alpinegitjava/Dockerfile) (image that contains Git, Maven and Java).
 -   **Commands**:
 
         git clone https://github.com/elastest/demo-projects;
@@ -535,7 +531,6 @@ The following examples, also offered by default in ElasTest, are implemented wit
 
 <!-- JUNIT4 -->
 <div id="junit4" class="testExample badge-tutorial">
-
 
 <div class="badges-menu sub-badge">
     <span id="junit4-multi-btn" class="badge badge-default my-badge selected">A Browser for Each</span>
@@ -765,6 +760,7 @@ public class ElastestBaseTest {
 
 }
 </code>
+
 </pre>
 </div>
 
@@ -787,7 +783,6 @@ public class ElastestBaseTest {
 <li><strong>Test Support Services</strong>: <strong><code>EUS</code></strong></li>
 </ul>
 </div> <!-- end of junit4 multi -->
-
 
 <div id="junit4-single" class="subTestExample">
 <p>
@@ -910,6 +905,7 @@ public class WebAppTest extends ElastestBaseTest {
         driver.findElement(By.id("clearSubmit")).click();
         Thread.sleep(1000);
     }
+
 }
 </code>
 
@@ -1011,8 +1007,10 @@ public class ElastestBaseTest {
         String testName = name.getMethodName();
         logger.info("##### Finish test: {}", testName);
     }
+
 }
 </code>
+
 </pre>
 </div>
 
@@ -1065,14 +1063,13 @@ import time
 import xmlrunner
 import ElasTestBase
 
-
 class TestWebApp(ElasTestBase.ElasTestBase):
-    def test_check_title_and_body_not_empty(self):
-        driver = ElasTestBase.driver
-        try:
-            time.sleep(2)
-            addRow(driver, '', '')
-            time.sleep(2)
+def test_check_title_and_body_not_empty(self):
+driver = ElasTestBase.driver
+try:
+time.sleep(2)
+addRow(driver, '', '')
+time.sleep(2)
 
             title = getElementById(driver, 'title').text
             body = getElementById(driver, 'body').text
@@ -1103,34 +1100,31 @@ class TestWebApp(ElasTestBase.ElasTestBase):
             sys.exit(1)
         clearData(driver)
 
-
 def getElementById(driver, id, timeout=10):
-    wait = WebDriverWait(driver, timeout)
-    return wait.until(EC.presence_of_element_located((By.ID, id)))
-
+wait = WebDriverWait(driver, timeout)
+return wait.until(EC.presence_of_element_located((By.ID, id)))
 
 def addRow(driver, title, body):
-    getElementById(driver, 'title-input').send_keys(title)
-    getElementById(driver, 'body-input').send_keys(body)
-    print 'Adding Message...'
-    getElementById(driver, 'submit').click()
-
+getElementById(driver, 'title-input').send_keys(title)
+getElementById(driver, 'body-input').send_keys(body)
+print 'Adding Message...'
+getElementById(driver, 'submit').click()
 
 def clearData(driver):
-    print 'Clearing Messages...'
-    getElementById(driver, 'clearSubmit').click()
+print 'Clearing Messages...'
+getElementById(driver, 'clearSubmit').click()
 
-
-if __name__ == '__main__':
-    file_path = './testresults'
-    if not os.path.exists(file_path):
-        os.makedirs(file_path)
-    file_name = file_path + '/results.xml'
-    with open(file_name, 'wb') as output:
-        unittest.main(
-            testRunner=xmlrunner.XMLTestRunner(output=output),
-            failfast=False, buffer=False, catchbreak=False)
+if **name** == '**main**':
+file_path = './testresults'
+if not os.path.exists(file_path):
+os.makedirs(file_path)
+file_name = file_path + '/results.xml'
+with open(file_name, 'wb') as output:
+unittest.main(
+testRunner=xmlrunner.XMLTestRunner(output=output),
+failfast=False, buffer=False, catchbreak=False)
 </code>
+
 </pre>
 </div>
 
@@ -1143,17 +1137,15 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-
 driver = None
 sutUrl = None
 
-
 class ElasTestBase(unittest.TestCase):
-    def setUp(self):
-        global driver
-        global sutUrl
-        testName = self._testMethodName
-        print '##### Start test: ' + testName
+def setUp(self):
+global driver
+global sutUrl
+testName = self.\_testMethodName
+print '##### Start test: ' + testName
 
         # os.environ['ET_EUS_API'] = 'http://172.18.0.1:8091/eus/v1/'
         if('ET_EUS_API' in os.environ):
@@ -1182,6 +1174,7 @@ class ElasTestBase(unittest.TestCase):
         testName = self._testMethodName
         print '##### Finish test: ' + testName
         driver.close()
+
 </code>
 
 </pre>
@@ -1226,14 +1219,13 @@ import time
 import xmlrunner
 import ElasTestBase
 
-
 class TestWebApp(ElasTestBase.ElasTestBase):
-    def test_check_title_and_body_not_empty(self):
-        driver = ElasTestBase.driver
-        try:
-            time.sleep(2)
-            addRow(driver, '', '')
-            time.sleep(2)
+def test_check_title_and_body_not_empty(self):
+driver = ElasTestBase.driver
+try:
+time.sleep(2)
+addRow(driver, '', '')
+time.sleep(2)
 
             title = getElementById(driver, 'title').text
             body = getElementById(driver, 'body').text
@@ -1264,34 +1256,31 @@ class TestWebApp(ElasTestBase.ElasTestBase):
             sys.exit(1)
         clearData(driver)
 
-
 def getElementById(driver, id, timeout=10):
-    wait = WebDriverWait(driver, timeout)
-    return wait.until(EC.presence_of_element_located((By.ID, id)))
-
+wait = WebDriverWait(driver, timeout)
+return wait.until(EC.presence_of_element_located((By.ID, id)))
 
 def addRow(driver, title, body):
-    getElementById(driver, 'title-input').send_keys(title)
-    getElementById(driver, 'body-input').send_keys(body)
-    print 'Adding Message...'
-    getElementById(driver, 'submit').click()
-
+getElementById(driver, 'title-input').send_keys(title)
+getElementById(driver, 'body-input').send_keys(body)
+print 'Adding Message...'
+getElementById(driver, 'submit').click()
 
 def clearData(driver):
-    print 'Clearing Messages...'
-    getElementById(driver, 'clearSubmit').click()
+print 'Clearing Messages...'
+getElementById(driver, 'clearSubmit').click()
 
-
-if __name__ == '__main__':
-    file_path = './testresults'
-    if not os.path.exists(file_path):
-        os.makedirs(file_path)
-    file_name = file_path + '/results.xml'
-    with open(file_name, 'wb') as output:
-        unittest.main(
-            testRunner=xmlrunner.XMLTestRunner(output=output),
-            failfast=False, buffer=False, catchbreak=False)
+if **name** == '**main**':
+file_path = './testresults'
+if not os.path.exists(file_path):
+os.makedirs(file_path)
+file_name = file_path + '/results.xml'
+with open(file_name, 'wb') as output:
+unittest.main(
+testRunner=xmlrunner.XMLTestRunner(output=output),
+failfast=False, buffer=False, catchbreak=False)
 </code>
+
 </pre>
 </div>
 
@@ -1304,10 +1293,8 @@ import os
 from selenium import webdriver
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 
-
 driver = None
 sutUrl = None
-
 
 class ElasTestBase(unittest.TestCase):
 
@@ -1352,6 +1339,7 @@ class ElasTestBase(unittest.TestCase):
         global driver
         testName = self._testMethodName
         print '##### Finish test: ' + testName
+
 </code>
 </pre>
 </div>
@@ -1428,7 +1416,7 @@ public class WebAppTestDefinition extends ElastestBaseTest {
     public void afterScenario(Scenario scenario) {
         super.afterScenario(scenario);
     }
-    
+
     /* ************************ */
     /* ******** Common ******** */
     /* ************************ */
@@ -1549,6 +1537,7 @@ public class WebAppTestDefinition extends ElastestBaseTest {
         driver.findElement(By.id("clearSubmit")).click();
         Thread.sleep(1000);
     }
+
 }
 </code>
 
@@ -1618,6 +1607,7 @@ public class ElastestBaseTest {
 
 }
 </code>
+
 </pre>
 </div>
 
@@ -1637,6 +1627,7 @@ public class WebAppTestRunner {
 
 }
 </code>
+
 </pre>
 </div>
 <h5 class="small-subtitle">TJob Configuration</h5>
@@ -1805,9 +1796,9 @@ public class WebAppTestDefinition extends ElastestBaseTest {
 
 }
 </code>
+
 </pre>
 </div>
-
 
 <div class="row">
 <h5 class="small-subtitle">ElastestBaseTest class</h5>
@@ -1875,7 +1866,7 @@ public class ElastestBaseTest {
 
                 driver = new RemoteWebDriver(new URL(eusURL), caps);
             }
-            
+
             // driver quit when all tests end
             Runtime.getRuntime().addShutdownHook(new Thread() {
                 public void run() {
@@ -1899,8 +1890,10 @@ public class ElastestBaseTest {
         currentTestScenarioName = scenario.getName();
         logger.info("##### Finish test: {}", currentTestScenarioName);
     }
+
 }
 </code>
+
 </pre>
 </div>
 
@@ -1919,6 +1912,7 @@ public class ElastestBaseTest {
 public class WebAppTestRunner {
 }
 </code>
+
 </pre>
 </div>
 
@@ -1972,10 +1966,13 @@ Check that the title and body are not empty
     * Check that row with empty title and body has been added
 
 Find title and body
-------------------- 
+
+---
+
     * Navigate to app url
     * Add a row with title and body
     * Check that row with the same title and body has been added
+
 </code>
 
 </pre>
@@ -2122,8 +2119,10 @@ public class WebAppTest extends ElastestBaseTest {
         driver.findElement(By.id("clearSubmit")).click();
         Thread.sleep(1000);
     }
+
 }
 </code>
+
 </pre>
 </div>
 
@@ -2145,8 +2144,8 @@ public class ElastestBaseTest {
 
     protected WebDriver driver;
     protected String currentTestScenarioName;
-    
-    
+
+
     public void beforeScenario(ExecutionContext context) {
         currentTestScenarioName = context.getCurrentScenario().getName();
 
@@ -2187,11 +2186,12 @@ public class ElastestBaseTest {
         currentTestScenarioName = context.getCurrentScenario().getName();
         logger.info("##### Finish test: {}", currentTestScenarioName);
     }
+
 }
 </code>
+
 </pre>
 </div>
-
 
 <p>As you can see in the code, the @Before and @After hooks are declared in the test, but make use of the implementation of ElastestBaseTest. This is because Gauge does not allow to extend classes that define hooks or step definition.</p>
 
@@ -2236,10 +2236,13 @@ Check that the title and body are not empty
     * Check that row with empty title and body has been added
 
 Find title and body
-------------------- 
+
+---
+
     * Navigate to app url
     * Add a row with title and body
     * Check that row with the same title and body has been added
+
 </code>
 </pre>
 </div>
@@ -2365,8 +2368,10 @@ public class WebAppTest extends ElastestBaseTest {
         driver.findElement(By.id("clearSubmit")).click();
         Thread.sleep(1000);
     }
+
 }
 </code>
+
 </pre>
 </div>
 
@@ -2460,8 +2465,10 @@ public class ElastestBaseTest {
         currentTestScenarioName = context.getCurrentScenario().getName();
         logger.info("##### Finish test: {}", currentTestScenarioName);
     }
+
 }
 </code>
+
 </pre>
 </div>
 
@@ -2539,30 +2546,32 @@ describe('Test WebApp Application', function() {
 
         clearMessages();
     });
+
 });
 
 async function addRow(title, body) {
-    console.log('Inserting data...');
-    element(by.id('title-input')).sendKeys(title);
-    element(by.id('body-input')).sendKeys(body);
-    await sleep(2000);
-    console.log('Adding Message...');
-    element(by.id('submit')).click();
+console.log('Inserting data...');
+element(by.id('title-input')).sendKeys(title);
+element(by.id('body-input')).sendKeys(body);
+await sleep(2000);
+console.log('Adding Message...');
+element(by.id('submit')).click();
 }
 
 function clearMessages() {
-    console.log('Clearing Messages...');
-    element(by.id('clearSubmit')).click();
+console.log('Clearing Messages...');
+element(by.id('clearSubmit')).click();
 }
 
 function sleep(millis) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(true);
-        }, millis);
-    });
+return new Promise((resolve) => {
+setTimeout(() => {
+resolve(true);
+}, millis);
+});
 }
 </code>
+
 </pre>
 </div>
 
@@ -2580,21 +2589,21 @@ var envs = {
         browserName: process.env.BROWSER || 'chrome',
         version: process.env.ET_EUS_API ? (process.env.BROWSER_VERSION ? process.env.BROWSER_VERSION : '') : 'ANY',
     },
+
 };
 
-
 class ElasTestBrowserManager {
-    
-    constructor() {
-        this.firstTime = true;
-        /* `_asyncFlow` is a promise.
-        * It is a "flow" that we create in `specStarted`.
-        * function will wait for the flow to finish before running the next spec.
-        * This is not needed since Jasmine 3.0.
-         * See https://github.com/jasmine/jasmine/issues/842#issuecomment-336077418
-         */
-        this._asyncFlow = null;
-    }
+  
+ constructor() {
+this.firstTime = true;
+/_ `_asyncFlow` is a promise.
+_ It is a "flow" that we create in `specStarted`.
+_ function will wait for the flow to finish before running the next spec.
+_ This is not needed since Jasmine 3.0.
+_ See https://github.com/jasmine/jasmine/issues/842#issuecomment-336077418
+_/
+this.\_asyncFlow = null;
+}
 
     jasmineStarted() {
         /* Wait for async tasks triggered by `specStarted`. */
@@ -2627,29 +2636,32 @@ class ElasTestBrowserManager {
     jasmineDone(result) {
         browser.close();
     }
+
 }
 
 exports.config = {
-    seleniumAddress: envs.seleniumAddress,
-    specs: ['test-webapp-spec.js'],
-    sutUrl: envs.sutUrl,
-    capabilities: envs.capabilities,
-    onPrepare: function() {
-        var jasmineReporters = require('jasmine-reporters');
-        jasmine.getEnv().addReporter(
-            new jasmineReporters.JUnitXmlReporter({
-                consolidateAll: true,
-                savePath: 'testresults',
-                // this will produce distinct xml files for each capability
-                filePrefix: 'xml-report',
-            }),
-        );
-        jasmine.getEnv().addReporter(new ElasTestBrowserManager());
+seleniumAddress: envs.seleniumAddress,
+specs: ['test-webapp-spec.js'],
+sutUrl: envs.sutUrl,
+capabilities: envs.capabilities,
+onPrepare: function() {
+var jasmineReporters = require('jasmine-reporters');
+jasmine.getEnv().addReporter(
+new jasmineReporters.JUnitXmlReporter({
+consolidateAll: true,
+savePath: 'testresults',
+// this will produce distinct xml files for each capability
+filePrefix: 'xml-report',
+}),
+);
+jasmine.getEnv().addReporter(new ElasTestBrowserManager());
 
         browser.waitForAngularEnabled(false);
     },
+
 };
 </code>
+
 </pre>
 </div>
 
@@ -2716,30 +2728,32 @@ describe('Test WebApp Application', function() {
 
         clearMessages();
     });
+
 });
 
 async function addRow(title, body) {
-    console.log('Inserting data...');
-    element(by.id('title-input')).sendKeys(title);
-    element(by.id('body-input')).sendKeys(body);
-    await sleep(2000);
-    console.log('Adding Message...');
-    element(by.id('submit')).click();
+console.log('Inserting data...');
+element(by.id('title-input')).sendKeys(title);
+element(by.id('body-input')).sendKeys(body);
+await sleep(2000);
+console.log('Adding Message...');
+element(by.id('submit')).click();
 }
 
 function clearMessages() {
-    console.log('Clearing Messages...');
-    element(by.id('clearSubmit')).click();
+console.log('Clearing Messages...');
+element(by.id('clearSubmit')).click();
 }
 
 function sleep(millis) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve(true);
-        }, millis);
-    });
+return new Promise((resolve) => {
+setTimeout(() => {
+resolve(true);
+}, millis);
+});
 }
 </code>
+
 </pre>
 </div>
 
@@ -2757,20 +2771,20 @@ var envs = {
         browserName: process.env.BROWSER || 'chrome',
         version: process.env.ET_EUS_API ? (process.env.BROWSER_VERSION ? process.env.BROWSER_VERSION : '') : 'ANY',
     },
+
 };
 
-
 class ElasTestBrowserManager {
-    
-    constructor() {
-        /* `_asyncFlow` is a promise.
-         * It is a "flow" that we create in `specStarted`.
-         * function will wait for the flow to finish before running the next spec. 
-         * This is not needed since Jasmine 3.0.
-         * See https://github.com/jasmine/jasmine/issues/842#issuecomment-336077418
-        */
-        this._asyncFlow = null;
-    }
+  
+ constructor() {
+/_ `_asyncFlow` is a promise.
+_ It is a "flow" that we create in `specStarted`.
+_ function will wait for the flow to finish before running the next spec.
+_ This is not needed since Jasmine 3.0.
+_ See https://github.com/jasmine/jasmine/issues/842#issuecomment-336077418
+_/
+this.\_asyncFlow = null;
+}
 
     jasmineStarted() {
         /* Wait for async tasks triggered by `specStarted`. */
@@ -2799,29 +2813,32 @@ class ElasTestBrowserManager {
     jasmineDone(result) {
         browser.close();
     }
+
 }
 
 exports.config = {
-    seleniumAddress: envs.seleniumAddress,
-    specs: ['test-webapp-spec.js'],
-    sutUrl: envs.sutUrl,
-    capabilities: envs.capabilities,
-    onPrepare: function() {
-        var jasmineReporters = require('jasmine-reporters');
-        jasmine.getEnv().addReporter(
-            new jasmineReporters.JUnitXmlReporter({
-                consolidateAll: true,
-                savePath: 'testresults',
-                // this will produce distinct xml files for each capability
-                filePrefix: 'xml-report',
-            }),
-        );
-        jasmine.getEnv().addReporter(new ElasTestBrowserManager());
+seleniumAddress: envs.seleniumAddress,
+specs: ['test-webapp-spec.js'],
+sutUrl: envs.sutUrl,
+capabilities: envs.capabilities,
+onPrepare: function() {
+var jasmineReporters = require('jasmine-reporters');
+jasmine.getEnv().addReporter(
+new jasmineReporters.JUnitXmlReporter({
+consolidateAll: true,
+savePath: 'testresults',
+// this will produce distinct xml files for each capability
+filePrefix: 'xml-report',
+}),
+);
+jasmine.getEnv().addReporter(new ElasTestBrowserManager());
 
         browser.waitForAngularEnabled(false);
     },
+
 };
 </code>
+
 </pre>
 </div>
 

@@ -5,6 +5,65 @@
 </div>
 
 <!-- ************************* -->
+<!-- ********* 2.0.0 ********* -->
+<!-- ************************* -->
+
+<h3 id="2.0.0" class="small-subtitle">2.0.0</h3>
+<h4 class="smaller-subtitle">15/10/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-   <a target="_blank" href="/docs/deploying/kubernetes">Kubernetes</a> support is here!
+-   Great <strong class="italicEtColor">GUI</strong> enhancements:
+    -   The **`side menu has been collapsed`** by default so that only the icons are displayed.
+    -   Great changes in the **`finished TJob Execution view`**: Test Results/Test cases are shown in tabs; Global execution data are now colapsed in a Expansion panel; If the execution fails and there are previous successful runs, **Log Comparator** is shown.
+        <br>
+        <div class="docs-gallery inline-block" style="margin-top: 6px; margin-left: 23px;">
+        <a data-fancybox="gallery-1" href="/docs/releases/images/2.0.0/feature_gui_finished_tjobexec_page.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/2.0.0/feature_gui_finished_tjobexec_page.png"/></a>
+        </div>
+    -   Now in the log cards it is shown if there are errors or warnings and it is possible to filter them. Errors and warnings are also coloured.
+        <div class="docs-gallery inline-block" style="margin-top: 6px; margin-left: 23px;">
+         <a data-fancybox="gallery-1" href="/docs/releases/images/2.0.0/feature_gui_log_card_error.png"><img class="img-responsive img-wellcome" style="max-height: 270px;" src="/docs/releases/images/2.0.0/feature_gui_log_card_error.png"/></a>
+        </div>
+    -   **Space** between cards and other elements **`has been reduced`**.
+    -   Now you can **select several TJobs** and **`delete them all at once`** in the Project section.
+    -   The **`number of TJobs and Suts`** contained in a project is now **shown** in the global project table.
+    -   Now you can **`resize some cards`** like Browser card in <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan execution.
+    -   Now the **Sut Id** is shown in **`TJobExecution`** views and tables
+    -   **`Network traces`** received by **Metricbeat** can be displayed now.
+    -   It's possible to **`collapse the LogAnalyzer menu`**.
+    -   **`Angular`** has been updated to version **`8`** and **`Covalent to 2.1.1`**.
+-   <a target="_blank" href="/docs/testlink">TestLink</a> Improvements:
+    -   Now you can **`pause and resume`** a Test Plan Execution.
+    -   Test Plans can now be executed with <a target="_blank" href="/docs/demos/cross-browser-testing">Crossbrowser</a>.
+    -   External TJob Execs (**Test Plan Executions**) can now **`be removed`**.
+    -   ElasTest Security Service (**ESS**) can now be **`used in Test Plan Execution`**.
+-   New <a target="_blank" href="/docs/testing/environment-variables/">environment variable</a> is available in the TJob: **`ET_TEST_CONTAINER_NAME`**.
+-   Dockbeat collects now **`Browser container metrics`**.
+-   On **remove** TJobExec, TJob or External TJob Exec its **folders** associated with its content **`are deleted`**.
+-   The version of the **ElasTest Browsers** has been updated to **`2.1.0`**.
+-   It is now possible to deploy <a target="_blank" href="/docs/tutorials/using-browsers-in-elastest/#browsersInAWS">ElasTest browsers in AWS</a>.
+    -   A <a target="_blank" href="/docs/demos/load-testing-with-aws/">demo project</a> has been added
+-   The **download of executions as JSON** has been **`improved`**: now the logs and metrics of each test case are downloaded, in case of having start / finish traces that limit them
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   <a target="_blank" href="/docs/testlink">TestLink</a>:
+    -   Fixed the bug that, **when synchronizing** TestLink data, **`removed start/end date`** from ExternalTestExecution (Test Plan Execution).
+    -   Now the **`browser logs are retrieved`** again in Test Plans with Suts.
+    -   Fixed bug that **incorrectly** established the **names of internal Suts containers** in ExternalTJobExecutions (Test Plan Execution), which caused the **`logs not to be saved`**.
+-   <strong class="italicEtColor">GUI</strong>:
+    -   Fixed bug in the section of a <strong class="italicEtColor">specific Project</strong> that **when duplicating or deleting a TJob** did **`not reload the list`** and had to re-navigate to see the changes.
+    -   Fixed a bug with **some metricbeat charts**, which only added one of the subtypes
+    -   There was a bug in the **Metric Cards** that when you remove one of them **`the one that wasn't was removed`**.
+    -   Other **little fixes**.
+-   <strong class="italicEtColor">EUS</strong>:
+    -   Solved **`concurrency problem on send messages`** through the **same websocket**.
+    -   Fixed bug in which when a **request to the browser** returned a code **other than 200**, an **`exception`** was launched. This began to give problems with the last versions of chrome (>75) and with Firefox.
+    -   Fixed a bug that did **`not intercept elastest scripts`** (elastestScript) and therefore, Single Browser test videos were not splitting and naming.
+-   Now the metric traces sent by each **Dockbeat** are filtered according to their execution id, since when several executions were launched all the dockbeats sent the metrics of all the executions and the information was **multiplied**.
+
+<!-- ************************* -->
 <!-- ********* 1.5.0 ********* -->
 <!-- ************************* -->
 

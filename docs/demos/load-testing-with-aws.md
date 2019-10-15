@@ -1,12 +1,12 @@
 <div class="range range-xs-left">
 <div class="cell-xs-10 cell-lg-6 text-md-left inset-md-right-80 cell-lg-push-1 offset-top-50 offset-lg-top-0">
-<h2 id="content" class="h1">Cross browser testing</h2>
+<h2 id="content" class="h1">Load testing with AWS</h2>
 <div class="offset-top-30 offset-md-top-30">
 </div>
 </div>
 </div>
 
-<p>A sample web application is started, two browsers are started (Chrome & Firefox) and an short exploratory session is performed on one of them, being replicated in the other. A time saver!</p>
+<p>An instance of AWS with <a href="https://openvidu.io" target="_blank">Openvidu</a> initiated by the user is used as Sut and a parameterized test is executed whose values must be provided by the user (since they are AWS credentials). The test will start an Openvidu session with three users and check that they are all connected and receiving video and audio from the other users. Once checked, if everything is correct, it will start a second session with 3 other users.</p>
 
 <div class="run-div">
     <hr />
@@ -15,7 +15,7 @@
             <img src="/docs/images/logo-dark.png" style="border: none; padding-top: 14px;" alt="" />
         </div>
         <div class="col col-md-10 col-sm-8 col-xs-12">
-            <a href="http://live.elastest.io/#/external/projects/2/tjob/2/exec/8" target="_blank" class="btn btn-xs btn-primary" title="Try it now">Try it now</a>
+            <a href="http://live.elastest.io/#/projects/9" target="_blank" class="btn btn-xs btn-primary" title="Try it now">Take a look</a>
         </div>
     </div>
     <hr />
@@ -79,14 +79,79 @@
     <hr />
 </div>
 
-To execute a <a target="_blank" href="/docs/testlink">TestLink</a> Test Plan with Crossbrowser you simply have to follow the same steps as for a normal execution, but in the modal window you have to check **`Enable Cross browser`** and add at least two browsers. To add browsers you just have to select them together with the version you want and press the **`Add browser`** button.
+<h5 class="small-subtitle">Load testing with AWS</h5>
+
+For **execute this TJob** it is necessary carry out the **following steps**:
+
+<h6>Preparing Sut</h6>
+
+-   **Start OpenVidu Sut instance**
+
+It will be necessary to create the instance in CloudFormation with <a href="https://github.com/elastest/demo-projects/blob/master/aws/junit5-qe-openvidu/src/test/resources/openvidu-sut.yml" target="_blank">this file</a>
+
+-   **Set OpenVidu Sut IP**
+
+Once created you must copy the **Public DNS** of the instance. In ElasTest, navigate to the Sut edit page and replace the value of **Sut Ip** field (**`Your OpenviduServer ip here`**) with the Public DNS.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-4" href="/docs/testlink/images/execute_plan_modal_enable_crossbrowser.png"><img class="img-responsive img-wellcome" src="/docs/testlink/images/execute_plan_modal_enable_crossbrowser.png"/></a>
+    <a data-fancybox="gallery-1" href="/docs/demos/images/load-testing-with-aws/sutip.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/load-testing-with-aws/sutip.png"/></a>
 </div>
 
-<h5 class="small-subtitle">Video <i class="fas fa-video"></i></h5>
+-   **Set AWS Private Key for OpenVidu**
+
+In th same page, replace the value of **Private Key** with your private key
+
+-   **Save the Sut configuration**
+
+Only do click to Save button.
+
+<h6>Preparing TJob</h6>
+
+-   **Edit the TJob to set values to the predefined parameters**
+
+    -   AWS_ACCESS_KEY_ID
+    -   AWS_SECRET_ACCESS_KEY
+    -   AWS_KEY_NAME
+    -   AWS_SSH_PRIVATE_KEY
+
+        The ssh private key must have a specific format: the line breaks must be replaced by the literal character string **`\r\n`**. Example:
+
+            -----BEGIN RSA PRIVATE KEY-----\r\naaaaaaaaaaaaaaaaaaaaaaa\r\nbbbbbbbbbbbbbbbbbbbbbbbb\r\ncccccccccccccccccccccc\r\n-----END RSA PRIVATE KEY-----
+
+    -   AWS_SECURITY_GROUPS
+
+        Security groups shall be established in the following format: **`["GROUP1","GROUP2",...]`**. If only one group is to be established, it must have the same format: **`["GROUP"]`**
+
+        <p></p>
+
+    -   AWS_TAG_SPECIFICATIONS
+
+        Tag specifications must have the following format:
+
+            [ { "resourceType":"instance", "tags":[ {"key":"KEY", "value":"VALUE"} ] } ]
+
+        You can use the following if you want:
+
+            [ { "resourceType":"instance", "tags":[ {"key":"Type", "value":"OpenViduLoadTest"} ] } ]
+
+*   **Activate WebRTC stats (Optional)**
+
+If you want to receive **WebRTC statistics** from browsers, you should check the **`webRtcStats`** checkbox within **EUS** at **Test Support Services**.
 
 <div class="docs-gallery inline-block">
-    <a data-fancybox="gallery-1" href="/docs/demos/images/gifs/cross-browser-testing.gif"><img class="img-responsive img-wellcome" src="/docs/demos/images/gifs/cross-browser-testing.gif"/></a>
+    <a data-fancybox="gallery-1" href="/docs/demos/images/load-testing-with-aws/webrtcstats.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/load-testing-with-aws/webrtcstats.png"/></a>
+</div>
+
+-   **Save the TJob**
+
+Only do click to Save button.
+
+<h6>Run TJob</h6>
+
+Just run the TJob and enjoy!
+
+Once the execution is finished, the result will be shown:
+
+<div class="docs-gallery inline-block">
+    <a data-fancybox="gallery-1" href="/docs/demos/images/load-testing-with-aws/result.png"><img class="img-responsive img-wellcome" src="/docs/demos/images/load-testing-with-aws/result.png"/></a>
 </div>
