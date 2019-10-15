@@ -6,7 +6,7 @@
 </div>
 </div>
 
-<h3 class="small-subtitle">How to run ElasTest on K8s</h3>
+<h3 class="small-subtitle">How to run ElasTest on K8s (EK mode)</h3>
 
 ##### Get the ElasTest Manifests
 - **Clone** toolbox project    
