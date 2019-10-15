@@ -89,13 +89,18 @@ In other words: <strong>SuT's, TJob's and TSS's are the modules that ElasTest ca
 
 ElasTest has different execution modes:
 
+##### Over Docker
+
 -   **Mini** (mini): This mode is intended for testing on a **`laptop`** or **`small server`**.
 -   **Single-Node** (singlenode): This mode is intended for testing on **`servers`** with with better technical characteristics. The main differences with **`mini`** are:
     -   Logs and metrics are stored in ElasticSearch and processed with Logstash, while in mini they are saved in MySQL.
     -   Modular architecture based on containers (ESM)
     -   The ElasTest Platform Monitoring service is available
--   **EK** (ElasTest over Kubernetes): For **`elastic`** environments.
--   **HEK** (soon): ElasTest with high availability over Kubernetes.
+
+##### Over Kubernetes
+
+-   **EK** (ElasTest over Kubernetes): For **`elastic`** environments. Similar to ElasTest mini (Docker)
+-   **HEK** (soon): ElasTest with high availability over Kubernetes. Similar to ElasTest single-node (Docker)
 
 In the ([Try ElasTest](/try-elastest/)) section you can find out more about how to start a specific mode and what its technical features are.
 
