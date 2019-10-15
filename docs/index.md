@@ -94,7 +94,7 @@ ElasTest has different execution modes:
     -   Logs and metrics are stored in ElasticSearch and processed with Logstash, while in mini they are saved in MySQL.
     -   Modular architecture based on containers (ESM)
     -   The ElasTest Platform Monitoring service is available
--   **EK**(ElasTest over Kubernetes): For **`elastic`** environments.
+-   **EK** (ElasTest over Kubernetes): For **`elastic`** environments.
 -   **HEK** (soon): ElasTest with high availability over Kubernetes.
 
 In the ([Try ElasTest](/try-elastest/)) section you can find out more about how to start a specific mode and what its technical features are.
