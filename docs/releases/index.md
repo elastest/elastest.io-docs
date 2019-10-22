@@ -5,6 +5,18 @@
 </div>
 
 <!-- ************************* -->
+<!-- ********* 2.0.1 ********* -->
+<!-- ************************* -->
+
+<h3 id="2.0.1" class="small-subtitle">2.0.1</h3>
+<h4 class="smaller-subtitle">22/10/2019</h4>
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+-   Sut of **Fullteaching demo project** fixed.
+-   Don't show **tooltip** in GUI **menu elements** when is expanded.
+
+<!-- ************************* -->
 <!-- ********* 2.0.0 ********* -->
 <!-- ************************* -->
 
