@@ -98,7 +98,7 @@ If you want to deploy ElasTest on a k8s cluster in AWS (in a single node), you w
 Add this line **`--service-node-port-range=1000-40000`** to the file **`/etc/kubernetes/manifests/kube-apiserver.yaml`**.
 
 ```
-:q!apiVersion: v1
+apiVersion: v1
 kind: Pod
 metadata:
 creationTimestamp: null
