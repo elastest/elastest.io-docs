@@ -1,0 +1,63 @@
+@startuml
+
+skinparam class {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+skinparam linetype ortho
+
+' Classes
+
+class TjobApiController
+class TJobService
+class TSSService
+class TJobExecOrchestratorService
+class AbstractMonitoringService
+class SutService
+class EimService
+class EtPluginsService
+class PlatformService
+class EtmFilesService
+class EtmTestResultService
+class EsmServiceClient
+
+' Relations
+
+TjobApiController --> TJobService
+
+TJobService --> TJobExecOrchestratorService
+TJobService --> AbstractMonitoringService
+TJobService --> EtmTestResultService
+TJobService --> PlatformService
+TJobService --> EtmFilesService
+
+TJobExecOrchestratorService --> TSSService
+TJobExecOrchestratorService --> SutService
+TJobExecOrchestratorService --> PlatformService
+TJobExecOrchestratorService --> AbstractMonitoringService
+TJobExecOrchestratorService --> EimService
+TJobExecOrchestratorService --> EtmTestResultService
+
+TSSService --> EtmFilesService
+TSSService --> PlatformService
+TSSService --> EtPluginsService
+TSSService --> EsmServiceClient
+
+SutService --> AbstractMonitoringService
+SutService --> EimService
+
+EimService --> EtPluginsService
+
+EtPluginsService --> PlatformService
+
+PlatformService --> EtmFilesService
+
+EtmTestResultService --> AbstractMonitoringService
+
+
+@enduml

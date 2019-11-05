@@ -1,0 +1,41 @@
+@startuml
+
+skinparam component {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+' skinparam linetype polyline|ortho
+
+package "ETM" {
+    package "ETM Backend" {
+        [Monitoring Service] -up-> [Queue Service]: sends traces
+        [Other code] -up-> [Queue Service]: configures
+        [Queue Service] -right-> Queue
+        API --> [Other code]
+        API --> [Monitoring Service]
+
+        Beats -- [Monitoring Service]
+    }
+
+    [Dockbeat] --> Beats: sends\ncontainers\nmetrics
+    [Filebeat] --> Beats: sends\ncontainers\nlogs
+
+
+    [Angular GUI] --> API
+    [Angular GUI] --> Queue: subscribe
+
+    [Other code] -right-> [TestLink]
+    [Jenkins] --> API
+}
+
+package "EDM" {
+    [Monitoring Service] --> [MySQL]: sends/\ngets traces
+    [Other code] <--> [MySQL]: stores/\ngets data
+}
+
+@enduml

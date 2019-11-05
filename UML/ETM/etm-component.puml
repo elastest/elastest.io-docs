@@ -1,0 +1,36 @@
+@startuml
+
+skinparam component {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+' skinparam linetype ortho
+
+package "ETM" {
+    [Filebeat] -left-> [Logstash]: sends containers logs
+    [Dockbeat] -right-> [Logstash]: sends containers metrics
+
+    [Logstash] -down-> [RabbitMQ]: sends traces
+    [RabbitMQ] -right- Queue
+    [Angular GUI] -left-> Queue: subscription
+
+    [ETM Backend] <-up-> [Angular GUI]
+    [ETM Backend] --> [RabbitMQ]: configures
+
+    [ETM Backend] -right-> [TestLink]
+    [Jenkins] -right-> [ETM Backend]
+}
+
+package "EDM" {
+    [Logstash] --> [ElasticSearch]: sends traces
+    [ETM Backend] <--> [MySQL]: stores/\ngets data
+
+    [ETM Backend] <--> [ElasticSearch]: gets data/\nmanages indices
+}
+
+@enduml

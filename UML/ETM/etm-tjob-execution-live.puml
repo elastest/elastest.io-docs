@@ -1,0 +1,88 @@
+@startuml
+
+skinparam component {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+' skinparam linetype polyline|ortho
+
+' Relations
+
+package "ETM Backend" {
+    [TjobApiController] -left-> [TJobService]
+
+    [TJobService] --> [TJobRepository]
+    [TJobService] --> [TJobExecRepository]
+    [TJobService] --> [TJobExecOrchestratorService]
+    [TJobService] --> [EtmTestResultService]
+    [TJobService] --> [EtmFilesService]
+    [TJobService] --> [AsyncMonitoringService]
+    [TJobService] --> [PlatformService]
+
+    [TJobExecOrchestratorService] --> [TJobExecRepository]
+    [TJobExecOrchestratorService] --> [TSSService]
+    [TJobExecOrchestratorService] --> [SutService]
+    [TJobExecOrchestratorService] --> [AbstractMonitoringService]
+    [TJobExecOrchestratorService] --> [EtmContextService]
+    [TJobExecOrchestratorService] --> [EimService]
+    [TJobExecOrchestratorService] --> [EtmTestResultService]
+    [TJobExecOrchestratorService] --> [PlatformService]
+
+    [AsyncMonitoringService] --> [AbstractMonitoringService]
+
+    [PlatformService] --> [EtmFilesService]
+    [PlatformService] -- [DockerServiceImpl]
+    [PlatformService] -- [K8ServiceImpl]
+
+
+    [TSSService] --> [EsmServiceClient]
+    [TSSService] --> [EtmContextAuxService]
+    [TSSService] --> [EtmFilesService]
+    [TSSService] --> [PlatformService]
+
+    [TSSService] --> [TJobExecRepository]
+    [TSSService] --> [ExternalTJobExecutionRepository]
+    [TSSService] --> [EtPluginsService]
+
+    [EtPluginsService] --> [PlatformService]
+
+
+    [EsmServiceClient] -- [EsmServiceClientImpl]
+    [EsmServiceClient] -- [MiniEsmServiceClient]
+
+    [MiniEsmServiceClient] --> [PlatformService]
+    [MiniEsmServiceClient] --> [EtPluginsService]
+}
+
+package "EPM" {
+    [DockerServiceImpl] --> [DockerService]
+    [DockerServiceImpl] --> [DockerComposeService]
+
+    [K8ServiceImpl] --> [K8sService]
+}
+
+[DockerService] --> [Docker]
+[DockerComposeService] --> [Docker]
+
+[K8sService] --> [Kubectl]
+
+[Docker] --> [Logstash]: Sends logs
+
+[RabbitMQ] -- () "Queue"
+[Angular GUI] --> () "Queue": subscription
+
+[Logstash] --> [ElasticSearch]: sends traces
+[Logstash] --> [RabbitMQ]: sends traces
+
+[EsmServiceClientImpl] --> () "ESM"
+
+[EtmFilesService] --> () "File System"
+
+[Angular GUI] -right-> [TjobApiController]
+
+
+@enduml

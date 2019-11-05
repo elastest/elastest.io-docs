@@ -1,0 +1,59 @@
+@startuml
+
+title QoE session
+
+participant TJobExecution
+participant EUS
+participant EPM
+participant BrowserPresenter
+participant BrowserViewer
+participant QoEMeterService
+
+TJobExecution --> EUS: GET /session/{sessionIdPresenter}\n/webrtc/qoe/meter/start\n?presenterPath=presenterVideoPath\n&presenterSessionId={sessionIdPresenter}\n&viewerPath=viewerVideoPath\n&viewerSessionId={sessionIdViewer}
+
+
+EUS --> EPM: create\nQoEMeterService
+EPM --> QoEMeterService: start
+activate QoEMeterService
+
+QoEMeterService --> EPM: result
+EPM --> EUS: result
+
+EUS --> BrowserPresenter: get original video
+
+BrowserPresenter --> EUS: original video
+
+EUS --> BrowserViewer: get received video
+
+BrowserViewer --> EUS: received video
+
+
+EUS --> QoEMeterService: upload original and received videos
+
+EUS ->> EUS: continue\nasynchronously
+
+EUS --> TJobExecution: result (started)
+
+loop calculate finished
+TJobExecution --> EUS: ask for calculate finished
+activate TJobExecution
+end
+
+group async
+
+EUS --> QoEMeterService: execute calculate_qoe_metrics.sh
+
+QoEMeterService --> EUS: result
+
+EUS --> QoEMeterService: get csv files
+QoEMeterService --> EUS: csv files
+
+EUS --> EUS: calculate average for\neach csv and save as\nfile in execution folder
+
+EUS --> EUS: set calculate\nfinished to true
+end
+
+deactivate TJobExecution
+
+
+@enduml
