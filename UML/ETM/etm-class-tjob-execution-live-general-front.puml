@@ -1,0 +1,49 @@
+@startuml
+
+skinparam class {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+skinparam linetype ortho
+
+' Classes
+
+class TjobExecViewComponent
+class EtmMonitoringViewComponent
+class EtmLogsGroupComponent
+class LogsViewComponent
+class EtmChartGroupComponent
+class MetricsChartCardComponent
+class MonitoringService
+class ElastestRabbitmqService
+class EsmService
+class TJobService
+class TJobExecService
+
+
+' Relations
+
+TjobExecViewComponent --> EtmMonitoringViewComponent
+TjobExecViewComponent --> EsmService
+TjobExecViewComponent -right-> TJobService
+TjobExecViewComponent -left-> TJobExecService
+
+EtmMonitoringViewComponent --> EtmLogsGroupComponent
+EtmMonitoringViewComponent --> EtmChartGroupComponent
+EtmMonitoringViewComponent --> MonitoringService
+
+EtmLogsGroupComponent --> LogsViewComponent
+EtmLogsGroupComponent -left-> MonitoringService
+EtmLogsGroupComponent --> ElastestRabbitmqService
+
+EtmChartGroupComponent --> MetricsChartCardComponent
+EtmChartGroupComponent -right-> MonitoringService
+EtmChartGroupComponent --> ElastestRabbitmqService
+
+
+@enduml

@@ -17,14 +17,14 @@ class TjobApiController
 class TJobService
 class TSSService
 class TJobExecOrchestratorService
-class AbstractMonitoringService
+abstract class AbstractMonitoringService
 class SutService
 class EimService
 class EtPluginsService
-class PlatformService
+abstract class PlatformService
 class EtmFilesService
 class EtmTestResultService
-class EsmServiceClient
+interface EsmServiceClient
 
 ' Relations
 

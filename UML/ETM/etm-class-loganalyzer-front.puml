@@ -1,0 +1,42 @@
+@startuml
+
+skinparam class {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+skinparam linetype ortho
+
+' Classes
+
+class ElastestLogAnalyzerComponent
+class GetIndexModalComponent
+class MonitoringService
+class LogAnalyzerService
+class TJobExecService
+class ExternalService
+class ProjectService
+class TestLinkService
+
+' Relations
+
+ElastestLogAnalyzerComponent -right-> LogAnalyzerService
+ElastestLogAnalyzerComponent --> MonitoringService
+ElastestLogAnalyzerComponent --> TJobExecService
+ElastestLogAnalyzerComponent --> ExternalService
+ElastestLogAnalyzerComponent --> GetIndexModalComponent
+
+LogAnalyzerService --> MonitoringService
+
+GetIndexModalComponent --> ProjectService
+GetIndexModalComponent --> TJobService
+GetIndexModalComponent --> TJobExecService
+GetIndexModalComponent --> ExternalService
+GetIndexModalComponent -left-> TestLinkService
+
+
+@enduml
