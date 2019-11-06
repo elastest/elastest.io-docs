@@ -14,38 +14,43 @@ skinparam participant {
 actor Tester
 participant ETM
 participant EPM
-participant SuT
+participant SUT
 participant TJobExecution
+
+' Notes over participants
+note over EPM
+   Deploy components of a TJob
+   on Docker or K8s
+end note
 
 ' Relations
 
-Tester --> ETM: Create Project
-Tester --> ETM: Create SuT
-Tester --> ETM: Create TJob
-
 Tester --> ETM: Execute TJob
 ETM --> EPM: Request SuT
-EPM --> SuT: Deploy
-activate SuT
+
+create SUT
+EPM --> SUT: Deploy
+activate SUT
 
 ETM --> EPM: Request TJobExecution
+create TJobExecution
 EPM --> TJobExecution: deploy
 activate TJobExecution
 
 group Test Execution
     TJobExecution --> ETM: logs/metrics
     ETM --> Tester: logs/metrics
-    TJobExecution --> SuT: exercise
+    TJobExecution --> SUT: exercise
 
-    SuT --> ETM: logs/metrics
+    SUT --> ETM: logs/metrics
     ETM --> Tester: logs/metrics
 
-    TJobExecution --> SuT: verify behavior
+    TJobExecution --> SUT: verify behavior
 end
 
 TJobExecution --> ETM: Test results
 destroy TJobExecution
-destroy SuT
+destroy SUT
 ETM --> Tester: Test results
 
 
