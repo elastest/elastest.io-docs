@@ -1,0 +1,53 @@
+@startuml
+
+skinparam participant {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+' Participants
+
+actor Tester
+participant ETM
+participant EPM
+participant SuT
+participant TJobExecution
+
+' Relations
+
+Tester --> ETM: Create Project
+Tester --> ETM: Create SuT
+Tester --> ETM: Create TJob
+
+Tester --> ETM: Execute TJob
+ETM --> EPM: Request SuT
+EPM --> SuT: Deploy
+activate SuT
+
+ETM --> EPM: Request TJobExecution
+EPM --> TJobExecution: deploy
+activate TJobExecution
+
+group Test Execution
+    TJobExecution --> ETM: logs/metrics
+    ETM --> Tester: logs/metrics
+    TJobExecution --> SuT: exercise
+
+    SuT --> ETM: logs/metrics
+    ETM --> Tester: logs/metrics
+
+    TJobExecution --> SuT: verify behavior
+end
+
+TJobExecution --> ETM: Test results
+destroy TJobExecution
+destroy SuT
+ETM --> User: Test results
+
+
+
+@enduml
