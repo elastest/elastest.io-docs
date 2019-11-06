@@ -1,0 +1,57 @@
+@startuml
+
+skinparam participant {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+' Participants
+
+actor User
+participant "Angular GUI"
+participant "ETM Backend"
+participant MySQL
+participant "MonitoringDB (ES/MySQL)"
+
+' Relations
+
+User --> "Angular GUI": View regresion execution \nor execution comparison
+"Angular GUI" --> User: shows info and \nLogComparator
+
+
+User --> "Angular GUI": Click to\n'Start comparison'\nbutton
+
+"Angular GUI" --> "ETM Backend": POST \n/api/monitoring/log/compare/async\n ?comparison={comparison}\n&view={view}\n&timeout={timeout}
+
+
+alt view=complete
+    "ETM Backend" --> "MonitoringDB (ES/MySQL)": get all logs from \nboth executions
+    "MonitoringDB (ES/MySQL)" --> "ETM Backend": return logs
+else view=testlogs
+    "ETM Backend" --> MySQL: get all \ntestSuites/testCases \nfrom both executions
+    "MonitoringDB (ES/MySQL)" --> "ETM Backend": response
+
+    loop testSuites/testCases
+        "ETM Backend" --> "MonitoringDB (ES/MySQL)": get all \ntestCase logs from \nboth executions
+        "MonitoringDB (ES/MySQL)" --> "ETM Backend": return logs
+    end
+else view=failedtests
+    "ETM Backend" --> MySQL: get all failed \ntestSuites/testCases \nfrom both executions
+    "MonitoringDB (ES/MySQL)" --> "ETM Backend": response
+
+    loop testSuites/testCases
+        "ETM Backend" --> "MonitoringDB (ES/MySQL)": get all \ntestCase logs from \nboth executions
+        "MonitoringDB (ES/MySQL)" --> "ETM Backend": return logs
+    end
+end
+
+"ETM Backend" --> "ETM Backend": compare logs
+"ETM Backend" --> "Angular GUI": return logs
+"Angular GUI" --> User: show comparison
+
+
+@enduml

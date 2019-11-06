@@ -9,9 +9,6 @@ skinparam participant {
     ArrowThickness 2
 }
 
-
-title Create session
-
 participant TJobExecution
 participant EUS
 participant EPM
@@ -27,7 +24,6 @@ EPM --> EUS: result
 EUS --> TJobExecution: sessionId
 
 ... ...
-
 
 TJobExecution --> EUS: DELETE /session/{sessionId}
 EUS --> EPM: delete browser
