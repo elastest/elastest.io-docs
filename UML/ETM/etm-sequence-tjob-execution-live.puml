@@ -46,7 +46,7 @@ end
 TJobExecution --> ETM: Test results
 destroy TJobExecution
 destroy SuT
-ETM --> User: Test results
+ETM --> Tester: Test results
 
 
 
