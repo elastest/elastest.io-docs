@@ -1,5 +1,15 @@
 @startuml
 
+skinparam participant {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+
 title QoE session
 
 participant TJobExecution
@@ -35,22 +45,22 @@ EUS ->> EUS: continue\nasynchronously
 EUS --> TJobExecution: result (started)
 
 loop calculate finished
-TJobExecution --> EUS: ask for calculate finished
-activate TJobExecution
+    TJobExecution --> EUS: ask for calculate finished
+    activate TJobExecution
 end
 
 group async
 
-EUS --> QoEMeterService: execute calculate_qoe_metrics.sh
+    EUS --> QoEMeterService: execute calculate_qoe_metrics.sh
 
-QoEMeterService --> EUS: result
+    QoEMeterService --> EUS: result
 
-EUS --> QoEMeterService: get csv files
-QoEMeterService --> EUS: csv files
+    EUS --> QoEMeterService: get csv files
+    QoEMeterService --> EUS: csv files
 
-EUS --> EUS: calculate average for\neach csv and save as\nfile in execution folder
+    EUS --> EUS: calculate average for\neach csv and save as\nfile in execution folder
 
-EUS --> EUS: set calculate\nfinished to true
+    EUS --> EUS: set calculate\nfinished to true
 end
 
 deactivate TJobExecution

@@ -1,0 +1,42 @@
+@startuml
+
+skinparam participant {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+
+title Create session
+
+participant TJobExecution
+participant EUS
+participant EPM
+participant Browser
+
+TJobExecution --> EUS: POST /session
+EUS --> EPM: create browser
+EPM --> Browser: deploy
+activate Browser
+
+Browser --> EPM: result
+EPM --> EUS: result
+EUS --> TJobExecution: sessionId
+
+... ...
+
+
+TJobExecution --> EUS: DELETE /session/{sessionId}
+EUS --> EPM: delete browser
+EPM --> Browser: undeploy
+destroy Browser
+
+Browser --> EPM: result
+EPM --> EUS: result
+EUS --> TJobExecution: result
+
+
+@enduml
