@@ -1,0 +1,28 @@
+@startuml
+
+skinparam class {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+' skinparam linetype ortho
+
+class ExternalProject
+class ExternalTJob
+class ExternalTJobExecution
+class ExternalTestCase
+class ExternalTestExecution
+
+
+ExternalProject "0..1" *-- "0..*" ExternalTJob
+
+ExternalTJob "0..1" *-- "0..*" ExternalTJobExecution
+ExternalTJob "0..*" *-- "0..*" ExternalTestCase
+
+ExternalTestCase "0..1" *-- "0..*" ExternalTestExecution
+ExternalTJobExecution "0..1" *-- "0..*" ExternalTestExecution
+@enduml

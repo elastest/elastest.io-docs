@@ -1,0 +1,28 @@
+@startuml
+
+skinparam component {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+skinparam linetype ortho
+
+actor User
+
+package "ETM" {
+    [ETM GUI] --> [ETM Backend]
+}
+
+User -left-> [ETM GUI]
+
+[ETM Backend] --> [TestLink]
+[ETM Backend] --> [Other ElasTest \nComponents]
+[ETM GUI] --> [Other ElasTest \nComponents]
+
+User --> [TestLink]
+
+@enduml

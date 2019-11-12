@@ -1,0 +1,108 @@
+@startuml
+
+skinparam participant {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+' Participants
+actor User
+
+box "ETM" #dddddd
+participant "ETM GUI"
+participant "ETM Backend"
+end box
+
+participant TestLink
+participant EUS
+participant Browser
+participant "Other\nServices"
+
+' Relations
+
+User --> "ETM GUI": go to Test \nPlan page
+User --> "ETM GUI": start Test \nPlan execution
+"ETM GUI" --> User: show modal for \nselect configuration
+User --> "ETM GUI": select configuration
+
+"ETM GUI" --> "ETM Backend": get Test Plan \nfrom TestLink
+"ETM Backend" --> TestLink: get Test Plan
+TestLink --> "ETM Backend": response
+"ETM Backend" --> "ETM GUI": response
+
+"ETM GUI" --> "ETM Backend": get Build \nfrom TestLink
+"ETM Backend" --> TestLink: get Build
+TestLink --> "ETM Backend": response
+"ETM Backend" --> "ETM GUI": response
+
+"ETM GUI" --> "ETM Backend": get ExternalTJob
+"ETM Backend" --> "ETM GUI": response
+
+"ETM GUI" --> "ETM Backend": create \nExternalTJobExecution
+"ETM Backend" --> "ETM GUI": response
+
+"ETM Backend" --> "ETM Backend": create execution\nresources
+"ETM Backend" --> EUS: provide EUS \nif not exists
+note right
+    in elastest mini and single-node,
+    EUS is already provided
+end note
+"ETM Backend" --> "Other\nServices": provide other\nservices (optional)
+
+alt with sut deployed by ElasTest
+    "ETM Backend" --> "ETM Backend": start sut
+end
+
+"ETM Backend" --> "ETM GUI": return \nExternalTJobExecution
+
+"ETM GUI" --> "EUS": request browser
+
+"EUS" --> "Browser": provide
+activate Browser
+"EUS" --> "ETM GUI": response
+
+alt with sut deployed by ElasTest
+    loop
+        "ETM GUI" --> "ETM Backend": wait for sut ready
+    end
+    "ETM GUI" --> Browser: open sut url
+end
+
+"ETM GUI" --> User: show browser
+
+loop for each test case and (!paused or !stopped)
+    "ETM GUI" --> EUS: start video recording
+    EUS --> Browser: start video recording
+    "ETM GUI" --> User: show test case\nexecution panel
+    User --> "Browser": interacts
+    alt execute test case
+        User --> "ETM GUI": select test case\nresult and save
+    else pause execution
+        "ETM GUI" --> "ETM Backend": save state
+        "ETM Backend" --> "ETM GUI"
+    else stop execution
+    end
+    "ETM GUI" --> EUS: stop video recording
+    EUS --> Browser: stop video recording
+end
+
+"ETM GUI" --> "ETM Backend": finish\nExternalTJobExecution
+"ETM Backend" --> "ETM GUI": response
+
+"ETM GUI" --> "EUS": stop browser
+EUS --> Browser: stop
+destroy Browser
+
+EUS --> "ETM GUI": response
+
+"ETM GUI" --> "ETM Backend": deprovide EUS\nif is necessary
+"ETM Backend" --> "ETM GUI": response
+"ETM GUI" --> User: show results page
+
+
+
+@enduml
