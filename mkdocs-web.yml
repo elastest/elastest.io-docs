@@ -31,6 +31,7 @@ pages:
     - 'Cross browser testing': 'demos/cross-browser-testing.md'
     - 'Security testing': 'demos/security-testing.md'
     - 'Chaos testing': 'demos/chaos-testing.md'
+    - 'QoE testing': 'demos/qoe.md'
     - 'Test recommendation': 'demos/test-recommendation.md'
     - 'Test cost estimation': 'demos/test-cost-estimation.md'
 

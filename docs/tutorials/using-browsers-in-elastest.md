@@ -139,11 +139,11 @@ public class ElastestBaseTest {
 }
 ```
 
-> -   **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`** variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+> - **`ET_SUT_HOST`**, **`ET_SUT_PORT`** and **`ET_SUT_PROTOCOL`** variables will be the IP, port and protocol of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
 
-> -   **`ET_EUS_API`** variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
+> - **`ET_EUS_API`** variable tells us where to connect to use Elastest browsers (standard Selenium Hub). If the variable has no value, we can consider that this service is no available and then local browsers have to be used (here we are using <a href="https://github.com/bonigarcia/webdrivermanager" target="_blank">WebDriver Manager</a> Java library. This library is responsible to download and configure any additional software needed to use installed browsers from tests)
 
-> -   The values of the variables **browserType** and **browserVersion** are taken from the **properties** browser and browserVersion respectively, which you can pass in the test run command with **`-Dbrowser=chrome`**.
+> - The values of the variables **browserType** and **browserVersion** are taken from the **properties** browser and browserVersion respectively, which you can pass in the test run command with **`-Dbrowser=chrome`**.
 
 #### **Jenkins Pipeline** <i class="fab fa-jenkins"></i>
 
@@ -166,7 +166,7 @@ The example above can be split into the following sections:
 
 <p></p>
 
--   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options). In this case is very important the part **`tss: ['EUS']`** because allow us use the browsers.
+- **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options). In this case is very important the part **`tss: ['EUS']`** because allow us use the browsers.
 
 <p></p>
 
@@ -180,7 +180,7 @@ node{
 
 <p></p>
 
--   **Test Execution** : Dowload the git project and execution test, we change the type of browser with the variable **`-Dbrowser=`**, and define the version with the variable **`-DbrowserVersion=`**
+- **Test Execution** : Dowload the git project and execution test, we change the type of browser with the variable **`-Dbrowser=`**, and define the version with the variable **`-DbrowserVersion=`**
 
 <p></p>
 
@@ -339,7 +339,7 @@ public class FullTeachingTestE2EREST extends FullTeachingTestE2E {
 
 We can observe the all code in this [link](https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2EREST.java).
 
-> -   The test mark the init of the test case in the **`setup`** method and the finish of the test case in the **`dispose`** method. With the code `log.info("##### Start test: " + info.getTestMethod().get().getName());`and `log.info("##### Finish test: " + info.getTestMethod().get().getName());` respectively.
+> - The test mark the init of the test case in the **`setup`** method and the finish of the test case in the **`dispose`** method. With the code `log.info("##### Start test: " + info.getTestMethod().get().getName());`and `log.info("##### Finish test: " + info.getTestMethod().get().getName());` respectively.
 
 ```java
 @ExtendWith(SeleniumExtension.class)
@@ -372,7 +372,7 @@ public class FullTeachingTestE2E {
 
 We can observe the all code in this [link](https://github.com/elastest/full-teaching-experiment/blob/master/src/test/java/com/fullteaching/backend/e2e/FullTeachingTestE2E.java).
 
-> -   **`ET_SUT_HOST`**, **`ET_SUT_PORT`** variables will be the IP of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
+> - **`ET_SUT_HOST`**, **`ET_SUT_PORT`** variables will be the IP of our SuT respectively. ElasTest will automatically inject the right value (Know more about <a href="/docs/testing/environment-variables/">Environment Variables</a>)
 
 #### **Jenkins** <i class="fab fa-jenkins"></i>
 
@@ -434,7 +434,7 @@ def containerIp(containerName, network) {
 
 The example above can be split into the following sections:
 
--   **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options). In this case is very important the part **`tss: ['EUS']`** because allow us use the browsers.
+- **ElasTest plugin block with configuration** : this block will contain all the steps that the test must follow, as well as the necessary [configuration options](#options). In this case is very important the part **`tss: ['EUS']`** because allow us use the browsers.
 
 <p></p>
 
@@ -448,7 +448,7 @@ node{
 
 <p></p>
 
--   **Sut configuration** : The SUT must be started, passing the **`${env.ET_SUT_CONTAINER_NAME}`** env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
+- **Sut configuration** : The SUT must be started, passing the **`${env.ET_SUT_CONTAINER_NAME}`** env variable (provided by ElasTest) as name of the container. This will allow ElasTest to receive logs and metrics from the Sut.
 
 <p></p>
 
@@ -461,8 +461,8 @@ sutIp = containerIp(sutContainerName,network)
 
 <p></p>
 
--   **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.
-    <p></p>
+- **Wait for Sut** : You have to obtain the Sut network and ip and run check image (elastest/etm-check-service-up) provided by ElasTest to wait for the Sut to be ready to be used. This step is not required, you can wait in other ways or not do it, but for this example we do it.
+  <p></p>
 
 ```groovy
 echo 'Sut ip: '+ sutIp
@@ -497,7 +497,7 @@ def containerIp(containerName, network) {
 
 <p></p>
 
--   **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as an environment variable or pass it as a maven property so that the test knows where the SUT is.
+- **Test Execution** : Finally, the tests should be executed to verify that the SUT is working correctly. Remember that you have to configure the Sut ip as an environment variable or pass it as a maven property so that the test knows where the SUT is.
 
 <p></p>
 
@@ -512,7 +512,7 @@ stage("Run Tests") {
 
 <p></p>
 
--   **Stop Sut** : The SUT will stop when the test is finished, passing the **`${env.ET_SUT_CONTAINER_NAME}`** env variable (provided by ElasTest) as name of the container.
+- **Stop Sut** : The SUT will stop when the test is finished, passing the **`${env.ET_SUT_CONTAINER_NAME}`** env variable (provided by ElasTest) as name of the container.
 
 <p></p>
 
@@ -594,7 +594,7 @@ Elastest can also start browsers on an **AWS** instance. For this, it is necessa
 
 **`amiId`** and **`region`** values **must** be as above.
 
-We could **adapt** the code of our **`ElastestBaseTest.class from the first example`** to use browsers in **AWS**. For this we have added the **`initAwsConfig`** method that is called in the *@BeforeAll* and initializes the awsConfig object from values that can be sent in environment variables. Afterwards, you only need to add the awsConfig object to a **capability**.
+We could **adapt** the code of our **`ElastestBaseTest.class from the first example`** to use browsers in **AWS**. For this we have added the **`initAwsConfig`** method that is called in the _@BeforeAll_ and initializes the awsConfig object from values that can be sent in environment variables. Afterwards, you only need to add the awsConfig object to a **capability**.
 
 ##### **ElastestBaseTest class**
 
@@ -747,3 +747,49 @@ public class ElastestBaseTest {
 ###### **Demo**
 
 You can see a demo <a href="/docs/demos/load-testing-with-aws">here</a>.
+
+<h3 class="small-subtitle" id="qoe">QoE testing with EUS</h3>
+
+Quality of Experience <a href="https://en.wikipedia.org/wiki/Quality_of_experience" target="_blank" title="QoE">(QoE)</a> is a measure of the delight or annoyance of a customer's experiences with a service. EUS offers an api for calculating QoE metrics for video, which is very useful for testing quality in videoconferencing applications such as <a href="https://openvidu.io/" target="_blank">OpenVidu</a>.
+
+The QoE test offered by EUS consists of the comparison of two videos: the first video would be the original video published by an endpoint and the second the video received through that endpoint. This comparison generates several csv with different quality metrics. You can take a look at these <a href="https://github.com/elastest/elastest-webrtc-qoe-meter/blob/master/data/openvidu_objective_results_10%25_packet_loss.csv" target="_blank">example results</a>.
+
+This functionality is available since version 2.1.0 of ElasTest, and a <a href="/docs/demos/qoe" target="_blank">sample demo project</a> is included. Is only available in elastest mini and siglenode modes, for Docker and AWS. For Kubernetes (EK and HEK) is not available yet
+
+In order to calculate qoe metrics, it is **necessary** that the videos to be processed (original video + received video) have a **padding at the beginning and at the end**. For this you can use <a href="https://github.com/elastest/elastest-webrtc-qoe-meter/blob/master/scripts/generate_input_video.sh" target="_blank">this script</a>. It is recommended to set a padding of at least 12 seconds, replacing the default value of the variable PADDING_DURATION_SEC (5).
+
+Once you have obtained the original video (.y4m) and audio (.wav) with padding (two files are generated automatically), you must **include it as a fake resource capability** in your test, so that instead of showing the video from the camera this video is used.
+
+```
+    ChromeOptions options = new ChromeOptions();
+    // This flag avoids to grant the user media
+    options.addArguments("--use-fake-ui-for-media-stream");
+    // This flag fakes user media with synthetic video
+    options.addArguments("--use-fake-device-for-media-stream");
+    // This flag allows to load fake media files from host
+    options.addArguments("--allow-file-access-from-files");
+    // This flag sets the video input (with padding)
+    options.addArguments("--use-file-for-fake-video-capture=/path/to/video_with_padding.y4m");
+    // This flag sets the audio input
+    options.addArguments("--use-file-for-fake-audio-capture=/path/to/audio_with_padding.wav");
+
+```
+
+The browser must be able to access these files. To do this EUS has an **api** to be able to **upload these files** during the execution to the browser container. If the files are accessible from the test you can simply attach them to the call, but you can also have them in an online repository and send the url to the request and the EUS itself download it into the browser container, which is exactly what is done in the above mentioned <a href="/docs/demos/qoe" target="_blank">sample demo project</a>.
+
+To do this, call to the EUS api with path **`/browserfile/session/{sessionId}/`** and the following parameters:
+
+- **fileUrl**: the remote and accesible url where the video is stored.
+- **fileName**: the name under which the video will be saved inside the browser container. Should be the same as that defined in **`--use-file-for-fake-video-capture`**
+- **filePath**: the path under which the video will be saved inside the browser container. Should be the same as that defined in **`--use-file-for-fake-video-capture`**
+
+Then do the same for the audio file.
+
+To start the test call the EUS api (/session/{sessionId}/webrtc/qoe/meter/start) with the following parameters:
+
+- **presenterPath**: the path of the original video in the container of the browser that emits it.
+- **presenterSessionId**: the session id of the browser that broadcasts the original video.
+- **viewerPath**: the path of the received video in the container of the browser that receives it.
+- **viewerSessionId**: the session id of the browser receiving the broadcast video.
+
+This request is in charge of **initiating the service** that is in charge of calculating the QoE metric, obtaining and passing to this service the videos of the browser containers. Then it executes in the **background the calculation** of the metrics and it will **return the Id of the service** as an answer, so that from the test the EUS can be polled to know the state of the calculation. Once completed, the EUS itself will obtain the **csv generated and attach them** to the execution. It will also calculate the **average of each metric and attach** it.
