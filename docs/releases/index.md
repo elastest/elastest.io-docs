@@ -13,7 +13,7 @@
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
 
-- Now EUS is able to calculate <a target="_blank" href="/docs/tutorials/using-browsers-in-elastest/#qoe">QoE metrics for video</a>. A new <a href="/docs/demos/qoe" target="_blank">demo project</a> has been added.
+- Now EUS is able to calculate <a target="_blank" href="/docs/tutorials/qoe/">QoE metrics for video</a>. A new <a href="/docs/demos/qoe" target="_blank">demo project</a> has been added.
 
 <h5 class="smaller-subtitle">Bug Fixes</h5>
 

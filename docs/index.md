@@ -100,7 +100,7 @@ ElasTest has different execution modes:
 ##### Over Kubernetes
 
 -   **EK** (ElasTest over Kubernetes): For **`elastic`** environments. Similar to ElasTest mini (Docker)
--   **HEK** (soon): ElasTest with high availability over Kubernetes. Similar to ElasTest single-node (Docker)
+-   **HEK** (Highly Scalable ElasTest Kubernetes soon): ElasTest with high availability over Kubernetes. Similar to ElasTest single-node (Docker)
 
 In the ([Try ElasTest](/try-elastest/)) section you can find out more about how to start a specific mode and what its technical features are.
 
