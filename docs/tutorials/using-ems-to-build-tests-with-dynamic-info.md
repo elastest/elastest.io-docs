@@ -8,7 +8,7 @@
 
 This tutorial aims to show the basic concepts and principles of the Elastest Monitoring Service, and its intended use. You can check the documentation of this service following this [link](/test-services/ems/).
 
-In this example, we will use Elastest to assess that a webserver -- the System under Test -- is able to serve multiple clients, and uses as much bandwitdh as possible when doing so.
+In this example, we will use Elastest to assess that a webserver — the System under Test — is able to serve multiple clients, and uses as much bandwitdh as possible when doing so.
 
 In particular, our TJob will start one download of a large file at the beginning of the test, and after some time, it will start a second one. The test passes if the bandwidth consumption with two downloads in parallel roughly doubles the bandwidth consumption with only one download going on.
 
@@ -20,6 +20,7 @@ This example is **shipped along with ElasTest** within the project **`EMS Exampl
 
 Our SuT is [nginx](https://www.nginx.com/), a well-known webserver.
 The configuration of the System under Test in elastest is as follows:
+
 -   **SuT Name**: **`nginx`**
 -   Select **`Deployed by Elastest`**
 -   Select **`With Docker Compose`**
@@ -91,6 +92,7 @@ trigger tjobfinished do emit avgbwhigh on #highavg
 trigger tjobfinished do emit testcorrect on #testresult
 ```
 In this Monitoring Machine,
+
 + The predicate `isnet` filters the events containing information about the net.
 + The boolean streams `lowstarted/ended` indicate when the period of only one download starts and ends.
 + The boolean streams `highstarted/ended` indicate when the period of two downloads in parallel starts and ends.
@@ -131,6 +133,7 @@ The configuration for the TJob at ElasTest is as follows:
         cd /go;./tjob
 
 -   **Test Support Services**: Check **`EMS`**
+
 The TJob configuration should look like this:
 <p></p>
 <div class="docs-gallery inline-block">
