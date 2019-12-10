@@ -1,0 +1,71 @@
+@startuml
+
+skinparam participant {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+' Participants
+actor User
+
+box "ETM" #dddddd
+participant "ETM GUI"
+participant "ETM Backend"
+end box
+
+participant TestLink
+participant EUS
+participant Browser1
+participant BrowserN
+participant "Other\nServices"
+
+' Relations
+
+User --> "ETM GUI": go to Test \nPlan page
+User --> "ETM GUI": start Test \nPlan execution
+"ETM GUI" --> User: show modal for \nselect configuration
+User --> "ETM GUI": select configuration\n(crossbrowser checked and\nbrowsers selected)
+
+"ETM GUI" --> User: show browsers
+
+loop for each test case and (!paused or !stopped)
+    "ETM GUI" --> EUS: start video recording
+    EUS --> Browser1: start video recording
+    EUS --> BrowserN: start video recording
+    "ETM GUI" --> User: show test case\nexecution panel
+    User --> "Browser1": interacts
+    "ETM GUI" --> "BrowserN": propagate\nBrowser1 events
+    alt execute test case
+        User --> "ETM GUI": select test case\nresult and save
+    else pause execution
+        "ETM GUI" --> "ETM Backend": save state
+        "ETM Backend" --> "ETM GUI"
+    else stop execution
+    end
+    "ETM GUI" --> EUS: stop video recording
+    EUS --> Browser1: stop video recording
+    EUS --> BrowserN: stop video recording
+end
+
+"ETM GUI" --> "ETM Backend": finish\nExternalTJobExecution
+"ETM Backend" --> "ETM GUI": response
+
+"ETM GUI" --> "EUS": stop browsers
+EUS --> Browser1: stop
+destroy Browser1
+EUS --> BrowserN: stop
+destroy BrowserN
+
+EUS --> "ETM GUI": response
+
+"ETM GUI" --> "ETM Backend": deprovide EUS\nif is necessary
+"ETM Backend" --> "ETM GUI": response
+"ETM GUI" --> User: show results page
+
+
+
+@enduml

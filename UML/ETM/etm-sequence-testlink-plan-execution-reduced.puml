@@ -1,0 +1,65 @@
+@startuml
+
+skinparam participant {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+
+' Participants
+actor User
+
+box "ETM" #dddddd
+participant "ETM GUI"
+participant "ETM Backend"
+end box
+
+participant TestLink
+participant EUS
+participant Browser
+participant "Other\nServices"
+
+' Relations
+
+User --> "ETM GUI": go to Test \nPlan page
+User --> "ETM GUI": start Test \nPlan execution
+"ETM GUI" --> User: show modal for \nselect configuration
+User --> "ETM GUI": select configuration
+
+"ETM GUI" --> User: show browser
+
+loop for each test case and (!paused or !stopped)
+    "ETM GUI" --> EUS: start video recording
+    EUS --> Browser: start video recording
+    "ETM GUI" --> User: show test case\nexecution panel
+    User --> "Browser": interacts
+    alt execute test case
+        User --> "ETM GUI": select test case\nresult and save
+    else pause execution
+        "ETM GUI" --> "ETM Backend": save state
+        "ETM Backend" --> "ETM GUI"
+    else stop execution
+    end
+    "ETM GUI" --> EUS: stop video recording
+    EUS --> Browser: stop video recording
+end
+
+"ETM GUI" --> "ETM Backend": finish\nExternalTJobExecution
+"ETM Backend" --> "ETM GUI": response
+
+"ETM GUI" --> "EUS": stop browser
+EUS --> Browser: stop
+destroy Browser
+
+EUS --> "ETM GUI": response
+
+"ETM GUI" --> "ETM Backend": deprovide EUS\nif is necessary
+"ETM Backend" --> "ETM GUI": response
+"ETM GUI" --> User: show results page
+
+
+
+@enduml
