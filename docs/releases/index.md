@@ -5,6 +5,22 @@
 </div>
 
 <!-- ************************* -->
+<!-- ********* 2.1.1 ********* -->
+<!-- ************************* -->
+
+<h3 id="2.1.1" class="small-subtitle">2.1.1</h3>
+<h4 class="smaller-subtitle">11/12/2019</h4>
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+- Tags of EIM and ECE images has been fixed to specific version
+- Logstash regex for clean log messages has been fixed and improved
+
+<h5 class="smaller-subtitle">Little improvements</h5>
+
+- New demo project added: QoE with AWS
+
+<!-- ************************* -->
 <!-- ********* 2.1.0 ********* -->
 <!-- ************************* -->
 
