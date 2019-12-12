@@ -46,6 +46,11 @@ In addition, you have to set to true the variable **`ET_SECURITY`**.
   value: "true"
 ```
 
+##### Set volume size
+
+Volumes manifests have the default size set to a low value. It is recommended to set the size you want. To do this you must modify the files in the `elastest-toolbox/kubernetes/ek/volumes` folder.
+
+
 <h4 class="holder-subtitle link-top">Minikube</h4>
 It is possible that when you start with this mini tutorial, you don't have Minikube and the necessary tools installed. To know how to do this, please follow the steps in described in the official [site](https://kubernetes.io/es/docs/tasks/tools/install-minikube/)
 
