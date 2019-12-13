@@ -21,6 +21,8 @@
 | **ET_SUT_LOG_TAG** | It allows us to assign a label in the log driver output of the SuT container. This tag contains information that ElasTest uses internally to identify logs | "sut_37_exec" | Is an external TJob | TJob |
 | **ET_ETM_TJOB_ATTACHMENT_API** | It contains an api url that allows us to attach evidence files to the execution | "http://172.18.0.1:37000/api/tjob/exec/707/attachment" | Always available | TJob |
 | **ET_TEST_CONTAINER_NAME** | TJob container name | "test_37" | Always available | TJob |
+| **ET_EIM_API** | EIM API url | "http://ip:port/eim/api" | Only available if the TJob uses an external SuT instrumented by ElasTest | TJob |
+| **ET_EIM_SUT_AGENT_ID** | Sut Agent ID in EIM DB | "iagent0" | Only available if the TJob uses an external SuT instrumented by ElasTest | TJob |
 
 <br>
 * **TSS**: Test Support Services
