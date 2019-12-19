@@ -14,7 +14,7 @@ In particular, our TJob will start one download of a large file at the beginning
 
 The ElasTest infrastructure provides us with the means to extract data from the server running the test automatically. We use this feature to collect the network activity, which we will analyse in the EMS.
 
-This example is **shipped along with ElasTest** within the project **`EMS Example`**, but we are going to explain how to create it.
+This example is **shipped along with ElasTest** within the project **`Building assertions with monitoring data`** (EMS Example in older versions), but we are going to explain how to create it.
 
 <h4 class="small-subtitle">The System under Test</h4>
 

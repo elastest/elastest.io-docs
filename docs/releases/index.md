@@ -5,8 +5,28 @@
 </div>
 
 <!-- ************************* -->
-<!-- ********* 2.1.1 ********* -->
+<!-- ********* 2.2.0 ********* -->
 <!-- ************************* -->
+
+<h3 id="2.2.0" class="small-subtitle">2.2.0</h3>
+<h4 class="smaller-subtitle">19/12/2019</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+- <a href="https://github.com/elastest/elastest-instrumentation-manager/blob/master/docs/user-docs.md" target="_blank">EIM</a> now allows inserting / deleting **packet loss** in the SuT without cron
+- The names of some demo projects have been changed:
+  - **EMS Example** to **Building assertions with monitoring data**
+  - **EDS Example** to **IoT device emulation**
+  - **QoE** to **Asserting Quality of Experience in WebRTC**
+- <a target="_blank" href="/docs/jenkins">ElasTest Jenkins Plugin</a> has been updated to 1.2.0 version, which allows the <a href="https://github.com/elastest/elastest-orchestration-engine" target="_blank">EOE</a> to insert packetloss/cpu burst through the EIM.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+- Problems with **`Test Engines`** in **EK** mode have been fixed
+
+  <!-- ************************* -->
+  <!-- ********* 2.1.1 ********* -->
+  <!-- ************************* -->
 
 <h3 id="2.1.1" class="small-subtitle">2.1.1</h3>
 <h4 class="smaller-subtitle">11/12/2019</h4>

@@ -81,4 +81,4 @@
 
 <h5 class="small-subtitle">QoE testing</h5>
 
-For **execute this TJob** just run the TJob **JUnit5 QoE Meter Docker** in the project **QoE**
+For **execute this TJob** just run the TJob **JUnit5 QoE Meter Docker** in the project **`Asserting Quality of Experience in WebRTC`** (QoE in older versions)
