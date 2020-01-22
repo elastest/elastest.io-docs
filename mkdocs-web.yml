@@ -20,6 +20,7 @@ pages:
     - 'Observability for 5G infrastructures': 'tutorials/observability-for-5g-infrastructures.md'
     - 'EMS (show how specific visualizations for TJobs and ElasTest TSS work)': 'tutorials/ems.md'
     - 'Measuring video quality for video streaming applications': 'tutorials/qoe.md'
+    - 'Orchestration testing': 'tutorials/eoe.md'
 
 # Demos Section
 - Demos:
