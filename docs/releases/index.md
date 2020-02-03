@@ -5,6 +5,25 @@
 </div>
 
 <!--   ************************* -->
+<!--   ********* 2.3.0 ********* -->
+<!--   ************************* -->
+
+<h3 id="2.2.0" class="small-subtitle">2.3.0</h3>
+<h4 class="smaller-subtitle">03/02/2020</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+-  GUI TJob Execution View:
+    -   A new tab has been added to test cases using browsers, showing **`files grouped by session`**.
+    -   The **`files view`** has been improved
+    -   If there is a QoE execution, the <a href="https://github.com/Netflix/vmaf" target="_blank">VMAF</a> average is displayed
+-   General **`stability improvements`**.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+- EUS fixed in HEK mode
+
+<!--   ************************* -->
 <!--   ********* 2.2.0 ********* -->
 <!--   ************************* -->
 
