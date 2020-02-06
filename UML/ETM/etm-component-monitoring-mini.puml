@@ -1,0 +1,63 @@
+@startuml
+
+skinparam component {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+skinparam defaultTextAlignment center
+
+package host {
+    component "TJobExec\nContainer"
+    component "Internal Sut\nContainer(s)"
+    component "Internal Sut\n In Container(s)"
+    component "Internal Browser\nSession console"
+    component "Dockbeat"
+    component "Filebeat"
+    component "MySQL"
+
+    [TJobExec\nContainer] -- Docker
+    [Internal Sut\nContainer(s)] -- Docker
+    [Internal Browser\nContainer] -- Docker
+
+    [Internal Sut\n In Container(s)] -- [Filebeat]
+    Docker -- [Dockbeat]
+
+    package "ETM Backend" {
+        interface Beats
+        interface TCP
+        interface HTTP
+
+        TCP --> [TracesService]
+        Beats --> [TracesService]
+        HTTP --> [TracesService]
+
+        [TracesService] -right-> [Queue Service]
+        [Queue Service] -right-> Queue
+
+        [TracesService] --> [AbstractMonitoringService]
+        [AbstractMonitoringService] -right-> [MySQL]
+    }
+
+    Docker --> TCP
+    [Filebeat] --> Beats
+    [Dockbeat] --> Beats
+    [Internal Browser\nSession console] --> HTTP
+
+
+}
+
+package ExternalSutHost {
+    [External\nFilebeat] --> Beats
+    [External\nMetricbeat] --> Beats
+}
+
+
+
+
+
+
+@enduml
