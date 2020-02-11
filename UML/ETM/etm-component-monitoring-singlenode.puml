@@ -12,6 +12,16 @@ skinparam defaultTextAlignment center
 skinparam linetype polyline
 
 package host {
+
+    package Logstash{
+        interface TCP
+        interface Beats
+        interface HTTP
+        TCP -- [Logstash]
+        Beats -- [Logstash]
+        HTTP -- [Logstash]
+    }
+
     [TJobExec\nContainer] -- Docker
     [Internal Sut\nContainer(s)] -- Docker
     [Internal Browser\nContainer] -- Docker
@@ -26,9 +36,7 @@ package host {
     [Dockbeat] --> Beats
 
 
-    TCP -down- [Logstash]
-    Beats -left- [Logstash]
-    HTTP -- [Logstash]
+
 
     [Logstash] --> [Elasticsearch]
     [Logstash] --> [RabbitMQ]

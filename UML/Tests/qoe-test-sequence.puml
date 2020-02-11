@@ -1,0 +1,117 @@
+@startuml
+
+skinparam participant {
+    FontSize 16
+    FontStyle bold
+    FontColor white
+    BackgroundColor #ffac2f
+    ArrowFontColor #333333
+    ArrowThickness 2
+}
+skinparam defaultTextAlignment center
+skinparam linetype polyline
+
+participant Test
+participant EUS
+participant Browser1
+participant Browser2
+participant "WebRTC\nQoEMeter1"
+participant "WebRTC\nQoEMeter2"
+
+== Initialization ==
+Test --> EUS: start browser1
+EUS --> Browser1: start
+activate Browser1
+EUS --> Test
+Test --> EUS: upload video/audio\nfrom url
+EUS --> Browser1: upload video/audio
+
+Test --> EUS: start browser2
+note left
+  All Browser1
+  and Browser2
+  requests will
+  be doing in
+  parallel
+end note
+EUS --> Browser2: start
+activate Browser2
+EUS --> Test
+Test --> EUS: upload video/audio\nfrom url
+EUS --> Browser1: upload video/audio
+
+Test --> Browser1: open sut URL and wait for ready
+Test --> Browser2: open sut URL and wait for ready
+
+== Obtaining videos ==
+
+Test --> Browser1: get Subscriber1 and Publisher1 id
+Browser1 --> Test: ids (S1ID | P1ID)
+Test --> Browser2: get Subscriber2 and Publisher2 id
+Browser2 --> Test: ids (S2ID | P2ID)
+
+Test --> Browser1: init Subscriber1 local recorder
+Browser1 --> Test: id (S1LRID)
+Test --> Browser1: init Publisher1 local recorder
+Browser1 --> Test: id (P1LRID)
+
+Test --> Browser2: init Subscriber2 local recorder
+Browser2 --> Test: id (S2LRID)
+Test --> Browser2: init Publisher2 local recorder
+Browser2 --> Test: id (P2LRID)
+
+Test --> Browser1: record and download (browser context)\nS1 & P1 videos
+Test --> Browser2: record and download (browser context)\nS2 & P2 videos
+
+Test --> Browser1: get S1 & P1 video paths
+Browser1 --> Test: S1 & P1 paths
+Test --> Browser2: get S2 & P2 video paths
+Browser2 --> Test: S2 & P2 paths
+
+== Calculating QoE ==
+
+Test --> EUS: start and process QoE\nfor S1 & P2
+
+EUS --> "WebRTC\nQoEMeter1": start
+activate "WebRTC\nQoEMeter1"
+EUS --> Browser1: get S1 video
+EUS --> Browser2: get P2 video
+EUS --> "WebRTC\nQoEMeter1": send S1 & P2 videos
+EUS --> "WebRTC\nQoEMeter1": start QoE script async
+"WebRTC\nQoEMeter1" --> EUS
+EUS --> Test: identifier
+
+loop
+Test --> EUS: wait for QoE script ends
+end
+
+"WebRTC\nQoEMeter1" --> EUS: end script
+EUS --> "WebRTC\nQoEMeter1": get results in csv
+EUS --> EUS: process CSV and\ngenerate average for\neach in txt file\n(files will be\nattached to exec folder)
+EUS --> Test: csv list
+Test --> Test: assert csv list is\nnot empty
+Test --> EUS: get Average list
+EUS --> Test: average txt list
+Test --> Test: assert average list\nis not empty
+
+note left of Test
+  The same for
+  Browser2 with
+  S2 and P1 videos
+end note
+
+
+== End services ==
+
+Test --> EUS: end services
+EUS --> Browser1: end
+destroy Browser1
+EUS --> "WebRTC\nQoEMeter1": end
+destroy "WebRTC\nQoEMeter1"
+EUS --> Browser2: end
+destroy Browser2
+EUS --> "WebRTC\nQoEMeter2": end
+destroy "WebRTC\nQoEMeter2"
+
+
+@enduml
