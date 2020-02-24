@@ -5,10 +5,29 @@
 </div>
 
 <!--   ************************* -->
+<!--   ********* 2.4.0 ********* -->
+<!--   ************************* -->
+
+<h3 id="2.4.0" class="small-subtitle">2.4.0</h3>
+<h4 class="smaller-subtitle">24/02/2020</h4>
+
+<h5 class="smaller-subtitle">Features & Improvements</h5>
+
+- Now you can send start time and duration of a video to EUS from a QoE test, so EUS can **`generate and send QoE metrics`** to visualize in GUI.
+- Now you can pass ElasTest an **`external ElasticSearch`** to use it as Monitoring Service instead the default one (mysql/ES).
+- GUI Minor improvements.
+
+<h5 class="smaller-subtitle">Bug Fixes</h5>
+
+- GUI Fix bug when **`download executions as JSON`** related to skipped tests suites.
+- EUS .eus files now stores properly in ElasTest Docker.  
+
+
+<!--   ************************* -->
 <!--   ********* 2.3.0 ********* -->
 <!--   ************************* -->
 
-<h3 id="2.2.0" class="small-subtitle">2.3.0</h3>
+<h3 id="2.3.0" class="small-subtitle">2.3.0</h3>
 <h4 class="smaller-subtitle">03/02/2020</h4>
 
 <h5 class="smaller-subtitle">Features & Improvements</h5>
