@@ -120,7 +120,7 @@ Only do click to Save button.
 
     -   AWS_SECURITY_GROUPS
 
-        Security groups shall be established in the following format: **`["GROUP1","GROUP2",...]`**. If only one group is to be established, it must have the same format: **`["GROUP"]`**
+        Security groups shall be established in the following format: **`["GROUP_NAME1","GROUP_NAME2",...]`**. If only one group is to be established, it must have the same format: **`["GROUP_NAME"]`**
 
         <p></p>
 
